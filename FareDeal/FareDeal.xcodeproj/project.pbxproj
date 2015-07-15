@@ -13,6 +13,7 @@
 		81481B421B56A2D6000EC386 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81481B411B56A2D6000EC386 /* Images.xcassets */; };
 		81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81481B431B56A2D6000EC386 /* LaunchScreen.xib */; };
 		81481B511B56A2D6000EC386 /* FareDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B501B56A2D6000EC386 /* FareDealTests.swift */; };
+		81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81481B5A1B56A359000EC386 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		81481B4A1B56A2D6000EC386 /* FareDealTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FareDealTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81481B4F1B56A2D6000EC386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81481B501B56A2D6000EC386 /* FareDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FareDealTests.swift; sourceTree = "<group>"; };
+		81481B5A1B56A359000EC386 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +62,7 @@
 		81481B2C1B56A2D6000EC386 = {
 			isa = PBXGroup;
 			children = (
+				81481B5A1B56A359000EC386 /* StoreKit.framework */,
 				81481B371B56A2D6000EC386 /* FareDeal */,
 				81481B4D1B56A2D6000EC386 /* FareDealTests */,
 				81481B361B56A2D6000EC386 /* Products */,
@@ -161,6 +165,12 @@
 				TargetAttributes = {
 					81481B341B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 9J676A68SR;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					81481B491B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
@@ -340,9 +350,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FareDeal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -350,9 +364,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FareDeal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

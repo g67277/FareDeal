@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B3A1B56A2D6000EC386 /* AppDelegate.swift */; };
+		81481B3D1B56A2D6000EC386 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B3C1B56A2D6000EC386 /* ViewController.swift */; };
+		81481B401B56A2D6000EC386 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81481B3E1B56A2D6000EC386 /* Main.storyboard */; };
+		81481B421B56A2D6000EC386 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81481B411B56A2D6000EC386 /* Images.xcassets */; };
+		81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81481B431B56A2D6000EC386 /* LaunchScreen.xib */; };
+		81481B511B56A2D6000EC386 /* FareDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B501B56A2D6000EC386 /* FareDealTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		81481B4B1B56A2D6000EC386 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81481B2D1B56A2D6000EC386 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81481B341B56A2D6000EC386;
+			remoteInfo = FareDeal;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		81481B351B56A2D6000EC386 /* FareDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FareDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81481B391B56A2D6000EC386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81481B3A1B56A2D6000EC386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		81481B3C1B56A2D6000EC386 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		81481B3F1B56A2D6000EC386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		81481B411B56A2D6000EC386 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		81481B441B56A2D6000EC386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		81481B4A1B56A2D6000EC386 /* FareDealTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FareDealTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		81481B4F1B56A2D6000EC386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81481B501B56A2D6000EC386 /* FareDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FareDealTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		81481B321B56A2D6000EC386 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81481B471B56A2D6000EC386 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		81481B2C1B56A2D6000EC386 = {
+			isa = PBXGroup;
+			children = (
+				81481B371B56A2D6000EC386 /* FareDeal */,
+				81481B4D1B56A2D6000EC386 /* FareDealTests */,
+				81481B361B56A2D6000EC386 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		81481B361B56A2D6000EC386 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				81481B351B56A2D6000EC386 /* FareDeal.app */,
+				81481B4A1B56A2D6000EC386 /* FareDealTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		81481B371B56A2D6000EC386 /* FareDeal */ = {
+			isa = PBXGroup;
+			children = (
+				81481B3A1B56A2D6000EC386 /* AppDelegate.swift */,
+				81481B3C1B56A2D6000EC386 /* ViewController.swift */,
+				81481B3E1B56A2D6000EC386 /* Main.storyboard */,
+				81481B411B56A2D6000EC386 /* Images.xcassets */,
+				81481B431B56A2D6000EC386 /* LaunchScreen.xib */,
+				81481B381B56A2D6000EC386 /* Supporting Files */,
+			);
+			path = FareDeal;
+			sourceTree = "<group>";
+		};
+		81481B381B56A2D6000EC386 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				81481B391B56A2D6000EC386 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		81481B4D1B56A2D6000EC386 /* FareDealTests */ = {
+			isa = PBXGroup;
+			children = (
+				81481B501B56A2D6000EC386 /* FareDealTests.swift */,
+				81481B4E1B56A2D6000EC386 /* Supporting Files */,
+			);
+			path = FareDealTests;
+			sourceTree = "<group>";
+		};
+		81481B4E1B56A2D6000EC386 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				81481B4F1B56A2D6000EC386 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		81481B341B56A2D6000EC386 /* FareDeal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81481B541B56A2D6000EC386 /* Build configuration list for PBXNativeTarget "FareDeal" */;
+			buildPhases = (
+				81481B311B56A2D6000EC386 /* Sources */,
+				81481B321B56A2D6000EC386 /* Frameworks */,
+				81481B331B56A2D6000EC386 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FareDeal;
+			productName = FareDeal;
+			productReference = 81481B351B56A2D6000EC386 /* FareDeal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		81481B491B56A2D6000EC386 /* FareDealTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81481B571B56A2D6000EC386 /* Build configuration list for PBXNativeTarget "FareDealTests" */;
+			buildPhases = (
+				81481B461B56A2D6000EC386 /* Sources */,
+				81481B471B56A2D6000EC386 /* Frameworks */,
+				81481B481B56A2D6000EC386 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81481B4C1B56A2D6000EC386 /* PBXTargetDependency */,
+			);
+			name = FareDealTests;
+			productName = FareDealTests;
+			productReference = 81481B4A1B56A2D6000EC386 /* FareDealTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		81481B2D1B56A2D6000EC386 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = SNASTek;
+				TargetAttributes = {
+					81481B341B56A2D6000EC386 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					81481B491B56A2D6000EC386 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 81481B341B56A2D6000EC386;
+					};
+				};
+			};
+			buildConfigurationList = 81481B301B56A2D6000EC386 /* Build configuration list for PBXProject "FareDeal" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 81481B2C1B56A2D6000EC386;
+			productRefGroup = 81481B361B56A2D6000EC386 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				81481B341B56A2D6000EC386 /* FareDeal */,
+				81481B491B56A2D6000EC386 /* FareDealTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		81481B331B56A2D6000EC386 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81481B401B56A2D6000EC386 /* Main.storyboard in Resources */,
+				81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */,
+				81481B421B56A2D6000EC386 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81481B481B56A2D6000EC386 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		81481B311B56A2D6000EC386 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81481B3D1B56A2D6000EC386 /* ViewController.swift in Sources */,
+				81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81481B461B56A2D6000EC386 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81481B511B56A2D6000EC386 /* FareDealTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		81481B4C1B56A2D6000EC386 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81481B341B56A2D6000EC386 /* FareDeal */;
+			targetProxy = 81481B4B1B56A2D6000EC386 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		81481B3E1B56A2D6000EC386 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				81481B3F1B56A2D6000EC386 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		81481B431B56A2D6000EC386 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				81481B441B56A2D6000EC386 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		81481B521B56A2D6000EC386 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		81481B531B56A2D6000EC386 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		81481B551B56A2D6000EC386 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FareDeal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		81481B561B56A2D6000EC386 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FareDeal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		81481B581B56A2D6000EC386 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FareDealTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FareDeal.app/FareDeal";
+			};
+			name = Debug;
+		};
+		81481B591B56A2D6000EC386 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FareDealTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FareDeal.app/FareDeal";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		81481B301B56A2D6000EC386 /* Build configuration list for PBXProject "FareDeal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81481B521B56A2D6000EC386 /* Debug */,
+				81481B531B56A2D6000EC386 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81481B541B56A2D6000EC386 /* Build configuration list for PBXNativeTarget "FareDeal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81481B551B56A2D6000EC386 /* Debug */,
+				81481B561B56A2D6000EC386 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		81481B571B56A2D6000EC386 /* Build configuration list for PBXNativeTarget "FareDealTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81481B581B56A2D6000EC386 /* Debug */,
+				81481B591B56A2D6000EC386 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 81481B2D1B56A2D6000EC386 /* Project object */;
+}

@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B3A1B56A2D6000EC386 /* AppDelegate.swift */; };
-		81481B3D1B56A2D6000EC386 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B3C1B56A2D6000EC386 /* ViewController.swift */; };
+		81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B3C1B56A2D6000EC386 /* BusinessHome.swift */; };
 		81481B401B56A2D6000EC386 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81481B3E1B56A2D6000EC386 /* Main.storyboard */; };
 		81481B421B56A2D6000EC386 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81481B411B56A2D6000EC386 /* Images.xcassets */; };
 		81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81481B431B56A2D6000EC386 /* LaunchScreen.xib */; };
 		81481B511B56A2D6000EC386 /* FareDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B501B56A2D6000EC386 /* FareDealTests.swift */; };
 		81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81481B5A1B56A359000EC386 /* StoreKit.framework */; };
+		81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B5B6AE1B56D375009B522A /* StoreVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +31,7 @@
 		81481B351B56A2D6000EC386 /* FareDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FareDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81481B391B56A2D6000EC386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81481B3A1B56A2D6000EC386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81481B3C1B56A2D6000EC386 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		81481B3C1B56A2D6000EC386 /* BusinessHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessHome.swift; sourceTree = "<group>"; };
 		81481B3F1B56A2D6000EC386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81481B411B56A2D6000EC386 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		81481B441B56A2D6000EC386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -38,6 +39,8 @@
 		81481B4F1B56A2D6000EC386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81481B501B56A2D6000EC386 /* FareDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FareDealTests.swift; sourceTree = "<group>"; };
 		81481B5A1B56A359000EC386 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		81B5B6AE1B56D375009B522A /* StoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreVC.swift; sourceTree = "<group>"; };
+		81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MidCase RegLine.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +84,9 @@
 		81481B371B56A2D6000EC386 /* FareDeal */ = {
 			isa = PBXGroup;
 			children = (
+				81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */,
 				81481B3A1B56A2D6000EC386 /* AppDelegate.swift */,
-				81481B3C1B56A2D6000EC386 /* ViewController.swift */,
+				81B5B6B01B56D386009B522A /* Business Side */,
 				81481B3E1B56A2D6000EC386 /* Main.storyboard */,
 				81481B411B56A2D6000EC386 /* Images.xcassets */,
 				81481B431B56A2D6000EC386 /* LaunchScreen.xib */,
@@ -114,6 +118,15 @@
 				81481B4F1B56A2D6000EC386 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		81B5B6B01B56D386009B522A /* Business Side */ = {
+			isa = PBXGroup;
+			children = (
+				81481B3C1B56A2D6000EC386 /* BusinessHome.swift */,
+				81B5B6AE1B56D375009B522A /* StoreVC.swift */,
+			);
+			name = "Business Side";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,7 +235,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81481B3D1B56A2D6000EC386 /* ViewController.swift in Sources */,
+				81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */,
+				81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */,
 				81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +441,7 @@
 				81481B561B56A2D6000EC386 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		81481B571B56A2D6000EC386 /* Build configuration list for PBXNativeTarget "FareDealTests" */ = {
 			isa = XCConfigurationList;
@@ -435,6 +450,7 @@
 				81481B591B56A2D6000EC386 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

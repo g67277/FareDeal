@@ -14,7 +14,12 @@
 		81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81481B431B56A2D6000EC386 /* LaunchScreen.xib */; };
 		81481B511B56A2D6000EC386 /* FareDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B501B56A2D6000EC386 /* FareDealTests.swift */; };
 		81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81481B5A1B56A359000EC386 /* StoreKit.framework */; };
+		819281D91B5B3E680003AD4D /* DealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281D81B5B3E680003AD4D /* DealsVC.swift */; };
+		819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DA1B5B3EA40003AD4D /* DealDetailsVC.swift */; };
+		819281DD1B5B3FD20003AD4D /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DC1B5B3FD20003AD4D /* Deal.swift */; };
+		819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DF1B5B427C0003AD4D /* DealsCell.swift */; };
 		81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B5B6AE1B56D375009B522A /* StoreVC.swift */; };
+		81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81FA1BA01B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +44,13 @@
 		81481B4F1B56A2D6000EC386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81481B501B56A2D6000EC386 /* FareDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FareDealTests.swift; sourceTree = "<group>"; };
 		81481B5A1B56A359000EC386 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		819281D81B5B3E680003AD4D /* DealsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsVC.swift; sourceTree = "<group>"; };
+		819281DA1B5B3EA40003AD4D /* DealDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealDetailsVC.swift; sourceTree = "<group>"; };
+		819281DC1B5B3FD20003AD4D /* Deal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
+		819281DF1B5B427C0003AD4D /* DealsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsCell.swift; sourceTree = "<group>"; };
 		81B5B6AE1B56D375009B522A /* StoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreVC.swift; sourceTree = "<group>"; };
 		81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MidCase RegLine.otf"; sourceTree = "<group>"; };
+		81FA1BA11B5B0FFB00ABCD53 /* FareDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FareDeal.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +101,7 @@
 				81481B411B56A2D6000EC386 /* Images.xcassets */,
 				81481B431B56A2D6000EC386 /* LaunchScreen.xib */,
 				81481B381B56A2D6000EC386 /* Supporting Files */,
+				81FA1BA01B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld */,
 			);
 			path = FareDeal;
 			sourceTree = "<group>";
@@ -120,11 +131,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		819281DE1B5B3FD50003AD4D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				819281DC1B5B3FD20003AD4D /* Deal.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		81B5B6B01B56D386009B522A /* Business Side */ = {
 			isa = PBXGroup;
 			children = (
 				81481B3C1B56A2D6000EC386 /* BusinessHome.swift */,
 				81B5B6AE1B56D375009B522A /* StoreVC.swift */,
+				819281D81B5B3E680003AD4D /* DealsVC.swift */,
+				819281DA1B5B3EA40003AD4D /* DealDetailsVC.swift */,
+				819281DF1B5B427C0003AD4D /* DealsCell.swift */,
+				819281DE1B5B3FD50003AD4D /* Model */,
 			);
 			name = "Business Side";
 			sourceTree = "<group>";
@@ -236,8 +259,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */,
+				819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */,
+				819281D91B5B3E680003AD4D /* DealsVC.swift in Sources */,
+				819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */,
+				81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */,
 				81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */,
 				81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */,
+				819281DD1B5B3FD20003AD4D /* Deal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +481,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		81FA1BA01B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				81FA1BA11B5B0FFB00ABCD53 /* FareDeal.xcdatamodel */,
+			);
+			currentVersion = 81FA1BA11B5B0FFB00ABCD53 /* FareDeal.xcdatamodel */;
+			path = FareDeal.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 81481B2D1B56A2D6000EC386 /* Project object */;
 }

@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>19793DA2-5B85-4D8E-BC8C-924AAA5EEEC2</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>FareDeal</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7A050A765296F1E16C77CCF58816CBE429809774</key>
 		<string>https://github.com/g67277/FareDeal</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>FareDeal/FareDeal.xcodeproj/project.xcworkspace</string>
+	<string>FareDeal/FareDeal.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7A050A765296F1E16C77CCF58816CBE429809774</key>

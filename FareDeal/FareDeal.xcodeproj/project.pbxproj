@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07251ABC930F3FF0D5D7BB3C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C58A2122B66D9A6963C36D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		81008C101B5C44830019E297 /* DataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81008C0F1B5C44830019E297 /* DataApi.swift */; };
 		81008C121B5C46AE0019E297 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81008C111B5C46AE0019E297 /* DataManager.swift */; };
 		81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B3A1B56A2D6000EC386 /* AppDelegate.swift */; };
@@ -15,13 +16,18 @@
 		81481B421B56A2D6000EC386 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81481B411B56A2D6000EC386 /* Images.xcassets */; };
 		81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81481B431B56A2D6000EC386 /* LaunchScreen.xib */; };
 		81481B511B56A2D6000EC386 /* FareDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B501B56A2D6000EC386 /* FareDealTests.swift */; };
-		81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81481B5A1B56A359000EC386 /* StoreKit.framework */; };
 		819281D91B5B3E680003AD4D /* DealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281D81B5B3E680003AD4D /* DealsVC.swift */; };
 		819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DA1B5B3EA40003AD4D /* DealDetailsVC.swift */; };
 		819281DD1B5B3FD20003AD4D /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DC1B5B3FD20003AD4D /* Deal.swift */; };
 		819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DF1B5B427C0003AD4D /* DealsCell.swift */; };
 		81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B5B6AE1B56D375009B522A /* StoreVC.swift */; };
 		81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81FA1BA01B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld */; };
+		993341A11B5D5FF200B7EDFF /* HomeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993341A01B5D5FF200B7EDFF /* HomeSwipeViewController.swift */; };
+		993341A51B5D61A000B7EDFF /* CardOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993341A41B5D61A000B7EDFF /* CardOverlayView.xib */; };
+		993341A81B5D621B00B7EDFF /* CardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993341A71B5D621B00B7EDFF /* CardOverlayView.swift */; };
+		993341AA1B5D6D0900B7EDFF /* CardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993341A91B5D6D0900B7EDFF /* CardContentView.swift */; };
+		993341AC1B5D6D1600B7EDFF /* CardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993341AB1B5D6D1600B7EDFF /* CardContentView.xib */; };
+		993341B21B5D7FB600B7EDFF /* Restaurants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 993341B11B5D7FB600B7EDFF /* Restaurants.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2491B768A4154FEBF8F73B74 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		46B6D5667FCFEE33082243D2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		52C58A2122B66D9A6963C36D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81008C0F1B5C44830019E297 /* DataApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataApi.swift; sourceTree = "<group>"; };
 		81008C111B5C46AE0019E297 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		81481B351B56A2D6000EC386 /* FareDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FareDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,7 +56,6 @@
 		81481B4A1B56A2D6000EC386 /* FareDealTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FareDealTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81481B4F1B56A2D6000EC386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81481B501B56A2D6000EC386 /* FareDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FareDealTests.swift; sourceTree = "<group>"; };
-		81481B5A1B56A359000EC386 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		819281D81B5B3E680003AD4D /* DealsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsVC.swift; sourceTree = "<group>"; };
 		819281DA1B5B3EA40003AD4D /* DealDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealDetailsVC.swift; sourceTree = "<group>"; };
 		819281DC1B5B3FD20003AD4D /* Deal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
@@ -55,6 +63,13 @@
 		81B5B6AE1B56D375009B522A /* StoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreVC.swift; sourceTree = "<group>"; };
 		81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MidCase RegLine.otf"; sourceTree = "<group>"; };
 		81FA1BA11B5B0FFB00ABCD53 /* FareDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FareDeal.xcdatamodel; sourceTree = "<group>"; };
+		993341A01B5D5FF200B7EDFF /* HomeSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSwipeViewController.swift; sourceTree = "<group>"; };
+		993341A41B5D61A000B7EDFF /* CardOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardOverlayView.xib; sourceTree = "<group>"; };
+		993341A71B5D621B00B7EDFF /* CardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayView.swift; sourceTree = "<group>"; };
+		993341A91B5D6D0900B7EDFF /* CardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
+		993341AB1B5D6D1600B7EDFF /* CardContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardContentView.xib; sourceTree = "<group>"; };
+		993341AD1B5D73EB00B7EDFF /* FareDeal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FareDeal-Bridging-Header.h"; path = "FareDeal/FareDeal-Bridging-Header.h"; sourceTree = "<group>"; };
+		993341B11B5D7FB600B7EDFF /* Restaurants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Restaurants.plist; path = ../Restaurants.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */,
+				07251ABC930F3FF0D5D7BB3C /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +91,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46EDE0DCD13C2799CD3E6880 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				46B6D5667FCFEE33082243D2 /* Pods.debug.xcconfig */,
+				2491B768A4154FEBF8F73B74 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		66F31DAC5E0E87FB832EA103 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52C58A2122B66D9A6963C36D /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		81008C131B5C46B40019E297 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,10 +120,12 @@
 		81481B2C1B56A2D6000EC386 = {
 			isa = PBXGroup;
 			children = (
-				81481B5A1B56A359000EC386 /* StoreKit.framework */,
+				993341AD1B5D73EB00B7EDFF /* FareDeal-Bridging-Header.h */,
 				81481B371B56A2D6000EC386 /* FareDeal */,
 				81481B4D1B56A2D6000EC386 /* FareDealTests */,
 				81481B361B56A2D6000EC386 /* Products */,
+				46EDE0DCD13C2799CD3E6880 /* Pods */,
+				66F31DAC5E0E87FB832EA103 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,11 +144,13 @@
 				81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */,
 				81481B3A1B56A2D6000EC386 /* AppDelegate.swift */,
 				81B5B6B01B56D386009B522A /* Business Side */,
+				993341A21B5D5FF500B7EDFF /* User Side */,
 				81481B3E1B56A2D6000EC386 /* Main.storyboard */,
 				81481B411B56A2D6000EC386 /* Images.xcassets */,
 				81481B431B56A2D6000EC386 /* LaunchScreen.xib */,
 				81481B381B56A2D6000EC386 /* Supporting Files */,
 				81FA1BA01B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld */,
+				993341B11B5D7FB600B7EDFF /* Restaurants.plist */,
 			);
 			path = FareDeal;
 			sourceTree = "<group>";
@@ -166,6 +202,34 @@
 			name = "Business Side";
 			sourceTree = "<group>";
 		};
+		993341A21B5D5FF500B7EDFF /* User Side */ = {
+			isa = PBXGroup;
+			children = (
+				993341A31B5D600200B7EDFF /* Controller */,
+				993341A61B5D61A600B7EDFF /* View */,
+			);
+			name = "User Side";
+			sourceTree = "<group>";
+		};
+		993341A31B5D600200B7EDFF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				993341A01B5D5FF200B7EDFF /* HomeSwipeViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		993341A61B5D61A600B7EDFF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				993341A41B5D61A000B7EDFF /* CardOverlayView.xib */,
+				993341A71B5D621B00B7EDFF /* CardOverlayView.swift */,
+				993341AB1B5D6D1600B7EDFF /* CardContentView.xib */,
+				993341A91B5D6D0900B7EDFF /* CardContentView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,9 +237,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 81481B541B56A2D6000EC386 /* Build configuration list for PBXNativeTarget "FareDeal" */;
 			buildPhases = (
+				E5E51F358D3483B591DC7184 /* Check Pods Manifest.lock */,
 				81481B311B56A2D6000EC386 /* Sources */,
 				81481B321B56A2D6000EC386 /* Frameworks */,
 				81481B331B56A2D6000EC386 /* Resources */,
+				55140CDDBBAF4FCCFFF2A72E /* Embed Pods Frameworks */,
+				826C07552739EB3B77BD1E01 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,15 +282,16 @@
 				TargetAttributes = {
 					81481B341B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
+						DevelopmentTeam = 56R6M4W3X8;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
 					81481B491B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 56R6M4W3X8;
 						TestTargetID = 81481B341B56A2D6000EC386;
 					};
 				};
@@ -253,8 +321,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				81481B401B56A2D6000EC386 /* Main.storyboard in Resources */,
+				993341B21B5D7FB600B7EDFF /* Restaurants.plist in Resources */,
+				993341AC1B5D6D1600B7EDFF /* CardContentView.xib in Resources */,
 				81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */,
 				81481B421B56A2D6000EC386 /* Images.xcassets in Resources */,
+				993341A51B5D61A000B7EDFF /* CardOverlayView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +338,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		55140CDDBBAF4FCCFFF2A72E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		826C07552739EB3B77BD1E01 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5E51F358D3483B591DC7184 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		81481B311B56A2D6000EC386 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -274,12 +393,15 @@
 			files = (
 				81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */,
 				81008C121B5C46AE0019E297 /* DataManager.swift in Sources */,
+				993341A11B5D5FF200B7EDFF /* HomeSwipeViewController.swift in Sources */,
+				993341A81B5D621B00B7EDFF /* CardOverlayView.swift in Sources */,
 				819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */,
 				819281D91B5B3E680003AD4D /* DealsVC.swift in Sources */,
 				81008C101B5C44830019E297 /* DataApi.swift in Sources */,
 				819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */,
 				81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */,
 				81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */,
+				993341AA1B5D6D0900B7EDFF /* CardContentView.swift in Sources */,
 				81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */,
 				819281DD1B5B3FD20003AD4D /* Deal.swift in Sources */,
 			);
@@ -406,8 +528,10 @@
 		};
 		81481B551B56A2D6000EC386 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46B6D5667FCFEE33082243D2 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FareDeal/Info.plist;
@@ -415,13 +539,17 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		81481B561B56A2D6000EC386 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2491B768A4154FEBF8F73B74 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FareDeal/Info.plist;
@@ -429,6 +557,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -436,6 +565,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -447,6 +578,7 @@
 				INFOPLIST_FILE = FareDealTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FareDeal.app/FareDeal";
 			};
 			name = Debug;
@@ -455,6 +587,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -462,6 +596,7 @@
 				INFOPLIST_FILE = FareDealTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FareDeal.app/FareDeal";
 			};
 			name = Release;

@@ -7,19 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FareDeal.Service
+namespace FareDeal.Service.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Restaurent
+    public partial class deal_transcation
     {
-        public int RestaurentId { get; set; }
-        public string RestaurentName { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip { get; set; }
+        public System.Guid tran_id { get; set; }
+        public System.Guid deal_id { get; set; }
+        public System.Guid user_id { get; set; }
+        public System.DateTime tran_time { get; set; }
+        public int quantity_redeemed { get; set; }
+        public bool active { get; set; }
+    
+        public virtual deal deal { get; set; }
     }
 }

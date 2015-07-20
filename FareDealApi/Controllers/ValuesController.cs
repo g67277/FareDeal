@@ -16,11 +16,7 @@ namespace FareDealApi.Controllers
         public string Get()
         {
             var userName = this.RequestContext.Principal.Identity.Name;
-            //return String.Format("Hello, {0}.", userName);
-
-            FareDealDbContext dbContext = new FareDealDbContext();
-            List<Restaurent> rs = dbContext.Restaurents.ToList();
-            return String.Format("Total  {0} records found", rs.Count());
+            return String.Format("Hello, {0}.", userName);
         }
     }
 }

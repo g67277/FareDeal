@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FareDeal.Service
+namespace FareDeal.Service.Data
 {
     using System;
     using System.Data.Entity;
@@ -25,6 +25,14 @@ namespace FareDeal.Service
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Restaurent> Restaurents { get; set; }
+        public virtual DbSet<category> categories { get; set; }
+        public virtual DbSet<credit_master> credit_master { get; set; }
+        public virtual DbSet<credit_transactions> credit_transactions { get; set; }
+        public virtual DbSet<deal> deals { get; set; }
+        public virtual DbSet<deal_transcation> deal_transcation { get; set; }
+        public virtual DbSet<location> locations { get; set; }
+        public virtual DbSet<venue> venues { get; set; }
+        public virtual DbSet<venue_picture> venue_picture { get; set; }
+        public virtual DbSet<deal_category> deal_category { get; set; }
     }
 }

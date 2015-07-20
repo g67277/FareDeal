@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b5a1a48eac87474791c48f70e01843a7" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="LocalAuthenticationModel.category" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="LocalAuthenticationModel.credit_master" Width="1.5" PointX="6" PointY="1.375" />
+        <EntityTypeShape EntityType="LocalAuthenticationModel.credit_transactions" Width="1.5" PointX="8.25" PointY="5.5" />
+        <EntityTypeShape EntityType="LocalAuthenticationModel.deal" Width="1.5" PointX="3.875" PointY="4.375" />
+        <EntityTypeShape EntityType="LocalAuthenticationModel.deal_transcation" Width="1.5" PointX="5.25" PointY="11" />
+        <EntityTypeShape EntityType="LocalAuthenticationModel.location" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LocalAuthenticationModel.venue" Width="1.5" PointX="6" PointY="4.75" />
+        <EntityTypeShape EntityType="LocalAuthenticationModel.venue_picture" Width="1.5" PointX="8.25" PointY="10.75" />
+        <AssociationConnector Association="LocalAuthenticationModel.FK_venue_category" />
+        <AssociationConnector Association="LocalAuthenticationModel.FK_credit_transactions_credit_master" />
+        <AssociationConnector Association="LocalAuthenticationModel.FK_credit_transactions_venue" />
+        <AssociationConnector Association="LocalAuthenticationModel.FK_deal_transcation_deal" />
+        <AssociationConnector Association="LocalAuthenticationModel.FK_deal_venue" />
+        <AssociationConnector Association="LocalAuthenticationModel.FK_venue_location" />
+        <AssociationConnector Association="LocalAuthenticationModel.FK_venue_picture_venue" />
+        <EntityTypeShape EntityType="LocalAuthenticationModel.deal_category" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="LocalAuthenticationModel.FK_deal_deal_category" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

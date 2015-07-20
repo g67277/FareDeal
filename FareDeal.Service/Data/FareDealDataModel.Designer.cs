@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Hemal\Downloads\LocalAccountsApp-master\LocalAccountsApp-master\FareDeal.Service\FareDealDataModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Hemal\Documents\Dev\FareDeal_BackEnd\FareDeal.Service\Data\FareDealDataModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

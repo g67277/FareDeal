@@ -827,7 +827,7 @@
                                     <constraint firstAttribute="height" constant="71" id="xnc-L9-CEE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Business Side">
+                                <state key="normal" title="Restaurant Side">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

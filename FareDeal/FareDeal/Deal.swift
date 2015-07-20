@@ -12,6 +12,7 @@ import CoreData
 
 public struct Deal: Serializable {
     
+    var tier = 0
     var title = ""
     var desc = ""
     var timeLimit = 0
@@ -19,6 +20,11 @@ public struct Deal: Serializable {
     
     init(dictionary: [NSObject: AnyObject]) {
         
+        if let tierObject: AnyObject = dictionary["Tier"]{
+            if let identifierInt = tierObject as? Int{
+                self.tier = identifierInt
+            }
+        }
         
         if let titleObject: AnyObject = dictionary["Title"] {
             if let identifierString = titleObject as? String {

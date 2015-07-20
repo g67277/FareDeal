@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81008C101B5C44830019E297 /* DataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81008C0F1B5C44830019E297 /* DataApi.swift */; };
+		81008C121B5C46AE0019E297 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81008C111B5C46AE0019E297 /* DataManager.swift */; };
 		81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B3A1B56A2D6000EC386 /* AppDelegate.swift */; };
 		81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B3C1B56A2D6000EC386 /* BusinessHome.swift */; };
 		81481B401B56A2D6000EC386 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81481B3E1B56A2D6000EC386 /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81008C0F1B5C44830019E297 /* DataApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataApi.swift; sourceTree = "<group>"; };
+		81008C111B5C46AE0019E297 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		81481B351B56A2D6000EC386 /* FareDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FareDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81481B391B56A2D6000EC386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81481B3A1B56A2D6000EC386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81008C131B5C46B40019E297 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				81008C0F1B5C44830019E297 /* DataApi.swift */,
+				81008C111B5C46AE0019E297 /* DataManager.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		81481B2C1B56A2D6000EC386 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +161,7 @@
 				819281DA1B5B3EA40003AD4D /* DealDetailsVC.swift */,
 				819281DF1B5B427C0003AD4D /* DealsCell.swift */,
 				819281DE1B5B3FD50003AD4D /* Model */,
+				81008C131B5C46B40019E297 /* Data */,
 			);
 			name = "Business Side";
 			sourceTree = "<group>";
@@ -259,8 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */,
+				81008C121B5C46AE0019E297 /* DataManager.swift in Sources */,
 				819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */,
 				819281D91B5B3E680003AD4D /* DealsVC.swift in Sources */,
+				81008C101B5C44830019E297 /* DataApi.swift in Sources */,
 				819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */,
 				81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */,
 				81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */,

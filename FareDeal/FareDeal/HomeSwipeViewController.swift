@@ -9,10 +9,22 @@
 import UIKit
 import Koloda
 
-class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate {
-
+class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate, UISearchBarDelegate {
+    
+    
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet var searchButton: UIButton!
+    @IBOutlet weak var searchDisplayOverview: UIView!
+    @IBOutlet weak var searchTextField: NSLayoutConstraint!
     @IBOutlet weak var swipeableView: KolodaView!
-    var restaurants = []
+    var restaurants: [AnyObject] = []
+    var favoriteRestaurants: [AnyObject] = []
+    var searchActive : Bool = false
+    var searchString = ""
+    
+    
+    
     
     /* -----------------------  VIEW CONTROLLER METHODS --------------------------- */
     override func awakeFromNib() {
@@ -20,7 +32,6 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         // Retrieve the default data from the restaurants plist
         let path = NSBundle.mainBundle().pathForResource("Restaurants", ofType:"plist")
         restaurants = NSArray(contentsOfFile: path!) as! [Dictionary<String,String>]
-        //println(restaurants.description)
     }
     
     override func viewDidLoad() {
@@ -30,11 +41,58 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         swipeableView.dataSource = self
         swipeableView.delegate = self
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
+    /* --------  SEARCH BAR DISPLAY AND DELEGATE METHODS ---------- */
+    
+    @IBAction func showSearchOverlay(sender: AnyObject) {
+        searchDisplayOverview.hidden = !searchDisplayOverview.hidden
+        //searchButton.titleLabel?.text = (searchDisplayOverview.hidden) ? "Search" : "Cancel"
+        searchButton.titleLabel?.text = "Cancel"
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true;
+        //println("User: Home: User started editing text")
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false;
+        //println("User: Home: User finished editing text")
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+        searchBar.text = ""
+        searchBar.endEditing(true)
+        searchDisplayOverview.hidden = true
+        // reload cards with active search using search string
+        swipeableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+        searchBar.text = ""
+        searchBar.endEditing(true)
+       // println("User: Home: User clicked search button to search for \(searchString)")
+        searchDisplayOverview.hidden = true
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        searchString = searchText
+        searchActive = (searchString.isEmpty) ? false : true
+        
+    }
+    
+    
     
     
     /* --------  SWIPEABLE KOLODA VIEW ACTIONS, DATA SOURCE, AND DELEGATE METHODS ---------- */
@@ -81,6 +139,17 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     //KolodaView Delegate
     
     func kolodaDidSwipedCardAtIndex(koloda: KolodaView, index: UInt, direction: SwipeResultDirection) {
+        let restaurant: AnyObject = restaurants[Int(index)]
+        // check the direction
+        if direction == SwipeResultDirection.Left {
+            
+        }
+        if direction == SwipeResultDirection.Right {
+            //println("User: Home: User swiped right, save to favorites")
+            // get the object at that index
+            favoriteRestaurants.append(restaurant)
+        }
+        
         //Load more cards
         if index >= 1 {
             
@@ -101,6 +170,16 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         return true
     }
     
-
-
+    
+    //
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "userFavoritesSegue" {
+            // pass the temporary list of favorites to the favorites view
+            let favoritesTVC = segue.destinationViewController as! FavoritesTVController
+            //println("User: Home: There are \(favoriteRestaurants.count) favorites")
+            favoritesTVC.restaurants = self.favoriteRestaurants
+        }
+    }
+    
 }

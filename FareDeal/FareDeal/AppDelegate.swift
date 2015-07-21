@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // make back buttons throughout the app dark grey
+        var navBarAppearance = UINavigationBar.appearance()
+        navBarAppearance.tintColor = UIColor.darkGrayColor()
         return true
     }
 

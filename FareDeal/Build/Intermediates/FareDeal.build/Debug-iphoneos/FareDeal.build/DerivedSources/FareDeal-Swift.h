@@ -84,6 +84,8 @@ typedef struct _NSZone NSZone;
 #endif
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
+@import CoreGraphics;
+@import Koloda;
 @import StoreKit;
 #endif
 
@@ -142,7 +144,26 @@ SWIFT_CLASS("_TtC8FareDeal12BusinessHome")
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIView;
+@class UIImageView;
+
+SWIFT_CLASS("_TtC8FareDeal15CardContentView")
+@interface CardContentView : UIView
+@property (nonatomic, weak) IBOutlet UIImageView * __null_unspecified imageView;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified titleLabel;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)setup;
+- (void)setUpRestaurant:(UIView * __nonnull)contentView dataObject:(id __nonnull)dataObject;
+@end
+
+
+SWIFT_CLASS("_TtC8FareDeal15CardOverlayView")
+@interface CardOverlayView : OverlayView
+@property (nonatomic) IBOutlet UIImageView * __null_unspecified overlayImageView;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class UITextView;
 @class UITextField;
 
@@ -202,6 +223,72 @@ SWIFT_CLASS("_TtC8FareDeal7DealsVC")
 - (UITableViewCell * __nonnull)tableView:(UITableView * __nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
 - (void)tableView:(UITableView * __nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
 - (void)didReceiveMemoryWarning;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIImage;
+
+SWIFT_CLASS("_TtC8FareDeal13FavoritesCell")
+@interface FavoritesCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified locationTitle;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified locationPhone;
+@property (nonatomic, weak) IBOutlet UIImageView * __null_unspecified locationImage;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * __nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)awakeFromNib;
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated;
+- (void)setUpCell:(NSString * __nonnull)name phone:(NSString * __nonnull)phone image:(UIImage * __nonnull)image;
+@end
+
+
+SWIFT_CLASS("_TtC8FareDeal21FavoritesTVController")
+@interface FavoritesTVController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, copy) NSArray * __nonnull restaurants;
+@property (nonatomic, weak) IBOutlet UITableView * __null_unspecified tableview;
+- (void)viewWillAppear:(BOOL)animated;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (NSInteger)numberOfSectionsInTableView:(UITableView * __nonnull)tableView;
+- (NSInteger)tableView:(UITableView * __nonnull)tableView numberOfRowsInSection:(NSInteger)section;
+- (UITableViewCell * __nonnull)tableView:(UITableView * __nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UISearchBar;
+@class KolodaView;
+@class NSLayoutConstraint;
+
+SWIFT_CLASS("_TtC8FareDeal23HomeSwipeViewController")
+@interface HomeSwipeViewController : UIViewController <UISearchBarDelegate>
+@property (nonatomic, weak) IBOutlet UISearchBar * __null_unspecified searchBar;
+@property (nonatomic) IBOutlet UIButton * __null_unspecified searchButton;
+@property (nonatomic, weak) IBOutlet UIView * __null_unspecified searchDisplayOverview;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * __null_unspecified searchTextField;
+@property (nonatomic, weak) IBOutlet KolodaView * __null_unspecified swipeableView;
+@property (nonatomic, copy) NSArray * __nonnull restaurants;
+@property (nonatomic, copy) NSArray * __nonnull favoriteRestaurants;
+@property (nonatomic) BOOL searchActive;
+@property (nonatomic, copy) NSString * __nonnull searchString;
+- (void)awakeFromNib;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (IBAction)showSearchOverlay:(id __nonnull)sender;
+- (void)searchBarTextDidBeginEditing:(UISearchBar * __nonnull)searchBar;
+- (void)searchBarTextDidEndEditing:(UISearchBar * __nonnull)searchBar;
+- (void)searchBarCancelButtonClicked:(UISearchBar * __nonnull)searchBar;
+- (void)searchBarSearchButtonClicked:(UISearchBar * __nonnull)searchBar;
+- (void)searchBar:(UISearchBar * __nonnull)searchBar textDidChange:(NSString * __nonnull)searchText;
+- (IBAction)leftButtonTapped;
+- (IBAction)rightButtonTapped;
+- (NSUInteger)kolodaNumberOfCards:(KolodaView * __nonnull)koloda;
+- (UIView * __nonnull)kolodaViewForCardAtIndex:(KolodaView * __nonnull)koloda index:(NSUInteger)index;
+- (OverlayView * __nullable)kolodaViewForCardOverlayAtIndex:(KolodaView * __nonnull)koloda index:(NSUInteger)index;
+- (void)kolodaDidRunOutOfCards:(KolodaView * __nonnull)koloda;
+- (void)kolodaDidSelectCardAtIndex:(KolodaView * __nonnull)koloda index:(NSUInteger)index;
+- (BOOL)kolodaShouldApplyAppearAnimation:(KolodaView * __nonnull)koloda;
+- (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

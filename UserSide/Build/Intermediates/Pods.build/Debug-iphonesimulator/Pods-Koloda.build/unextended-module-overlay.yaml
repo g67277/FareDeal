@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphonesimulator/Pods/Koloda.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/angelasmith/Desktop/RD/UserSide/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-Koloda.build/unextended-module.modulemap',
+    }]
+  }]
+}

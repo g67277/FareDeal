@@ -1,0 +1,10 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "8555ef79ad0165a326c17eaaaab6fd11"
+inputs: 
+- "/Users/angelasmith/Desktop/RD/UserSide/UserSide/HomeSwipeViewController.swift"
+- "/Users/angelasmith/Desktop/RD/UserSide/UserSide/CardContentView.swift"
+- "/Users/angelasmith/Desktop/RD/UserSide/UserSide/RestaurantDetailController.swift"
+- "/Users/angelasmith/Desktop/RD/UserSide/UserSide/AppDelegate.swift"
+- "/Users/angelasmith/Desktop/RD/UserSide/UserSide/FavoritesTVController.swift"
+- "/Users/angelasmith/Desktop/RD/UserSide/UserSide/FavoritesCell.swift"
+- "/Users/angelasmith/Desktop/RD/UserSide/UserSide/CardOverlayView.swift"

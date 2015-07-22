@@ -12,17 +12,12 @@ namespace FareDeal.Service.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class deal_category
+    public partial class photo
     {
-        public deal_category()
-        {
-            this.deals = new HashSet<deal>();
-        }
-    
         public System.Guid id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
+        public System.Guid vanue_id { get; set; }
+        public string pic_url { get; set; }
     
-        public virtual ICollection<deal> deals { get; set; }
+        public virtual venue venue { get; set; }
     }
 }

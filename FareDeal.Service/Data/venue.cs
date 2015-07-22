@@ -16,32 +16,32 @@ namespace FareDeal.Service.Data
     {
         public venue()
         {
-            this.credit_transactions = new HashSet<credit_transactions>();
             this.deals = new HashSet<deal>();
-            this.venue_picture = new HashSet<venue_picture>();
+            this.photos = new HashSet<photo>();
+            this.categories = new HashSet<category>();
         }
     
         public System.Guid Id { get; set; }
         public string name { get; set; }
-        public string contact { get; set; }
         public bool chain { get; set; }
-        public bool has_menu { get; set; }
         public string url { get; set; }
-        public System.Guid category_id { get; set; }
         public System.Guid location_id { get; set; }
         public bool verified { get; set; }
-        public short price_tier { get; set; }
-        public string default_pic_url { get; set; }
-        public bool is_open { get; set; }
         public string status { get; set; }
-        public int credit_available { get; set; }
-        public int credit_threshold { get; set; }
-        public int credit_auto_increase { get; set; }
+        public bool hasMenu { get; set; }
+        public short priceTier { get; set; }
+        public string defaultPicUrl { get; set; }
+        public bool isOpen { get; set; }
+        public Nullable<System.Guid> photo_id { get; set; }
+        public Nullable<int> likes { get; set; }
+        public Nullable<int> favourites { get; set; }
+        public string weekDaysHours { get; set; }
+        public string weekEndsHours { get; set; }
     
-        public virtual category category { get; set; }
-        public virtual ICollection<credit_transactions> credit_transactions { get; set; }
         public virtual ICollection<deal> deals { get; set; }
+        public virtual ICollection<photo> photos { get; set; }
+        public virtual contact contact { get; set; }
         public virtual location location { get; set; }
-        public virtual ICollection<venue_picture> venue_picture { get; set; }
+        public virtual ICollection<category> categories { get; set; }
     }
 }

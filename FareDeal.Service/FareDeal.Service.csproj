@@ -51,6 +51,9 @@
     <Compile Include="Data\category.cs">
       <DependentUpon>FareDealDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\contact.cs">
+      <DependentUpon>FareDealDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\credit_master.cs">
       <DependentUpon>FareDealDataModel.tt</DependentUpon>
     </Compile>
@@ -58,9 +61,6 @@
       <DependentUpon>FareDealDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\deal.cs">
-      <DependentUpon>FareDealDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\deal_category.cs">
       <DependentUpon>FareDealDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\deal_transcation.cs">
@@ -84,14 +84,18 @@
     <Compile Include="Data\location.cs">
       <DependentUpon>FareDealDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\photo.cs">
+      <DependentUpon>FareDealDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\venue.cs">
       <DependentUpon>FareDealDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\venue_picture.cs">
+    <Compile Include="Data\venue_credit.cs">
       <DependentUpon>FareDealDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CategoryService.cs" />
+    <Compile Include="Service\VenueService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Data\FareDealDataModel.edmx">

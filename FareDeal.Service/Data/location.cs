@@ -20,14 +20,14 @@ namespace FareDeal.Service.Data
         }
     
         public System.Guid id { get; set; }
-        public string address1 { get; set; }
-        public string address2 { get; set; }
         public string lat { get; set; }
         public string lang { get; set; }
         public string postalcode { get; set; }
         public string city { get; set; }
         public string state { get; set; }
-        public string countrycode { get; set; }
+        public string address { get; set; }
+        public string crossStreet { get; set; }
+        public string cc { get; set; }
     
         public virtual ICollection<venue> venues { get; set; }
     }

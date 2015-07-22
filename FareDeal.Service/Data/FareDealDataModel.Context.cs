@@ -32,7 +32,8 @@ namespace FareDeal.Service.Data
         public virtual DbSet<deal_transcation> deal_transcation { get; set; }
         public virtual DbSet<location> locations { get; set; }
         public virtual DbSet<venue> venues { get; set; }
-        public virtual DbSet<venue_picture> venue_picture { get; set; }
-        public virtual DbSet<deal_category> deal_category { get; set; }
+        public virtual DbSet<venue_credit> venue_credit { get; set; }
+        public virtual DbSet<contact> contacts { get; set; }
+        public virtual DbSet<photo> photos { get; set; }
     }
 }

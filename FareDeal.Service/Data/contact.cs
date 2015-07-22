@@ -12,17 +12,12 @@ namespace FareDeal.Service.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class deal
+    public partial class contact
     {
-        public System.Guid id { get; set; }
-        public System.Guid venue_id { get; set; }
-        public bool active { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-        public short tier { get; set; }
-        public int original_value { get; set; }
-        public int deal_value { get; set; }
-        public int credit_required { get; set; }
-        public Nullable<int> epirationTime { get; set; }
+        public string phone { get; set; }
+        public string formattedphone { get; set; }
+        public System.Guid venue_contact_id { get; set; }
+    
+        public virtual venue venue { get; set; }
     }
 }

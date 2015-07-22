@@ -27,7 +27,7 @@ namespace FareDealApi
             );
 
             // Enforce HTTPS
-            config.Filters.Add(new FareDealApi.Filters.RequireHttpsAttribute());
+            //config.Filters.Add(new FareDealApi.Filters.RequireHttpsAttribute());
         }
     }
 }

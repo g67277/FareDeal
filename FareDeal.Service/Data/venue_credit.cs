@@ -12,11 +12,11 @@ namespace FareDeal.Service.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class venue_picture
+    public partial class venue_credit
     {
-        public System.Guid vanue_id { get; set; }
-        public string pic_url { get; set; }
-    
-        public virtual venue venue { get; set; }
+        public System.Guid id { get; set; }
+        public int credit_available { get; set; }
+        public int credit_threhold { get; set; }
+        public int credit_auto_increase { get; set; }
     }
 }

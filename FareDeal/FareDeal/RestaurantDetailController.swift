@@ -1,6 +1,6 @@
 //
 //  RestaurantDetailController.swift
-//  UserSide
+//  User Side
 //
 //  Created by Angela Smith on 7/21/15.
 //  Copyright (c) 2015 Angela Smith. All rights reserved.

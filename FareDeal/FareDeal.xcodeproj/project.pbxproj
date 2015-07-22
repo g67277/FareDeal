@@ -22,6 +22,16 @@
 		819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DF1B5B427C0003AD4D /* DealsCell.swift */; };
 		81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B5B6AE1B56D375009B522A /* StoreVC.swift */; };
 		81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81FA1BA01B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld */; };
+		972B8D8EA6F19199DCF8C070 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C34D443EE29BEF7C8222446 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		993285D51B5F3DF8003C19E1 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */; };
+		995935EB1B5EDA1C009CDD26 /* CardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E21B5EDA1C009CDD26 /* CardContentView.swift */; };
+		995935EC1B5EDA1C009CDD26 /* CardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995935E31B5EDA1C009CDD26 /* CardContentView.xib */; };
+		995935ED1B5EDA1C009CDD26 /* CardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E41B5EDA1C009CDD26 /* CardOverlayView.swift */; };
+		995935EE1B5EDA1C009CDD26 /* CardOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995935E51B5EDA1C009CDD26 /* CardOverlayView.xib */; };
+		995935EF1B5EDA1C009CDD26 /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E71B5EDA1C009CDD26 /* FavoritesCell.swift */; };
+		995935F01B5EDA1C009CDD26 /* FavoritesTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E81B5EDA1C009CDD26 /* FavoritesTVController.swift */; };
+		995935F11B5EDA1C009CDD26 /* HomeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E91B5EDA1C009CDD26 /* HomeSwipeViewController.swift */; };
+		995935F21B5EDA1C009CDD26 /* Restaurants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 995935EA1B5EDA1C009CDD26 /* Restaurants.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C34D443EE29BEF7C8222446 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81008C0F1B5C44830019E297 /* DataApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataApi.swift; sourceTree = "<group>"; };
 		81008C111B5C46AE0019E297 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		81481B351B56A2D6000EC386 /* FareDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FareDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +66,18 @@
 		81B5B6AE1B56D375009B522A /* StoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreVC.swift; sourceTree = "<group>"; };
 		81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MidCase RegLine.otf"; sourceTree = "<group>"; };
 		81FA1BA11B5B0FFB00ABCD53 /* FareDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FareDeal.xcdatamodel; sourceTree = "<group>"; };
+		993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
+		995935E21B5EDA1C009CDD26 /* CardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
+		995935E31B5EDA1C009CDD26 /* CardContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardContentView.xib; sourceTree = "<group>"; };
+		995935E41B5EDA1C009CDD26 /* CardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayView.swift; sourceTree = "<group>"; };
+		995935E51B5EDA1C009CDD26 /* CardOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardOverlayView.xib; sourceTree = "<group>"; };
+		995935E61B5EDA1C009CDD26 /* FareDeal-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FareDeal-Bridging-Header.h"; path = "FareDeal/FareDeal-Bridging-Header.h"; sourceTree = "<group>"; };
+		995935E71B5EDA1C009CDD26 /* FavoritesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
+		995935E81B5EDA1C009CDD26 /* FavoritesTVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTVController.swift; sourceTree = "<group>"; };
+		995935E91B5EDA1C009CDD26 /* HomeSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSwipeViewController.swift; sourceTree = "<group>"; };
+		995935EA1B5EDA1C009CDD26 /* Restaurants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Restaurants.plist; sourceTree = "<group>"; };
+		D8BB905533740AECB8C2BD9F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		EFED01E1FD4AB234C93A922F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */,
+				972B8D8EA6F19199DCF8C070 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +116,9 @@
 				81481B371B56A2D6000EC386 /* FareDeal */,
 				81481B4D1B56A2D6000EC386 /* FareDealTests */,
 				81481B361B56A2D6000EC386 /* Products */,
+				995935E61B5EDA1C009CDD26 /* FareDeal-Bridging-Header.h */,
+				E61B7C3016DDB2F1B8302837 /* Pods */,
+				C31432AE2A16D3F550EAB896 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +137,7 @@
 				81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */,
 				81481B3A1B56A2D6000EC386 /* AppDelegate.swift */,
 				81B5B6B01B56D386009B522A /* Business Side */,
+				995935F31B5EDA29009CDD26 /* User Side */,
 				81481B3E1B56A2D6000EC386 /* Main.storyboard */,
 				81481B411B56A2D6000EC386 /* Images.xcassets */,
 				81481B431B56A2D6000EC386 /* LaunchScreen.xib */,
@@ -123,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				81481B391B56A2D6000EC386 /* Info.plist */,
+				995935EA1B5EDA1C009CDD26 /* Restaurants.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -166,6 +195,54 @@
 			name = "Business Side";
 			sourceTree = "<group>";
 		};
+		995935F31B5EDA29009CDD26 /* User Side */ = {
+			isa = PBXGroup;
+			children = (
+				995935F41B5EDA53009CDD26 /* View */,
+				995935F51B5EDA5B009CDD26 /* Controller */,
+			);
+			name = "User Side";
+			sourceTree = "<group>";
+		};
+		995935F41B5EDA53009CDD26 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				995935E21B5EDA1C009CDD26 /* CardContentView.swift */,
+				995935E31B5EDA1C009CDD26 /* CardContentView.xib */,
+				995935E41B5EDA1C009CDD26 /* CardOverlayView.swift */,
+				995935E51B5EDA1C009CDD26 /* CardOverlayView.xib */,
+				995935E71B5EDA1C009CDD26 /* FavoritesCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		995935F51B5EDA5B009CDD26 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */,
+				995935E81B5EDA1C009CDD26 /* FavoritesTVController.swift */,
+				995935E91B5EDA1C009CDD26 /* HomeSwipeViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		C31432AE2A16D3F550EAB896 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C34D443EE29BEF7C8222446 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E61B7C3016DDB2F1B8302837 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EFED01E1FD4AB234C93A922F /* Pods.debug.xcconfig */,
+				D8BB905533740AECB8C2BD9F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,9 +250,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 81481B541B56A2D6000EC386 /* Build configuration list for PBXNativeTarget "FareDeal" */;
 			buildPhases = (
+				5E93E2BB96D24FD29B037471 /* Check Pods Manifest.lock */,
 				81481B311B56A2D6000EC386 /* Sources */,
 				81481B321B56A2D6000EC386 /* Frameworks */,
 				81481B331B56A2D6000EC386 /* Resources */,
+				9853BDD7E5EF3A4E2469282A /* Embed Pods Frameworks */,
+				54D0DC96B995496CE216C977 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,7 +295,7 @@
 				TargetAttributes = {
 					81481B341B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
+						DevelopmentTeam = 56R6M4W3X8;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -224,6 +304,7 @@
 					};
 					81481B491B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 56R6M4W3X8;
 						TestTargetID = 81481B341B56A2D6000EC386;
 					};
 				};
@@ -252,8 +333,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				995935EC1B5EDA1C009CDD26 /* CardContentView.xib in Resources */,
+				995935F21B5EDA1C009CDD26 /* Restaurants.plist in Resources */,
 				81481B401B56A2D6000EC386 /* Main.storyboard in Resources */,
 				81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */,
+				995935EE1B5EDA1C009CDD26 /* CardOverlayView.xib in Resources */,
 				81481B421B56A2D6000EC386 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +351,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		54D0DC96B995496CE216C977 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E93E2BB96D24FD29B037471 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9853BDD7E5EF3A4E2469282A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		81481B311B56A2D6000EC386 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -275,12 +407,18 @@
 				81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */,
 				81008C121B5C46AE0019E297 /* DataManager.swift in Sources */,
 				819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */,
+				995935F01B5EDA1C009CDD26 /* FavoritesTVController.swift in Sources */,
+				995935ED1B5EDA1C009CDD26 /* CardOverlayView.swift in Sources */,
 				819281D91B5B3E680003AD4D /* DealsVC.swift in Sources */,
+				993285D51B5F3DF8003C19E1 /* RestaurantDetailController.swift in Sources */,
 				81008C101B5C44830019E297 /* DataApi.swift in Sources */,
+				995935EF1B5EDA1C009CDD26 /* FavoritesCell.swift in Sources */,
 				819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */,
 				81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */,
+				995935F11B5EDA1C009CDD26 /* HomeSwipeViewController.swift in Sources */,
 				81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */,
 				81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */,
+				995935EB1B5EDA1C009CDD26 /* CardContentView.swift in Sources */,
 				819281DD1B5B3FD20003AD4D /* Deal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +544,7 @@
 		};
 		81481B551B56A2D6000EC386 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFED01E1FD4AB234C93A922F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -420,6 +559,7 @@
 		};
 		81481B561B56A2D6000EC386 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8BB905533740AECB8C2BD9F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -436,6 +576,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -447,6 +589,7 @@
 				INFOPLIST_FILE = FareDealTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FareDeal.app/FareDeal";
 			};
 			name = Debug;
@@ -455,6 +598,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -462,6 +607,7 @@
 				INFOPLIST_FILE = FareDealTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FareDeal.app/FareDeal";
 			};
 			name = Release;

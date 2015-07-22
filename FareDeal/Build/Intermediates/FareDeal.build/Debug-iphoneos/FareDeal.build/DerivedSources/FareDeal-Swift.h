@@ -252,20 +252,19 @@ SWIFT_CLASS("_TtC8FareDeal21FavoritesTVController")
 - (NSInteger)numberOfSectionsInTableView:(UITableView * __nonnull)tableView;
 - (NSInteger)tableView:(UITableView * __nonnull)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell * __nonnull)tableView:(UITableView * __nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
+- (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class UISearchBar;
 @class KolodaView;
-@class NSLayoutConstraint;
 
 SWIFT_CLASS("_TtC8FareDeal23HomeSwipeViewController")
 @interface HomeSwipeViewController : UIViewController <UISearchBarDelegate>
 @property (nonatomic, weak) IBOutlet UISearchBar * __null_unspecified searchBar;
 @property (nonatomic) IBOutlet UIButton * __null_unspecified searchButton;
 @property (nonatomic, weak) IBOutlet UIView * __null_unspecified searchDisplayOverview;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint * __null_unspecified searchTextField;
 @property (nonatomic, weak) IBOutlet KolodaView * __null_unspecified swipeableView;
 @property (nonatomic, copy) NSArray * __nonnull restaurants;
 @property (nonatomic, copy) NSArray * __nonnull favoriteRestaurants;
@@ -289,6 +288,30 @@ SWIFT_CLASS("_TtC8FareDeal23HomeSwipeViewController")
 - (void)kolodaDidSelectCardAtIndex:(KolodaView * __nonnull)koloda index:(NSUInteger)index;
 - (BOOL)kolodaShouldApplyAppearAnimation:(KolodaView * __nonnull)koloda;
 - (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC8FareDeal26RestaurantDetailController")
+@interface RestaurantDetailController : UIViewController
+@property (nonatomic, weak) IBOutlet UIImageView * __null_unspecified locationImage;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified priceTierlabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified locationDistanceLabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified locationName;
+@property (nonatomic, weak) IBOutlet UITextView * __null_unspecified addressTextview;
+@property (nonatomic, weak) IBOutlet UITextView * __null_unspecified phoneTextView;
+@property (nonatomic, weak) IBOutlet UITextView * __null_unspecified websiteUrlTextView;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified hoursStatusLabel;
+@property (nonatomic, weak) IBOutlet UIView * __null_unspecified dealView;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealTitleLabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealValueLabel;
+@property (nonatomic) id __nullable thisRestaurant;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (void)setUpRestaurant;
+- (void)viewWillAppear:(BOOL)animated;
+- (void)viewWillDisappear:(BOOL)animated;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

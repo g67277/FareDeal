@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-public class DataManager{
+public class DataManager {
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     let dataApi = DataApi()

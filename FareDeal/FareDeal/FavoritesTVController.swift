@@ -58,5 +58,19 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    /* -----------------------  SEGUE --------------------------- */
+    
+    // Pass the selected restaurant object to the detail view
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "restaurantDetailSegue" {
+            
+            if let indexPath = self.tableview.indexPathForSelectedRow() {
+                var restaurant: AnyObject = restaurants[indexPath.row]
+                let destinationVC = segue.destinationViewController as! RestaurantDetailController
+                destinationVC.thisRestaurant = restaurant
+            }
+        }
+    }
+    
     
 }

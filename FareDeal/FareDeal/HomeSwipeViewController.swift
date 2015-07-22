@@ -16,7 +16,6 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var searchButton: UIButton!
     @IBOutlet weak var searchDisplayOverview: UIView!
-    @IBOutlet weak var searchTextField: NSLayoutConstraint!
     @IBOutlet weak var swipeableView: KolodaView!
     var restaurants: [AnyObject] = []
     var favoriteRestaurants: [AnyObject] = []
@@ -31,7 +30,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         super.awakeFromNib()
         // Retrieve the default data from the restaurants plist
         let path = NSBundle.mainBundle().pathForResource("Restaurants", ofType:"plist")
-        restaurants = NSArray(contentsOfFile: path!) as! [Dictionary<String,String>]
+        restaurants = NSArray(contentsOfFile: path!) as! [Dictionary<String,AnyObject>]
     }
     
     override func viewDidLoad() {
@@ -171,7 +170,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     }
     
     
-    //
+    /* -------------------------  SEGUE  -------------------------- */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "userFavoritesSegue" {

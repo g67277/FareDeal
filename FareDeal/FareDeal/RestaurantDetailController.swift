@@ -117,8 +117,24 @@ class RestaurantDetailController: UIViewController {
         navBar.shadowImage = nil
         // navBar the background color to whatever we choose
         //bar.backgroundColor = UIColor.clearColor()
-
     }
+    
+    /* -------------------------  SEGUE  -------------------------- */
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "viewDefaultDealSegue" {
+
+            let detailVC = segue.destinationViewController as! RestaurantDealDetaislVC
+            detailVC.thisRestaurant = thisRestaurant
+            // get the deal for this restaurant
+            if let locationDeals: AnyObject = thisRestaurant {
+                 var locationDeals = locationDeals["deals"] as! [AnyObject]
+                 var deal = locationDeals[0] as! [String: AnyObject]
+                detailVC.thisDeal = deal
+            }
+        }
+    }
+
     
     
 }

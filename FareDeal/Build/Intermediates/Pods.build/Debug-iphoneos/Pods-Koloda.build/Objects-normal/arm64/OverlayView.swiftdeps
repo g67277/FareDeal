@@ -7,19 +7,19 @@ nominals:
 - "C6Koloda11OverlayView"
 class-members:
 top-level:
-- "UIView"
 - "OverlayMode"
+- "UIView"
 - "=="
 member-access:
-- "PSs9Equatable"
-- "C6Koloda11OverlayView"
-- "PSs9AnyObject"
-- "O6Koloda11OverlayMode"
 - !private "Si"
+- "CSo6UIView"
+- "PSs9AnyObject"
+- "CSo8NSObject"
+- "O6Koloda11OverlayMode"
+- "C6Koloda11OverlayView"
+- "PSs9Equatable"
 - "CSo11UIResponder"
 - "PSs8Hashable"
-- "CSo8NSObject"
-- "CSo6UIView"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/Swift.swiftmodule"

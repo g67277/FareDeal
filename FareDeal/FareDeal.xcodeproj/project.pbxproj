@@ -32,6 +32,11 @@
 		995935F01B5EDA1C009CDD26 /* FavoritesTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E81B5EDA1C009CDD26 /* FavoritesTVController.swift */; };
 		995935F11B5EDA1C009CDD26 /* HomeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E91B5EDA1C009CDD26 /* HomeSwipeViewController.swift */; };
 		995935F21B5EDA1C009CDD26 /* Restaurants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 995935EA1B5EDA1C009CDD26 /* Restaurants.plist */; };
+		99A04C5B1B604F9E00C3E35B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C5A1B604F9E00C3E35B /* GradientView.swift */; };
+		99A04C5D1B604FE700C3E35B /* RestaurantDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C5C1B604FE700C3E35B /* RestaurantDealCell.swift */; };
+		99A04C5F1B60509C00C3E35B /* RestaurantDealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C5E1B60509C00C3E35B /* RestaurantDealsVC.swift */; };
+		99A04C611B6050B900C3E35B /* RestaurantDealDetaislVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C601B6050B900C3E35B /* RestaurantDealDetaislVC.swift */; };
+		99A04C631B60586E00C3E35B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99A04C621B60586E00C3E35B /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +81,11 @@
 		995935E81B5EDA1C009CDD26 /* FavoritesTVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTVController.swift; sourceTree = "<group>"; };
 		995935E91B5EDA1C009CDD26 /* HomeSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSwipeViewController.swift; sourceTree = "<group>"; };
 		995935EA1B5EDA1C009CDD26 /* Restaurants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Restaurants.plist; sourceTree = "<group>"; };
+		99A04C5A1B604F9E00C3E35B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		99A04C5C1B604FE700C3E35B /* RestaurantDealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealCell.swift; sourceTree = "<group>"; };
+		99A04C5E1B60509C00C3E35B /* RestaurantDealsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealsVC.swift; sourceTree = "<group>"; };
+		99A04C601B6050B900C3E35B /* RestaurantDealDetaislVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealDetaislVC.swift; sourceTree = "<group>"; };
+		99A04C621B60586E00C3E35B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D8BB905533740AECB8C2BD9F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EFED01E1FD4AB234C93A922F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99A04C631B60586E00C3E35B /* QuartzCore.framework in Frameworks */,
 				81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */,
 				972B8D8EA6F19199DCF8C070 /* Pods.framework in Frameworks */,
 			);
@@ -212,6 +223,8 @@
 				995935E41B5EDA1C009CDD26 /* CardOverlayView.swift */,
 				995935E51B5EDA1C009CDD26 /* CardOverlayView.xib */,
 				995935E71B5EDA1C009CDD26 /* FavoritesCell.swift */,
+				99A04C5A1B604F9E00C3E35B /* GradientView.swift */,
+				99A04C5C1B604FE700C3E35B /* RestaurantDealCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -219,9 +232,11 @@
 		995935F51B5EDA5B009CDD26 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */,
-				995935E81B5EDA1C009CDD26 /* FavoritesTVController.swift */,
 				995935E91B5EDA1C009CDD26 /* HomeSwipeViewController.swift */,
+				995935E81B5EDA1C009CDD26 /* FavoritesTVController.swift */,
+				993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */,
+				99A04C5E1B60509C00C3E35B /* RestaurantDealsVC.swift */,
+				99A04C601B6050B900C3E35B /* RestaurantDealDetaislVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -229,6 +244,7 @@
 		C31432AE2A16D3F550EAB896 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99A04C621B60586E00C3E35B /* QuartzCore.framework */,
 				0C34D443EE29BEF7C8222446 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -404,11 +420,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99A04C5F1B60509C00C3E35B /* RestaurantDealsVC.swift in Sources */,
 				81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */,
+				99A04C611B6050B900C3E35B /* RestaurantDealDetaislVC.swift in Sources */,
 				81008C121B5C46AE0019E297 /* DataManager.swift in Sources */,
 				819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */,
 				995935F01B5EDA1C009CDD26 /* FavoritesTVController.swift in Sources */,
+				99A04C5D1B604FE700C3E35B /* RestaurantDealCell.swift in Sources */,
 				995935ED1B5EDA1C009CDD26 /* CardOverlayView.swift in Sources */,
+				99A04C5B1B604F9E00C3E35B /* GradientView.swift in Sources */,
 				819281D91B5B3E680003AD4D /* DealsVC.swift in Sources */,
 				993285D51B5F3DF8003C19E1 /* RestaurantDetailController.swift in Sources */,
 				81008C101B5C44830019E297 /* DataApi.swift in Sources */,

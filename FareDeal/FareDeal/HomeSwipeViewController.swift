@@ -163,7 +163,12 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     func kolodaDidSelectCardAtIndex(koloda: KolodaView, index: UInt) {
         // get the restaurant at the index and pass to the detail view
+        let restaurant: AnyObject = restaurants[Int(index)]
+        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("restaurantDetailVC") as! RestaurantDetailController
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        detailVC.thisRestaurant = restaurant
     }
+
     
     func kolodaShouldApplyAppearAnimation(koloda: KolodaView) -> Bool {
         return true

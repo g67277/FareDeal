@@ -151,14 +151,24 @@ SWIFT_CLASS("_TtC8UserSide21FavoritesTVController")
 @interface FavoritesTVController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, copy) NSArray * __nonnull restaurants;
 @property (nonatomic, weak) IBOutlet UITableView * __null_unspecified tableview;
+- (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (NSInteger)numberOfSectionsInTableView:(UITableView * __nonnull)tableView;
 - (NSInteger)tableView:(UITableView * __nonnull)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell * __nonnull)tableView:(UITableView * __nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
-- (void)viewWillAppear:(BOOL)animated;
 - (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class CALayer;
+
+SWIFT_CLASS("_TtC8UserSide13GradientLayer")
+@interface GradientLayer : UIView
+- (void)awakeFromNib;
+- (void)layoutSublayersOfLayer:(CALayer * __null_unspecified)layer;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -201,6 +211,60 @@ SWIFT_CLASS("_TtC8UserSide23HomeSwipeViewController")
 @end
 
 @class UITextView;
+
+SWIFT_CLASS("_TtC8UserSide18RestaurantDealCell")
+@interface RestaurantDealCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified locationTitle;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified locationPhone;
+@property (nonatomic, weak) IBOutlet UIImageView * __null_unspecified locationImage;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealTitle;
+@property (nonatomic, weak) IBOutlet UITextView * __null_unspecified dealDesc;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified timeLimit;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealValue;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * __nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)awakeFromNib;
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated;
+- (void)setUpCell:(NSString * __nonnull)name phone:(NSString * __nonnull)phone image:(UIImage * __nonnull)image title:(NSString * __nonnull)title desc:(NSString * __nonnull)desc time:(NSInteger)time value:(NSString * __nonnull)value;
+@end
+
+
+SWIFT_CLASS("_TtC8UserSide22RestaurantDealDetailVC")
+@interface RestaurantDealDetailVC : UIViewController
+@property (nonatomic, weak) IBOutlet UIImageView * __null_unspecified locationImage;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified locationName;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealTitleLabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealdescriptionLabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealValueLabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealTimeRemainingLabel;
+@property (nonatomic) id __nullable thisRestaurant;
+@property (nonatomic) id __nullable thisDeal;
+- (void)viewDidLoad;
+- (void)setUpDeal;
+- (void)didReceiveMemoryWarning;
+- (void)viewWillAppear:(BOOL)animated;
+- (void)viewWillDisappear:(BOOL)animated;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC8UserSide17RestaurantDealsVC")
+@interface RestaurantDealsVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, copy) NSArray * __nonnull deals;
+@property (nonatomic, weak) IBOutlet UITableView * __null_unspecified tableview;
+- (void)awakeFromNib;
+- (void)viewWillAppear:(BOOL)animated;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (NSInteger)numberOfSectionsInTableView:(UITableView * __nonnull)tableView;
+- (NSInteger)tableView:(UITableView * __nonnull)tableView numberOfRowsInSection:(NSInteger)section;
+- (UITableViewCell * __nonnull)tableView:(UITableView * __nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
+- (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC8UserSide26RestaurantDetailController")
 @interface RestaurantDetailController : UIViewController

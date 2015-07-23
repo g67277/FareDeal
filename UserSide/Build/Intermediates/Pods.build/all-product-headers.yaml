@@ -4,12 +4,12 @@
   'roots': [
     {
       'type': 'directory',
-      'name': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphonesimulator/Pods.framework/Headers",
+      'name': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphoneos/Pods.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "Pods-Swift.h",
-          'external-contents': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphonesimulator/Pods.framework/Headers/Pods-Swift.h"
+          'external-contents': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphoneos/Pods.framework/Headers/Pods-Swift.h"
         },
         {
           'type': 'file',
@@ -20,23 +20,23 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphonesimulator/Pods.framework/Modules",
+      'name': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphoneos/Pods.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/angelasmith/Desktop/RD/UserSide/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods.build/module.modulemap"
+          'external-contents': "/Users/angelasmith/Desktop/RD/UserSide/Build/Intermediates/Pods.build/Debug-iphoneos/Pods.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphonesimulator/Pods/Koloda.framework/Headers",
+      'name': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphoneos/Pods/Koloda.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "Koloda-Swift.h",
-          'external-contents': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphonesimulator/Pods/Koloda.framework/Headers/Koloda-Swift.h"
+          'external-contents': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphoneos/Pods/Koloda.framework/Headers/Koloda-Swift.h"
         },
         {
           'type': 'file',
@@ -47,18 +47,18 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphonesimulator/Pods/Koloda.framework/Modules",
+      'name': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphoneos/Pods/Koloda.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/angelasmith/Desktop/RD/UserSide/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-Koloda.build/module.modulemap"
+          'external-contents': "/Users/angelasmith/Desktop/RD/UserSide/Build/Intermediates/Pods.build/Debug-iphoneos/Pods-Koloda.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphonesimulator/Pods/pop.framework/Headers",
+      'name': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphoneos/Pods/pop.framework/Headers",
       'contents': [
         {
           'type': 'file',
@@ -143,18 +143,18 @@
         {
           'type': 'file',
           'name': "pop-Swift.h",
-          'external-contents': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphonesimulator/Pods/pop.framework/Headers/pop-Swift.h"
+          'external-contents': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphoneos/Pods/pop.framework/Headers/pop-Swift.h"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphonesimulator/Pods/pop.framework/Modules",
+      'name': "/Users/angelasmith/Desktop/RD/UserSide/Build/Products/Debug-iphoneos/Pods/pop.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/angelasmith/Desktop/RD/UserSide/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-pop.build/module.modulemap"
+          'external-contents': "/Users/angelasmith/Desktop/RD/UserSide/Build/Intermediates/Pods.build/Debug-iphoneos/Pods-pop.build/module.modulemap"
         }
       ]
     }

@@ -5,6 +5,21 @@
 	<dict>
 		<key>imageUrl</key>
 		<string>casaLuca</string>
+		<key>deals</key>
+		<array>
+			<dict>
+				<key>dealName</key>
+				<string>Get more sides!</string>
+				<key>dealType</key>
+				<string>default</string>
+				<key>dealDescription</key>
+				<string>10% off side items</string>
+				<key>dealTimeLimit</key>
+				<integer>2</integer>
+				<key>dealValue</key>
+				<string>$2.46</string>
+			</dict>
+		</array>
 		<key>address</key>
 		<string>123 Casa Lane  Washington D.C.</string>
 		<key>url</key>
@@ -23,6 +38,21 @@
 	<dict>
 		<key>imageUrl</key>
 		<string>fiola.png</string>
+		<key>deals</key>
+		<array>
+			<dict>
+				<key>dealName</key>
+				<string>First drink on us!</string>
+				<key>dealType</key>
+				<string>default</string>
+				<key>dealDescription</key>
+				<string>Free beverage</string>
+				<key>dealTimeLimit</key>
+				<integer>2</integer>
+				<key>dealValue</key>
+				<string>$1.98</string>
+			</dict>
+		</array>
 		<key>address</key>
 		<string>123 Fiola Lane  Washington D.C.</string>
 		<key>url</key>
@@ -41,6 +71,21 @@
 	<dict>
 		<key>imageUrl</key>
 		<string>redHen.png</string>
+		<key>deals</key>
+		<array>
+			<dict>
+				<key>dealName</key>
+				<string>Bring a friend, get a deal!</string>
+				<key>dealType</key>
+				<string>default</string>
+				<key>dealDescription</key>
+				<string>Buy one lunch, get one half off!</string>
+				<key>dealTimeLimit</key>
+				<integer>2</integer>
+				<key>dealValue</key>
+				<string>$5.99</string>
+			</dict>
+		</array>
 		<key>address</key>
 		<string>123 Red Hen Lane  Washington D.C.</string>
 		<key>url</key>
@@ -59,6 +104,21 @@
 	<dict>
 		<key>imageUrl</key>
 		<string>littleSerow.png</string>
+		<key>deals</key>
+		<array>
+			<dict>
+				<key>dealName</key>
+				<string>After hours drink special</string>
+				<key>dealType</key>
+				<string>default</string>
+				<key>dealDescription</key>
+				<string>25% of margaritas after 7PM</string>
+				<key>dealTimeLimit</key>
+				<integer>2</integer>
+				<key>dealValue</key>
+				<string>$2.29</string>
+			</dict>
+		</array>
 		<key>address</key>
 		<string>123 Serow Lane  Washington D.C.</string>
 		<key>url</key>
@@ -77,6 +137,21 @@
 	<dict>
 		<key>imageUrl</key>
 		<string>rasika.png</string>
+		<key>deals</key>
+		<array>
+			<dict>
+				<key>dealName</key>
+				<string>Salad bar is open</string>
+				<key>dealType</key>
+				<string>default</string>
+				<key>dealDescription</key>
+				<string>20% off lunch salad bar</string>
+				<key>dealTimeLimit</key>
+				<integer>2</integer>
+				<key>dealValue</key>
+				<string>$2.46</string>
+			</dict>
+		</array>
 		<key>address</key>
 		<string>123 Rasika Lane  Washington D.C.</string>
 		<key>url</key>
@@ -95,6 +170,21 @@
 	<dict>
 		<key>imageUrl</key>
 		<string>fiolaMare.png</string>
+		<key>deals</key>
+		<array>
+			<dict>
+				<key>dealName</key>
+				<string>Who wants desert?</string>
+				<key>dealType</key>
+				<string>default</string>
+				<key>dealDescription</key>
+				<string>Buy one desert, get one half off</string>
+				<key>dealTimeLimit</key>
+				<integer>2</integer>
+				<key>dealValue</key>
+				<string>$3.20</string>
+			</dict>
+		</array>
 		<key>address</key>
 		<string>123 Mare Lane  Washington D.C.</string>
 		<key>url</key>
@@ -113,6 +203,21 @@
 	<dict>
 		<key>imageUrl</key>
 		<string>roseLux.png</string>
+		<key>deals</key>
+		<array>
+			<dict>
+				<key>dealName</key>
+				<string>Appetizers </string>
+				<key>dealType</key>
+				<string>default</string>
+				<key>dealDescription</key>
+				<string>Get an extra 10% off happy hour appetizers!</string>
+				<key>dealTimeLimit</key>
+				<integer>1</integer>
+				<key>dealValue</key>
+				<string>$1.37</string>
+			</dict>
+		</array>
 		<key>address</key>
 		<string>123 Lux Lane  Washington D.C.</string>
 		<key>url</key>
@@ -131,6 +236,21 @@
 	<dict>
 		<key>imageUrl</key>
 		<string>minibar.png</string>
+		<key>deals</key>
+		<array>
+			<dict>
+				<key>dealName</key>
+				<string>Try a new wine</string>
+				<key>dealType</key>
+				<string>default</string>
+				<key>dealDescription</key>
+				<string>30% off the first glass on any of our under $15 wines</string>
+				<key>dealTimeLimit</key>
+				<integer>2</integer>
+				<key>dealValue</key>
+				<string>$4.50</string>
+			</dict>
+		</array>
 		<key>address</key>
 		<string>123 Bar Lane  Washington D.C.</string>
 		<key>url</key>
@@ -149,6 +269,21 @@
 	<dict>
 		<key>imageUrl</key>
 		<string>komi.png</string>
+		<key>deals</key>
+		<array>
+			<dict>
+				<key>dealName</key>
+				<string>5 for 2</string>
+				<key>dealType</key>
+				<string>default</string>
+				<key>dealDescription</key>
+				<string>Parties fo two recieve 5% off our multiple course dinner</string>
+				<key>dealTimeLimit</key>
+				<integer>2</integer>
+				<key>dealValue</key>
+				<string>$13.50</string>
+			</dict>
+		</array>
 		<key>address</key>
 		<string>123 Komi Lane  Washington D.C.</string>
 		<key>url</key>

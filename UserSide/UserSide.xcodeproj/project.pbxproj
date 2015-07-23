@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		992220FC1B5D97E700CD530E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992220FB1B5D97E700CD530E /* AppDelegate.swift */; };
 		992221011B5D97E700CD530E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 992220FF1B5D97E700CD530E /* Main.storyboard */; };
-		992221031B5D97E700CD530E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 992221021B5D97E700CD530E /* Images.xcassets */; };
 		992221061B5D97E700CD530E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992221041B5D97E700CD530E /* LaunchScreen.xib */; };
 		992221121B5D97E700CD530E /* UserSideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992221111B5D97E700CD530E /* UserSideTests.swift */; };
 		992221201B5D989E00CD530E /* CardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9922211B1B5D989E00CD530E /* CardContentView.swift */; };
@@ -21,6 +20,12 @@
 		9922212D1B5D9E2D00CD530E /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9922212C1B5D9E2D00CD530E /* FavoritesCell.swift */; };
 		9922212F1B5D9E8000CD530E /* FavoritesTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9922212E1B5D9E8000CD530E /* FavoritesTVController.swift */; };
 		993285D21B5EE132003C19E1 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993285D11B5EE132003C19E1 /* RestaurantDetailController.swift */; };
+		997F17D01B60186200854A44 /* RestaurantDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997F17CF1B60186200854A44 /* RestaurantDealCell.swift */; };
+		997F17D21B6018DB00854A44 /* RestaurantDealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997F17D11B6018DB00854A44 /* RestaurantDealsVC.swift */; };
+		997F17D81B60310100854A44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 997F17D71B60310100854A44 /* Images.xcassets */; };
+		99A04C551B60385400C3E35B /* RestaurantDealDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C541B60385400C3E35B /* RestaurantDealDetailVC.swift */; };
+		99A04C571B60406A00C3E35B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99A04C561B60406A00C3E35B /* QuartzCore.framework */; };
+		99A04C591B604A0800C3E35B /* GradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C581B604A0800C3E35B /* GradientLayer.swift */; };
 		EE3E2163B71707096E33F1C7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCAE9DA8DD7A5881434A181 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -41,7 +46,6 @@
 		992220FA1B5D97E700CD530E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		992220FB1B5D97E700CD530E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		992221001B5D97E700CD530E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		992221021B5D97E700CD530E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		992221051B5D97E700CD530E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9922210B1B5D97E700CD530E /* UserSideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserSideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		992221101B5D97E700CD530E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +60,12 @@
 		9922212C1B5D9E2D00CD530E /* FavoritesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
 		9922212E1B5D9E8000CD530E /* FavoritesTVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTVController.swift; sourceTree = "<group>"; };
 		993285D11B5EE132003C19E1 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
+		997F17CF1B60186200854A44 /* RestaurantDealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealCell.swift; sourceTree = "<group>"; };
+		997F17D11B6018DB00854A44 /* RestaurantDealsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealsVC.swift; sourceTree = "<group>"; };
+		997F17D71B60310100854A44 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		99A04C541B60385400C3E35B /* RestaurantDealDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealDetailVC.swift; sourceTree = "<group>"; };
+		99A04C561B60406A00C3E35B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		99A04C581B604A0800C3E35B /* GradientLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientLayer.swift; sourceTree = "<group>"; };
 		DE31E5985EBBF9F971B07DB4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99A04C571B60406A00C3E35B /* QuartzCore.framework in Frameworks */,
 				EE3E2163B71707096E33F1C7 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,8 +118,8 @@
 				9922212A1B5D98E300CD530E /* Controller */,
 				992220FB1B5D97E700CD530E /* AppDelegate.swift */,
 				992220FF1B5D97E700CD530E /* Main.storyboard */,
-				992221021B5D97E700CD530E /* Images.xcassets */,
 				992221041B5D97E700CD530E /* LaunchScreen.xib */,
+				997F17D71B60310100854A44 /* Images.xcassets */,
 				992220F91B5D97E700CD530E /* Supporting Files */,
 			);
 			path = UserSide;
@@ -145,6 +156,8 @@
 				9922211F1B5D989E00CD530E /* HomeSwipeViewController.swift */,
 				9922212E1B5D9E8000CD530E /* FavoritesTVController.swift */,
 				993285D11B5EE132003C19E1 /* RestaurantDetailController.swift */,
+				997F17D11B6018DB00854A44 /* RestaurantDealsVC.swift */,
+				99A04C541B60385400C3E35B /* RestaurantDealDetailVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -157,6 +170,8 @@
 				9922211D1B5D989E00CD530E /* CardOverlayView.swift */,
 				9922211E1B5D989E00CD530E /* CardOverlayView.xib */,
 				9922212C1B5D9E2D00CD530E /* FavoritesCell.swift */,
+				997F17CF1B60186200854A44 /* RestaurantDealCell.swift */,
+				99A04C581B604A0800C3E35B /* GradientLayer.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -164,6 +179,7 @@
 		ACCF49282BAEDEEBDDEBE1A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99A04C561B60406A00C3E35B /* QuartzCore.framework */,
 				0DCAE9DA8DD7A5881434A181 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -261,12 +277,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				997F17D81B60310100854A44 /* Images.xcassets in Resources */,
 				992221211B5D989E00CD530E /* CardContentView.xib in Resources */,
 				992221261B5D98B300CD530E /* Restaurants.plist in Resources */,
 				992221011B5D97E700CD530E /* Main.storyboard in Resources */,
 				992221061B5D97E700CD530E /* LaunchScreen.xib in Resources */,
 				992221231B5D989E00CD530E /* CardOverlayView.xib in Resources */,
-				992221031B5D97E700CD530E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,9 +348,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99A04C551B60385400C3E35B /* RestaurantDealDetailVC.swift in Sources */,
 				992221241B5D989E00CD530E /* HomeSwipeViewController.swift in Sources */,
 				992221201B5D989E00CD530E /* CardContentView.swift in Sources */,
+				997F17D01B60186200854A44 /* RestaurantDealCell.swift in Sources */,
 				993285D21B5EE132003C19E1 /* RestaurantDetailController.swift in Sources */,
+				997F17D21B6018DB00854A44 /* RestaurantDealsVC.swift in Sources */,
+				99A04C591B604A0800C3E35B /* GradientLayer.swift in Sources */,
 				992220FC1B5D97E700CD530E /* AppDelegate.swift in Sources */,
 				9922212F1B5D9E8000CD530E /* FavoritesTVController.swift in Sources */,
 				9922212D1B5D9E2D00CD530E /* FavoritesCell.swift in Sources */,
@@ -466,6 +486,7 @@
 			baseConfigurationReference = DE31E5985EBBF9F971B07DB4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = UserSide/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -481,6 +502,7 @@
 			baseConfigurationReference = 3D692A16B4AD627B8480C7E1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = UserSide/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

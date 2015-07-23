@@ -1,0 +1,8 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "df7ab37229e2befaf16a5ffc0337f52c"
+inputs: 
+- "/Users/angelasmith/Desktop/RD/DealsSortTest/DealsSortTest/Constants.swift"
+- "/Users/angelasmith/Desktop/RD/DealsSortTest/DealsSortTest/ViewController.swift"
+- "/Users/angelasmith/Desktop/RD/DealsSortTest/DealsSortTest/AppDelegate.swift"
+- "/Users/angelasmith/Desktop/RD/DealsSortTest/DealsSortTest/Restaurant.swift"
+- "/Users/angelasmith/Desktop/RD/DealsSortTest/DealsSortTest/Deal.swift"

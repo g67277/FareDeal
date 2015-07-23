@@ -1,7 +1,0 @@
-version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
-options: "67a048a3e5bf41273f103fcb61a1e7c7"
-inputs: 
-- "/Users/angelasmith/Desktop/RD/UserSide/UserSide/HomeSwipeViewController.swift"
-- "/Users/angelasmith/Desktop/RD/UserSide/UserSide/CardContentView.swift"
-- "/Users/angelasmith/Desktop/RD/UserSide/UserSide/AppDelegate.swift"
-- "/Users/angelasmith/Desktop/RD/UserSide/UserSide/CardOverlayView.swift"

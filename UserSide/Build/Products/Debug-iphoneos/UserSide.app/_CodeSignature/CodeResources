@@ -6,13 +6,13 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		HqgV/CZ4ZiMBqanM/jFqZEefVOg=
+		wUHG1+7W5C3ubK2eBfhhKpwkwV4=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Fl0QJfDJTor1wBZG50raC+reA/Y=
+			NBwfaQ4atnEepkjkR0sCm9sdLsU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -21,7 +21,16 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Zzo7SjoD5BQDAH1pQeW2S2b5f1U=
+			D9DrCVL7ajm9ZywrUGusiGWMIZg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/7nI-63-ZJc-view-GSm-cS-p2b.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ct8f/ctViTEQPFO5DYNxibVSGj4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -30,7 +39,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SbsHUG7nmV+PaUsowIeAPp4fwc8=
+			bXegvIyEVQpZeLUdmdfrBZ0szzo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -39,16 +48,25 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			asoZCxtAyUgMHb9ozcUbajfO6oM=
+			jJvJXLPUowj/amb6wZDEnf4VVr8=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Base.lproj/Main.storyboardc/UIViewController-Cdp-fo-hBd.nib</key>
+		<key>Base.lproj/Main.storyboardc/UIViewController-7nI-63-ZJc.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qmOk/XubDYiaNFDq54LpnWX5+KI=
+			9pLYaKaCxfnfoolP/uMsPhmRASk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/UIViewController-Uhl-iD-n9B.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			pgU8oFXz7rJpEjkwKP3EIGI5ReM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -57,7 +75,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fw3pVIhG+So0nZfRP2h4n3wJQq8=
+			ASXPdaRpRlNlkqCtpHOVLMPEPCA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -66,7 +84,16 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9UVLZbUg32vKvvROsg6ZEamBxe4=
+			wDeh+Iu83fFgeIPkq5NhoeIUBfc=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/Uhl-iD-n9B-view-Jms-Xg-xsd.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			oKoslsa8HD0PomGf+FYyggAJbxc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -75,18 +102,27 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			uP1kix9QuEl3wNsaAocH3D0Y9oY=
+			g4KGSlHDRLaXzsm17wwUSKVFjUw=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/restaurantDetailVC.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+mN9K07x0TfRJiPsmVe7WQIpdD8=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
 		<key>CardContentView.nib</key>
 		<data>
-		qzZ4vMr6NpFUVK5MAVh5KU0F1dI=
+		Sp1aCaSOc9JTvcq2u3/WM9PjJgc=
 		</data>
 		<key>CardOverlayView.nib</key>
 		<data>
-		Yy7236LT8o++OPEK5SbVZnvpjM8=
+		nymfKkJyTf0rDcIXZfTls3l8bO0=
 		</data>
 		<key>Frameworks/Koloda.framework/Info.plist</key>
 		<data>
@@ -94,7 +130,7 @@
 		</data>
 		<key>Frameworks/Koloda.framework/Koloda</key>
 		<data>
-		GO6ZjDsA8E5u5CEGNouYQlBjpXM=
+		LZpRe6wophVG8xwAm5olG85Vl40=
 		</data>
 		<key>Frameworks/Koloda.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -102,39 +138,39 @@
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
-		sr/7s3sv2fT5zMUHXUGP1KHXbSU=
+		D9pVTf+sCGD7hlUNJq/isolvCQw=
 		</data>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<data>
-		Ryidk6ZqX0inca3yZ7bdFgg/bSM=
+		3sBscA4HKq0aUWXMocyV5xCgiyc=
 		</data>
 		<key>Frameworks/libswiftCoreImage.dylib</key>
 		<data>
-		mo60hOG445gOu6GWjwLrPz0N87E=
+		mUVtPGDbQ9wR1Arui6WQ7vZv3ug=
 		</data>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<data>
-		mqyG6Ts2oYJMYsTs4xg65F7rPoE=
+		4apHg+GUZwp8x1/WyIVfrrjajtg=
 		</data>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<data>
-		e11mem7eh8PMKNm0fabk5E2YzmU=
+		nvn0Tfg3DlCpyEIQQ7RSNgHMr5s=
 		</data>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<data>
-		I67FC/7WEf6e4TXTLK+k6eUki60=
+		Vjw2ufNjvdgx6a7/rwX62rkAaWE=
 		</data>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<data>
-		tBDKCcCdPzr/0qF2574jFakrOV4=
+		n2wZxjZP72piiPKeU+MdMTKXmC4=
 		</data>
 		<key>Frameworks/libswiftSecurity.dylib</key>
 		<data>
-		ylkcUjPGdF6yJiE2s9J72vc5gIk=
+		vwt0AVrP9Aee3ym8+SklTQ3JamU=
 		</data>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<data>
-		mfPfiNp+S7mfnEyM10AMzDe8Kv4=
+		CX0k4/HRwW70tRfmQvYL5+eVSx8=
 		</data>
 		<key>Frameworks/pop.framework/Info.plist</key>
 		<data>
@@ -146,11 +182,15 @@
 		</data>
 		<key>Frameworks/pop.framework/pop</key>
 		<data>
-		+hRcv+7HAnj9TpT7C9o2Jfbjd04=
+		xZHABhYtKY2iyimja1VOAvKr+LA=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		eAlQUlhbTkOc6HhmI8K5FdOZTYU=
+		2GzhX32J1T92siUPFOYg5Ixyg/Q=
+		</data>
+		<key>LaunchImage-700-568h@2x.png</key>
+		<data>
+		jUzAVDZErJq8r4xRQMYF5Kc4BgE=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -158,7 +198,7 @@
 		</data>
 		<key>Restaurants.plist</key>
 		<data>
-		AqgEJy8DjUTlGKOTI/0CBXY9QnY=
+		JwM0dsJ2A8eoRLxrod5vrl7W8e0=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
@@ -169,13 +209,13 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		HqgV/CZ4ZiMBqanM/jFqZEefVOg=
+		wUHG1+7W5C3ubK2eBfhhKpwkwV4=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Fl0QJfDJTor1wBZG50raC+reA/Y=
+			NBwfaQ4atnEepkjkR0sCm9sdLsU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -184,7 +224,16 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Zzo7SjoD5BQDAH1pQeW2S2b5f1U=
+			D9DrCVL7ajm9ZywrUGusiGWMIZg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/7nI-63-ZJc-view-GSm-cS-p2b.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ct8f/ctViTEQPFO5DYNxibVSGj4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -193,7 +242,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SbsHUG7nmV+PaUsowIeAPp4fwc8=
+			bXegvIyEVQpZeLUdmdfrBZ0szzo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -202,16 +251,25 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			asoZCxtAyUgMHb9ozcUbajfO6oM=
+			jJvJXLPUowj/amb6wZDEnf4VVr8=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Base.lproj/Main.storyboardc/UIViewController-Cdp-fo-hBd.nib</key>
+		<key>Base.lproj/Main.storyboardc/UIViewController-7nI-63-ZJc.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qmOk/XubDYiaNFDq54LpnWX5+KI=
+			9pLYaKaCxfnfoolP/uMsPhmRASk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/UIViewController-Uhl-iD-n9B.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			pgU8oFXz7rJpEjkwKP3EIGI5ReM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -220,7 +278,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fw3pVIhG+So0nZfRP2h4n3wJQq8=
+			ASXPdaRpRlNlkqCtpHOVLMPEPCA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -229,7 +287,16 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9UVLZbUg32vKvvROsg6ZEamBxe4=
+			wDeh+Iu83fFgeIPkq5NhoeIUBfc=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/Uhl-iD-n9B-view-Jms-Xg-xsd.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			oKoslsa8HD0PomGf+FYyggAJbxc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -238,18 +305,27 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			uP1kix9QuEl3wNsaAocH3D0Y9oY=
+			g4KGSlHDRLaXzsm17wwUSKVFjUw=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/restaurantDetailVC.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+mN9K07x0TfRJiPsmVe7WQIpdD8=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
 		<key>CardContentView.nib</key>
 		<data>
-		qzZ4vMr6NpFUVK5MAVh5KU0F1dI=
+		Sp1aCaSOc9JTvcq2u3/WM9PjJgc=
 		</data>
 		<key>CardOverlayView.nib</key>
 		<data>
-		Yy7236LT8o++OPEK5SbVZnvpjM8=
+		nymfKkJyTf0rDcIXZfTls3l8bO0=
 		</data>
 		<key>Frameworks/Koloda.framework/Info.plist</key>
 		<data>
@@ -257,7 +333,7 @@
 		</data>
 		<key>Frameworks/Koloda.framework/Koloda</key>
 		<data>
-		GO6ZjDsA8E5u5CEGNouYQlBjpXM=
+		LZpRe6wophVG8xwAm5olG85Vl40=
 		</data>
 		<key>Frameworks/Koloda.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -265,39 +341,39 @@
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
-		sr/7s3sv2fT5zMUHXUGP1KHXbSU=
+		D9pVTf+sCGD7hlUNJq/isolvCQw=
 		</data>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<data>
-		Ryidk6ZqX0inca3yZ7bdFgg/bSM=
+		3sBscA4HKq0aUWXMocyV5xCgiyc=
 		</data>
 		<key>Frameworks/libswiftCoreImage.dylib</key>
 		<data>
-		mo60hOG445gOu6GWjwLrPz0N87E=
+		mUVtPGDbQ9wR1Arui6WQ7vZv3ug=
 		</data>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<data>
-		mqyG6Ts2oYJMYsTs4xg65F7rPoE=
+		4apHg+GUZwp8x1/WyIVfrrjajtg=
 		</data>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<data>
-		e11mem7eh8PMKNm0fabk5E2YzmU=
+		nvn0Tfg3DlCpyEIQQ7RSNgHMr5s=
 		</data>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<data>
-		I67FC/7WEf6e4TXTLK+k6eUki60=
+		Vjw2ufNjvdgx6a7/rwX62rkAaWE=
 		</data>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<data>
-		tBDKCcCdPzr/0qF2574jFakrOV4=
+		n2wZxjZP72piiPKeU+MdMTKXmC4=
 		</data>
 		<key>Frameworks/libswiftSecurity.dylib</key>
 		<data>
-		ylkcUjPGdF6yJiE2s9J72vc5gIk=
+		vwt0AVrP9Aee3ym8+SklTQ3JamU=
 		</data>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<data>
-		mfPfiNp+S7mfnEyM10AMzDe8Kv4=
+		CX0k4/HRwW70tRfmQvYL5+eVSx8=
 		</data>
 		<key>Frameworks/pop.framework/Info.plist</key>
 		<data>
@@ -309,11 +385,15 @@
 		</data>
 		<key>Frameworks/pop.framework/pop</key>
 		<data>
-		+hRcv+7HAnj9TpT7C9o2Jfbjd04=
+		xZHABhYtKY2iyimja1VOAvKr+LA=
+		</data>
+		<key>LaunchImage-700-568h@2x.png</key>
+		<data>
+		jUzAVDZErJq8r4xRQMYF5Kc4BgE=
 		</data>
 		<key>Restaurants.plist</key>
 		<data>
-		AqgEJy8DjUTlGKOTI/0CBXY9QnY=
+		JwM0dsJ2A8eoRLxrod5vrl7W8e0=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>

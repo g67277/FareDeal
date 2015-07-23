@@ -22,7 +22,8 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     var searchActive : Bool = false
     var searchString = ""
     
-    
+    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
     
     
     /* -----------------------  VIEW CONTROLLER METHODS --------------------------- */
@@ -56,6 +57,13 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         //searchButton.titleLabel?.text = (searchDisplayOverview.hidden) ? "Search" : "Cancel"
         searchButton.titleLabel?.text = "Cancel"
     }
+    
+    // Testing temporary
+    @IBAction func logout(sender: AnyObject) {
+        prefs.setObject(nil, forKey: "TOKEN")
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    // testing.....
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchActive = true;

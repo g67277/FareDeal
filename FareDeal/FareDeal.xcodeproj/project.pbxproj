@@ -16,6 +16,12 @@
 		81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81481B431B56A2D6000EC386 /* LaunchScreen.xib */; };
 		81481B511B56A2D6000EC386 /* FareDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B501B56A2D6000EC386 /* FareDealTests.swift */; };
 		81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81481B5A1B56A359000EC386 /* StoreKit.framework */; };
+		8185E2F81B60899B00059124 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185E2F71B60899B00059124 /* SignInVC.swift */; };
+		8185E2FA1B608AD100059124 /* RegisterRestaurantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185E2F91B608AD100059124 /* RegisterRestaurantVC.swift */; };
+		8185E2FD1B608FE800059124 /* SignInUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185E2FC1B608FE800059124 /* SignInUserVC.swift */; };
+		8185E2FF1B6090A000059124 /* AuthenticationCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185E2FE1B6090A000059124 /* AuthenticationCalls.swift */; };
+		8185E3011B609B1400059124 /* RegisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185E3001B609B1400059124 /* RegisterUserVC.swift */; };
+		8185E3031B60A20A00059124 /* InitialScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185E3021B60A20A00059124 /* InitialScreenVC.swift */; };
 		819281D91B5B3E680003AD4D /* DealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281D81B5B3E680003AD4D /* DealsVC.swift */; };
 		819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DA1B5B3EA40003AD4D /* DealDetailsVC.swift */; };
 		819281DD1B5B3FD20003AD4D /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DC1B5B3FD20003AD4D /* Deal.swift */; };
@@ -64,6 +70,12 @@
 		81481B4F1B56A2D6000EC386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81481B501B56A2D6000EC386 /* FareDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FareDealTests.swift; sourceTree = "<group>"; };
 		81481B5A1B56A359000EC386 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		8185E2F71B60899B00059124 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		8185E2F91B608AD100059124 /* RegisterRestaurantVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterRestaurantVC.swift; sourceTree = "<group>"; };
+		8185E2FC1B608FE800059124 /* SignInUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInUserVC.swift; sourceTree = "<group>"; };
+		8185E2FE1B6090A000059124 /* AuthenticationCalls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationCalls.swift; sourceTree = "<group>"; };
+		8185E3001B609B1400059124 /* RegisterUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserVC.swift; sourceTree = "<group>"; };
+		8185E3021B60A20A00059124 /* InitialScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialScreenVC.swift; sourceTree = "<group>"; };
 		819281D81B5B3E680003AD4D /* DealsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsVC.swift; sourceTree = "<group>"; };
 		819281DA1B5B3EA40003AD4D /* DealDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealDetailsVC.swift; sourceTree = "<group>"; };
 		819281DC1B5B3FD20003AD4D /* Deal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
@@ -147,6 +159,7 @@
 			children = (
 				81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */,
 				81481B3A1B56A2D6000EC386 /* AppDelegate.swift */,
+				8185E2FB1B608ADA00059124 /* Signing In/Up */,
 				81B5B6B01B56D386009B522A /* Business Side */,
 				995935F31B5EDA29009CDD26 /* User Side */,
 				81481B3E1B56A2D6000EC386 /* Main.storyboard */,
@@ -182,6 +195,19 @@
 				81481B4F1B56A2D6000EC386 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8185E2FB1B608ADA00059124 /* Signing In/Up */ = {
+			isa = PBXGroup;
+			children = (
+				8185E3021B60A20A00059124 /* InitialScreenVC.swift */,
+				8185E2FE1B6090A000059124 /* AuthenticationCalls.swift */,
+				8185E2F71B60899B00059124 /* SignInVC.swift */,
+				8185E2F91B608AD100059124 /* RegisterRestaurantVC.swift */,
+				8185E2FC1B608FE800059124 /* SignInUserVC.swift */,
+				8185E3001B609B1400059124 /* RegisterUserVC.swift */,
+			);
+			name = "Signing In/Up";
 			sourceTree = "<group>";
 		};
 		819281DE1B5B3FD50003AD4D /* Model */ = {
@@ -311,7 +337,7 @@
 				TargetAttributes = {
 					81481B341B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 56R6M4W3X8;
+						DevelopmentTeam = 9J676A68SR;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -426,20 +452,26 @@
 				81008C121B5C46AE0019E297 /* DataManager.swift in Sources */,
 				819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */,
 				995935F01B5EDA1C009CDD26 /* FavoritesTVController.swift in Sources */,
+				8185E2FA1B608AD100059124 /* RegisterRestaurantVC.swift in Sources */,
+				8185E3011B609B1400059124 /* RegisterUserVC.swift in Sources */,
 				99A04C5D1B604FE700C3E35B /* RestaurantDealCell.swift in Sources */,
 				995935ED1B5EDA1C009CDD26 /* CardOverlayView.swift in Sources */,
 				99A04C5B1B604F9E00C3E35B /* GradientView.swift in Sources */,
 				819281D91B5B3E680003AD4D /* DealsVC.swift in Sources */,
 				993285D51B5F3DF8003C19E1 /* RestaurantDetailController.swift in Sources */,
+				8185E2F81B60899B00059124 /* SignInVC.swift in Sources */,
 				81008C101B5C44830019E297 /* DataApi.swift in Sources */,
+				8185E3031B60A20A00059124 /* InitialScreenVC.swift in Sources */,
 				995935EF1B5EDA1C009CDD26 /* FavoritesCell.swift in Sources */,
 				819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */,
 				81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */,
 				995935F11B5EDA1C009CDD26 /* HomeSwipeViewController.swift in Sources */,
 				81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */,
+				8185E2FF1B6090A000059124 /* AuthenticationCalls.swift in Sources */,
 				81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */,
 				995935EB1B5EDA1C009CDD26 /* CardContentView.swift in Sources */,
 				819281DD1B5B3FD20003AD4D /* Deal.swift in Sources */,
+				8185E2FD1B608FE800059124 /* SignInUserVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,7 +605,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
 			};
 			name = Debug;
 		};
@@ -588,7 +620,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
 			};
 			name = Release;
 		};
@@ -609,7 +641,7 @@
 				INFOPLIST_FILE = FareDealTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FareDeal.app/FareDeal";
 			};
 			name = Debug;
@@ -627,7 +659,7 @@
 				INFOPLIST_FILE = FareDealTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FareDeal.app/FareDeal";
 			};
 			name = Release;

@@ -19,6 +19,8 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
     // holds all the months to display in selector
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
+    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,6 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     override func viewDidAppear(animated: Bool) {
         
-        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults() // user default object
         let creditsAvailable:Int = prefs.integerForKey("credits") as Int
         
         if creditsAvailable > 0 {
@@ -66,6 +67,10 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
             // Edit profile here
             println("add")
             
+        }else if _sender?.tag == 4{
+            
+            prefs.setObject(nil, forKey: "TOKEN")
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     

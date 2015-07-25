@@ -161,9 +161,9 @@ SWIFT_CLASS("_TtC13DealsSortTest14ViewController")
 - (void)viewDidLoad;
 - (void)loadDeals;
 - (void)calculateHighestTier;
-- (void)getFirstDeal;
 - (void)delayLoad;
 - (void)delayReload;
+- (void)getFirstDeal;
 - (void)getNextDeal;
 - (void)reloadTableView;
 - (void)setTopDeal;

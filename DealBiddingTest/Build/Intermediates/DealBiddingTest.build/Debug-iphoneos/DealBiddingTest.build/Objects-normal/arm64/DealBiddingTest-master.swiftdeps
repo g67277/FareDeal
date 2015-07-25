@@ -1,0 +1,8 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "a173cf170b53d421303c6424e3e7022b"
+inputs: 
+- "/Users/angelasmith/Desktop/RD/DealBiddingTest/DealBiddingTest/Constants.swift"
+- "/Users/angelasmith/Desktop/RD/DealBiddingTest/DealBiddingTest/ViewController.swift"
+- "/Users/angelasmith/Desktop/RD/DealBiddingTest/DealBiddingTest/AppDelegate.swift"
+- "/Users/angelasmith/Desktop/RD/DealBiddingTest/DealBiddingTest/Restaurant.swift"
+- "/Users/angelasmith/Desktop/RD/DealBiddingTest/DealBiddingTest/Deal.swift"

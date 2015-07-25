@@ -1,0 +1,6 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "aa4be89bafa042894d41a0a820a70c0b"
+inputs: 
+- "/Users/angelasmith/Desktop/RD/TimerTest/TimerTest/ViewController.swift"
+- "/Users/angelasmith/Desktop/RD/TimerTest/TimerTest/AppDelegate.swift"
+- "/Users/angelasmith/Desktop/RD/TimerTest/TimerTest/TimerCell.swift"

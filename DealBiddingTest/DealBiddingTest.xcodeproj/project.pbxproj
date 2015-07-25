@@ -13,6 +13,10 @@
 		815B344B1B629F0C00A3B113 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 815B344A1B629F0C00A3B113 /* Images.xcassets */; };
 		815B344E1B629F0C00A3B113 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815B344C1B629F0C00A3B113 /* LaunchScreen.xib */; };
 		815B345A1B629F0C00A3B113 /* DealBiddingTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B34591B629F0C00A3B113 /* DealBiddingTestTests.swift */; };
+		815B34641B629F7F00A3B113 /* RestaurantData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 815B34631B629F7F00A3B113 /* RestaurantData.plist */; };
+		815B34681B62A21500A3B113 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B34651B62A21500A3B113 /* Restaurant.swift */; };
+		815B34691B62A21500A3B113 /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B34661B62A21500A3B113 /* Deal.swift */; };
+		815B346A1B62A21500A3B113 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B34671B62A21500A3B113 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		815B34531B629F0C00A3B113 /* DealBiddingTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DealBiddingTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		815B34581B629F0C00A3B113 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		815B34591B629F0C00A3B113 /* DealBiddingTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealBiddingTestTests.swift; sourceTree = "<group>"; };
+		815B34631B629F7F00A3B113 /* RestaurantData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RestaurantData.plist; sourceTree = "<group>"; };
+		815B34651B62A21500A3B113 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		815B34661B62A21500A3B113 /* Deal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
+		815B34671B62A21500A3B113 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,7 @@
 				815B34471B629F0C00A3B113 /* Main.storyboard */,
 				815B344A1B629F0C00A3B113 /* Images.xcassets */,
 				815B344C1B629F0C00A3B113 /* LaunchScreen.xib */,
+				815B346B1B62A21B00A3B113 /* Data */,
 				815B34411B629F0C00A3B113 /* Supporting Files */,
 			);
 			path = DealBiddingTest;
@@ -110,6 +119,17 @@
 				815B34581B629F0C00A3B113 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		815B346B1B62A21B00A3B113 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				815B34631B629F7F00A3B113 /* RestaurantData.plist */,
+				815B34651B62A21500A3B113 /* Restaurant.swift */,
+				815B34661B62A21500A3B113 /* Deal.swift */,
+				815B34671B62A21500A3B113 /* Constants.swift */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				815B34491B629F0C00A3B113 /* Main.storyboard in Resources */,
+				815B34641B629F7F00A3B113 /* RestaurantData.plist in Resources */,
 				815B344E1B629F0C00A3B113 /* LaunchScreen.xib in Resources */,
 				815B344B1B629F0C00A3B113 /* Images.xcassets in Resources */,
 			);
@@ -212,8 +233,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				815B346A1B62A21500A3B113 /* Constants.swift in Sources */,
 				815B34461B629F0C00A3B113 /* ViewController.swift in Sources */,
 				815B34441B629F0C00A3B113 /* AppDelegate.swift in Sources */,
+				815B34681B62A21500A3B113 /* Restaurant.swift in Sources */,
+				815B34691B62A21500A3B113 /* Deal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,12 +19,10 @@ class Restaurant: NSObject, Printable, DebugPrintable {
     var phone: String
     var webUrl: String
     var hours: String
+    var deal:Deal
+
     
-    // Deals
-    var deals: [Deal]
-    
-    
-    init(identifier: String, name: String, phone: String, imageName: String, address: String, hours: String, distance: Float, priceTier: Int, webUrl: String, deals: [Deal]) {
+    init(identifier: String, name: String, phone: String, imageName: String, address: String, hours: String, distance: Float, priceTier: Int, webUrl: String, deal: Deal) {
         self.identifier = identifier
         self.name = name
         self.phone = phone
@@ -34,8 +32,7 @@ class Restaurant: NSObject, Printable, DebugPrintable {
         self.distance = distance
         self.priceTier = priceTier
         self.webUrl = webUrl
-        self.deals = deals
+        self.deal = deal
     }
-    
 
 }

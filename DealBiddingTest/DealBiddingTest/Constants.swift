@@ -46,5 +46,6 @@ struct Constants {
     static let dealDescription = "description"
     static let dealExpires = "expirationTime"
     static let dealValue = "value"
+    static let dealID = "rest_id"
 
 }

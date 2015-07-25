@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>imageName</key>
+		<string>casaLuca</string>
+		<key>id</key>
+		<string>123</string>
+		<key>deals</key>
+		<array>
+			<dict>
+				<key>title</key>
+				<string>Get more sides!</string>
+				<key>isDefault</key>
+				<true/>
+				<key>description</key>
+				<string>10% off side items</string>
+				<key>expirationTime</key>
+				<integer>2</integer>
+				<key>value</key>
+				<real>2.46</real>
+				<key>tier</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Get more sides!</string>
+				<key>isDefault</key>
+				<false/>
+				<key>description</key>
+				<string>10% off side items</string>
+				<key>expirationTime</key>
+				<integer>2</integer>
+				<key>value</key>
+				<real>2.46</real>
+				<key>tier</key>
+				<integer>2</integer>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Bring a friend, get a deal!</string>
+				<key>isDefault</key>
+				<false/>
+				<key>description</key>
+				<string>Buy one lunch, get one half off!</string>
+				<key>expirationTime</key>
+				<integer>2</integer>
+				<key>value</key>
+				<real>5.99</real>
+				<key>tier</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+		<key>address</key>
+		<string>123 Casa Lane  Washington D.C.</string>
+		<key>url</key>
+		<string>www.casaLuca.com</string>
+		<key>tier</key>
+		<integer>2</integer>
+		<key>distance</key>
+		<integer>234</integer>
+		<key>status</key>
+		<string>Open until 10:00 PM</string>
+		<key>phone</key>
+		<string>(202) 628-1099</string>
+		<key>name</key>
+		<string>Casa Luca</string>
+	</dict>
+	<dict>
+		<key>imageName</key>
+		<string>fiola.png</string>
+		<key>id</key>
+		<string>456</string>
+		<key>deals</key>
+		<array>
+			<dict>
+				<key>title</key>
+				<string>Get more sides!</string>
+				<key>isDefault</key>
+				<true/>
+				<key>description</key>
+				<string>15% off meal</string>
+				<key>expirationTime</key>
+				<integer>2</integer>
+				<key>value</key>
+				<real>1.5</real>
+				<key>tier</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>First drink on us!</string>
+				<key>isDefault</key>
+				<false/>
+				<key>description</key>
+				<string>Free beverage</string>
+				<key>expirationTime</key>
+				<integer>2</integer>
+				<key>value</key>
+				<real>1.88</real>
+				<key>tier</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>5% off meal </string>
+				<key>isDefault</key>
+				<false/>
+				<key>description</key>
+				<string>Free beverage</string>
+				<key>expirationTime</key>
+				<integer>2</integer>
+				<key>value</key>
+				<real>0.5</real>
+				<key>tier</key>
+				<integer>2</integer>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>10% off meal</string>
+				<key>isDefault</key>
+				<false/>
+				<key>description</key>
+				<string>Good on any of our signature meals</string>
+				<key>expirationTime</key>
+				<integer>2</integer>
+				<key>value</key>
+				<integer>1</integer>
+				<key>tier</key>
+				<integer>3</integer>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>10 for 2</string>
+				<key>isDefault</key>
+				<false/>
+				<key>description</key>
+				<string>Come in with a friend and you both get 10% off your meals</string>
+				<key>expirationTime</key>
+				<integer>2</integer>
+				<key>value</key>
+				<integer>2</integer>
+				<key>tier</key>
+				<integer>5</integer>
+			</dict>
+		</array>
+		<key>address</key>
+		<string>123 Fiola Lane  Washington D.C.</string>
+		<key>url</key>
+		<string>www.fiola.com</string>
+		<key>tier</key>
+		<integer>3</integer>
+		<key>distance</key>
+		<integer>583</integer>
+		<key>status</key>
+		<string>Open until 1:00 AM</string>
+		<key>phone</key>
+		<string>(202) 628-2888</string>
+		<key>name</key>
+		<string>Fiola</string>
+	</dict>
+</array>
+</plist>

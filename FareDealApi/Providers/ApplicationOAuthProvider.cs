@@ -30,6 +30,7 @@ namespace FareDealApi.Providers
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
+            var appRolemanager = context.OwinContext.GetUserManager<ApplicationRoleManager>();
 
             ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
 
@@ -39,12 +40,23 @@ namespace FareDealApi.Providers
                 return;
             }
 
+
+            var roles = user.Roles;
+            var userRole = roles.FirstOrDefault();
+            string roleName;
+            if (userRole != null)
+            {
+                roleName = appRolemanager.FindById(userRole.RoleId).Name;
+            }else
+            {
+                roleName = "user";
+            }
             ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
                OAuthDefaults.AuthenticationType);
             ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
                 CookieAuthenticationDefaults.AuthenticationType);
 
-            AuthenticationProperties properties = CreateProperties(user.UserName);
+            AuthenticationProperties properties = CreateProperties(user.UserName, roleName);
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             context.Request.Context.Authentication.SignIn(cookiesIdentity);
@@ -86,11 +98,12 @@ namespace FareDealApi.Providers
             return Task.FromResult<object>(null);
         }
 
-        public static AuthenticationProperties CreateProperties(string userName)
+        public static AuthenticationProperties CreateProperties(string userName, string roleName)
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {
-                { "userName", userName }
+                { "userName", userName },
+                {"role", roleName}
             };
             return new AuthenticationProperties(data);
         }

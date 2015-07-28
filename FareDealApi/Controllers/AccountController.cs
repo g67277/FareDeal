@@ -21,7 +21,7 @@ namespace FareDealApi.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    public class AccountController : BaseApiController
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
@@ -264,7 +264,9 @@ namespace FareDealApi.Controllers
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
-                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName);
+                //IdentityRole role = appRolemanager.FindById(userRole.RoleId);
+         
+                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName, "user");
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
             }
             else
@@ -329,13 +331,18 @@ namespace FareDealApi.Controllers
             }
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            //user.Roles.Add(new IdentityUserRole(){RoleId = "E2720C18-012D-43B7-A4B3-3D65521CCEEA", UserId=model.Email});
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            
 
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
+
+           
+          
 
             return Ok();
         }

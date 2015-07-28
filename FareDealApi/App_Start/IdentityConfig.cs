@@ -4,6 +4,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using FareDealApi.Models;
+using System.Net.Mail;
+using System.Configuration;
+using System;
 
 namespace FareDealApi
 {
@@ -19,6 +22,9 @@ namespace FareDealApi
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
+
+            manager.EmailService = new EmailService();
+
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
@@ -37,9 +43,14 @@ namespace FareDealApi
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"))
+                {
+                    //Code for email confirmation and reset password life time
+                    TokenLifespan = TimeSpan.FromHours(6)
+                };
             }
             return manager;
+
         }
     }
 
@@ -57,4 +68,32 @@ namespace FareDealApi
             return appRoleManager;
         }
     }
+
+    //public class EmailService : IIdentityMessageService
+    //{
+    //    public async Task SendAsync(IdentityMessage message)
+    //    {
+    //        await configSendGridasync(message);
+    //    }
+
+    //    // Use NuGet to install SendGrid (Basic C# client lib) 
+    //    private async Task configSendGridasync(IdentityMessage message)
+    //    {
+
+    //        MailMessage mail = new MailMessage();
+    //        mail.Subject = message.Subject;
+    //        mail.Body = message.Body;
+    //        mail.IsBodyHtml = true;
+    //        mail.From = new MailAddress(ConfigurationManager.AppSettings["emailFrom"]);
+    //        mail.To.Add((ConfigurationManager.AppSettings["emailTo"]));
+    //        mail.Priority = MailPriority.High;
+
+    //        SmtpClient client = new SmtpClient();
+    //        client.EnableSsl = true;
+    //        client.Credentials = new System.Net.NetworkCredential((ConfigurationManager.AppSettings["userName"]), (ConfigurationManager.AppSettings["password"]));
+    //        client.Host = (ConfigurationManager.AppSettings["smtpServer"]);
+    //        client.Send(mail);
+
+    //    }
+    //}
 }

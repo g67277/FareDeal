@@ -153,6 +153,56 @@ namespace FareDealApi.Controllers
             return Ok();
         }
 
+
+        public async Task<IHttpActionResult> ForgotPassword(string email)
+        {
+            if (!string.IsNullOrEmpty(email))
+            {
+                var user = await UserManager.FindByNameAsync(email);
+                //if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                if (user == null)
+                {
+                    // Don't reveal that the user does not exist or is not confirmed
+                    //return View("ForgotPasswordConfirmation");
+                    Uri locationHeader1 = new Uri(Url.Link("ResetPassword", new  {id="notfound" }));
+                    return Created(locationHeader1, email);
+                    //return NotFound();
+                }
+
+
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+
+                var callbackUrl = new Uri(Url.Link("ResetPassword", new { userId = user.Id, code = code }));
+
+                await UserManager.SendEmailAsync(user.Id,
+                                                        "Reset Password",
+                                                        "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                Uri locationHeader = new Uri(Url.Link("ResetPassword", new { id = user.Id }));
+
+                return Created(locationHeader, user);
+            }
+            return NotFound();
+
+            // If we got this far, something failed, redisplay form
+           // return View(model);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [Route("user/{id:guid}", Name = "ResetPassword")]
+        public async Task<IHttpActionResult> ResetPassword(string Id)
+        {
+            //Only SuperAdmin or Admin can delete users (Later when implement roles)
+            var user = await UserManager.FindByIdAsync(Id);
+
+            if (user != null)
+            {
+                return Ok(user);
+            }
+
+            return NotFound();
+        }
+
         // POST api/Account/AddExternalLogin
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
@@ -323,6 +373,7 @@ namespace FareDealApi.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -334,17 +385,64 @@ namespace FareDealApi.Controllers
             //user.Roles.Add(new IdentityUserRole(){RoleId = "E2720C18-012D-43B7-A4B3-3D65521CCEEA", UserId=model.Email});
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-            
 
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
 
-           
-          
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
 
-            return Ok();
+            var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new { userId = user.Id, code = code }));
+
+            await UserManager.SendEmailAsync(user.Id,
+                                                    "Confirm your account",
+                                                    "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+            Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
+
+            return Created(locationHeader, user);
+           
+            //return Ok();
+        }
+
+        [Authorize(Roles = "Admin")]
+        [Route("user/{id:guid}", Name = "GetUserById")]
+        public async Task<IHttpActionResult> GetUser(string Id)
+        {
+            //Only SuperAdmin or Admin can delete users (Later when implement roles)
+            var user = await UserManager.FindByIdAsync(Id);
+
+            if (user != null)
+            {
+                return Ok(user);
+            }
+
+            return NotFound();
+        }
+
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ConfirmEmail", Name = "ConfirmEmailRoute")]
+        public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
+        {
+            if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(code))
+            {
+                ModelState.AddModelError("", "User Id and Code are required");
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult result = await UserManager.ConfirmEmailAsync(userId, code);
+
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            else
+            {
+                return GetErrorResult(result);
+            }
         }
 
         // POST api/Account/RegisterExternal

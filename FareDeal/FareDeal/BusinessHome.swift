@@ -67,10 +67,6 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
             // Edit profile here
             println("add")
             
-        }else if _sender?.tag == 4{
-            
-            prefs.setObject(nil, forKey: "TOKEN")
-            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     

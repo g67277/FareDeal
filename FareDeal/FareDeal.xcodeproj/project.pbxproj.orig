@@ -29,10 +29,10 @@
 		819281DD1B5B3FD20003AD4D /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DC1B5B3FD20003AD4D /* Deal.swift */; };
 		819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DF1B5B427C0003AD4D /* DealsCell.swift */; };
 		81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B5B6AE1B56D375009B522A /* StoreVC.swift */; };
-		81B879121B691113003B1BB0 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */; };
 		81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81FA1BA01B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld */; };
 		972B8D8EA6F19199DCF8C070 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C34D443EE29BEF7C8222446 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		993285D51B5F3DF8003C19E1 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */; };
+		994C61311B68B0D400E5EF7C /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C61301B68B0D400E5EF7C /* ForgotPasswordVC.swift */; };
 		995935EB1B5EDA1C009CDD26 /* CardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E21B5EDA1C009CDD26 /* CardContentView.swift */; };
 		995935EC1B5EDA1C009CDD26 /* CardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995935E31B5EDA1C009CDD26 /* CardContentView.xib */; };
 		995935ED1B5EDA1C009CDD26 /* CardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E41B5EDA1C009CDD26 /* CardOverlayView.swift */; };
@@ -87,9 +87,9 @@
 		819281DF1B5B427C0003AD4D /* DealsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsCell.swift; sourceTree = "<group>"; };
 		81B5B6AE1B56D375009B522A /* StoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreVC.swift; sourceTree = "<group>"; };
 		81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MidCase RegLine.otf"; sourceTree = "<group>"; };
-		81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		81FA1BA11B5B0FFB00ABCD53 /* FareDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FareDeal.xcdatamodel; sourceTree = "<group>"; };
 		993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
+		994C61301B68B0D400E5EF7C /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		995935E21B5EDA1C009CDD26 /* CardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
 		995935E31B5EDA1C009CDD26 /* CardContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardContentView.xib; sourceTree = "<group>"; };
 		995935E41B5EDA1C009CDD26 /* CardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayView.swift; sourceTree = "<group>"; };
@@ -206,14 +206,19 @@
 		8185E2FB1B608ADA00059124 /* Signing In/Up */ = {
 			isa = PBXGroup;
 			children = (
-				81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */,
 				8185E3021B60A20A00059124 /* InitialScreenVC.swift */,
 				8185E2FE1B6090A000059124 /* AuthenticationCalls.swift */,
+<<<<<<< HEAD
 				8185E2F71B60899B00059124 /* SignInVC.swift */,
 				8185E2F91B608AD100059124 /* RegisterRestaurantVC.swift */,
 				813222DB1B681A3500613C60 /* RegisterRestaurantVC2.swift */,
 				8185E2FC1B608FE800059124 /* SignInUserVC.swift */,
 				8185E3001B609B1400059124 /* RegisterUserVC.swift */,
+=======
+				994C612E1B688EFB00E5EF7C /* Business */,
+				994C612F1B688F0100E5EF7C /* User */,
+				994C61301B68B0D400E5EF7C /* ForgotPasswordVC.swift */,
+>>>>>>> e698c5cb5c39b40c64919719627319942880c793
 			);
 			name = "Signing In/Up";
 			sourceTree = "<group>";
@@ -239,6 +244,24 @@
 				81008C131B5C46B40019E297 /* Data */,
 			);
 			name = "Business Side";
+			sourceTree = "<group>";
+		};
+		994C612E1B688EFB00E5EF7C /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				8185E2F71B60899B00059124 /* SignInVC.swift */,
+				8185E2F91B608AD100059124 /* RegisterRestaurantVC.swift */,
+			);
+			name = Business;
+			sourceTree = "<group>";
+		};
+		994C612F1B688F0100E5EF7C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				8185E2FC1B608FE800059124 /* SignInUserVC.swift */,
+				8185E3001B609B1400059124 /* RegisterUserVC.swift */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		995935F31B5EDA29009CDD26 /* User Side */ = {
@@ -346,7 +369,6 @@
 				TargetAttributes = {
 					81481B341B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -469,8 +491,8 @@
 				99A04C5B1B604F9E00C3E35B /* GradientView.swift in Sources */,
 				819281D91B5B3E680003AD4D /* DealsVC.swift in Sources */,
 				993285D51B5F3DF8003C19E1 /* RestaurantDetailController.swift in Sources */,
-				81B879121B691113003B1BB0 /* ForgotPasswordVC.swift in Sources */,
 				8185E2F81B60899B00059124 /* SignInVC.swift in Sources */,
+				994C61311B68B0D400E5EF7C /* ForgotPasswordVC.swift in Sources */,
 				81008C101B5C44830019E297 /* DataApi.swift in Sources */,
 				8185E3031B60A20A00059124 /* InitialScreenVC.swift in Sources */,
 				995935EF1B5EDA1C009CDD26 /* FavoritesCell.swift in Sources */,
@@ -564,7 +586,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -602,7 +624,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -619,7 +641,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
 			};
 			name = Debug;
 		};
@@ -634,8 +656,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
 			};
 			name = Release;
 		};

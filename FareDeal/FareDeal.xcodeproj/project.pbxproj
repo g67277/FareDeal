@@ -630,7 +630,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "c8ffcfe4-d04f-4632-890f-0a478ce7314b";
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -648,7 +648,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "c8ffcfe4-d04f-4632-890f-0a478ce7314b";
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -671,7 +671,7 @@
 				INFOPLIST_FILE = FareDealTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c8ffcfe4-d04f-4632-890f-0a478ce7314b";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FareDeal.app/FareDeal";
 			};
 			name = Debug;
@@ -689,7 +689,7 @@
 				INFOPLIST_FILE = FareDealTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c8ffcfe4-d04f-4632-890f-0a478ce7314b";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FareDeal.app/FareDeal";
 			};
 			name = Release;

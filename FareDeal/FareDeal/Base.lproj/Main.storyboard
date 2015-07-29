@@ -1154,11 +1154,6 @@
                                     <constraint firstAttribute="trailing" secondItem="pY2-ZR-Yev" secondAttribute="trailing" id="wxK-ru-52C"/>
                                 </constraints>
                                 <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="pY2-ZR-Yev"/>
-                                        <exclude reference="5IS-C5-pS1"/>
-                                        <exclude reference="NPZ-Pa-iIN"/>
-                                    </mask>
                                     <mask key="constraints">
                                         <exclude reference="XQT-rI-JYa"/>
                                         <exclude reference="bVB-RS-L1N"/>
@@ -1175,11 +1170,6 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="subviews">
-                                        <include reference="pY2-ZR-Yev"/>
-                                        <include reference="5IS-C5-pS1"/>
-                                        <include reference="NPZ-Pa-iIN"/>
-                                    </mask>
                                     <mask key="constraints">
                                         <include reference="XQT-rI-JYa"/>
                                         <include reference="bVB-RS-L1N"/>
@@ -1206,9 +1196,6 @@
                             <constraint firstItem="Fcb-k3-jLD" firstAttribute="height" secondItem="WQC-WU-4e5" secondAttribute="height" id="sU0-cK-Unh"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Fcb-k3-jLD"/>
-                            </mask>
                             <mask key="constraints">
                                 <exclude reference="ILU-mW-JPH"/>
                                 <exclude reference="EyL-Zm-hIs"/>
@@ -1218,9 +1205,6 @@
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="Fcb-k3-jLD"/>
-                            </mask>
                             <mask key="constraints">
                                 <include reference="ILU-mW-JPH"/>
                                 <include reference="EyL-Zm-hIs"/>
@@ -1278,7 +1262,7 @@
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aAg-Rv-aKA">
                                         <rect key="frame" x="8" y="67" width="484" height="42"/>
@@ -1438,7 +1422,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userLaunchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HhV-M3-oPk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="userLaunchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HhV-M3-oPk">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
@@ -1552,10 +1536,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1C-cF-Ls5" userLabel="Move to log in view">
                                 <rect key="frame" x="50" y="510" width="500" height="90"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PW3-Ui-2t6" userLabel="Border View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PW3-Ui-2t6" userLabel="Border View">
                                         <rect key="frame" x="0.0" y="0.0" width="500" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="G6h-u0-ohH"/>
                                             <constraint firstAttribute="height" constant="1" id="zCZ-Pf-Cm5"/>
                                         </constraints>
                                         <variation key="default">
@@ -1584,14 +1569,17 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="PW3-Ui-2t6" firstAttribute="top" secondItem="E1C-cF-Ls5" secondAttribute="top" id="0EK-vk-FAf"/>
+                                    <constraint firstItem="PW3-Ui-2t6" firstAttribute="leading" secondItem="E1C-cF-Ls5" secondAttribute="leading" id="346-g0-VIk"/>
                                     <constraint firstAttribute="centerY" secondItem="kvW-M7-l70" secondAttribute="centerY" constant="10" id="HS0-n3-6IK"/>
                                     <constraint firstItem="PW3-Ui-2t6" firstAttribute="leading" secondItem="E1C-cF-Ls5" secondAttribute="leading" id="Hqp-XV-H7T"/>
                                     <constraint firstItem="kvW-M7-l70" firstAttribute="leading" secondItem="E1C-cF-Ls5" secondAttribute="leading" id="Lcc-bM-c82"/>
                                     <constraint firstAttribute="trailing" secondItem="kvW-M7-l70" secondAttribute="trailing" id="R0w-wE-9BK"/>
+                                    <constraint firstAttribute="trailing" secondItem="PW3-Ui-2t6" secondAttribute="trailing" id="RDv-Ln-s7u"/>
                                     <constraint firstAttribute="trailing" secondItem="PW3-Ui-2t6" secondAttribute="trailing" constant="-200" id="TwT-lo-4pk">
                                         <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                                     </constraint>
                                     <constraint firstItem="PW3-Ui-2t6" firstAttribute="width" secondItem="E1C-cF-Ls5" secondAttribute="width" id="ova-mi-Yzv"/>
+                                    <constraint firstItem="PW3-Ui-2t6" firstAttribute="top" secondItem="E1C-cF-Ls5" secondAttribute="top" id="t26-h9-k4v"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -1630,16 +1618,6 @@
                             <constraint firstAttribute="trailing" secondItem="LWR-UM-br6" secondAttribute="trailing" constant="50" id="mwL-Xc-ym9"/>
                             <constraint firstItem="Wvs-c8-i4e" firstAttribute="leading" secondItem="muH-yc-GwM" secondAttribute="leading" constant="50" id="svc-bA-8vh"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="HhV-M3-oPk"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="HhV-M3-oPk"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="1mR-Wg-wvO"/>
                     <connections>
@@ -3898,7 +3876,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5Y-lH-85w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1654.5" y="1950.75"/>
+            <point key="canvasLocation" x="-1655" y="2278"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="FhW-k7-SYf">
@@ -4076,7 +4054,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bx-3a-BLM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-852" y="1950.75"/>
+            <point key="canvasLocation" x="-852" y="2278"/>
         </scene>
         <!--User ProfileVC-->
         <scene sceneID="Yul-6L-beD">
@@ -4181,7 +4159,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="onClick:" destination="Tme-Z1-LBq" eventType="touchUpInside" id="Ves-qc-eyU"/>
+                                                    <action selector="onClick:" destination="Tme-Z1-LBq" eventType="touchUpInside" id="D1H-QK-dES"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -4255,11 +4233,6 @@
                             <constraint firstItem="2Sk-JG-J1H" firstAttribute="leading" secondItem="NZa-hw-Lkk" secondAttribute="leading" id="z27-Vi-kjI"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="jPY-5v-bFq"/>
-                                <exclude reference="2Sk-JG-J1H"/>
-                                <exclude reference="VEc-Eg-VFK"/>
-                            </mask>
                             <mask key="constraints">
                                 <exclude reference="Xwd-wN-dwu"/>
                                 <exclude reference="MF3-tY-kWU"/>
@@ -4276,11 +4249,6 @@
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="jPY-5v-bFq"/>
-                                <include reference="2Sk-JG-J1H"/>
-                                <include reference="VEc-Eg-VFK"/>
-                            </mask>
                             <mask key="constraints">
                                 <include reference="Xwd-wN-dwu"/>
                                 <include reference="MF3-tY-kWU"/>
@@ -4297,10 +4265,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <segue destination="rOj-eL-RnV" kind="unwind" identifier="returnUserToBusiness" unwindAction="returnToInitialScreen:" id="UOF-te-iqx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ye1-4z-z46" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rOj-eL-RnV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-109.5" y="1950.75"/>
+            <point key="canvasLocation" x="-110" y="2278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U7j-Uy-p7E">
@@ -4318,7 +4290,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDi-Ij-S28" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2454" y="1950.75"/>
+            <point key="canvasLocation" x="-2454" y="2278"/>
         </scene>
         <!--Restaurant Detail Controller-->
         <scene sceneID="Drj-3h-x5g">
@@ -4804,7 +4776,7 @@ Leeburg, VA 20176
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THt-vd-QP9" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-852" y="2655.75"/>
+            <point key="canvasLocation" x="-852" y="2983"/>
         </scene>
         <!--Restaurant DealsVC-->
         <scene sceneID="2cL-8e-Llp">
@@ -5125,7 +5097,7 @@ Leeburg, VA 20176
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aIo-xK-HIm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1654.5" y="2649.75"/>
+            <point key="canvasLocation" x="-1655" y="2977"/>
         </scene>
         <!--Restaurant Deal DetaislVC-->
         <scene sceneID="8dP-ff-qSt">
@@ -5331,7 +5303,7 @@ Leeburg, VA 20176
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bhq-xh-xnI" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1243.5" y="3384.75"/>
+            <point key="canvasLocation" x="-1244" y="3712"/>
         </scene>
         <!--Forgot Password UserVC-->
         <scene sceneID="F2a-J9-UcJ">

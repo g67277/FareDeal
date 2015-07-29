@@ -33,6 +33,8 @@
 		81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81FA1BA01B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld */; };
 		972B8D8EA6F19199DCF8C070 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C34D443EE29BEF7C8222446 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		993285D51B5F3DF8003C19E1 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */; };
+		994C61331B69244600E5EF7C /* ForgotPasswordUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C61321B69244600E5EF7C /* ForgotPasswordUserVC.swift */; };
+		994C61351B692B3700E5EF7C /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C61341B692B3700E5EF7C /* UserProfileVC.swift */; };
 		995935EB1B5EDA1C009CDD26 /* CardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E21B5EDA1C009CDD26 /* CardContentView.swift */; };
 		995935EC1B5EDA1C009CDD26 /* CardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995935E31B5EDA1C009CDD26 /* CardContentView.xib */; };
 		995935ED1B5EDA1C009CDD26 /* CardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E41B5EDA1C009CDD26 /* CardOverlayView.swift */; };
@@ -91,6 +93,8 @@
 		81B879171B6931CB003B1BB0 /* FareDeal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FareDeal-Bridging-Header.h"; sourceTree = "<group>"; };
 		81FA1BA11B5B0FFB00ABCD53 /* FareDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FareDeal.xcdatamodel; sourceTree = "<group>"; };
 		993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
+		994C61321B69244600E5EF7C /* ForgotPasswordUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordUserVC.swift; sourceTree = "<group>"; };
+		994C61341B692B3700E5EF7C /* UserProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		995935E21B5EDA1C009CDD26 /* CardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
 		995935E31B5EDA1C009CDD26 /* CardContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardContentView.xib; sourceTree = "<group>"; };
 		995935E41B5EDA1C009CDD26 /* CardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayView.swift; sourceTree = "<group>"; };
@@ -208,14 +212,15 @@
 		8185E2FB1B608ADA00059124 /* Signing In/Up */ = {
 			isa = PBXGroup;
 			children = (
-				81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */,
 				8185E3021B60A20A00059124 /* InitialScreenVC.swift */,
 				8185E2FE1B6090A000059124 /* AuthenticationCalls.swift */,
 				8185E2F71B60899B00059124 /* SignInVC.swift */,
 				8185E2F91B608AD100059124 /* RegisterRestaurantVC.swift */,
 				813222DB1B681A3500613C60 /* RegisterRestaurantVC2.swift */,
+				81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */,
 				8185E2FC1B608FE800059124 /* SignInUserVC.swift */,
 				8185E3001B609B1400059124 /* RegisterUserVC.swift */,
+				994C61321B69244600E5EF7C /* ForgotPasswordUserVC.swift */,
 			);
 			name = "Signing In/Up";
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 				993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */,
 				99A04C5E1B60509C00C3E35B /* RestaurantDealsVC.swift */,
 				99A04C601B6050B900C3E35B /* RestaurantDealDetaislVC.swift */,
+				994C61341B692B3700E5EF7C /* UserProfileVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -348,7 +354,7 @@
 				TargetAttributes = {
 					81481B341B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
+						DevelopmentTeam = 56R6M4W3X8;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -464,6 +470,7 @@
 				819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */,
 				995935F01B5EDA1C009CDD26 /* FavoritesTVController.swift in Sources */,
 				8185E2FA1B608AD100059124 /* RegisterRestaurantVC.swift in Sources */,
+				994C61331B69244600E5EF7C /* ForgotPasswordUserVC.swift in Sources */,
 				8185E3011B609B1400059124 /* RegisterUserVC.swift in Sources */,
 				99A04C5D1B604FE700C3E35B /* RestaurantDealCell.swift in Sources */,
 				8132230F1B685F1800613C60 /* FoodCategories.swift in Sources */,
@@ -473,6 +480,7 @@
 				993285D51B5F3DF8003C19E1 /* RestaurantDetailController.swift in Sources */,
 				81B879121B691113003B1BB0 /* ForgotPasswordVC.swift in Sources */,
 				8185E2F81B60899B00059124 /* SignInVC.swift in Sources */,
+				994C61351B692B3700E5EF7C /* UserProfileVC.swift in Sources */,
 				81008C101B5C44830019E297 /* DataApi.swift in Sources */,
 				8185E3031B60A20A00059124 /* InitialScreenVC.swift in Sources */,
 				995935EF1B5EDA1C009CDD26 /* FavoritesCell.swift in Sources */,

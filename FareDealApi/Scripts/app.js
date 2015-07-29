@@ -13,6 +13,7 @@
     self.loginEmail = ko.observable();
     self.loginPassword = ko.observable();
 
+    self.resetPasswordEmail = ko.observable();
     function showError(jqXHR) {
         self.result(jqXHR.status + ': ' + jqXHR.statusText);
     }
@@ -77,6 +78,24 @@
     self.logout = function () {
         self.user('');
         sessionStorage.removeItem(tokenKey)
+    }
+
+
+    self.forgotpassword = function () {
+        self.result('');
+
+        var data = {
+            email: self.resetPasswordEmail()
+        };
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/Account/ForgotPassword?email=' + self.resetPasswordEmail(),
+            contentType: 'application/text; charset=utf-8'
+        }).done(function (data) {
+            alert("Check your email");
+            //self.result("Done!");
+        }).fail(showError);
     }
 }
 

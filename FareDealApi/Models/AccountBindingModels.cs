@@ -81,4 +81,22 @@ namespace FareDealApi.Models
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+
+
+    public class ResetPasswordBindingModel
+    {
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "New password")]
+        public string NewResetPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm new password")]
+        [Compare("NewResetPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        public string ConfirmResetPassword { get; set; }
+
+        public string id { get; set; }
+        public string code { get; set; }
+    }
 }

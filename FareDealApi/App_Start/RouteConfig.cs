@@ -18,6 +18,12 @@ namespace FareDealApi
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+               name: "setPassword",
+               url: "{controller}/{action}/{id}/{code}",
+               defaults: new { controller = "Home", action = "SetPassword", id=UrlParameter.Optional, code=UrlParameter.Optional}
+           );
         }
     }
 }

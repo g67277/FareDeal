@@ -16,6 +16,10 @@ using Microsoft.Owin.Security.OAuth;
 using FareDealApi.Models;
 using FareDealApi.Providers;
 using FareDealApi.Results;
+using System.IO;
+using RazorEngine;
+using System.Net.Http.Headers;
+using System.Threading;
 
 namespace FareDealApi.Controllers
 {
@@ -153,8 +157,32 @@ namespace FareDealApi.Controllers
             return Ok();
         }
 
+        // POST api/Account/ResetPassword
+        [Route("ResetPassword")]
+        [AllowAnonymous]
+        [HttpPost]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        public async Task<IHttpActionResult> ResetPassword(ResetPasswordBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            IdentityResult result = await UserManager.ResetPasswordAsync(model.id, HttpUtility.UrlDecode(model.code), model.NewResetPassword);
 
-        public async Task<IHttpActionResult> ForgotPassword(string email)
+            //IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> ForgotPassword(string email="")
         {
             if (!string.IsNullOrEmpty(email))
             {
@@ -164,21 +192,25 @@ namespace FareDealApi.Controllers
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     //return View("ForgotPasswordConfirmation");
-                    Uri locationHeader1 = new Uri(Url.Link("ResetPassword", new  {id="notfound" }));
+                    Uri locationHeader1 = new Uri(Url.Link("Home", new  {id="notfound" }));
                     return Created(locationHeader1, email);
                     //return NotFound();
                 }
 
 
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                code = HttpUtility.UrlEncode(code);
 
-                var callbackUrl = new Uri(Url.Link("ResetPassword", new { userId = user.Id, code = code }));
 
+                var callbackUrl = new Uri(Url.Link("setPassword", new { controller = "Home" }));
+                string s = callbackUrl.AbsoluteUri + "?id=" + user.Id + "&code=" + code;
+                //s = HttpUtility.UrlEncode(;
+                
                 await UserManager.SendEmailAsync(user.Id,
                                                         "Reset Password",
-                                                        "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                                                        "Please reset your password by clicking <a href=\"" + s + "\">here</a>");
 
-                Uri locationHeader = new Uri(Url.Link("ResetPassword", new { id = user.Id }));
+                Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
 
                 return Created(locationHeader, user);
             }
@@ -188,21 +220,7 @@ namespace FareDealApi.Controllers
            // return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
-        [Route("user/{id:guid}", Name = "ResetPassword")]
-        public async Task<IHttpActionResult> ResetPassword(string Id)
-        {
-            //Only SuperAdmin or Admin can delete users (Later when implement roles)
-            var user = await UserManager.FindByIdAsync(Id);
-
-            if (user != null)
-            {
-                return Ok(user);
-            }
-
-            return NotFound();
-        }
-
+       
         // POST api/Account/AddExternalLogin
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
@@ -241,6 +259,23 @@ namespace FareDealApi.Controllers
             return Ok();
         }
 
+        
+        [HttpGet]
+        [Route("IsEmailExist")]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> IsEmailExist(string email)
+        {
+            if (!string.IsNullOrEmpty(email))
+            {
+                var user = await UserManager.FindByNameAsync(email);
+                if (user != null)
+                {
+                    return Ok();               
+                }
+            }
+            return NotFound(); 
+        }
+    
         // POST api/Account/RemoveLogin
         [Route("RemoveLogin")]
         public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
@@ -391,6 +426,8 @@ namespace FareDealApi.Controllers
                 return GetErrorResult(result);
             }
 
+            /*
+
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
 
             var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new { userId = user.Id, code = code }));
@@ -402,8 +439,8 @@ namespace FareDealApi.Controllers
             Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
 
             return Created(locationHeader, user);
-           
-            //return Ok();
+           */
+            return Ok();
         }
 
         [Authorize(Roles = "Admin")]
@@ -570,6 +607,7 @@ namespace FareDealApi.Controllers
                     UserName = identity.FindFirstValue(ClaimTypes.Name)
                 };
             }
+
         }
 
         private static class RandomOAuthStateGenerator
@@ -592,7 +630,36 @@ namespace FareDealApi.Controllers
                 return HttpServerUtility.UrlTokenEncode(data);
             }
         }
-
         #endregion
     }
+
+       public class HtmlActionResult : IHttpActionResult
+        {
+            private const string ViewDirectory = @"E:\dev\ConsoleApplication8\ConsoleApplication8";
+            private string viewPath = HttpContext.Current.Server.MapPath(@"~/Views/Home/SetPassword.cshtml");
+            private readonly string _view;
+            private readonly dynamic _model;
+
+            public HtmlActionResult(string viewName, dynamic model)
+            {
+                _view = LoadView(viewPath);
+                _model = model;
+            }
+
+            public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+            {
+                var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+                var parsedView = Razor.Parse(_view, _model);
+                response.Content =  new StringContent(parsedView);
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
+                return Task.FromResult(response);
+            }
+
+            private static string LoadView(string name)
+            {
+                var view = File.ReadAllText(name);
+                return view;
+            }
+        }
+
 }

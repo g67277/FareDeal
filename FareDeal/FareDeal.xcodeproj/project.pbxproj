@@ -88,6 +88,7 @@
 		81B5B6AE1B56D375009B522A /* StoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreVC.swift; sourceTree = "<group>"; };
 		81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MidCase RegLine.otf"; sourceTree = "<group>"; };
 		81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		81B879171B6931CB003B1BB0 /* FareDeal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FareDeal-Bridging-Header.h"; sourceTree = "<group>"; };
 		81FA1BA11B5B0FFB00ABCD53 /* FareDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FareDeal.xcdatamodel; sourceTree = "<group>"; };
 		993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
 		995935E21B5EDA1C009CDD26 /* CardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
@@ -173,6 +174,7 @@
 				81481B431B56A2D6000EC386 /* LaunchScreen.xib */,
 				81481B381B56A2D6000EC386 /* Supporting Files */,
 				81FA1BA01B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld */,
+				81B879171B6931CB003B1BB0 /* FareDeal-Bridging-Header.h */,
 			);
 			path = FareDeal;
 			sourceTree = "<group>";
@@ -355,7 +357,7 @@
 					};
 					81481B491B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 56R6M4W3X8;
+						DevelopmentTeam = 9J676A68SR;
 						TestTargetID = 81481B341B56A2D6000EC386;
 					};
 				};
@@ -613,6 +615,7 @@
 			baseConfigurationReference = EFED01E1FD4AB234C93A922F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FareDeal/Info.plist;
@@ -620,6 +623,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -628,6 +633,7 @@
 			baseConfigurationReference = D8BB905533740AECB8C2BD9F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FareDeal/Info.plist;
@@ -635,6 +641,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;

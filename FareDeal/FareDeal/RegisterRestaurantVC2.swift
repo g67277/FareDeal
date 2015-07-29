@@ -8,8 +8,10 @@
 
 import UIKit
 import MobileCoreServices
+import ActionSheetPicker_3_0
 
-class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
+
+class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //Restaurant Name Field
     @IBOutlet weak var restNameField: UITextField!
@@ -17,7 +19,6 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     
     //Category
     @IBOutlet weak var catButton: UIButton!
-    @IBOutlet weak var catTableView: UITableView!
     var categories:FoodCategories = FoodCategories()
     var categoryArray = []
     
@@ -36,14 +37,14 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     
     // Price Tier
     @IBOutlet weak var priceControls: UISegmentedControl!
+    var selectedPrice = 0
     var validPrice = false
     
     //Hours
-    @IBOutlet weak var weedayO: UITextField!
-    @IBOutlet weak var weekdayC: UITextField!
-    @IBOutlet weak var weekendO: UITextField!
-    @IBOutlet weak var weekendC: UITextField!
-    var validHours = false
+    @IBOutlet weak var weedayO: UIButton!
+    @IBOutlet weak var weekdayC: UIButton!
+    @IBOutlet weak var weekendO: UIButton!
+    @IBOutlet weak var weekendC: UIButton!
     
     //Picture
     @IBOutlet weak var imgView: UIImageView!
@@ -56,6 +57,8 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     var callPart1 = ""
     var callPart2 = ""
     var profileView = false
+    
+
     
 
     
@@ -92,62 +95,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         
         if _sender.tag == 0{
             
-            // Take picture here
-            
-            //Create the AlertController
-            let actionSheetController: UIAlertController = UIAlertController(title: "Action Sheet", message: "Swiftly Now! Choose an option!", preferredStyle: .ActionSheet)
-            
-            //Create and add the Cancel action
-            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
-                //Just dismiss the action sheet
-            }
-            actionSheetController.addAction(cancelAction)
-            //Create and add first option action
-            let takePictureAction: UIAlertAction = UIAlertAction(title: "Take Picture", style: .Default) { action -> Void in
-                //Code for launching the camera goes here
-                if UIImagePickerController.isSourceTypeAvailable(
-                    UIImagePickerControllerSourceType.Camera) {
-                        
-                        let imagePicker = UIImagePickerController()
-                        
-                        imagePicker.delegate = self
-                        imagePicker.sourceType =
-                            UIImagePickerControllerSourceType.Camera
-                        imagePicker.mediaTypes = [kUTTypeImage as NSString]
-                        imagePicker.allowsEditing = false
-                        
-                        self.presentViewController(imagePicker, animated: true,
-                            completion: nil)
-                        self.newMedia = true
-                }
-                
-            }
-            actionSheetController.addAction(takePictureAction)
-            //Create and add a second option action
-            let choosePictureAction: UIAlertAction = UIAlertAction(title: "Choose From Camera Roll", style: .Default) { action -> Void in
-                //Code for picking from camera roll goes here
-                if UIImagePickerController.isSourceTypeAvailable(
-                    UIImagePickerControllerSourceType.SavedPhotosAlbum) {
-                        let imagePicker = UIImagePickerController()
-                        
-                        imagePicker.delegate = self
-                        imagePicker.sourceType =
-                            UIImagePickerControllerSourceType.PhotoLibrary
-                        imagePicker.mediaTypes = [kUTTypeImage as NSString]
-                        imagePicker.allowsEditing = false
-                        self.presentViewController(imagePicker, animated: true,
-                            completion: nil)
-                        self.newMedia = false
-                }
-            }
-            
-            actionSheetController.addAction(choosePictureAction)
-            
-            //We need to provide a popover sourceView when using it on iPad
-            //actionSheetController.popoverPresentationController?.sourceView = sender as! UIView;
-            
-            //Present the AlertController
-            self.presentViewController(actionSheetController, animated: true, completion: nil)
+            self.startImageAction()
             
         }else if _sender.tag == 1{
             
@@ -158,16 +106,157 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             
             // save updated changes here
             
-        }else if _sender.tag == 4{
+        }
+        
+    }
+    @IBAction func pickerSelected(sender: AnyObject) {
+        
+        if sender.tag == 4 {
+            ActionSheetStringPicker.showPickerWithTitle("Category", rows: categoryArray as [AnyObject], initialSelection: 1, doneBlock: {
+                picker, value, index in
+                
+                self.catButton.setTitle("\(index)", forState: UIControlState.Normal)
+                
+                println("value = \(value)")
+                println("index = \(index)")
+                println("picker = \(picker)")
+                return
+                }, cancelBlock: { ActionStringCancelBlock in return }, origin: sender)
             
-            if self.catTableView.hidden {
-                self.catTableView.hidden = false
-            }else {
-                self.catTableView.hidden = true
+        }else if sender.tag > 4 && sender.tag < 9{
+            
+            ActionSheetStringPicker.showPickerWithTitle("Nav Bar From Picker", rows: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] as [AnyObject], initialSelection: 1, doneBlock: {
+                picker, value, index in
+                
+                if sender.tag == 5 {
+                    self.weedayO.setTitle("\(index) am", forState: UIControlState.Normal)
+                }else if sender.tag == 6{
+                    self.weekdayC.setTitle("\(index) pm", forState: UIControlState.Normal)
+                }else if sender.tag == 7{
+                    self.weekendO.setTitle("\(index) am", forState: UIControlState.Normal)
+                }else if sender.tag == 8{
+                    self.weekendC.setTitle("\(index) pm", forState: UIControlState.Normal)
+                }
+                
+                println("value = \(value)")
+                println("index = \(index)")
+                println("picker = \(picker)")
+                return
+                }, cancelBlock: { ActionStringCancelBlock in return }, origin: sender)
+            
+            
+            
+//            var datePicker = ActionSheetDatePicker(title: "Time:", datePickerMode: UIDatePickerMode.Time, selectedDate: NSDate(), doneBlock: {
+//                picker, value, index in
+//                
+//                var test:String = String(stringInterpolationSegment: value)
+//                
+//                let dateFormatter = NSDateFormatter()
+//                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSSxxx"
+//                let date = dateFormatter.dateFromString(test)
+//                
+//                
+//                if sender.tag == 5 {
+//                    self.weedayO.setTitle("\(value)", forState: UIControlState.Normal)
+//                }else if sender.tag == 6{
+//                    self.weekdayC.setTitle("\(value)", forState: UIControlState.Normal)
+//                }else if sender.tag == 7{
+//                    self.weekendO.setTitle("\(value)", forState: UIControlState.Normal)
+//                }else if sender.tag == 8{
+//                    self.weekendC.setTitle("\(value)", forState: UIControlState.Normal)
+//                }
+//                
+//                println("value = \(value)")
+//                println("index = \(index)")
+//                println("picker = \(picker.description)")
+//                return
+//                }, cancelBlock: { ActionStringCancelBlock in return }, origin: sender as! UIView)
+//            datePicker.minuteInterval = 20
+//            datePicker.showActionSheetPicker()
+        }
+        
+        
+    }
+    
+    
+    
+    @IBAction func priceControl(sender: AnyObject) {
+        
+        switch sender.selectedSegmentIndex{
+        case 0:
+            selectedPrice = 0
+        case 1:
+            selectedPrice = 1
+            println(selectedPrice)
+        case 2:
+            selectedPrice = 2
+        case 3:
+            selectedPrice = 3
+        default:
+            break; 
+        }
+    }
+    
+    
+    // Camera methods
+    
+    func startImageAction(){
+        // Take picture here
+        
+        //Create the AlertController
+        let actionSheetController: UIAlertController = UIAlertController(title: "Action Sheet", message: "Swiftly Now! Choose an option!", preferredStyle: .ActionSheet)
+        
+        //Create and add the Cancel action
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            //Just dismiss the action sheet
+        }
+        actionSheetController.addAction(cancelAction)
+        //Create and add first option action
+        let takePictureAction: UIAlertAction = UIAlertAction(title: "Take Picture", style: .Default) { action -> Void in
+            //Code for launching the camera goes here
+            if UIImagePickerController.isSourceTypeAvailable(
+                UIImagePickerControllerSourceType.Camera) {
+                    
+                    let imagePicker = UIImagePickerController()
+                    
+                    imagePicker.delegate = self
+                    imagePicker.sourceType =
+                        UIImagePickerControllerSourceType.Camera
+                    imagePicker.mediaTypes = [kUTTypeImage as NSString]
+                    imagePicker.allowsEditing = false
+                    
+                    self.presentViewController(imagePicker, animated: true,
+                        completion: nil)
+                    self.newMedia = true
             }
             
         }
+        actionSheetController.addAction(takePictureAction)
+        //Create and add a second option action
+        let choosePictureAction: UIAlertAction = UIAlertAction(title: "Choose From Camera Roll", style: .Default) { action -> Void in
+            //Code for picking from camera roll goes here
+            if UIImagePickerController.isSourceTypeAvailable(
+                UIImagePickerControllerSourceType.SavedPhotosAlbum) {
+                    let imagePicker = UIImagePickerController()
+                    
+                    imagePicker.delegate = self
+                    imagePicker.sourceType =
+                        UIImagePickerControllerSourceType.PhotoLibrary
+                    imagePicker.mediaTypes = [kUTTypeImage as NSString]
+                    imagePicker.allowsEditing = false
+                    self.presentViewController(imagePicker, animated: true,
+                        completion: nil)
+                    self.newMedia = false
+            }
+        }
         
+        actionSheetController.addAction(choosePictureAction)
+        
+        //We need to provide a popover sourceView when using it on iPad
+        //actionSheetController.popoverPresentationController?.sourceView = sender as! UIView;
+        
+        //Present the AlertController
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
@@ -181,6 +270,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
                 as! UIImage
             
             imgView.image = image
+            validImage = true
             
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self,
@@ -211,6 +301,8 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    // Registration Call Methods
     
     func signUP(){
         
@@ -258,7 +350,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         
         
         // Will have to come back to URL Validation
-                
+        
         if let validURL : NSURL = NSURL(string: websiteField.text){
             validWeb = true
         }else{
@@ -267,17 +359,24 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             validWeb = false
         }
         
-        //Check segmented controls
-        // Will do later
+        if !validImage{
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "Sign Up Failed!"
+            alertView.message = "Please add an image to the form"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+        }
+ 
         
-        //Check hours
-        // Will do later
-        
-        if nameValid && validAddress && validPhone && validWeb && validPhone && validHours && validImage {
+        if nameValid && validAddress && validPhone && validWeb && validPhone && validImage {
             
-             callPart2 = "\(callPart1), \"RestName\":\"\(restNameField.text)\", \(formattedAddress), \"PhoneNumber\":\"\(phoneNumField.text)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"Hours\":\"\(priceControls.selected)\""
+            callPart2 = "\(callPart1), \"RestName\":\"\(restNameField.text)\", \(formattedAddress), \"PhoneNumber\":\"\(phoneNumField.text)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"Hours\":\"\(priceControls.selected)\""
             
-            authenticationCall.registerRestaurant(callPart2)
+            // Testing for now...
+            authenticationCall.registerRestaurant2(callPart1)
+            
+            //authenticationCall.registerRestaurant(callPart2)
             
         }
         
@@ -287,27 +386,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     func saveData(){
         
     }
-    
-    // Tableview methods
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryArray.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = categoryArray[indexPath.row] as? String
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        catButton.setTitle(categoryArray[indexPath.row] as? String, forState: UIControlState.Normal)
-        catTableView.hidden = true
-        println("Testing")
-        
-    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

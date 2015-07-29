@@ -57,6 +57,14 @@ class RegisterRestaurantVC: UIViewController {
     
     func validateInput(){
         
+        //testing only
+        firstName.text = "naz"
+        lastName.text = "naz"
+        emailAddressField.text = "naz@naz.com"
+        passwordField.text = "testing"
+        passwordCField.text = "testing"
+        // Delete above
+        
         if count(firstName.text) < 2 {
             firstName.text = ""
             firstName.placeholder = "Please enter a valid name"
@@ -100,7 +108,10 @@ class RegisterRestaurantVC: UIViewController {
         if (segue.identifier == "toRegister2") {
             var svc = segue.destinationViewController as! RegisterRestaurantVC2;
             
-            svc.callPart1 = "\"FirstName\":\"\(firstName.text)\",\"LastName\":\"\(lastName.text)\",\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\""
+
+            svc.callPart1 = "{\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\"}"
+            
+            //svc.callPart1 = "\"FirstName\":\"\(firstName.text)\",\"LastName\":\"\(lastName.text)\",\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\""
             
         }
     }

@@ -34,5 +34,10 @@ class ForgotPasswordVC: UIViewController {
         // set the rounded corners after autolayout has finished
         resetPasswordButtonView.roundCorners(.AllCorners, radius: 14)
     }
+    
+    func DismissKeyboard(){
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
 
 }

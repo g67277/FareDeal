@@ -104,6 +104,15 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
         //Update numbers here
         
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "toProfile") {
+            var svc = segue.destinationViewController as! RegisterRestaurantVC2;
+            
+            svc.profileView = true
+            
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

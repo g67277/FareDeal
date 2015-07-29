@@ -10,11 +10,15 @@ import UIKit
 
 class RegisterRestaurantVC: UIViewController {
     
-    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var firstName: UITextField!
+    @IBOutlet weak var lastName: UITextField!
+    @IBOutlet weak var emailAddressField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordCField: UITextField!
+    var passwordValid = false
     
-    let authenticationCall:AuthenticationCalls = AuthenticationCalls()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +40,7 @@ class RegisterRestaurantVC: UIViewController {
         
         if _sender.tag == 0{
             
-            //sign up here
-            
-            if authenticationCall.registerRestaurant(usernameField.text, password: passwordField.text, confirm_password: passwordCField.text) {
-                
-                if authenticationCall.signIn(usernameField.text, password: passwordField.text){
-                    self.navigationController?.popViewControllerAnimated(true)
-                }
-            }
+            self.validateInput()
             
         }else if _sender.tag == 1{
             
@@ -58,6 +55,55 @@ class RegisterRestaurantVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func validateInput(){
+        
+        if count(firstName.text) < 2 {
+            firstName.text = ""
+            firstName.placeholder = "Please enter a valid name"
+        }
+        if count(lastName.text) < 2 {
+            lastName.text = ""
+            lastName.placeholder = "Please enter a valid name"
+        }
+        if !validateEmail(emailAddressField.text) {
+            emailAddressField.text = ""
+            emailAddressField.placeholder = "Please enter a valid email address"
+        }
+        if count(passwordField.text) < 6 {
+            passwordField.text = ""
+            passwordField.placeholder = "Password needs to be at least 6 characters"
+        }else{
+            if passwordField.text != passwordCField.text {
+                passwordField.text = ""
+                passwordCField.text = ""
+                passwordField.placeholder = "Password does not match"
+                passwordCField.placeholder = "Password does not match"
+
+            }else{
+                passwordValid = true
+            }
+        }
+        
+        if count(firstName.text) > 2 && count(lastName.text) > 2 && validateEmail(emailAddressField.text) && passwordValid{
+            self.performSegueWithIdentifier("toRegister2", sender: nil)
+        }
+        
+        
+    }
+    
+    func validateEmail(candidate: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluateWithObject(candidate)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "toRegister2") {
+            var svc = segue.destinationViewController as! RegisterRestaurantVC2;
+            
+            svc.callPart1 = "\"FirstName\":\"\(firstName.text)\",\"LastName\":\"\(lastName.text)\",\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\""
+            
+        }
+    }
     
     /*
     // MARK: - Navigation

@@ -127,34 +127,15 @@ public class AuthenticationCalls {
     }
 
     // **TESTING REGISTRATION: Method will change**
-    func registerRestaurant(username: NSString, password: NSString, confirm_password: NSString) -> (Bool){
+    func registerRestaurant(call: NSString) -> (Bool){
+            
         
-        if ( username.isEqualToString("") || password.isEqualToString("") ) {
             
-            var alertView:UIAlertView = UIAlertView()
-            alertView.title = "Sign Up Failed!"
-            alertView.message = "Please enter Username and Password"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
-        } else if ( !password.isEqual(confirm_password) ) {
-            
-            var alertView:UIAlertView = UIAlertView()
-            alertView.title = "Sign Up Failed!"
-            alertView.message = "Passwords doesn't Match"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
-        } else {
-            
-            
-            var post:NSString = "{\"Email\":\"\(username)\",\"Password\":\"\(password)\",\"ConfirmPassword\":\"\(confirm_password)\"}"
-            
-            NSLog("PostData: %@",post);
+            NSLog("PostData: %@",call);
             
             var url:NSURL = NSURL(string: "http://ec2-52-2-195-214.compute-1.amazonaws.com/api/Account/Register")!
             
-            var postData:NSData = post.dataUsingEncoding(NSUTF8StringEncoding)!
+            var postData:NSData = call.dataUsingEncoding(NSUTF8StringEncoding)!
             
             var postLength:NSString = String( postData.length )
             
@@ -248,7 +229,6 @@ public class AuthenticationCalls {
                 alertView.addButtonWithTitle("OK")
                 alertView.show()
             }
-        }
         
         return false
     }

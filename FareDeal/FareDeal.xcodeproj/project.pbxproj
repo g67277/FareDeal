@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		81008C101B5C44830019E297 /* DataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81008C0F1B5C44830019E297 /* DataApi.swift */; };
 		81008C121B5C46AE0019E297 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81008C111B5C46AE0019E297 /* DataManager.swift */; };
+		813222DC1B681A3500613C60 /* RegisterRestaurantVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813222DB1B681A3500613C60 /* RegisterRestaurantVC2.swift */; };
+		8132230F1B685F1800613C60 /* FoodCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132230E1B685F1800613C60 /* FoodCategories.swift */; };
 		81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B3A1B56A2D6000EC386 /* AppDelegate.swift */; };
 		81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B3C1B56A2D6000EC386 /* BusinessHome.swift */; };
 		81481B401B56A2D6000EC386 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81481B3E1B56A2D6000EC386 /* Main.storyboard */; };
@@ -59,6 +61,8 @@
 		0C34D443EE29BEF7C8222446 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81008C0F1B5C44830019E297 /* DataApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataApi.swift; sourceTree = "<group>"; };
 		81008C111B5C46AE0019E297 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		813222DB1B681A3500613C60 /* RegisterRestaurantVC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterRestaurantVC2.swift; sourceTree = "<group>"; };
+		8132230E1B685F1800613C60 /* FoodCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCategories.swift; sourceTree = "<group>"; };
 		81481B351B56A2D6000EC386 /* FareDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FareDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81481B391B56A2D6000EC386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81481B3A1B56A2D6000EC386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 				8185E2FE1B6090A000059124 /* AuthenticationCalls.swift */,
 				8185E2F71B60899B00059124 /* SignInVC.swift */,
 				8185E2F91B608AD100059124 /* RegisterRestaurantVC.swift */,
+				813222DB1B681A3500613C60 /* RegisterRestaurantVC2.swift */,
 				8185E2FC1B608FE800059124 /* SignInUserVC.swift */,
 				8185E3001B609B1400059124 /* RegisterUserVC.swift */,
 			);
@@ -214,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				819281DC1B5B3FD20003AD4D /* Deal.swift */,
+				8132230E1B685F1800613C60 /* FoodCategories.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -455,6 +461,7 @@
 				8185E2FA1B608AD100059124 /* RegisterRestaurantVC.swift in Sources */,
 				8185E3011B609B1400059124 /* RegisterUserVC.swift in Sources */,
 				99A04C5D1B604FE700C3E35B /* RestaurantDealCell.swift in Sources */,
+				8132230F1B685F1800613C60 /* FoodCategories.swift in Sources */,
 				995935ED1B5EDA1C009CDD26 /* CardOverlayView.swift in Sources */,
 				99A04C5B1B604F9E00C3E35B /* GradientView.swift in Sources */,
 				819281D91B5B3E680003AD4D /* DealsVC.swift in Sources */,
@@ -465,6 +472,7 @@
 				995935EF1B5EDA1C009CDD26 /* FavoritesCell.swift in Sources */,
 				819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */,
 				81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */,
+				813222DC1B681A3500613C60 /* RegisterRestaurantVC2.swift in Sources */,
 				995935F11B5EDA1C009CDD26 /* HomeSwipeViewController.swift in Sources */,
 				81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */,
 				8185E2FF1B6090A000059124 /* AuthenticationCalls.swift in Sources */,

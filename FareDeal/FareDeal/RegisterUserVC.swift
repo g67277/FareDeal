@@ -73,13 +73,6 @@ class RegisterUserVC: UIViewController {
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "businessForgotPassword" {
-            let forgotPasswordVC: ForgotPasswordVC = segue.destinationViewController as! ForgotPasswordVC
-            forgotPasswordVC.senderTag = 1
-        }
-        
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

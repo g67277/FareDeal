@@ -70,6 +70,9 @@ class SignInUserVC: UIViewController {
                 self.passwordField.text = ""
                 self.performSegueWithIdentifier("toUserMain", sender: self)
             }
+        } else if _sender.tag == 1 {
+            self.performSegueWithIdentifier("userForgotPassword", sender: self)
+
         }
         
     }
@@ -83,13 +86,6 @@ class SignInUserVC: UIViewController {
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "userForgotPassword" {
-            let forgotPasswordVC: ForgotPasswordVC = segue.destinationViewController as! ForgotPasswordVC
-            forgotPasswordVC.senderTag = 0
-        }
-    }
-
 
     
 }

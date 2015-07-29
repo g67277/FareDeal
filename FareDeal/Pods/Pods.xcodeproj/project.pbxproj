@@ -10,133 +10,134 @@
 		021354581B89CF8C81D81C06B811E191 /* FloatConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 7535D9EE3BABC577427F0F52A983BC83 /* FloatConversion.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		03B00B8ED1077EC1072AE0950D4D91A3 /* UnitBezier.h in Headers */ = {isa = PBXBuildFile; fileRef = EB3D9C529DEEE6D71082237B8784F7CB /* UnitBezier.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		05772089EB75EAF430DAFB8AE3280021 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DDD06AA060CF006E0E6AF1D4CEEFFC /* Pods-dummy.m */; };
-		06038CA1FE0C8721F2D7BD583D63432A /* ActionSheetStringPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = BF03751624EC42CE461BED85D04CA8E8 /* ActionSheetStringPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		069869B49F5CFF1851D5D20507649450 /* pop-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BB6F960EEA2B017396B425C1B18040A /* pop-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09B09AC2F9AB532DD64EFD0D2E75B134 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8CE2FD1AC3E241509CAD07418E3A14 /* Foundation.framework */; };
 		0D1EC15AF5E1F0B6FD567DEF62329AF4 /* POPPropertyAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = B18F06B5C8D3A9B2A47E38234A183D74 /* POPPropertyAnimation.mm */; };
-		1159DD4B1062E1ECA255C2E25DDE5F05 /* ActionSheetDistancePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = E0AFC271D5FFEB61D462A52378526186 /* ActionSheetDistancePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		142105D6194F8E4F90AC4972256E1823 /* KolodaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3EC58074198149D3DA27BAF2C7972E /* KolodaView.swift */; };
-		160B2C4A981964FC9379C70E68E7A7BF /* ActionSheetCustomPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = E2D8DBEE305FC45E8CC9EDE522B841AA /* ActionSheetCustomPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2263CED8F9B7933C8461507D14667773 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8CE2FD1AC3E241509CAD07418E3A14 /* Foundation.framework */; };
+		0E4EF110894709443E25DA0E67F4AECD /* SWActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = B452979255C933431A39AD7FE908E36F /* SWActionSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C13BFA9979BD48A901BA575589E78C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EBB9531A1C5FF45940434586A254EDA /* UIKit.framework */; };
+		2104717A6FBE1CF11E10E49026F5150A /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D490B990872039478BB98DFA6F280111 /* pop.framework */; };
 		2584D87144B78A1AA74FD04154B793FC /* POPGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BAF500DDCEA6BD9119130FFA6A42227 /* POPGeometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		25F63AC30A6F9B197FD7F1951CEB806B /* ActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5E152E6FED9F43A712F8766F1E9B8 /* ActionSheetDatePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		2638EA5BC035E4524973A02734E03B1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8CE2FD1AC3E241509CAD07418E3A14 /* Foundation.framework */; };
 		27104424CA9DE138DAC55BE35C7EE889 /* POPAnimationRuntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 791B16214C84A68FA697346419913907 /* POPAnimationRuntime.mm */; };
+		2C74A4D2044FCF1E1256A4E465BAE1F7 /* SWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAA707B0608D0F42620DF05BE15FC43 /* SWActionSheet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		2E6985CA2202C377843B16408F64CE9A /* POPLayerExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = D9367824B8CA1433DF027595BAD4CEF8 /* POPLayerExtras.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		31847C61801E8B34A2DE10954D6A1923 /* POPCustomAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06205CA54A4E27171DF21339DC2F2C93 /* POPCustomAnimation.mm */; };
-		34DB2D962AA2665D64E2E1D02554CCF4 /* DraggableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0165A3727549D0103714B0598B248D7C /* DraggableCardView.swift */; };
 		372B79355876396F0AE399C91F6F50FE /* POPCGUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7956C67B003AAF0BE3CAEA244E50E7CF /* POPCGUtils.mm */; };
-		41AB6B0792DEF509704408DB69431BB9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 993B92EAD5D2FB0188A4C93CAD630661 /* UIKit.framework */; };
+		3BC10F83D513758C27717688D96C1E98 /* ActionSheetDistancePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0293DD56ADF137C33CD531A11852A8A6 /* ActionSheetDistancePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		4297A1A986139D65C48F4EEDE03AA624 /* POPAnimationEventInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 018420F00EC3AC44BBFEA812C90542D3 /* POPAnimationEventInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		42CFA67B9CE45AE8EBF95744ADB86443 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC559592C40687DAE299E0C654D27D /* OverlayView.swift */; };
 		474CF089292060B14CE401D50A6AC50F /* POPAnimationEvent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2F2FD499D3B45DA65B4866FE476A556B /* POPAnimationEvent.mm */; };
+		4A327C998EEF83109113804518E2B1E1 /* Koloda-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AFD8E04C2413C50F571F6070B623DA7 /* Koloda-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4EBE633749EC1B9B05A10B1EBF5EC5AE /* POPVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 14F3F7AAB2CC146A01D9090469A5468E /* POPVector.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		50873B1C294E4FC7A84C2591FBE52C52 /* ActionSheetDistancePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 31CA6EEB21582090D63A286CAE054B25 /* ActionSheetDistancePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52E065DAAA5A8AD99AFAD6EA8C29A687 /* POPBasicAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = DE46308E5F9E22F6C1CD013422338EC1 /* POPBasicAnimation.mm */; };
 		530C0CC280B5D8447B5B503E4E111BA4 /* POPAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C2AFF473520B43EA005710783FAFB5C /* POPAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		533DE0E605D42536A7BBCE80CD6D1D40 /* ActionSheetLocalePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F34EFE194C743939B5406DE4B131C73D /* ActionSheetLocalePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		53A8FFC87CC2D166D150DEA72307473D /* POP.h in Headers */ = {isa = PBXBuildFile; fileRef = 523311DC948A1658877C300FA6DB3313 /* POP.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		544AADF6B6A7F358023515B133A1662A /* AbstractActionSheetPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = FDD736F5F6D26B6CE5D5485AD9DC9789 /* AbstractActionSheetPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55CABDE707E3E0E8B1641AB5E6EB9825 /* POPBasicAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 450FDBABB60F1AAAC696DACE8A9FA9EC /* POPBasicAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		55D157263541543E2068FFD24FE792F2 /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92782EC2532D32BDD78906E464BB3BF9 /* DistancePickerView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		55EAD29CAF3B487429D2321ACEFD13C5 /* POPMath.h in Headers */ = {isa = PBXBuildFile; fileRef = D733186D65D72BAB76D9FF771A1B7D69 /* POPMath.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		593FC446AB54D19CF45C0039C600F241 /* KolodaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A88B50465B14C1398BC4A919A50CE6 /* KolodaView.swift */; };
+		5B09FC775D3AF17FCC8E6406AECD2718 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8CE2FD1AC3E241509CAD07418E3A14 /* Foundation.framework */; };
+		5EBEF778D90BAC3BC0FC56F0EB233CED /* ActionSheetDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BF1C7097AA3C665F74ED6A374834A11 /* ActionSheetDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		600E86A1AF99273F953D8E1DF62ACEFC /* POPAnimationTracer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BA8CF2322E0BD7E63F0E4DEB87BF71C /* POPAnimationTracer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		604FE873B6B14CFAB72085950184F507 /* POPAnimatableProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09B73C5CA224BA97511226D9B3ACE832 /* POPAnimatableProperty.mm */; };
-		6246B11E733CE999E94B1E343AE6AD3A /* ActionSheetDistancePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD023EB80964E5134B98B0FD6286004 /* ActionSheetDistancePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		63309CA459F407FCCF4BBDCBE68EEF84 /* POPAnimationTracerInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3495722589499C61985346ADE839B5F2 /* POPAnimationTracerInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6569A5CEF68C3F0CA2907DA502628AEB /* POPAnimationExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 278B1A71664562FEAC45E5780CB9CE10 /* POPAnimationExtras.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65D15D5239CF788BF207273B8C2C426D /* POPDecayAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = BB95CE9CF413ED914EC6A9614BFF4FB9 /* POPDecayAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		65D64DF4A62321D70C585458B6FE3810 /* POPCGUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = C24164FA8CEA5003D9E8B53008B9A38E /* POPCGUtils.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6644CD4FBC04234B8390BF87A0B7D811 /* ActionSheetPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 533C9E34472FE8A7EBD773244DD3EEB7 /* ActionSheetPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		683ACEE1C5BB0E9F260C506483937BAC /* POPPropertyAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 16B3FE3CD4F6EA86384A732276C724ED /* POPPropertyAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6EB93E3BBEBBCFCD9F14FA642904CA29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8CE2FD1AC3E241509CAD07418E3A14 /* Foundation.framework */; };
+		6A9C496AF840DB2FA1EE3004330E9D6F /* ActionSheetPicker-3.0-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED594D2B20C042D137BB7FDC4F2691A /* ActionSheetPicker-3.0-dummy.m */; };
+		6BE051477EC13EE42A2E04D198C4E17D /* DistancePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADF753FC09815A5B7BC845A72A7DEF /* DistancePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		74C30BB27FDF21EFD2329D3942CF5270 /* POPMath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6662B40A6E62047EF1048456C8745C23 /* POPMath.mm */; };
 		751AF4B7531ECE8B7E7164388DDE461B /* POPAnimationExtras.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCCC18597DBD022F4CA2810086ABB7 /* POPAnimationExtras.mm */; };
+		754DB4CD2570F176322B6D858A5104FE /* DraggableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A53A64615AC9635873243C641A774 /* DraggableCardView.swift */; };
+		7820520804A0CB891CE1C6C9933C05EC /* ActionSheetStringPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BE3D83C693E647D1596B3BD126A32DB /* ActionSheetStringPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD16E3D2450B2B08E77FC6625575CDB /* AbstractActionSheetPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C5A36B53B14CBDFFF12005D34C89928 /* AbstractActionSheetPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7AD7472B282FCDC16F8354CCF816FCED /* POPLayerExtras.mm in Sources */ = {isa = PBXBuildFile; fileRef = 23FE76BC4A932D49C35731EA086C0460 /* POPLayerExtras.mm */; };
+		7CF32074F2F1AF44941B7183E59FA284 /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0296926DB74CA70DC32F44E319A8AD /* DistancePickerView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7D0CA9B7A9E3C325EDB7EB6926417BAA /* ActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0013C98767AF8F693CB6E36E5C12F2B9 /* ActionSheetDatePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		8353BD2286A69CAD5A1C2E99485CE805 /* POPAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D1464A73DD2E0E08C630BC1ACBD862F /* POPAction.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		83E9DE825B438211D6B88D0081A9084D /* ActionSheetCustomPickerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 24909A9E162835ED09A2B4AB026B6175 /* ActionSheetCustomPickerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84D342894070FE6B0BC1891FD6132B51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8CE2FD1AC3E241509CAD07418E3A14 /* Foundation.framework */; };
 		854124D4664D201625A43256088A5071 /* POPAnimationPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F8DBC1CC9D4D6D1109CDE69462027A /* POPAnimationPrivate.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		87ADFDE88F31C984C3E40E23CB1B29DF /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7ACC1A9C0F8F99F58AF4BDFF2EB783 /* OverlayView.swift */; };
-		8833C023C3A70EE0C49FDF735F25925B /* ActionSheetPicker-3.0-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 943C91B787B41501E281138899EAC256 /* ActionSheetPicker-3.0-dummy.m */; };
 		8DE8F09C842CB3D98B3A79E233A4985A /* POPGeometry.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF90C0B9A49AFA093C6A2ECEA5546BBB /* POPGeometry.mm */; };
 		8DEFEB264AC76D77D54DF53965B9F820 /* TransformationMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = FBFB90456A8F8A6E2654CE15A02DC275 /* TransformationMatrix.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		90AB514A3B1E105FAAE0EF45A923E9DB /* ActionSheetPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 9ED1F7BA335717420CF2E74A8C25DFEA /* ActionSheetPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		916743EC8D2A04EE54AF4402BDABEA0D /* POPDecayAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 047A1986B80542FD49EBBD018F91701C /* POPDecayAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		929E5B80E4DC463FCA1244EEA47D2C0E /* POPDecayAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97CFF6C6DD5CC390A5B62DD9CBEB1868 /* POPDecayAnimation.mm */; };
 		95B9252D22EFAA4712EB5736F78F3ED8 /* POPSpringAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = BBC70214DFB3464EFEC1393D3512C50F /* POPSpringAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		95E199E4270876785283DAC9AC035A95 /* Koloda-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A8888339BA12FB2417F19E4696578C /* Koloda-dummy.m */; };
-		9709A4F3E10A3EF4C230620A584C233B /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B909BF6E726AF6338EC46DD1BE97E1 /* AbstractActionSheetPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		98E6714A6B0C0EF52D4C4A9ADB710B97 /* POPAnimatableProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C97DF362AEA19B90EBAF6441A060F7 /* POPAnimatableProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9DAE75AE1C75573CE68F1D676EB6F5BA /* SWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 047575CC47960E0643F5780483734942 /* SWActionSheet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		A37E46150D0BCC741A1AE619A7474580 /* POPSpringAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3605EE0A56A4223923216CFEAC4DCC53 /* POPSpringAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A920F351DC50A80288983EC9943E7357 /* Koloda-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 028C3A4CE768EB19793B2660D2B0D298 /* Koloda-dummy.m */; };
 		AA7DADB68E695C3314E781C536607276 /* TransformationMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A8A8B5E492346A9190BE7C6C202284 /* TransformationMatrix.cpp */; };
+		AC73E35895EBEA4A30066D3003BAC89A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EBB9531A1C5FF45940434586A254EDA /* UIKit.framework */; };
 		ADCCB849D35EA835E867DE61C379959A /* POPDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = C54EFBF041744706E6B4BEFC761FEC5E /* POPDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B2FCA21518C1FD58B07F1621332266C6 /* POPAnimationTracer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9E486B8C15C4BFCFA87C9E8DBB6940BC /* POPAnimationTracer.mm */; };
 		B606C864234A951B3F00D85192D00BA2 /* POPAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9809A1844BBEF6211939FEF98F84C10D /* POPAnimation.mm */; };
 		B642CB1461D978CE4EE5BC0DF96256CF /* POPAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D3FEC0792CD0C0F3D728117219C5F6C /* POPAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B71203D3D18B70B0B2BE9FA78BBC1893 /* POPPropertyAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 498DDEDBE6218A6A490B0C2DDE58C840 /* POPPropertyAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		BCF197023994E0D58FA719925DF83A09 /* POPVector.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC82EDCDB98EFD9E2AF5BD74A9F1617D /* POPVector.mm */; };
-		C326E67E365BD84A5D4C7D63B4281E72 /* ActionSheetStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6A54572CD8B40C9DE0530294DE303D /* ActionSheetStringPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		CB83231B5CF523503E50D5E0D9BE629B /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDE2FA4378BE29A8DA50B4011422B20 /* pop.framework */; };
-		D3FAF2186FBEF1CAE5AB3C275D31F4A5 /* ActionSheetDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB39D6DDECBD449E14BA327C2A08B24 /* ActionSheetDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C30CE74AFA9FA85B9DF4D42F5137FF2E /* ActionSheetLocalePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 380F71DC6AB92124DE4F4197322CCD0C /* ActionSheetLocalePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0EBC154C17222EB22913B5FC4B03BA6 /* ActionSheetLocalePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB681147BDA3B14C36E18CBF94D6159 /* ActionSheetLocalePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		D4358A5EE61F6A831BDB5CCD5399977E /* POPAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DCCAFF2DCDA3043F00ED7360F2A1784 /* POPAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D47875DBF720A346CF459DDF1402477B /* ActionSheetLocalePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 218916B7B1366ACF03364B9821536D79 /* ActionSheetLocalePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6DF03FDE6599C970735990D4A9EC820 /* POPCustomAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE0626F3AC819CF3193B4B5B6106338 /* POPCustomAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D846E565D31D05BCA6E38F4080B1A0C7 /* POPAnimatorPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E5A643064BEC7386732703FCF4B59CC /* POPAnimatorPrivate.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		DB946AFFAB876A36102C350A56B1A497 /* POPAnimationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A685975C608E33F9EBD6123D1A0EB8F7 /* POPAnimationEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DC929176FF23A698B1E8B67D9D4031E7 /* Koloda-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 398449964CC651EEC955846C9B4748D5 /* Koloda-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCF81AD7B66E6DD7A5C6FBEA3B3BF128 /* POPBasicAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC9C7622EB42454D2F9365282ADF868 /* POPBasicAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE8FE81C5C349E410F69CBD4D1047C56 /* POPAnimationRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 11C6DB6EAB3AD6A673F93822E7AF29C3 /* POPAnimationRuntime.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		DEF23431D1AC17D794C38931B8F891CE /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C5ED6AEF4CDC6E5BEED39A282DA69B73 /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF155BCAE1B9BF6AA7EB5A3480CA7248 /* ActionSheetCustomPickerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 115F724FFF85ED3B3777C810D215D5C3 /* ActionSheetCustomPickerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF3F22D607AF674D909680F305818F74 /* ActionSheetPicker-3.0-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 68A75CB5E773E0D1BC7B0ACD5450044F /* ActionSheetPicker-3.0-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E1F0A5130BF17FF3CF0A24CD5A680EE4 /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5696C5CBEF3C952A534C0A4E689BF0D1 /* ActionSheetCustomPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		E76929541D004FE18F90EC1F7FDFB248 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 993B92EAD5D2FB0188A4C93CAD630661 /* UIKit.framework */; };
-		EB3EC32A48001A4C59E3DACBF333404B /* DistancePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0F648E2EEB0B49D8B3B9EC49E4555AA /* DistancePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E44ED81F426E989B0DEC38C952EBB42F /* ActionSheetCustomPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = BC24AD4B3C2C787D994AE9FA199D1ECF /* ActionSheetCustomPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7355C5DAF28C7731861F9B85CD0850A /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B4AADF772D9F86AA5AC859E2E309ED17 /* ActionSheetCustomPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E93757670D3AAE756D374399AE2AE2B2 /* ActionSheetStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3201D4AB3A78C8721A5FE600AC651474 /* ActionSheetStringPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		EBC9CF68DF458E1A84EFBE93220DF534 /* POPSpringAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = C0211F7E5845F54752F63924564E54E4 /* POPSpringAnimation.mm */; };
+		F09692986D52F82BB6CBAD3AF3BEFA77 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = A77F7BCDBBC9B1EDD5D4F4C024720F4D /* AbstractActionSheetPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F3EF852DF3FCF923A40C601FAD1134D5 /* ActionSheetPicker-3.0-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EA713ED49FBB8C20DB9FEE9AF2A96B2 /* ActionSheetPicker-3.0-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F960F5CF5EE1CDD91AAA37462DAF9E95 /* POPSpringSolver.h in Headers */ = {isa = PBXBuildFile; fileRef = BED651C2A505EC35C7890D174BD984A3 /* POPSpringSolver.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		FDFA76D66A7D26F240DBE0B298CE6186 /* SWActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 2991FB2FDB0D1E9492C179D14384D4B6 /* SWActionSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FECEEC6CE2CCFAD182BA0A7439F85FD1 /* POPAnimator.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC62CFF9C1240497EAE7192FA4C43EF0 /* POPAnimator.mm */; };
 		FF9F156626207E499F4BF028A4F6FD98 /* pop-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B831CB78BBBAAB6A02AEC0CC324FD75B /* pop-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		173E87E4109C6C33748DC26583B259A7 /* PBXContainerItemProxy */ = {
+		3794F667BD38E5BBED9445FBC3647245 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6226A6A2042957593A9A38BB07EA2D7A;
-			remoteInfo = "ActionSheetPicker-3.0";
-		};
-		615D13249F8CD98583BE34D881C29FD4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AB8BAEEA4BB2CCE50A039CBE990EB188;
+			remoteGlobalIDString = 34A04A4EB485C1C338373952F9934152;
 			remoteInfo = Koloda;
 		};
-		BFBA9F73CA9D3D53DDD9761996E6A025 /* PBXContainerItemProxy */ = {
+		8DD4B6A62FD2CD3C45D1CF789F791D0C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0A4A434A21314D9AC4554951878A0767;
 			remoteInfo = pop;
 		};
-		E2C7205220C9F495B567507C7C28FB2F /* PBXContainerItemProxy */ = {
+		927CA41BCAD3FC34AA127A8073EDC886 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0A4A434A21314D9AC4554951878A0767;
 			remoteInfo = pop;
+		};
+		D3E4458ED4A9A6BC01A9391C5022001B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0795050702154C589B546AB09A03AA54;
+			remoteInfo = "ActionSheetPicker-3.0";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0165A3727549D0103714B0598B248D7C /* DraggableCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DraggableCardView.swift; path = Pod/Classes/KolodaView/DraggableCardView/DraggableCardView.swift; sourceTree = "<group>"; };
+		0013C98767AF8F693CB6E36E5C12F2B9 /* ActionSheetDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDatePicker.m; path = Pickers/ActionSheetDatePicker.m; sourceTree = "<group>"; };
 		018420F00EC3AC44BBFEA812C90542D3 /* POPAnimationEventInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationEventInternal.h; path = pop/POPAnimationEventInternal.h; sourceTree = "<group>"; };
-		047575CC47960E0643F5780483734942 /* SWActionSheet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWActionSheet.m; path = Pickers/SWActionSheet.m; sourceTree = "<group>"; };
+		028C3A4CE768EB19793B2660D2B0D298 /* Koloda-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Koloda-dummy.m"; sourceTree = "<group>"; };
+		0293DD56ADF137C33CD531A11852A8A6 /* ActionSheetDistancePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDistancePicker.m; path = Pickers/ActionSheetDistancePicker.m; sourceTree = "<group>"; };
 		047A1986B80542FD49EBBD018F91701C /* POPDecayAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDecayAnimation.h; path = pop/POPDecayAnimation.h; sourceTree = "<group>"; };
 		06205CA54A4E27171DF21339DC2F2C93 /* POPCustomAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPCustomAnimation.mm; path = pop/POPCustomAnimation.mm; sourceTree = "<group>"; };
 		084AD6854D43F78DBDC25B5C3A90E9C7 /* Koloda.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Koloda.modulemap; sourceTree = "<group>"; };
 		09B73C5CA224BA97511226D9B3ACE832 /* POPAnimatableProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimatableProperty.mm; path = pop/POPAnimatableProperty.mm; sourceTree = "<group>"; };
 		0D2AD249068221EAC1078D44F02C3EF7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		115F724FFF85ED3B3777C810D215D5C3 /* ActionSheetCustomPickerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPickerDelegate.h; path = Pickers/ActionSheetCustomPickerDelegate.h; sourceTree = "<group>"; };
+		1065AFB982FBFDD2E5AF98420BB1BD5A /* Koloda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Koloda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C6DB6EAB3AD6A673F93822E7AF29C3 /* POPAnimationRuntime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationRuntime.h; path = pop/POPAnimationRuntime.h; sourceTree = "<group>"; };
 		14F3F7AAB2CC146A01D9090469A5468E /* POPVector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPVector.h; path = pop/POPVector.h; sourceTree = "<group>"; };
 		15E21B6542920AA9BE7A0DB7D5595BEC /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
@@ -145,23 +146,30 @@
 		1BB6F960EEA2B017396B425C1B18040A /* pop-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "pop-umbrella.h"; sourceTree = "<group>"; };
 		1CA89F25ACA222A1C727DF5C1D94CFFE /* ActionSheetPicker-3.0.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "ActionSheetPicker-3.0.modulemap"; sourceTree = "<group>"; };
 		1E5A643064BEC7386732703FCF4B59CC /* POPAnimatorPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimatorPrivate.h; path = pop/POPAnimatorPrivate.h; sourceTree = "<group>"; };
-		218916B7B1366ACF03364B9821536D79 /* ActionSheetLocalePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetLocalePicker.h; path = Pickers/ActionSheetLocalePicker.h; sourceTree = "<group>"; };
+		1EBB9531A1C5FF45940434586A254EDA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		23FE76BC4A932D49C35731EA086C0460 /* POPLayerExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPLayerExtras.mm; path = pop/POPLayerExtras.mm; sourceTree = "<group>"; };
+		24909A9E162835ED09A2B4AB026B6175 /* ActionSheetCustomPickerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPickerDelegate.h; path = Pickers/ActionSheetCustomPickerDelegate.h; sourceTree = "<group>"; };
+		24A88B50465B14C1398BC4A919A50CE6 /* KolodaView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KolodaView.swift; path = Pod/Classes/KolodaView/KolodaView.swift; sourceTree = "<group>"; };
 		278B1A71664562FEAC45E5780CB9CE10 /* POPAnimationExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationExtras.h; path = pop/POPAnimationExtras.h; sourceTree = "<group>"; };
-		2991FB2FDB0D1E9492C179D14384D4B6 /* SWActionSheet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWActionSheet.h; path = Pickers/SWActionSheet.h; sourceTree = "<group>"; };
+		2BE3D83C693E647D1596B3BD126A32DB /* ActionSheetStringPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetStringPicker.h; path = Pickers/ActionSheetStringPicker.h; sourceTree = "<group>"; };
+		2C5A36B53B14CBDFFF12005D34C89928 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AbstractActionSheetPicker.h; path = Pickers/AbstractActionSheetPicker.h; sourceTree = "<group>"; };
 		2D3FEC0792CD0C0F3D728117219C5F6C /* POPAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimation.h; path = pop/POPAnimation.h; sourceTree = "<group>"; };
+		2DB681147BDA3B14C36E18CBF94D6159 /* ActionSheetLocalePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetLocalePicker.m; path = Pickers/ActionSheetLocalePicker.m; sourceTree = "<group>"; };
 		2DCCAFF2DCDA3043F00ED7360F2A1784 /* POPAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationInternal.h; path = pop/POPAnimationInternal.h; sourceTree = "<group>"; };
+		2EA713ED49FBB8C20DB9FEE9AF2A96B2 /* ActionSheetPicker-3.0-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActionSheetPicker-3.0-umbrella.h"; sourceTree = "<group>"; };
 		2F2FD499D3B45DA65B4866FE476A556B /* POPAnimationEvent.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationEvent.mm; path = pop/POPAnimationEvent.mm; sourceTree = "<group>"; };
+		31CA6EEB21582090D63A286CAE054B25 /* ActionSheetDistancePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetDistancePicker.h; path = Pickers/ActionSheetDistancePicker.h; sourceTree = "<group>"; };
+		3201D4AB3A78C8721A5FE600AC651474 /* ActionSheetStringPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetStringPicker.m; path = Pickers/ActionSheetStringPicker.m; sourceTree = "<group>"; };
 		3495722589499C61985346ADE839B5F2 /* POPAnimationTracerInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationTracerInternal.h; path = pop/POPAnimationTracerInternal.h; sourceTree = "<group>"; };
 		3605EE0A56A4223923216CFEAC4DCC53 /* POPSpringAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringAnimation.h; path = pop/POPSpringAnimation.h; sourceTree = "<group>"; };
-		38E5E152E6FED9F43A712F8766F1E9B8 /* ActionSheetDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDatePicker.m; path = Pickers/ActionSheetDatePicker.m; sourceTree = "<group>"; };
-		398449964CC651EEC955846C9B4748D5 /* Koloda-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Koloda-umbrella.h"; sourceTree = "<group>"; };
+		380F71DC6AB92124DE4F4197322CCD0C /* ActionSheetLocalePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetLocalePicker.h; path = Pickers/ActionSheetLocalePicker.h; sourceTree = "<group>"; };
 		39DDD06AA060CF006E0E6AF1D4CEEFFC /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
 		3D5E91D761A2321B9441BF881586D03B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DAC559592C40687DAE299E0C654D27D /* OverlayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OverlayView.swift; path = Pod/Classes/KolodaView/OverlayView/OverlayView.swift; sourceTree = "<group>"; };
 		3E0838F50257E67BE00A0DDEDE8ED7D5 /* Koloda-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Koloda-prefix.pch"; sourceTree = "<group>"; };
 		3E265AD30BBD5A46C9C92E63BBF1B4D8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		3FB39D6DDECBD449E14BA327C2A08B24 /* ActionSheetDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetDatePicker.h; path = Pickers/ActionSheetDatePicker.h; sourceTree = "<group>"; };
 		4286CB06EDB5693253AD037CE6342878 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		436161CCBD3A3DA09B67238E88932A5C /* ActionSheetPicker-3.0-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ActionSheetPicker-3.0-Private.xcconfig"; sourceTree = "<group>"; };
 		450FDBABB60F1AAAC696DACE8A9FA9EC /* POPBasicAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPBasicAnimationInternal.h; path = pop/POPBasicAnimationInternal.h; sourceTree = "<group>"; };
 		4702381FC10223A2D550C3D5BBE44B06 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4929AB93D7EDB8407FDAA3101C5C06B9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -169,76 +177,68 @@
 		4A8CE2FD1AC3E241509CAD07418E3A14 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		4CBCCC18597DBD022F4CA2810086ABB7 /* POPAnimationExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationExtras.mm; path = pop/POPAnimationExtras.mm; sourceTree = "<group>"; };
 		523311DC948A1658877C300FA6DB3313 /* POP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POP.h; path = pop/POP.h; sourceTree = "<group>"; };
-		5696C5CBEF3C952A534C0A4E689BF0D1 /* ActionSheetCustomPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetCustomPicker.m; path = Pickers/ActionSheetCustomPicker.m; sourceTree = "<group>"; };
+		533C9E34472FE8A7EBD773244DD3EEB7 /* ActionSheetPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetPicker.h; path = Pickers/ActionSheetPicker.h; sourceTree = "<group>"; };
 		5DE0626F3AC819CF3193B4B5B6106338 /* POPCustomAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPCustomAnimation.h; path = pop/POPCustomAnimation.h; sourceTree = "<group>"; };
-		620B8D41FA1512C24C9D529EA31202F8 /* ActionSheetPicker_3_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ActionSheetPicker_3_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AC75A15BE29B490DA985796F6FB305 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65F8DBC1CC9D4D6D1109CDE69462027A /* POPAnimationPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationPrivate.h; path = pop/POPAnimationPrivate.h; sourceTree = "<group>"; };
 		6662B40A6E62047EF1048456C8745C23 /* POPMath.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPMath.mm; path = pop/POPMath.mm; sourceTree = "<group>"; };
-		68A75CB5E773E0D1BC7B0ACD5450044F /* ActionSheetPicker-3.0-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActionSheetPicker-3.0-umbrella.h"; sourceTree = "<group>"; };
+		6AFD8E04C2413C50F571F6070B623DA7 /* Koloda-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Koloda-umbrella.h"; sourceTree = "<group>"; };
+		6B0296926DB74CA70DC32F44E319A8AD /* DistancePickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DistancePickerView.m; path = Pickers/DistancePickerView.m; sourceTree = "<group>"; };
 		6BA8CF2322E0BD7E63F0E4DEB87BF71C /* POPAnimationTracer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationTracer.h; path = pop/POPAnimationTracer.h; sourceTree = "<group>"; };
-		6CDE2FA4378BE29A8DA50B4011422B20 /* pop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = pop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BF1C7097AA3C665F74ED6A374834A11 /* ActionSheetDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetDatePicker.h; path = Pickers/ActionSheetDatePicker.h; sourceTree = "<group>"; };
 		6D1464A73DD2E0E08C630BC1ACBD862F /* POPAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAction.h; path = pop/POPAction.h; sourceTree = "<group>"; };
 		73AB2173314C5E0A8A2C76719CCA9E30 /* pop-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "pop-Private.xcconfig"; sourceTree = "<group>"; };
 		7535D9EE3BABC577427F0F52A983BC83 /* FloatConversion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FloatConversion.h; path = pop/WebCore/FloatConversion.h; sourceTree = "<group>"; };
 		791B16214C84A68FA697346419913907 /* POPAnimationRuntime.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationRuntime.mm; path = pop/POPAnimationRuntime.mm; sourceTree = "<group>"; };
 		7956C67B003AAF0BE3CAEA244E50E7CF /* POPCGUtils.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPCGUtils.mm; path = pop/POPCGUtils.mm; sourceTree = "<group>"; };
 		7C2AFF473520B43EA005710783FAFB5C /* POPAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimator.h; path = pop/POPAnimator.h; sourceTree = "<group>"; };
-		8994411CC9AFA74F24ABEA22A2AC81A2 /* Koloda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Koloda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ED594D2B20C042D137BB7FDC4F2691A /* ActionSheetPicker-3.0-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ActionSheetPicker-3.0-dummy.m"; sourceTree = "<group>"; };
 		8BAF500DDCEA6BD9119130FFA6A42227 /* POPGeometry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPGeometry.h; path = pop/POPGeometry.h; sourceTree = "<group>"; };
-		8CD023EB80964E5134B98B0FD6286004 /* ActionSheetDistancePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDistancePicker.m; path = Pickers/ActionSheetDistancePicker.m; sourceTree = "<group>"; };
 		8D070192360CCC6F05B076863654380D /* ActionSheetPicker-3.0.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ActionSheetPicker-3.0.xcconfig"; sourceTree = "<group>"; };
 		8DB8BF47BA17C8030A5D8A7EE45031B9 /* Koloda.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Koloda.xcconfig; sourceTree = "<group>"; };
 		8E2D84F8671B879BBD0AAFA415146356 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		92782EC2532D32BDD78906E464BB3BF9 /* DistancePickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DistancePickerView.m; path = Pickers/DistancePickerView.m; sourceTree = "<group>"; };
-		943C91B787B41501E281138899EAC256 /* ActionSheetPicker-3.0-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ActionSheetPicker-3.0-dummy.m"; sourceTree = "<group>"; };
 		97CFF6C6DD5CC390A5B62DD9CBEB1868 /* POPDecayAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPDecayAnimation.mm; path = pop/POPDecayAnimation.mm; sourceTree = "<group>"; };
 		9809A1844BBEF6211939FEF98F84C10D /* POPAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimation.mm; path = pop/POPAnimation.mm; sourceTree = "<group>"; };
 		98C97DF362AEA19B90EBAF6441A060F7 /* POPAnimatableProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimatableProperty.h; path = pop/POPAnimatableProperty.h; sourceTree = "<group>"; };
-		993B92EAD5D2FB0188A4C93CAD630661 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		9C3EC58074198149D3DA27BAF2C7972E /* KolodaView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KolodaView.swift; path = Pod/Classes/KolodaView/KolodaView.swift; sourceTree = "<group>"; };
-		9C7ACC1A9C0F8F99F58AF4BDFF2EB783 /* OverlayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OverlayView.swift; path = Pod/Classes/KolodaView/OverlayView/OverlayView.swift; sourceTree = "<group>"; };
+		9BAA707B0608D0F42620DF05BE15FC43 /* SWActionSheet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWActionSheet.m; path = Pickers/SWActionSheet.m; sourceTree = "<group>"; };
 		9E486B8C15C4BFCFA87C9E8DBB6940BC /* POPAnimationTracer.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationTracer.mm; path = pop/POPAnimationTracer.mm; sourceTree = "<group>"; };
-		9ED1F7BA335717420CF2E74A8C25DFEA /* ActionSheetPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetPicker.h; path = Pickers/ActionSheetPicker.h; sourceTree = "<group>"; };
+		9F39B55B8F58E283CDDED98A6D06C9B9 /* ActionSheetPicker_3_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ActionSheetPicker_3_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A685975C608E33F9EBD6123D1A0EB8F7 /* POPAnimationEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationEvent.h; path = pop/POPAnimationEvent.h; sourceTree = "<group>"; };
+		A77F7BCDBBC9B1EDD5D4F4C024720F4D /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AbstractActionSheetPicker.m; path = Pickers/AbstractActionSheetPicker.m; sourceTree = "<group>"; };
 		A94596D07B083922CA9204C90D553137 /* ActionSheetPicker-3.0-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActionSheetPicker-3.0-prefix.pch"; sourceTree = "<group>"; };
 		AD61C49D17010919BD6592F3531C6EBA /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B18F06B5C8D3A9B2A47E38234A183D74 /* POPPropertyAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPPropertyAnimation.mm; path = pop/POPPropertyAnimation.mm; sourceTree = "<group>"; };
+		B23A53A64615AC9635873243C641A774 /* DraggableCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DraggableCardView.swift; path = Pod/Classes/KolodaView/DraggableCardView/DraggableCardView.swift; sourceTree = "<group>"; };
+		B452979255C933431A39AD7FE908E36F /* SWActionSheet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWActionSheet.h; path = Pickers/SWActionSheet.h; sourceTree = "<group>"; };
+		B4AADF772D9F86AA5AC859E2E309ED17 /* ActionSheetCustomPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetCustomPicker.m; path = Pickers/ActionSheetCustomPicker.m; sourceTree = "<group>"; };
 		B831CB78BBBAAB6A02AEC0CC324FD75B /* pop-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "pop-dummy.m"; sourceTree = "<group>"; };
-		B8A8888339BA12FB2417F19E4696578C /* Koloda-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Koloda-dummy.m"; sourceTree = "<group>"; };
 		BAC9C7622EB42454D2F9365282ADF868 /* POPBasicAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPBasicAnimation.h; path = pop/POPBasicAnimation.h; sourceTree = "<group>"; };
 		BB95CE9CF413ED914EC6A9614BFF4FB9 /* POPDecayAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDecayAnimationInternal.h; path = pop/POPDecayAnimationInternal.h; sourceTree = "<group>"; };
 		BBC70214DFB3464EFEC1393D3512C50F /* POPSpringAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringAnimationInternal.h; path = pop/POPSpringAnimationInternal.h; sourceTree = "<group>"; };
+		BC24AD4B3C2C787D994AE9FA199D1ECF /* ActionSheetCustomPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPicker.h; path = Pickers/ActionSheetCustomPicker.h; sourceTree = "<group>"; };
 		BC9E21F7F0920A872E71DFB67DCF0B51 /* pop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = pop.xcconfig; sourceTree = "<group>"; };
 		BED651C2A505EC35C7890D174BD984A3 /* POPSpringSolver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringSolver.h; path = pop/POPSpringSolver.h; sourceTree = "<group>"; };
-		BF03751624EC42CE461BED85D04CA8E8 /* ActionSheetStringPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetStringPicker.h; path = Pickers/ActionSheetStringPicker.h; sourceTree = "<group>"; };
 		BF90C0B9A49AFA093C6A2ECEA5546BBB /* POPGeometry.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPGeometry.mm; path = pop/POPGeometry.mm; sourceTree = "<group>"; };
+		BFADF753FC09815A5B7BC845A72A7DEF /* DistancePickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DistancePickerView.h; path = Pickers/DistancePickerView.h; sourceTree = "<group>"; };
 		C0211F7E5845F54752F63924564E54E4 /* POPSpringAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPSpringAnimation.mm; path = pop/POPSpringAnimation.mm; sourceTree = "<group>"; };
 		C24164FA8CEA5003D9E8B53008B9A38E /* POPCGUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPCGUtils.h; path = pop/POPCGUtils.h; sourceTree = "<group>"; };
 		C54EFBF041744706E6B4BEFC761FEC5E /* POPDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDefines.h; path = pop/POPDefines.h; sourceTree = "<group>"; };
 		C5ED6AEF4CDC6E5BEED39A282DA69B73 /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
-		C6B909BF6E726AF6338EC46DD1BE97E1 /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AbstractActionSheetPicker.m; path = Pickers/AbstractActionSheetPicker.m; sourceTree = "<group>"; };
 		C88113A79685B4EFEE7BAD12896829F7 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		D0F648E2EEB0B49D8B3B9EC49E4555AA /* DistancePickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DistancePickerView.h; path = Pickers/DistancePickerView.h; sourceTree = "<group>"; };
+		D490B990872039478BB98DFA6F280111 /* pop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = pop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D733186D65D72BAB76D9FF771A1B7D69 /* POPMath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPMath.h; path = pop/POPMath.h; sourceTree = "<group>"; };
 		D9367824B8CA1433DF027595BAD4CEF8 /* POPLayerExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPLayerExtras.h; path = pop/POPLayerExtras.h; sourceTree = "<group>"; };
 		DD0534AE48AB88F6DD42C68E669EA05C /* pop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = pop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2B4E48A861EA25354A1A32D8C5E7AB /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		DE46308E5F9E22F6C1CD013422338EC1 /* POPBasicAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPBasicAnimation.mm; path = pop/POPBasicAnimation.mm; sourceTree = "<group>"; };
 		DFE0370F665A46F53D8983BF24B20705 /* pop.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = pop.modulemap; sourceTree = "<group>"; };
-		E0AFC271D5FFEB61D462A52378526186 /* ActionSheetDistancePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetDistancePicker.h; path = Pickers/ActionSheetDistancePicker.h; sourceTree = "<group>"; };
-		E2D8DBEE305FC45E8CC9EDE522B841AA /* ActionSheetCustomPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPicker.h; path = Pickers/ActionSheetCustomPicker.h; sourceTree = "<group>"; };
-		EA6A54572CD8B40C9DE0530294DE303D /* ActionSheetStringPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetStringPicker.m; path = Pickers/ActionSheetStringPicker.m; sourceTree = "<group>"; };
+		E1B91C602ABB3F109E813E4728DA9C27 /* Koloda-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Koloda-Private.xcconfig"; sourceTree = "<group>"; };
 		EB3D9C529DEEE6D71082237B8784F7CB /* UnitBezier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UnitBezier.h; path = pop/WebCore/UnitBezier.h; sourceTree = "<group>"; };
-		EC74EBC1F03FEFEDB0576721C632819A /* ActionSheetPicker-3.0-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ActionSheetPicker-3.0-Private.xcconfig"; sourceTree = "<group>"; };
-		F34EFE194C743939B5406DE4B131C73D /* ActionSheetLocalePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetLocalePicker.m; path = Pickers/ActionSheetLocalePicker.m; sourceTree = "<group>"; };
 		F7A8A8B5E492346A9190BE7C6C202284 /* TransformationMatrix.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = TransformationMatrix.cpp; path = pop/WebCore/TransformationMatrix.cpp; sourceTree = "<group>"; };
-		FB63783B283241E9F88C4C9B52B0D92E /* Koloda-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Koloda-Private.xcconfig"; sourceTree = "<group>"; };
 		FBEF11664167A1DCB91A67B13A32C197 /* pop-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "pop-prefix.pch"; sourceTree = "<group>"; };
 		FBFB90456A8F8A6E2654CE15A02DC275 /* TransformationMatrix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TransformationMatrix.h; path = pop/WebCore/TransformationMatrix.h; sourceTree = "<group>"; };
 		FC62CFF9C1240497EAE7192FA4C43EF0 /* POPAnimator.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimator.mm; path = pop/POPAnimator.mm; sourceTree = "<group>"; };
 		FC82EDCDB98EFD9E2AF5BD74A9F1617D /* POPVector.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPVector.mm; path = pop/POPVector.mm; sourceTree = "<group>"; };
-		FDD736F5F6D26B6CE5D5485AD9DC9789 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AbstractActionSheetPicker.h; path = Pickers/AbstractActionSheetPicker.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +250,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5EB71898C191FFCDADD0DC0D7D1B75E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B09FC775D3AF17FCC8E6406AECD2718 /* Foundation.framework in Frameworks */,
+				1C13BFA9979BD48A901BA575589E78C1 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BFDB039EE95ACDA38003642C4ED8B6C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,22 +267,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD9F40E73AE283CD72E9C22E2D9EE9D9 /* Frameworks */ = {
+		E512C58BE65CEEA61DEAF7E940CB25C2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EB93E3BBEBBCFCD9F14FA642904CA29 /* Foundation.framework in Frameworks */,
-				E76929541D004FE18F90EC1F7FDFB248 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E84DEFE59001B6BF527CA2A067D7C4DB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2263CED8F9B7933C8461507D14667773 /* Foundation.framework in Frameworks */,
-				41AB6B0792DEF509704408DB69431BB9 /* UIKit.framework in Frameworks */,
-				CB83231B5CF523503E50D5E0D9BE629B /* pop.framework in Frameworks */,
+				84D342894070FE6B0BC1891FD6132B51 /* Foundation.framework in Frameworks */,
+				AC73E35895EBEA4A30066D3003BAC89A /* UIKit.framework in Frameworks */,
+				2104717A6FBE1CF11E10E49026F5150A /* pop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,9 +283,9 @@
 		1730D7DF533570EA79FBABE18B1475EB /* Koloda */ = {
 			isa = PBXGroup;
 			children = (
-				0165A3727549D0103714B0598B248D7C /* DraggableCardView.swift */,
-				9C3EC58074198149D3DA27BAF2C7972E /* KolodaView.swift */,
-				9C7ACC1A9C0F8F99F58AF4BDFF2EB783 /* OverlayView.swift */,
+				B23A53A64615AC9635873243C641A774 /* DraggableCardView.swift */,
+				24A88B50465B14C1398BC4A919A50CE6 /* KolodaView.swift */,
+				3DAC559592C40687DAE299E0C654D27D /* OverlayView.swift */,
 				6C0F6F03DD92AEEE48231F19DC242AFA /* Support Files */,
 			);
 			path = Koloda;
@@ -386,24 +386,24 @@
 		60D2A9ED345B4DE8EE8C17AC777462C1 /* ActionSheetPicker-3.0 */ = {
 			isa = PBXGroup;
 			children = (
-				FDD736F5F6D26B6CE5D5485AD9DC9789 /* AbstractActionSheetPicker.h */,
-				C6B909BF6E726AF6338EC46DD1BE97E1 /* AbstractActionSheetPicker.m */,
-				E2D8DBEE305FC45E8CC9EDE522B841AA /* ActionSheetCustomPicker.h */,
-				5696C5CBEF3C952A534C0A4E689BF0D1 /* ActionSheetCustomPicker.m */,
-				115F724FFF85ED3B3777C810D215D5C3 /* ActionSheetCustomPickerDelegate.h */,
-				3FB39D6DDECBD449E14BA327C2A08B24 /* ActionSheetDatePicker.h */,
-				38E5E152E6FED9F43A712F8766F1E9B8 /* ActionSheetDatePicker.m */,
-				E0AFC271D5FFEB61D462A52378526186 /* ActionSheetDistancePicker.h */,
-				8CD023EB80964E5134B98B0FD6286004 /* ActionSheetDistancePicker.m */,
-				218916B7B1366ACF03364B9821536D79 /* ActionSheetLocalePicker.h */,
-				F34EFE194C743939B5406DE4B131C73D /* ActionSheetLocalePicker.m */,
-				9ED1F7BA335717420CF2E74A8C25DFEA /* ActionSheetPicker.h */,
-				BF03751624EC42CE461BED85D04CA8E8 /* ActionSheetStringPicker.h */,
-				EA6A54572CD8B40C9DE0530294DE303D /* ActionSheetStringPicker.m */,
-				D0F648E2EEB0B49D8B3B9EC49E4555AA /* DistancePickerView.h */,
-				92782EC2532D32BDD78906E464BB3BF9 /* DistancePickerView.m */,
-				2991FB2FDB0D1E9492C179D14384D4B6 /* SWActionSheet.h */,
-				047575CC47960E0643F5780483734942 /* SWActionSheet.m */,
+				2C5A36B53B14CBDFFF12005D34C89928 /* AbstractActionSheetPicker.h */,
+				A77F7BCDBBC9B1EDD5D4F4C024720F4D /* AbstractActionSheetPicker.m */,
+				BC24AD4B3C2C787D994AE9FA199D1ECF /* ActionSheetCustomPicker.h */,
+				B4AADF772D9F86AA5AC859E2E309ED17 /* ActionSheetCustomPicker.m */,
+				24909A9E162835ED09A2B4AB026B6175 /* ActionSheetCustomPickerDelegate.h */,
+				6BF1C7097AA3C665F74ED6A374834A11 /* ActionSheetDatePicker.h */,
+				0013C98767AF8F693CB6E36E5C12F2B9 /* ActionSheetDatePicker.m */,
+				31CA6EEB21582090D63A286CAE054B25 /* ActionSheetDistancePicker.h */,
+				0293DD56ADF137C33CD531A11852A8A6 /* ActionSheetDistancePicker.m */,
+				380F71DC6AB92124DE4F4197322CCD0C /* ActionSheetLocalePicker.h */,
+				2DB681147BDA3B14C36E18CBF94D6159 /* ActionSheetLocalePicker.m */,
+				533C9E34472FE8A7EBD773244DD3EEB7 /* ActionSheetPicker.h */,
+				2BE3D83C693E647D1596B3BD126A32DB /* ActionSheetStringPicker.h */,
+				3201D4AB3A78C8721A5FE600AC651474 /* ActionSheetStringPicker.m */,
+				BFADF753FC09815A5B7BC845A72A7DEF /* DistancePickerView.h */,
+				6B0296926DB74CA70DC32F44E319A8AD /* DistancePickerView.m */,
+				B452979255C933431A39AD7FE908E36F /* SWActionSheet.h */,
+				9BAA707B0608D0F42620DF05BE15FC43 /* SWActionSheet.m */,
 				EBB1C855613286724CDA427D73A23183 /* Support Files */,
 			);
 			path = "ActionSheetPicker-3.0";
@@ -415,10 +415,10 @@
 				4929AB93D7EDB8407FDAA3101C5C06B9 /* Info.plist */,
 				084AD6854D43F78DBDC25B5C3A90E9C7 /* Koloda.modulemap */,
 				8DB8BF47BA17C8030A5D8A7EE45031B9 /* Koloda.xcconfig */,
-				FB63783B283241E9F88C4C9B52B0D92E /* Koloda-Private.xcconfig */,
-				B8A8888339BA12FB2417F19E4696578C /* Koloda-dummy.m */,
+				E1B91C602ABB3F109E813E4728DA9C27 /* Koloda-Private.xcconfig */,
+				028C3A4CE768EB19793B2660D2B0D298 /* Koloda-dummy.m */,
 				3E0838F50257E67BE00A0DDEDE8ED7D5 /* Koloda-prefix.pch */,
-				398449964CC651EEC955846C9B4748D5 /* Koloda-umbrella.h */,
+				6AFD8E04C2413C50F571F6070B623DA7 /* Koloda-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Koloda";
@@ -456,8 +456,8 @@
 		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				620B8D41FA1512C24C9D529EA31202F8 /* ActionSheetPicker_3_0.framework */,
-				8994411CC9AFA74F24ABEA22A2AC81A2 /* Koloda.framework */,
+				9F39B55B8F58E283CDDED98A6D06C9B9 /* ActionSheetPicker_3_0.framework */,
+				1065AFB982FBFDD2E5AF98420BB1BD5A /* Koloda.framework */,
 				4702381FC10223A2D550C3D5BBE44B06 /* Pods.framework */,
 				DD0534AE48AB88F6DD42C68E669EA05C /* pop.framework */,
 			);
@@ -467,7 +467,7 @@
 		D36C6650169CF9B81ADEB7B2F2A0E7B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6CDE2FA4378BE29A8DA50B4011422B20 /* pop.framework */,
+				D490B990872039478BB98DFA6F280111 /* pop.framework */,
 				DE4537B61E9BADEC43D9BEA96096659A /* iOS */,
 			);
 			name = Frameworks;
@@ -477,7 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				4A8CE2FD1AC3E241509CAD07418E3A14 /* Foundation.framework */,
-				993B92EAD5D2FB0188A4C93CAD630661 /* UIKit.framework */,
+				1EBB9531A1C5FF45940434586A254EDA /* UIKit.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -487,10 +487,10 @@
 			children = (
 				1CA89F25ACA222A1C727DF5C1D94CFFE /* ActionSheetPicker-3.0.modulemap */,
 				8D070192360CCC6F05B076863654380D /* ActionSheetPicker-3.0.xcconfig */,
-				EC74EBC1F03FEFEDB0576721C632819A /* ActionSheetPicker-3.0-Private.xcconfig */,
-				943C91B787B41501E281138899EAC256 /* ActionSheetPicker-3.0-dummy.m */,
+				436161CCBD3A3DA09B67238E88932A5C /* ActionSheetPicker-3.0-Private.xcconfig */,
+				7ED594D2B20C042D137BB7FDC4F2691A /* ActionSheetPicker-3.0-dummy.m */,
 				A94596D07B083922CA9204C90D553137 /* ActionSheetPicker-3.0-prefix.pch */,
-				68A75CB5E773E0D1BC7B0ACD5450044F /* ActionSheetPicker-3.0-umbrella.h */,
+				2EA713ED49FBB8C20DB9FEE9AF2A96B2 /* ActionSheetPicker-3.0-umbrella.h */,
 				64AC75A15BE29B490DA985796F6FB305 /* Info.plist */,
 			);
 			name = "Support Files";
@@ -500,29 +500,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		43DD949C17C8A04ABE07A8E254B5B508 /* Headers */ = {
+		A64ECDCE91823538CACEC5DD9A6F9EDE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC929176FF23A698B1E8B67D9D4031E7 /* Koloda-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B239C130E4789C88DC4A4807A6F72AE7 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				544AADF6B6A7F358023515B133A1662A /* AbstractActionSheetPicker.h in Headers */,
-				160B2C4A981964FC9379C70E68E7A7BF /* ActionSheetCustomPicker.h in Headers */,
-				DF155BCAE1B9BF6AA7EB5A3480CA7248 /* ActionSheetCustomPickerDelegate.h in Headers */,
-				D3FAF2186FBEF1CAE5AB3C275D31F4A5 /* ActionSheetDatePicker.h in Headers */,
-				1159DD4B1062E1ECA255C2E25DDE5F05 /* ActionSheetDistancePicker.h in Headers */,
-				D47875DBF720A346CF459DDF1402477B /* ActionSheetLocalePicker.h in Headers */,
-				DF3F22D607AF674D909680F305818F74 /* ActionSheetPicker-3.0-umbrella.h in Headers */,
-				90AB514A3B1E105FAAE0EF45A923E9DB /* ActionSheetPicker.h in Headers */,
-				06038CA1FE0C8721F2D7BD583D63432A /* ActionSheetStringPicker.h in Headers */,
-				EB3EC32A48001A4C59E3DACBF333404B /* DistancePickerView.h in Headers */,
-				FDFA76D66A7D26F240DBE0B298CE6186 /* SWActionSheet.h in Headers */,
+				4A327C998EEF83109113804518E2B1E1 /* Koloda-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,9 +557,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E81BAE326C825BBD227BE879FD02547E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD16E3D2450B2B08E77FC6625575CDB /* AbstractActionSheetPicker.h in Headers */,
+				E44ED81F426E989B0DEC38C952EBB42F /* ActionSheetCustomPicker.h in Headers */,
+				83E9DE825B438211D6B88D0081A9084D /* ActionSheetCustomPickerDelegate.h in Headers */,
+				5EBEF778D90BAC3BC0FC56F0EB233CED /* ActionSheetDatePicker.h in Headers */,
+				50873B1C294E4FC7A84C2591FBE52C52 /* ActionSheetDistancePicker.h in Headers */,
+				C30CE74AFA9FA85B9DF4D42F5137FF2E /* ActionSheetLocalePicker.h in Headers */,
+				F3EF852DF3FCF923A40C601FAD1134D5 /* ActionSheetPicker-3.0-umbrella.h in Headers */,
+				6644CD4FBC04234B8390BF87A0B7D811 /* ActionSheetPicker.h in Headers */,
+				7820520804A0CB891CE1C6C9933C05EC /* ActionSheetStringPicker.h in Headers */,
+				6BE051477EC13EE42A2E04D198C4E17D /* DistancePickerView.h in Headers */,
+				0E4EF110894709443E25DA0E67F4AECD /* SWActionSheet.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0795050702154C589B546AB09A03AA54 /* ActionSheetPicker-3.0 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 664363B0974B8D5E8836A7688F3B15D7 /* Build configuration list for PBXNativeTarget "ActionSheetPicker-3.0" */;
+			buildPhases = (
+				A24E438E45E7B707DF8F4391B61C467A /* Sources */,
+				5EB71898C191FFCDADD0DC0D7D1B75E2 /* Frameworks */,
+				E81BAE326C825BBD227BE879FD02547E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ActionSheetPicker-3.0";
+			productName = "ActionSheetPicker-3.0";
+			productReference = 9F39B55B8F58E283CDDED98A6D06C9B9 /* ActionSheetPicker_3_0.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		0A4A434A21314D9AC4554951878A0767 /* pop */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 559AC8FA0AC851C8CF5B54312458B42E /* Build configuration list for PBXNativeTarget "pop" */;
@@ -595,21 +612,22 @@
 			productReference = DD0534AE48AB88F6DD42C68E669EA05C /* pop.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6226A6A2042957593A9A38BB07EA2D7A /* ActionSheetPicker-3.0 */ = {
+		34A04A4EB485C1C338373952F9934152 /* Koloda */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B8A76FFB2945606E100A63A21FE9E6D /* Build configuration list for PBXNativeTarget "ActionSheetPicker-3.0" */;
+			buildConfigurationList = 52C2C3235F8BE28950629887B2A97415 /* Build configuration list for PBXNativeTarget "Koloda" */;
 			buildPhases = (
-				1CD80B5230D2F4D0A6A417DC8269619D /* Sources */,
-				DD9F40E73AE283CD72E9C22E2D9EE9D9 /* Frameworks */,
-				B239C130E4789C88DC4A4807A6F72AE7 /* Headers */,
+				0AA9CB91173D3A52C4C9F7CD7FF50123 /* Sources */,
+				E512C58BE65CEEA61DEAF7E940CB25C2 /* Frameworks */,
+				A64ECDCE91823538CACEC5DD9A6F9EDE /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				68A6162E68760927A3C740F32C9EFA35 /* PBXTargetDependency */,
 			);
-			name = "ActionSheetPicker-3.0";
-			productName = "ActionSheetPicker-3.0";
-			productReference = 620B8D41FA1512C24C9D529EA31202F8 /* ActionSheetPicker_3_0.framework */;
+			name = Koloda;
+			productName = Koloda;
+			productReference = 1065AFB982FBFDD2E5AF98420BB1BD5A /* Koloda.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A1AA0C7E8C4A32017862EF6BE93C8077 /* Pods */ = {
@@ -623,31 +641,13 @@
 			buildRules = (
 			);
 			dependencies = (
-				FB2AA02D16264B4D958C6B5CDA53CB7B /* PBXTargetDependency */,
-				99D5AB991CD5A7BBAB4C56608119063B /* PBXTargetDependency */,
-				3F69DAEC927C21724E1AEA86DACC2111 /* PBXTargetDependency */,
+				3783ED521F116D519A4445AEB458C596 /* PBXTargetDependency */,
+				55477BA16FE2FA8D5E8533C77C61B448 /* PBXTargetDependency */,
+				E0433F7CFACC43F5D80C98A53E1B7A63 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
 			productReference = 4702381FC10223A2D550C3D5BBE44B06 /* Pods.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		AB8BAEEA4BB2CCE50A039CBE990EB188 /* Koloda */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ED498252434B04C2F5C222EABD15C773 /* Build configuration list for PBXNativeTarget "Koloda" */;
-			buildPhases = (
-				BC9F28F02B9C8226C3ED3EFCEDD62134 /* Sources */,
-				E84DEFE59001B6BF527CA2A067D7C4DB /* Frameworks */,
-				43DD949C17C8A04ABE07A8E254B5B508 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CD6175A38BA4F79A5CDEE1738877DF10 /* PBXTargetDependency */,
-			);
-			name = Koloda;
-			productName = Koloda;
-			productReference = 8994411CC9AFA74F24ABEA22A2AC81A2 /* Koloda.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -671,8 +671,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6226A6A2042957593A9A38BB07EA2D7A /* ActionSheetPicker-3.0 */,
-				AB8BAEEA4BB2CCE50A039CBE990EB188 /* Koloda */,
+				0795050702154C589B546AB09A03AA54 /* ActionSheetPicker-3.0 */,
+				34A04A4EB485C1C338373952F9934152 /* Koloda */,
 				A1AA0C7E8C4A32017862EF6BE93C8077 /* Pods */,
 				0A4A434A21314D9AC4554951878A0767 /* pop */,
 			);
@@ -680,19 +680,14 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1CD80B5230D2F4D0A6A417DC8269619D /* Sources */ = {
+		0AA9CB91173D3A52C4C9F7CD7FF50123 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9709A4F3E10A3EF4C230620A584C233B /* AbstractActionSheetPicker.m in Sources */,
-				E1F0A5130BF17FF3CF0A24CD5A680EE4 /* ActionSheetCustomPicker.m in Sources */,
-				25F63AC30A6F9B197FD7F1951CEB806B /* ActionSheetDatePicker.m in Sources */,
-				6246B11E733CE999E94B1E343AE6AD3A /* ActionSheetDistancePicker.m in Sources */,
-				533DE0E605D42536A7BBCE80CD6D1D40 /* ActionSheetLocalePicker.m in Sources */,
-				8833C023C3A70EE0C49FDF735F25925B /* ActionSheetPicker-3.0-dummy.m in Sources */,
-				C326E67E365BD84A5D4C7D63B4281E72 /* ActionSheetStringPicker.m in Sources */,
-				55D157263541543E2068FFD24FE792F2 /* DistancePickerView.m in Sources */,
-				9DAE75AE1C75573CE68F1D676EB6F5BA /* SWActionSheet.m in Sources */,
+				754DB4CD2570F176322B6D858A5104FE /* DraggableCardView.swift in Sources */,
+				A920F351DC50A80288983EC9943E7357 /* Koloda-dummy.m in Sources */,
+				593FC446AB54D19CF45C0039C600F241 /* KolodaView.swift in Sources */,
+				42CFA67B9CE45AE8EBF95744ADB86443 /* OverlayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +717,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A24E438E45E7B707DF8F4391B61C467A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F09692986D52F82BB6CBAD3AF3BEFA77 /* AbstractActionSheetPicker.m in Sources */,
+				E7355C5DAF28C7731861F9B85CD0850A /* ActionSheetCustomPicker.m in Sources */,
+				7D0CA9B7A9E3C325EDB7EB6926417BAA /* ActionSheetDatePicker.m in Sources */,
+				3BC10F83D513758C27717688D96C1E98 /* ActionSheetDistancePicker.m in Sources */,
+				D0EBC154C17222EB22913B5FC4B03BA6 /* ActionSheetLocalePicker.m in Sources */,
+				6A9C496AF840DB2FA1EE3004330E9D6F /* ActionSheetPicker-3.0-dummy.m in Sources */,
+				E93757670D3AAE756D374399AE2AE2B2 /* ActionSheetStringPicker.m in Sources */,
+				7CF32074F2F1AF44941B7183E59FA284 /* DistancePickerView.m in Sources */,
+				2C74A4D2044FCF1E1256A4E465BAE1F7 /* SWActionSheet.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B949E7881FA0A4CF469A89D45B491569 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -730,74 +741,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BC9F28F02B9C8226C3ED3EFCEDD62134 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				34DB2D962AA2665D64E2E1D02554CCF4 /* DraggableCardView.swift in Sources */,
-				95E199E4270876785283DAC9AC035A95 /* Koloda-dummy.m in Sources */,
-				142105D6194F8E4F90AC4972256E1823 /* KolodaView.swift in Sources */,
-				87ADFDE88F31C984C3E40E23CB1B29DF /* OverlayView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3F69DAEC927C21724E1AEA86DACC2111 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = pop;
-			target = 0A4A434A21314D9AC4554951878A0767 /* pop */;
-			targetProxy = E2C7205220C9F495B567507C7C28FB2F /* PBXContainerItemProxy */;
-		};
-		99D5AB991CD5A7BBAB4C56608119063B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Koloda;
-			target = AB8BAEEA4BB2CCE50A039CBE990EB188 /* Koloda */;
-			targetProxy = 615D13249F8CD98583BE34D881C29FD4 /* PBXContainerItemProxy */;
-		};
-		CD6175A38BA4F79A5CDEE1738877DF10 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = pop;
-			target = 0A4A434A21314D9AC4554951878A0767 /* pop */;
-			targetProxy = BFBA9F73CA9D3D53DDD9761996E6A025 /* PBXContainerItemProxy */;
-		};
-		FB2AA02D16264B4D958C6B5CDA53CB7B /* PBXTargetDependency */ = {
+		3783ED521F116D519A4445AEB458C596 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ActionSheetPicker-3.0";
-			target = 6226A6A2042957593A9A38BB07EA2D7A /* ActionSheetPicker-3.0 */;
-			targetProxy = 173E87E4109C6C33748DC26583B259A7 /* PBXContainerItemProxy */;
+			target = 0795050702154C589B546AB09A03AA54 /* ActionSheetPicker-3.0 */;
+			targetProxy = D3E4458ED4A9A6BC01A9391C5022001B /* PBXContainerItemProxy */;
+		};
+		55477BA16FE2FA8D5E8533C77C61B448 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Koloda;
+			target = 34A04A4EB485C1C338373952F9934152 /* Koloda */;
+			targetProxy = 3794F667BD38E5BBED9445FBC3647245 /* PBXContainerItemProxy */;
+		};
+		68A6162E68760927A3C740F32C9EFA35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = pop;
+			target = 0A4A434A21314D9AC4554951878A0767 /* pop */;
+			targetProxy = 927CA41BCAD3FC34AA127A8073EDC886 /* PBXContainerItemProxy */;
+		};
+		E0433F7CFACC43F5D80C98A53E1B7A63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = pop;
+			target = 0A4A434A21314D9AC4554951878A0767 /* pop */;
+			targetProxy = 8DD4B6A62FD2CD3C45D1CF789F791D0C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0B3FC6585EE04CB830377906D33C1661 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB63783B283241E9F88C4C9B52B0D92E /* Koloda-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Koloda/Koloda-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Koloda/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Koloda/Koloda.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Koloda;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		0C812A8B084AB655D058D5DC45F0D458 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -864,9 +837,36 @@
 			};
 			name = Debug;
 		};
-		2DF12033FC97FA74127260A838724C73 /* Release */ = {
+		4C080A33DBF4F44730A6D70D97DA4EDD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC74EBC1F03FEFEDB0576721C632819A /* ActionSheetPicker-3.0-Private.xcconfig */;
+			baseConfigurationReference = E1B91C602ABB3F109E813E4728DA9C27 /* Koloda-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Koloda/Koloda-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Koloda/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Koloda/Koloda.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Koloda;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		578E3C6DA2EE3B099A089E83E6132803 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 436161CCBD3A3DA09B67238E88932A5C /* ActionSheetPicker-3.0-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -881,7 +881,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/ActionSheetPicker-3.0/ActionSheetPicker-3.0.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = ActionSheetPicker_3_0;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -889,7 +889,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		7C84345D7EEBBBB2BFF18E13BB3BA6A7 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -925,6 +925,34 @@
 			};
 			name = Release;
 		};
+		A400D9AD900F0A239D3C763808B1C33F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1B91C602ABB3F109E813E4728DA9C27 /* Koloda-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Koloda/Koloda-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Koloda/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Koloda/Koloda.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Koloda;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		B48701F099B37539FF3AC6303909760B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 73AB2173314C5E0A8A2C76719CCA9E30 /* pop-Private.xcconfig */;
@@ -952,37 +980,9 @@
 			};
 			name = Release;
 		};
-		BB6101129056B1B58376566D313CCD2B /* Debug */ = {
+		CD32D530086CDB8DD8612DFAA41B1CC4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB63783B283241E9F88C4C9B52B0D92E /* Koloda-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Koloda/Koloda-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Koloda/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Koloda/Koloda.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Koloda;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C4171945E32547C1980BC97A4D1DAF19 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC74EBC1F03FEFEDB0576721C632819A /* ActionSheetPicker-3.0-Private.xcconfig */;
+			baseConfigurationReference = 436161CCBD3A3DA09B67238E88932A5C /* ActionSheetPicker-3.0-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -997,7 +997,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/ActionSheetPicker-3.0/ActionSheetPicker-3.0.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = ActionSheetPicker_3_0;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1005,7 +1005,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		CF4DEDE651597320555A1FF1B2CE152A /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1078,6 +1078,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		52C2C3235F8BE28950629887B2A97415 /* Build configuration list for PBXNativeTarget "Koloda" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A400D9AD900F0A239D3C763808B1C33F /* Debug */,
+				4C080A33DBF4F44730A6D70D97DA4EDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		559AC8FA0AC851C8CF5B54312458B42E /* Build configuration list for PBXNativeTarget "pop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1087,29 +1096,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		664363B0974B8D5E8836A7688F3B15D7 /* Build configuration list for PBXNativeTarget "ActionSheetPicker-3.0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				578E3C6DA2EE3B099A089E83E6132803 /* Debug */,
+				CD32D530086CDB8DD8612DFAA41B1CC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6847A1E63029B89B4CCC6E3C50945E8A /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D950066C162A7823C66D0560AA170415 /* Debug */,
 				CF4DEDE651597320555A1FF1B2CE152A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6B8A76FFB2945606E100A63A21FE9E6D /* Build configuration list for PBXNativeTarget "ActionSheetPicker-3.0" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C4171945E32547C1980BC97A4D1DAF19 /* Debug */,
-				2DF12033FC97FA74127260A838724C73 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ED498252434B04C2F5C222EABD15C773 /* Build configuration list for PBXNativeTarget "Koloda" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BB6101129056B1B58376566D313CCD2B /* Debug */,
-				0B3FC6585EE04CB830377906D33C1661 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

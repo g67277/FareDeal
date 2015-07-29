@@ -12,11 +12,10 @@ class UserProfileVC: UIViewController {
     
     
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    var normalReturn = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
     
@@ -28,11 +27,13 @@ class UserProfileVC: UIViewController {
             self.dismissViewControllerAnimated(true, completion: nil)
         } else if _sender.tag == 1 {
             println("Move user to consumer side")
+            normalReturn = false
             // remove user token
             prefs.setObject(nil, forKey: "TOKEN")
             // set the side to business
             prefs.setInteger(1, forKey: "SIDE")// and return to launch
-            self.dismissViewControllerAnimated(true, completion: nil)
+            // perform unwind segue to initial view, which will load the business view
+            self.performSegueWithIdentifier("returnUserToBusiness", sender: self)
         }
         
     }
@@ -49,9 +50,11 @@ class UserProfileVC: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         // restore the navigation bar to origional
-        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-        navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        navBar.shadowImage = nil
+        if normalReturn {
+            let navBar:UINavigationBar! =  self.navigationController?.navigationBar
+            navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+            navBar.shadowImage = nil
+        }
     }
 
 

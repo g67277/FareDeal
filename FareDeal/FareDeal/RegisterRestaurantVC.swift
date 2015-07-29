@@ -60,9 +60,9 @@ class RegisterRestaurantVC: UIViewController {
         //testing only
         firstName.text = "naz"
         lastName.text = "naz"
-        emailAddressField.text = "naz@naz.com"
-        passwordField.text = "testing"
-        passwordCField.text = "testing"
+        //emailAddressField.text = "naz@naz.com"
+        passwordField.text = "Test@123"
+        passwordCField.text = "Test@123"
         // Delete above
         
         if count(firstName.text) < 2 {
@@ -110,6 +110,10 @@ class RegisterRestaurantVC: UIViewController {
             
 
             svc.callPart1 = "{\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\"}"
+            
+            //Testing
+            svc.username = emailAddressField.text
+            svc.pass = passwordField.text
             
             //svc.callPart1 = "\"FirstName\":\"\(firstName.text)\",\"LastName\":\"\(lastName.text)\",\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\""
             

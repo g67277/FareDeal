@@ -58,6 +58,12 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     var callPart2 = ""
     var profileView = false
     
+    //Testing
+    var username = ""
+    var pass = ""
+    //Testing
+    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
 
     
 
@@ -76,6 +82,11 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         if profileView {
             editNRegister.setTitle("Save", forState: UIControlState.Normal)
             editNRegister.tag = 2
+            
+            var signOutBtn = UIBarButtonItem(title: "Log off", style: UIBarButtonItemStyle.Done, target: self, action: "signOut")
+            navigationItem.rightBarButtonItem = signOutBtn
+            
+            
         }else{
             editNRegister.setTitle("Register", forState: UIControlState.Normal)
             editNRegister.tag = 1
@@ -83,6 +94,12 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         
         categoryArray = categories.loadCategories()
         
+    }
+    
+    func signOut(){
+        
+        prefs.setObject(nil, forKey: "TOKEN")
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
@@ -374,12 +391,31 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             callPart2 = "\(callPart1), \"RestName\":\"\(restNameField.text)\", \(formattedAddress), \"PhoneNumber\":\"\(phoneNumField.text)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"Hours\":\"\(priceControls.selected)\""
             
             // Testing for now...
-            authenticationCall.registerRestaurant2(callPart1)
+            if authenticationCall.registerRestaurant2(callPart1) {
+                
+                var refreshAlert = UIAlertController(title: "Thank you!", message: "Your information has been sent and is pending verification.  We will be in touch soon.  In the mean time, you can start setting-up your deals", preferredStyle: UIAlertControllerStyle.Alert)
+                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
+                    
+                    if self.authenticationCall.signIn(self.username, password: self.pass){
+                        self.backTwo()
+                    }
+                    
+                }))
+                self.presentViewController(refreshAlert, animated: true, completion: nil)
+                
+            }
             
             //authenticationCall.registerRestaurant(callPart2)
             
         }
         
+        
+    }
+    
+    func backTwo() {
+        
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
         
     }
     

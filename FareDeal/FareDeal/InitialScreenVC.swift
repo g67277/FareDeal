@@ -10,6 +10,8 @@ import UIKit
 
 class InitialScreenVC: UIViewController {
     
+    @IBOutlet var businessBlendView: UIView!
+    @IBOutlet var userBlendView: UIView!
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     

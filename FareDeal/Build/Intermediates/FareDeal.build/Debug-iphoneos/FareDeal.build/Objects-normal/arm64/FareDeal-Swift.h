@@ -116,6 +116,7 @@ SWIFT_CLASS("_TtC8FareDeal11AppDelegate")
 - (SWIFT_NULLABILITY(nonnull) instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSUserDefaults;
 @class UIButton;
 @class UITableView;
 @class NSIndexPath;
@@ -132,6 +133,7 @@ SWIFT_CLASS("_TtC8FareDeal12BusinessHome")
 @property (nonatomic, weak) IBOutlet UITableView * __null_unspecified monthSelector;
 @property (nonatomic, weak) IBOutlet UIButton * __null_unspecified monthsBtn;
 @property (nonatomic, readonly, copy) NSArray * __nonnull months;
+@property (nonatomic, readonly) NSUserDefaults * __nonnull prefs;
 - (void)viewDidLoad;
 - (void)viewDidAppear:(BOOL)animated;
 - (IBAction)onClick:(UIButton * __nullable)_sender;
@@ -257,6 +259,18 @@ SWIFT_CLASS("_TtC8FareDeal21FavoritesTVController")
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC8FareDeal16ForgotPasswordVC")
+@interface ForgotPasswordVC : UIViewController
+@property (nonatomic) IBOutlet UITextField * __null_unspecified emailTextField;
+@property (nonatomic) IBOutlet UIView * __null_unspecified resetPasswordButtonView;
+@property (nonatomic) IBOutlet UIImageView * __null_unspecified backgroundImageView;
+- (void)viewDidLoad;
+- (void)viewDidLayoutSubviews;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class CALayer;
 
 SWIFT_CLASS("_TtC8FareDeal12GradientView")
@@ -280,10 +294,12 @@ SWIFT_CLASS("_TtC8FareDeal23HomeSwipeViewController")
 @property (nonatomic, copy) NSArray * __nonnull favoriteRestaurants;
 @property (nonatomic) BOOL searchActive;
 @property (nonatomic, copy) NSString * __nonnull searchString;
+@property (nonatomic, readonly) NSUserDefaults * __nonnull prefs;
 - (void)awakeFromNib;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (IBAction)showSearchOverlay:(id __nonnull)sender;
+- (IBAction)logout:(id __nonnull)sender;
 - (void)searchBarTextDidBeginEditing:(UISearchBar * __nonnull)searchBar;
 - (void)searchBarTextDidEndEditing:(UISearchBar * __nonnull)searchBar;
 - (void)searchBarCancelButtonClicked:(UISearchBar * __nonnull)searchBar;
@@ -298,6 +314,52 @@ SWIFT_CLASS("_TtC8FareDeal23HomeSwipeViewController")
 - (void)kolodaDidSelectCardAtIndex:(KolodaView * __nonnull)koloda index:(NSUInteger)index;
 - (BOOL)kolodaShouldApplyAppearAnimation:(KolodaView * __nonnull)koloda;
 - (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC8FareDeal15InitialScreenVC")
+@interface InitialScreenVC : UIViewController
+@property (nonatomic) IBOutlet UIView * __null_unspecified businessBlendView;
+@property (nonatomic) IBOutlet UIView * __null_unspecified userBlendView;
+@property (nonatomic, readonly) NSUserDefaults * __nonnull prefs;
+- (void)viewDidLoad;
+- (void)viewDidAppear:(BOOL)animated;
+- (IBAction)onClick:(UIButton * __nonnull)_sender;
+- (void)didReceiveMemoryWarning;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC8FareDeal20RegisterRestaurantVC")
+@interface RegisterRestaurantVC : UIViewController
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified usernameField;
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified passwordField;
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified passwordCField;
+- (void)viewDidLoad;
+- (void)DismissKeyboard;
+- (IBAction)onClick:(UIButton * __nonnull)_sender;
+- (void)didReceiveMemoryWarning;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC8FareDeal14RegisterUserVC")
+@interface RegisterUserVC : UIViewController
+@property (nonatomic) IBOutlet UIView * __null_unspecified registerButtonView;
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified usernameField;
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified emailField;
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified passwordField;
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified passwordCField;
+- (void)viewDidLoad;
+- (void)viewDidLayoutSubviews;
+- (void)DismissKeyboard;
+- (IBAction)onClick:(UIButton * __nonnull)_sender;
+- (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
+- (void)didReceiveMemoryWarning;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -381,6 +443,44 @@ SWIFT_CLASS("_TtC8FareDeal26RestaurantDetailController")
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC8FareDeal12SignInUserVC")
+@interface SignInUserVC : UIViewController
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified userNameField;
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified passwordField;
+@property (nonatomic) IBOutlet UIView * __null_unspecified logInButtonView;
+@property (nonatomic, readonly) NSUserDefaults * __nonnull prefs;
+- (void)viewDidLoad;
+- (void)viewDidLayoutSubviews;
+- (void)viewDidAppear:(BOOL)animated;
+- (void)DismissKeyboard;
+- (IBAction)onClick:(UIButton * __nonnull)_sender;
+- (void)didReceiveMemoryWarning;
+- (IBAction)returnToLogInScreen:(UIStoryboardSegue * __nonnull)segue;
+- (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC8FareDeal8SignInVC")
+@interface SignInVC : UIViewController
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified userNameField;
+@property (nonatomic, weak) IBOutlet UITextField * __null_unspecified passwordField;
+@property (nonatomic) IBOutlet UIView * __null_unspecified logInButtonView;
+@property (nonatomic, readonly) NSUserDefaults * __nonnull prefs;
+- (void)viewDidLoad;
+- (void)viewDidAppear:(BOOL)animated;
+- (void)viewDidLayoutSubviews;
+- (void)DismissKeyboard;
+- (IBAction)onClick:(UIButton * __nonnull)_sender;
+- (void)viewWillAppear:(BOOL)animated;
+- (void)viewWillDisappear:(BOOL)animated;
+- (void)didReceiveMemoryWarning;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class SKProduct;
 @class SKProductsRequest;
 @class SKProductsResponse;
@@ -404,6 +504,11 @@ SWIFT_CLASS("_TtC8FareDeal7StoreVC")
 - (void)didReceiveMemoryWarning;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface UIView (SWIFT_EXTENSION(FareDeal))
+- (void)roundCorners:(UIRectCorner)corners radius:(CGFloat)radius;
 @end
 
 #pragma clang diagnostic pop

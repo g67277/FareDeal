@@ -13,6 +13,9 @@ class SignInUserVC: UIViewController {
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    @IBOutlet var logInButtonView: UIView!
+
+    
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     let authenticationCall:AuthenticationCalls = AuthenticationCalls()
@@ -25,7 +28,18 @@ class SignInUserVC: UIViewController {
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
+        
+        userNameField.attributedPlaceholder = NSAttributedString(string:"Username",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
+        passwordField.attributedPlaceholder = NSAttributedString(string:"Password",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 
+    }
+    
+    override func viewDidLayoutSubviews() {
+        // set the rounded corners after autolayout has finished
+        logInButtonView.roundCorners(.AllCorners, radius: 14)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -65,5 +79,26 @@ class SignInUserVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func returnToLogInScreen (segue:UIStoryboardSegue) {
+        
+    }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "userForgotPassword" {
+            let forgotPasswordVC: ForgotPasswordVC = segue.destinationViewController as! ForgotPasswordVC
+            forgotPasswordVC.senderTag = 0
+        }
+    }
+
+
+    
+}
+
+extension UIView {
+    func roundCorners(corners:UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.CGPath
+        self.layer.mask = mask
+    }
 }

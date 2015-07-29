@@ -10,7 +10,9 @@ import UIKit
 
 class RegisterUserVC: UIViewController {
     
+    @IBOutlet var registerButtonView: UIView!
     @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordCField: UITextField!
     
@@ -24,8 +26,26 @@ class RegisterUserVC: UIViewController {
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
+        
+        usernameField.attributedPlaceholder = NSAttributedString(string:"Username",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
+        emailField.attributedPlaceholder = NSAttributedString(string:"Email Address",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
+        passwordField.attributedPlaceholder = NSAttributedString(string:"Password",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
+        passwordCField.attributedPlaceholder = NSAttributedString(string:"Confirm Password",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 
     }
+    
+    override func viewDidLayoutSubviews() {
+        
+        registerButtonView.roundCorners(.AllCorners, radius: 14)
+    }
+    
     
     func DismissKeyboard(){
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
@@ -53,20 +73,17 @@ class RegisterUserVC: UIViewController {
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "businessForgotPassword" {
+            let forgotPasswordVC: ForgotPasswordVC = segue.destinationViewController as! ForgotPasswordVC
+            forgotPasswordVC.senderTag = 1
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }

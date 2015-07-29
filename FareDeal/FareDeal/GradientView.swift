@@ -23,8 +23,15 @@ class GradientView: UIView {
         let darkGrey = UIColor.darkGrayColor().CGColor
         let clear = UIColor.clearColor().CGColor
         
-        // set gradient's color array
-        gradient.colors = [clear, darkGrey]
+        if self.tag == 0 {
+            // under restaurant image
+            // set gradient's color array
+            gradient.colors = [clear, darkGrey]
+        } else {
+            // This is on the initial screen
+            // reverse gradient's color array
+            gradient.colors = [clear, darkGrey, clear]
+        }
         // add the layer to the UIView
         self.layer.insertSublayer(gradient, atIndex: 0)
     }

@@ -12,6 +12,7 @@ class SignInVC: UIViewController {
     
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet var logInButtonView: UIView!
     
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
@@ -25,6 +26,12 @@ class SignInVC: UIViewController {
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
+        
+        userNameField.attributedPlaceholder = NSAttributedString(string:"Username",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
+        passwordField.attributedPlaceholder = NSAttributedString(string:"Password",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -39,6 +46,12 @@ class SignInVC: UIViewController {
         }
         
     }
+    
+    override func viewDidLayoutSubviews() {
+        // set the rounded corners after autolayout has finished
+        logInButtonView.roundCorners(.AllCorners, radius: 14)
+    }
+
     
     func DismissKeyboard(){
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
@@ -62,6 +75,23 @@ class SignInVC: UIViewController {
         }
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        // Hide the navigation bar to display the full location image
+        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
+        navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navBar.shadowImage = UIImage()
+        navBar.backgroundColor = UIColor.clearColor()
+    }
+    
+    
+    override func viewWillDisappear(animated: Bool) {
+        // restore the navigation bar to origional
+        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
+        navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        navBar.shadowImage = nil
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

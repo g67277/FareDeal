@@ -327,35 +327,9 @@
                                             <outlet property="delegate" destination="vXZ-lx-hvc" id="gA9-Op-ei3"/>
                                         </connections>
                                     </tableView>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hf-eO-C78">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="8lv-gr-gci"/>
-                                            <constraint firstAttribute="height" constant="30" id="Fy3-Z2-tYV"/>
-                                        </constraints>
-                                        <state key="normal" title="Sign Out">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="8lv-gr-gci"/>
-                                                <exclude reference="Fy3-Z2-tYV"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="8lv-gr-gci"/>
-                                                <include reference="Fy3-Z2-tYV"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <action selector="onClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SLp-kS-Ijf"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="1hf-eO-C78" secondAttribute="centerX" id="1cE-Bi-ed1"/>
                                     <constraint firstItem="J4I-sk-SdE" firstAttribute="top" secondItem="GHe-n4-ORo" secondAttribute="bottom" constant="18" id="2Ig-n5-AaR"/>
                                     <constraint firstItem="67Z-wl-ye2" firstAttribute="leading" secondItem="UNT-OK-qHO" secondAttribute="leading" constant="64" id="2RR-Co-rkq"/>
                                     <constraint firstItem="fno-iy-5H5" firstAttribute="top" secondItem="nfS-GP-JR5" secondAttribute="bottom" constant="10" id="3Em-kV-SL5"/>
@@ -384,7 +358,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Aqn-eO-InS" secondAttribute="trailing" constant="8" id="YeY-vc-cad"/>
                                     <constraint firstItem="NwS-4m-Aul" firstAttribute="top" secondItem="Spe-zF-Pt0" secondAttribute="bottom" constant="60" id="Yfa-Gf-n4U"/>
                                     <constraint firstItem="Spe-zF-Pt0" firstAttribute="top" secondItem="Mm3-ag-7SO" secondAttribute="bottom" constant="11" id="Yfc-PA-Wbb"/>
-                                    <constraint firstItem="NwS-4m-Aul" firstAttribute="top" secondItem="1hf-eO-C78" secondAttribute="bottom" constant="13" id="ZlJ-U7-Wzr"/>
                                     <constraint firstItem="Mm3-ag-7SO" firstAttribute="top" secondItem="J4I-sk-SdE" secondAttribute="bottom" constant="16" id="bUA-TQ-BEu"/>
                                     <constraint firstItem="fno-iy-5H5" firstAttribute="top" secondItem="Aeh-BZ-ZKP" secondAttribute="bottom" constant="18" id="cUN-Ky-jmp"/>
                                     <constraint firstAttribute="trailing" secondItem="NwS-4m-Aul" secondAttribute="trailing" id="dW2-bS-9CR"/>
@@ -400,24 +373,6 @@
                                     <constraint firstItem="67Z-wl-ye2" firstAttribute="top" secondItem="Mm3-ag-7SO" secondAttribute="bottom" constant="14" id="vuN-c7-DZi"/>
                                     <constraint firstItem="fSI-bQ-hN1" firstAttribute="top" secondItem="Aqn-eO-InS" secondAttribute="bottom" id="yEa-YZ-GbZ"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="1hf-eO-C78"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <exclude reference="1cE-Bi-ed1"/>
-                                        <exclude reference="ZlJ-U7-Wzr"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="subviews">
-                                        <include reference="1hf-eO-C78"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <include reference="1cE-Bi-ed1"/>
-                                        <include reference="ZlJ-U7-Wzr"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95076884920634919" green="0.95076884920634919" blue="0.95076884920634919" alpha="1" colorSpace="calibratedRGB"/>

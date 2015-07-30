@@ -12,7 +12,7 @@ import ActionSheetPicker_3_0
 
 
 class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+
     //Restaurant Name Field
     @IBOutlet weak var restNameField: UITextField!
     var nameValid = false
@@ -93,8 +93,38 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         }
         
         categoryArray = categories.loadCategories()
-        
+        styleElements(true)
     }
+    
+    override func viewDidLayoutSubviews() {
+        // set the rounded corners after autolayout has finished
+        styleElements(false)
+    }
+    
+    func styleElements(didLoad: Bool){
+        
+        var elementArray = [restNameField, streetField, cityField, zipecodeField, phoneNumField, websiteField]
+
+        if didLoad{
+            for element in elementArray{
+                let paddingView = UIView(frame: CGRectMake(0, 0, 15, element.frame.height))
+                element.leftView = paddingView
+                element.leftViewMode = UITextFieldViewMode.Always
+                
+            }
+        }else {
+            for element in elementArray{
+                element.roundCorners(.AllCorners, radius: 6)
+            }
+            catButton.roundCorners(.AllCorners, radius: 14)
+            weekdayC.roundCorners(.AllCorners, radius: 14)
+            weedayO.roundCorners(.AllCorners, radius: 14)
+            weekendC.roundCorners(.AllCorners, radius: 14)
+            weekendO.roundCorners(.AllCorners, radius: 14)
+            
+        }
+    }
+    
     
     func signOut(){
         
@@ -421,6 +451,25 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     
     func saveData(){
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        // Hide the navigation bar to display the full location image
+        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
+        navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navBar.shadowImage = UIImage()
+        navBar.tintColor = .whiteColor()
+        navBar.backgroundColor = UIColor.clearColor()
+    }
+    
+    
+    override func viewWillDisappear(animated: Bool) {
+        // restore the navigation bar to origional
+        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
+        navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        navBar.shadowImage = nil
+        // navBar the background color to whatever we choose
+        //bar.backgroundColor = UIColor.clearColor()
     }
 
     

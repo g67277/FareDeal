@@ -8,17 +8,17 @@ nominals:
 class-members:
 top-level:
 - "IntegerLiteralType"
-- !private "String"
 - !private "Double"
+- !private "String"
 - "FloatLiteralType"
 - "AnyObject"
-- "Serializable"
 - "NSObject"
 - !private "Int"
 - "StringLiteralType"
+- "Serializable"
 member-access:
-- !private "CSo8NSObject"
 - "V8FareDeal4Deal"
+- !private "CSo8NSObject"
 - !private "VSs10Dictionary"
 - "P8FareDeal12Serializable"
 dynamic-lookup:

@@ -1,5 +1,5 @@
 version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
-options: "125a1e10cad1b280cd205b95de10cef2"
+options: "53bd6fe54e71c57db7ee1d6f2cc16fbc"
 inputs: 
 - "/Users/angelasmith/Desktop/Develop/FareDeal/FareDeal/RestaurantDealsVC.swift"
 - "/Users/angelasmith/Desktop/Develop/FareDeal/FareDeal/StoreVC.swift"
@@ -34,5 +34,4 @@ inputs:
 - "/Users/angelasmith/Desktop/Develop/FareDeal/FareDeal/CardContentView.swift"
 - "/Users/angelasmith/Desktop/Develop/FareDeal/FareDeal/Deal.swift"
 - "/Users/angelasmith/Desktop/Develop/FareDeal/FareDeal/SignInUserVC.swift"
-- "/Users/angelasmith/Desktop/Develop/FareDeal/FareDeal/DealHeaderCell.swift"
 - "/Users/angelasmith/Desktop/Develop/FareDeal/FareDeal/Constants.swift"

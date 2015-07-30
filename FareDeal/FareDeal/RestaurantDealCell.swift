@@ -80,3 +80,9 @@ class RestaurantDealCell: UITableViewCell, TTCounterLabelDelegate {
     }
     
 }
+
+extension Float {
+    func format(f: String) -> String {
+        return NSString(format: "%\(f)f", self) as String
+    }
+}

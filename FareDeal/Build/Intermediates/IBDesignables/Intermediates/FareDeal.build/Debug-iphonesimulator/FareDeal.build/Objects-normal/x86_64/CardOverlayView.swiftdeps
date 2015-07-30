@@ -6,23 +6,23 @@ nominals:
 class-members:
 - "overlayImageView"
 top-level:
-- !private "overlayRightImageName"
-- "OverlayView"
 - "OverlayMode"
 - !private "overlayLeftImageName"
-- !private "UIImage"
 - "UIImageView"
+- !private "UIImage"
+- "OverlayView"
+- !private "overlayRightImageName"
 - "StringLiteralType"
 member-access:
-- "O6Koloda11OverlayMode"
-- "C6Koloda11OverlayView"
-- !private "CSo7UIImage"
-- "C8FareDeal15CardOverlayView"
 - !private "CSo11UIImageView"
+- "C6Koloda11OverlayView"
+- "O6Koloda11OverlayMode"
+- !private "Sb"
 - "CSo8NSObject"
 - "PSs9AnyObject"
-- !private "Sb"
 - "CSo6UIView"
+- !private "CSo7UIImage"
+- "C8FareDeal15CardOverlayView"
 - "CSo11UIResponder"
 dynamic-lookup:
 cross-module:

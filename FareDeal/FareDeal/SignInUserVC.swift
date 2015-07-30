@@ -86,6 +86,12 @@ class SignInUserVC: UIViewController {
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "toBusinessSide") {
+            prefs.setInteger(1, forKey: "SIDE")
+        }
+    }
+    
 
     
 }

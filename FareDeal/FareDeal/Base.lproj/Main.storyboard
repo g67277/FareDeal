@@ -171,9 +171,6 @@
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="163" y="105" width="74" height="21"/>
-                                </variation>
                             </label>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UNT-OK-qHO">
                                 <rect key="frame" x="0.0" y="124" width="600" height="476"/>
@@ -190,8 +187,7 @@
                                                 <exclude reference="hGT-SU-sXA"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="453" width="400" height="214"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="hGT-SU-sXA"/>
                                             </mask>
@@ -420,8 +416,7 @@
                                         <exclude reference="Wd0-iy-URh"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="139" width="400" height="661"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <exclude reference="cUN-Ky-jmp"/>
                                         <include reference="CBp-ap-Tcn"/>
@@ -542,8 +537,7 @@
                                         <exclude reference="mnd-ig-KWp"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="88"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="ykf-lt-4JZ"/>
                                         <include reference="FFr-jr-yuf"/>
@@ -1748,7 +1742,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="68h-ru-Y2W" kind="presentation" id="rRD-7E-Xq5"/>
+                                            <segue destination="68h-ru-Y2W" kind="presentation" identifier="toBusinessSide" id="rRD-7E-Xq5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2195,7 +2189,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Rzm-JY-67T" kind="presentation" id="NgT-eM-c69"/>
+                                            <segue destination="Rzm-JY-67T" kind="presentation" identifier="toUserSide" id="NgT-eM-c69"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2285,6 +2279,9 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="businessBackground" translatesAutoresizingMaskIntoConstraints="NO" id="4fR-Mh-JeZ">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="-44" width="400" height="844"/>
+                                </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="*Only Washington D.C. Resturants accepted at this time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8b-bO-ArH">
                                 <rect key="frame" x="14" y="71" width="310" height="21"/>
@@ -2299,7 +2296,8 @@
                                         <exclude reference="KKt-R4-t7Q"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="14" y="37" width="310" height="21"/>
                                     <mask key="constraints">
                                         <include reference="KKt-R4-t7Q"/>
                                     </mask>
@@ -2778,7 +2776,8 @@
                                                 <exclude reference="tar-Xd-Csw"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="749"/>
                                             <mask key="subviews">
                                                 <include reference="NSk-Eb-E08"/>
                                                 <include reference="tU3-vl-RZs"/>
@@ -2863,7 +2862,8 @@
                                         <exclude reference="Xzb-TP-KAZ"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="66" width="400" height="749"/>
                                     <mask key="constraints">
                                         <include reference="4dx-7Q-NhT"/>
                                         <include reference="9Zn-e4-czc"/>
@@ -4606,9 +4606,6 @@
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="720"/>
-                                        </variation>
                                         <connections>
                                             <outlet property="dataSource" destination="Th9-IB-RIN" id="gU5-vr-Z4S"/>
                                             <outlet property="delegate" destination="Th9-IB-RIN" id="MhE-VE-wyd"/>
@@ -4622,9 +4619,6 @@
                                     <constraint firstItem="LYA-ad-mK2" firstAttribute="leading" secondItem="Z0n-HJ-dXZ" secondAttribute="leading" id="ivD-XK-wzT"/>
                                     <constraint firstAttribute="bottom" secondItem="LYA-ad-mK2" secondAttribute="bottom" id="ydS-Ha-ktR"/>
                                 </constraints>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="720"/>
-                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y64-XA-qXg" userLabel="Saved Deal Button View">
                                 <rect key="frame" x="0.0" y="540" width="600" height="60"/>
@@ -5056,7 +5050,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="199" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="uOj-el-7mR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.98823529409999999" green="0.74901960779999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="restaurantDealCell" rowHeight="199" id="eSm-IE-noI" userLabel="restaurant deal cell" customClass="UserDealCell" customModule="FareDeal" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -6219,7 +6213,7 @@
                                 </variation>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.91054894179894186" green="0.91054894179894186" blue="0.91054894179894186" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="uOj-el-7mR" secondAttribute="trailing" id="X6c-Mm-uKu"/>
                             <constraint firstItem="LC4-go-unT" firstAttribute="top" secondItem="uOj-el-7mR" secondAttribute="bottom" id="bhr-ba-KSi"/>
@@ -7920,7 +7914,7 @@ Leeburg, VA 20176
         <segue reference="8xx-Ml-jVl"/>
         <segue reference="rRD-7E-Xq5"/>
         <segue reference="NgT-eM-c69"/>
-        <segue reference="QuG-ae-Vzd"/>
+        <segue reference="IYx-uR-K44"/>
         <segue reference="NyC-oe-OqS"/>
         <segue reference="ewe-a6-IF6"/>
     </inferredMetricsTieBreakers>

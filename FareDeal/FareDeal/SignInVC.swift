@@ -76,6 +76,13 @@ class SignInVC: UIViewController {
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "toUserSide") {
+            prefs.setInteger(2, forKey: "SIDE")
+        }
+    }
+
+    
     override func viewWillAppear(animated: Bool) {
         // Hide the navigation bar to display the full location image
         let navBar:UINavigationBar! =  self.navigationController?.navigationBar

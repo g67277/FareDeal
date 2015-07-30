@@ -10,11 +10,11 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
-    @IBOutlet weak var descLabel: UILabel!
-    @IBOutlet weak var valueLabel: UILabel!
+    //@IBOutlet weak var descLabel: UILabel!
+    //@IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var myTableView: UITableView!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var activityLabel: UILabel!
+    var activityIndicator: UIActivityIndicatorView!
+    var activityLabel: UILabel!
     
     
     var plistObjects: [AnyObject] = []
@@ -22,7 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var allRestaurants: [Restaurant] = []
     // Holds all the restaurants/Deals to be displayed
     var dealList: [Restaurant] = []
-    
+    var topRestaurant:Restaurant!
     var topDealReached = false
     var currentRestaurantIndex = 0
     // used in the featured section as to not display non-qualifying deals
@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         let firstDate = NSDate()
         println(firstDate)
-        myTableView.rowHeight = 217
+        myTableView.rowHeight = 192
         loadDeals()
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -133,7 +133,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 dealList.insert(allRestaurants[currentRestaurantIndex], atIndex: 0)
                 currentRestaurantIndex = currentRestaurantIndex + 1
                 
-                displayFeaturedDeal(allRestaurants[currentRestaurantIndex])
+                //displayFeaturedDeal(allRestaurants[currentRestaurantIndex])
+                topRestaurant = allRestaurants[currentRestaurantIndex]
                 delayLoad()
             }
             
@@ -141,15 +142,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             // Once we are done with the array, hide the indicator, set the topDealReached, display the top
             // deal in the featured section and update the text in the activityLabel
-            activityIndicator.stopAnimating()
-            activityIndicator.hidden = true
+            //activityIndicator.stopAnimating()
+            //activityIndicator.hidden = true
             topDealReached = true
-            displayFeaturedDeal(allRestaurants[topBidIndex])
+            //displayFeaturedDeal(allRestaurants[topBidIndex])
+            topRestaurant = allRestaurants[topBidIndex]
             
         }
         
     }
     
+    /*
     func displayFeaturedDeal(restaurant: Restaurant){
         
         descLabel.text = restaurant.deal.desc
@@ -161,7 +164,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             activityLabel.text = "This is the best deal in the area! you've just saved $\(String(stringInterpolationSegment: restaurant.deal.value))"
         }
         
-    }
+    }*/
     
      /* -----------------------  CHECK IF DEAL WAS PREVIOUSLY DISPLAYED  --------------------------- */
     
@@ -226,12 +229,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // This delay starts the spinner giving the appearance a new deal is loading, then removes it and updates the list with a new deal
     func delayReload() {
-        self.activityIndicator.startAnimating()
-        self.activityLabel.hidden = false
+       // self.activityIndicator.startAnimating()
+       // self.activityLabel.hidden = false
         let timeDelay = Double(arc4random_uniform(1500000000) + 300000000)
         var dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(timeDelay))
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            self.displayFeaturedDeal(self.allRestaurants[self.topBidIndex])
+            //self.displayFeaturedDeal(self.allRestaurants[self.topBidIndex])
+            self.topRestaurant = self.allRestaurants[self.topBidIndex]
             self.myTableView.reloadData()
         })
         
@@ -242,6 +246,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return 1
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 290
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -257,6 +265,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.setUpRestaurantDeal(restaurant, deal: restaurantDeal)
         return cell
 
+    }
+    
+     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("dealHeaderCell") as! DealHeaderCell
+        //headerCell.activityIndicator = self.activityIndicator
+        //headerCell.activityLabel = self.activityLabel
+        headerCell.titleLabel.text = topRestaurant.deal.name
+        headerCell.descLabel.text = topRestaurant.deal.desc
+        headerCell.priceView.roundCorners(.AllCorners, radius: 10)
+        headerCell.searchView.roundCorners(.AllCorners, radius: 10)
+        // reformat the float to display a monetary value
+        let valueFloat:Float = topRestaurant.deal.value, valueFormat = ".2"
+        headerCell.valueLabel.text = "Value: $\(valueFloat.format(valueFormat))"
+        
+        if topDealReached {
+            headerCell.activityLabel.text = "This is the best deal in the area! you've just saved $\(String(stringInterpolationSegment: topRestaurant.deal.value))"
+        }
+        headerCell.setNeedsDisplay()
+        return headerCell
     }
     
     override func didReceiveMemoryWarning() {

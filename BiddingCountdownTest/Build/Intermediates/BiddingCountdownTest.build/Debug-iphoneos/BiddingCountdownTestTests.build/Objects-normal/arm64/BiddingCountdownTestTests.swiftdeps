@@ -4,21 +4,21 @@ provides:
 nominals:
 - "C25BiddingCountdownTestTests25BiddingCountdownTestTests"
 class-members:
-- "setUp"
-- "testPerformanceExample"
-- "testExample"
 - "tearDown"
+- "setUp"
+- "testExample"
+- "testPerformanceExample"
 top-level:
-- !private "BooleanLiteralType"
-- !private "StringLiteralType"
 - !private "XCTAssert"
+- !private "BooleanLiteralType"
 - "XCTestCase"
+- !private "StringLiteralType"
 member-access:
-- "CSo8NSObject"
-- "CSo10XCTestCase"
-- "PSs9AnyObject"
-- !private "C25BiddingCountdownTestTests25BiddingCountdownTestTests"
 - "CSo6XCTest"
+- !private "C25BiddingCountdownTestTests25BiddingCountdownTestTests"
+- "CSo10XCTestCase"
+- "CSo8NSObject"
+- "PSs9AnyObject"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/Swift.swiftmodule"

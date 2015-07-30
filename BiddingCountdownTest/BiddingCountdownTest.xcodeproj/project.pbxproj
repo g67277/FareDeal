@@ -20,6 +20,7 @@
 		9985C1461B63DC47005639EE /* TTCounterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9985C1431B63DC47005639EE /* TTCounterLabel.m */; };
 		9985C1471B63DC47005639EE /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9985C1451B63DC47005639EE /* TTTAttributedLabel.m */; };
 		9985C14A1B63DCA6005639EE /* RestaurantDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9985C1491B63DCA6005639EE /* RestaurantDealCell.swift */; };
+		99CD57761B6A930B00DBDF3A /* DealHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD57751B6A930B00DBDF3A /* DealHeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		9985C1451B63DC47005639EE /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		9985C1491B63DCA6005639EE /* RestaurantDealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealCell.swift; sourceTree = "<group>"; };
 		9985C1501B63E1FB005639EE /* BiddingCountdownTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BiddingCountdownTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		99CD57751B6A930B00DBDF3A /* DealHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealHeaderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				9985C1491B63DCA6005639EE /* RestaurantDealCell.swift */,
+				99CD57751B6A930B00DBDF3A /* DealHeaderCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				9985C1471B63DC47005639EE /* TTTAttributedLabel.m in Sources */,
 				9985C1461B63DC47005639EE /* TTCounterLabel.m in Sources */,
 				9985C13C1B63DBCE005639EE /* Constants.swift in Sources */,
+				99CD57761B6A930B00DBDF3A /* DealHeaderCell.swift in Sources */,
 				9985C13D1B63DBCE005639EE /* Deal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +483,7 @@
 				9985C1341B63DB49005639EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9985C1351B63DB49005639EE /* Build configuration list for PBXNativeTarget "BiddingCountdownTestTests" */ = {
 			isa = XCConfigurationList;
@@ -487,6 +492,7 @@
 				9985C1371B63DB49005639EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

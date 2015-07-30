@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>3277AAE3-5167-40E0-ABEE-6AE5E95C2BDC</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>BiddingCountdownTest</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7A050A765296F1E16C77CCF58816CBE429809774</key>
 		<string>https://github.com/g67277/FareDeal</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>BiddingCountdownTest/BiddingCountdownTest.xcodeproj/project.xcworkspace</string>
+	<string>BiddingCountdownTest/BiddingCountdownTest.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7A050A765296F1E16C77CCF58816CBE429809774</key>

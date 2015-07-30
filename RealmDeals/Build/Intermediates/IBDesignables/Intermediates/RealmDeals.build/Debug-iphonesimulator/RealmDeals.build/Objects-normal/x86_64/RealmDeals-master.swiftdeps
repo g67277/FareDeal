@@ -1,0 +1,8 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "af75f96bc354964b09a4c4bf6d3f3f1f"
+inputs: 
+- "/Users/angelasmith/Desktop/RD/RealmDeals/RealmDeals/Restaurant.swift"
+- "/Users/angelasmith/Desktop/RD/RealmDeals/RealmDeals/ViewController.swift"
+- "/Users/angelasmith/Desktop/RD/RealmDeals/RealmDeals/AppDelegate.swift"
+- "/Users/angelasmith/Desktop/RD/RealmDeals/RealmDeals/Constants.swift"
+- "/Users/angelasmith/Desktop/RD/RealmDeals/RealmDeals/Deal.swift"

@@ -85,6 +85,7 @@ typedef struct _NSZone NSZone;
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
 @import ObjectiveC;
+@import CoreGraphics;
 #endif
 
 #import "/Users/angelasmith/Desktop/RD/BiddingCountdownTest/BiddingCountdownTest/BiddingCountdownTest-Bridging-Header.h"
@@ -117,7 +118,24 @@ SWIFT_CLASS("_TtC20BiddingCountdownTest4Deal")
 @property (nonatomic) float value;
 @property (nonatomic) BOOL isDefault;
 @property (nonatomic, copy) NSString * __nonnull restId;
-- (SWIFT_NULLABILITY(nonnull) instancetype)initWithName:(NSString * __nonnull)name desc:(NSString * __nonnull)desc timeLimit:(NSInteger)timeLimit tier:(NSInteger)tier value:(float)value isDefault:(BOOL)isDefault restId:(NSString * __nonnull)restId OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, copy) NSString * __nonnull dealId;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithName:(NSString * __nonnull)name desc:(NSString * __nonnull)desc timeLimit:(NSInteger)timeLimit tier:(NSInteger)tier value:(float)value isDefault:(BOOL)isDefault restId:(NSString * __nonnull)restId dealId:(NSString * __nonnull)dealId OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UILabel;
+@class UIView;
+@class NSCoder;
+
+SWIFT_CLASS("_TtC20BiddingCountdownTest14DealHeaderCell")
+@interface DealHeaderCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified titleLabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified descLabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified valueLabel;
+@property (nonatomic) IBOutlet UILabel * __null_unspecified activityLabel;
+@property (nonatomic) IBOutlet UIView * __null_unspecified searchView;
+@property (nonatomic) IBOutlet UIView * __null_unspecified priceView;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * __nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -136,9 +154,7 @@ SWIFT_CLASS("_TtC20BiddingCountdownTest10Restaurant")
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithIdentifier:(NSString * __nonnull)identifier name:(NSString * __nonnull)name phone:(NSString * __nonnull)phone imageName:(NSString * __nonnull)imageName address:(NSString * __nonnull)address hours:(NSString * __nonnull)hours distance:(float)distance priceTier:(NSInteger)priceTier webUrl:(NSString * __nonnull)webUrl deal:(Deal * __nonnull)deal OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSCoder;
 @class UIImage;
-@class UILabel;
 @class UIImageView;
 @class UITextView;
 @class TTCounterLabel;
@@ -160,35 +176,43 @@ SWIFT_CLASS("_TtC20BiddingCountdownTest18RestaurantDealCell")
 - (void)setUpRestaurantDeal:(Restaurant * __nonnull)restaurant deal:(Deal * __nonnull)deal;
 @end
 
+
+@interface UIView (SWIFT_EXTENSION(BiddingCountdownTest))
+- (void)roundCorners:(UIRectCorner)corners radius:(CGFloat)radius;
+@end
+
 @class UIActivityIndicatorView;
+@class NSUserDefaults;
 @class UITableView;
 @class NSIndexPath;
 @class NSBundle;
 
 SWIFT_CLASS("_TtC20BiddingCountdownTest14ViewController")
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified descLabel;
-@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified valueLabel;
 @property (nonatomic, weak) IBOutlet UITableView * __null_unspecified myTableView;
-@property (nonatomic) IBOutlet UIActivityIndicatorView * __null_unspecified activityIndicator;
-@property (nonatomic) IBOutlet UILabel * __null_unspecified activityLabel;
+@property (nonatomic) UIActivityIndicatorView * __null_unspecified activityIndicator;
+@property (nonatomic) UILabel * __null_unspecified activityLabel;
 @property (nonatomic, copy) NSArray * __nonnull plistObjects;
 @property (nonatomic, copy) NSArray * __nonnull allRestaurants;
 @property (nonatomic, copy) NSArray * __nonnull dealList;
+@property (nonatomic) Restaurant * __null_unspecified topRestaurant;
 @property (nonatomic) BOOL topDealReached;
 @property (nonatomic) NSInteger currentRestaurantIndex;
 @property (nonatomic) NSInteger topBidIndex;
 @property (nonatomic) Restaurant * __null_unspecified lastDeal;
+@property (nonatomic, readonly) NSUserDefaults * __nonnull defaults;
 - (void)viewDidLoad;
 - (void)loadDeals;
 - (void)biddingStart;
-- (void)displayFeaturedDeal:(Restaurant * __nonnull)restaurant;
-- (void)loadDeal:(NSString * __nonnull)dealId;
+- (void)checkDeal:(NSString * __nonnull)dealId;
+- (void)saveDealIdInDefaults:(NSString * __nonnull)dealId dealObjects:(NSArray * __nonnull)dealObjects;
 - (void)delayLoad;
 - (void)delayReload;
 - (NSInteger)numberOfSectionsInTableView:(UITableView * __nonnull)tableView;
+- (CGFloat)tableView:(UITableView * __nonnull)tableView heightForHeaderInSection:(NSInteger)section;
 - (NSInteger)tableView:(UITableView * __nonnull)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell * __nonnull)tableView:(UITableView * __nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
+- (UIView * __nullable)tableView:(UITableView * __nonnull)tableView viewForHeaderInSection:(NSInteger)section;
 - (void)didReceiveMemoryWarning;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;

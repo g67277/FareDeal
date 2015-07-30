@@ -47,6 +47,10 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidLayoutSubviews() {
+        swipeableView.reloadData()
+    }
+    
     
     
     
@@ -112,6 +116,9 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     }
     
     func kolodaViewForCardAtIndex(koloda: KolodaView, index: UInt) -> UIView {
+        
+        //Check this for a better fix of the sizing issue...
+        //println("bounds for first 3: \(self.swipeableView.bounds)")
         
         var cardView = CardContentView(frame: self.swipeableView.bounds)
         

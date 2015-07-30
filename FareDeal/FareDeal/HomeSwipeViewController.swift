@@ -13,10 +13,12 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     
     
+    @IBOutlet var dealButton: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var searchButton: UIButton!
     @IBOutlet weak var searchDisplayOverview: UIView!
     @IBOutlet weak var swipeableView: KolodaView!
+    
     var restaurants: [AnyObject] = []
     var favoriteRestaurants: [AnyObject] = []
     var searchActive : Bool = false
@@ -53,20 +55,26 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     }
 
     override func viewDidAppear(animated: Bool) {
+        
+        // Add the second button to the nav bar
+        let logOutButton = UIBarButtonItem(image: UIImage(named: "logOut"), style: .Plain, target: self, action: "logOut")
+        self.navigationItem.setLeftBarButtonItems([logOutButton, self.dealButton], animated: true)
+        
         swipeableView.reloadData()
 
     }
     
     
+    func logOut () {
     
+    
+    }
     
     
     /* --------  SEARCH BAR DISPLAY AND DELEGATE METHODS ---------- */
     
     @IBAction func showSearchOverlay(sender: AnyObject) {
         searchDisplayOverview.hidden = !searchDisplayOverview.hidden
-        //searchButton.titleLabel?.text = (searchDisplayOverview.hidden) ? "Search" : "Cancel"
-        //searchButton.titleLabel?.text = "Cancel"
     }
     
     

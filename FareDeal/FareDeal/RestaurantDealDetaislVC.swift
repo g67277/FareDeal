@@ -19,8 +19,8 @@ class RestaurantDealDetaislVC: UIViewController {
     @IBOutlet weak var dealTimeRemainingLabel: UILabel!
     
     
-    var thisRestaurant: AnyObject?
-    var thisDeal: AnyObject?
+    var thisRestaurant: Restaurant?
+    var thisDeal: Deals?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,31 +31,30 @@ class RestaurantDealDetaislVC: UIViewController {
     
     func setUpDeal(){
         
-        if let restaurant: AnyObject = thisRestaurant {
+        if let restaurant: Restaurant = thisRestaurant {
             
             // String Labels
             if var locationLabel = locationName {
-                locationLabel.text = restaurant["name"] as? String
+                locationLabel.text = restaurant.name
             }
             
             // Image
             if var imageView = locationImage {
                 imageView.contentMode = UIViewContentMode.ScaleAspectFill
                 imageView.clipsToBounds = true
-                imageView.image = UIImage (named: (restaurant["imageUrl"] as? String)!)
+                imageView.image = UIImage (named: (restaurant.imageName))
             }
         }
         
         // Deal info
-        if let deal: AnyObject = thisDeal {
+        if let deal: Deals = thisDeal {
             if var dealTitle = dealTitleLabel {
-                dealTitle.text = deal["dealName"] as? String
-            }
+                dealTitle.text = deal.name             }
             if var dealDescription = dealdescriptionLabel {
-                dealDescription.text = deal["dealDescription"] as? String
-            }
+                dealDescription.text = deal.desc            }
             if var dealValue = dealValueLabel {
-                dealValue.text = deal["dealValue"] as? String
+                let valueFloat:Float = deal.value, valueFormat = ".2"
+                dealValue.text = "$\(valueFloat.format(valueFormat))"
             }
             
         }
@@ -82,7 +81,5 @@ class RestaurantDealDetaislVC: UIViewController {
         let navBar:UINavigationBar! =  self.navigationController?.navigationBar
         navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
         navBar.shadowImage = nil
-        // navBar the background color to whatever we choose
-        //bar.backgroundColor = UIColor.clearColor()
     }
 }

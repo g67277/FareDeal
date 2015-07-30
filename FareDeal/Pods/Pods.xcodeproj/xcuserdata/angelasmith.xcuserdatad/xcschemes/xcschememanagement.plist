@@ -4,25 +4,66 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ActionSheetPicker-3.0.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Koloda.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>Pods-Koloda.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>pop.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>038191BE4BA99F6899A7D329</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0795050702154C589B546AB09A03AA54</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0A4A434A21314D9AC4554951878A0767</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>34A04A4EB485C1C338373952F9934152</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A1AA0C7E8C4A32017862EF6BE93C8077</key>
 		<dict>
 			<key>primary</key>
 			<true/>

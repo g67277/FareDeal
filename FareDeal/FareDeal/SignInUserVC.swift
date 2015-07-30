@@ -97,4 +97,15 @@ extension UIView {
         mask.path = path.CGPath
         self.layer.mask = mask
     }
+    
+    func setBorder() {
+        self.layer.borderColor = UIColor.whiteColor().CGColor
+        self.layer.borderWidth = 1.5
+        
+        // drop shadow
+        self.layer.shadowColor = UIColor.lightGrayColor().CGColor
+        self.layer.shadowOpacity = 0.8
+        self.layer.shadowRadius = 1.3
+        self.layer.shadowOffset = CGSizeMake(1.0, 1.0)
+    }
 }

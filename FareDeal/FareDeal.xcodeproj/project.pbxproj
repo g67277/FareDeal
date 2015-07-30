@@ -48,6 +48,13 @@
 		99A04C5F1B60509C00C3E35B /* RestaurantDealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C5E1B60509C00C3E35B /* RestaurantDealsVC.swift */; };
 		99A04C611B6050B900C3E35B /* RestaurantDealDetaislVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C601B6050B900C3E35B /* RestaurantDealDetaislVC.swift */; };
 		99A04C631B60586E00C3E35B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99A04C621B60586E00C3E35B /* QuartzCore.framework */; };
+		99A6E8D01B69EC6C005179A6 /* UserDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8CF1B69EC6C005179A6 /* UserDealCell.swift */; };
+		99A6E8D51B69ECCA005179A6 /* TTCounterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8D21B69ECCA005179A6 /* TTCounterLabel.m */; };
+		99A6E8D61B69ECCA005179A6 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8D41B69ECCA005179A6 /* TTTAttributedLabel.m */; };
+		99A6E8D91B69ED97005179A6 /* Deals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8D81B69ED97005179A6 /* Deals.swift */; };
+		99A6E8DB1B69EE2D005179A6 /* RestaurantData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99A6E8DA1B69EE2D005179A6 /* RestaurantData.plist */; };
+		99A6E8DE1B69EE89005179A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8DC1B69EE89005179A6 /* Constants.swift */; };
+		99A6E8DF1B69EE89005179A6 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8DD1B69EE89005179A6 /* Restaurant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +116,15 @@
 		99A04C5E1B60509C00C3E35B /* RestaurantDealsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealsVC.swift; sourceTree = "<group>"; };
 		99A04C601B6050B900C3E35B /* RestaurantDealDetaislVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealDetaislVC.swift; sourceTree = "<group>"; };
 		99A04C621B60586E00C3E35B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		99A6E8CF1B69EC6C005179A6 /* UserDealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDealCell.swift; sourceTree = "<group>"; };
+		99A6E8D11B69ECCA005179A6 /* TTCounterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCounterLabel.h; sourceTree = "<group>"; };
+		99A6E8D21B69ECCA005179A6 /* TTCounterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCounterLabel.m; sourceTree = "<group>"; };
+		99A6E8D31B69ECCA005179A6 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		99A6E8D41B69ECCA005179A6 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		99A6E8D81B69ED97005179A6 /* Deals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deals.swift; sourceTree = "<group>"; };
+		99A6E8DA1B69EE2D005179A6 /* RestaurantData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RestaurantData.plist; sourceTree = "<group>"; };
+		99A6E8DC1B69EE89005179A6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		99A6E8DD1B69EE89005179A6 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		D8BB905533740AECB8C2BD9F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EFED01E1FD4AB234C93A922F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +184,7 @@
 		81481B371B56A2D6000EC386 /* FareDeal */ = {
 			isa = PBXGroup;
 			children = (
+				99A6E8D71B69ECEA005179A6 /* Timer Label */,
 				81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */,
 				81481B3A1B56A2D6000EC386 /* AppDelegate.swift */,
 				8185E2FB1B608ADA00059124 /* Signing In/Up */,
@@ -186,6 +203,7 @@
 		81481B381B56A2D6000EC386 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				99A6E8DA1B69EE2D005179A6 /* RestaurantData.plist */,
 				81481B391B56A2D6000EC386 /* Info.plist */,
 				995935EA1B5EDA1C009CDD26 /* Restaurants.plist */,
 			);
@@ -228,8 +246,11 @@
 		819281DE1B5B3FD50003AD4D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				99A6E8DC1B69EE89005179A6 /* Constants.swift */,
+				99A6E8DD1B69EE89005179A6 /* Restaurant.swift */,
 				819281DC1B5B3FD20003AD4D /* Deal.swift */,
 				8132230E1B685F1800613C60 /* FoodCategories.swift */,
+				99A6E8D81B69ED97005179A6 /* Deals.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -267,6 +288,7 @@
 				995935E71B5EDA1C009CDD26 /* FavoritesCell.swift */,
 				99A04C5A1B604F9E00C3E35B /* GradientView.swift */,
 				99A04C5C1B604FE700C3E35B /* RestaurantDealCell.swift */,
+				99A6E8CF1B69EC6C005179A6 /* UserDealCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -282,6 +304,17 @@
 				994C61341B692B3700E5EF7C /* UserProfileVC.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		99A6E8D71B69ECEA005179A6 /* Timer Label */ = {
+			isa = PBXGroup;
+			children = (
+				99A6E8D11B69ECCA005179A6 /* TTCounterLabel.h */,
+				99A6E8D21B69ECCA005179A6 /* TTCounterLabel.m */,
+				99A6E8D31B69ECCA005179A6 /* TTTAttributedLabel.h */,
+				99A6E8D41B69ECCA005179A6 /* TTTAttributedLabel.m */,
+			);
+			name = "Timer Label";
 			sourceTree = "<group>";
 		};
 		C31432AE2A16D3F550EAB896 /* Frameworks */ = {
@@ -363,7 +396,7 @@
 					};
 					81481B491B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
+						DevelopmentTeam = 56R6M4W3X8;
 						TestTargetID = 81481B341B56A2D6000EC386;
 					};
 				};
@@ -395,6 +428,7 @@
 				995935EC1B5EDA1C009CDD26 /* CardContentView.xib in Resources */,
 				995935F21B5EDA1C009CDD26 /* Restaurants.plist in Resources */,
 				81481B401B56A2D6000EC386 /* Main.storyboard in Resources */,
+				99A6E8DB1B69EE2D005179A6 /* RestaurantData.plist in Resources */,
 				81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */,
 				995935EE1B5EDA1C009CDD26 /* CardOverlayView.xib in Resources */,
 				81481B421B56A2D6000EC386 /* Images.xcassets in Resources */,
@@ -465,6 +499,8 @@
 			files = (
 				99A04C5F1B60509C00C3E35B /* RestaurantDealsVC.swift in Sources */,
 				81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */,
+				99A6E8D01B69EC6C005179A6 /* UserDealCell.swift in Sources */,
+				99A6E8D51B69ECCA005179A6 /* TTCounterLabel.m in Sources */,
 				99A04C611B6050B900C3E35B /* RestaurantDealDetaislVC.swift in Sources */,
 				81008C121B5C46AE0019E297 /* DataManager.swift in Sources */,
 				819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */,
@@ -480,12 +516,15 @@
 				993285D51B5F3DF8003C19E1 /* RestaurantDetailController.swift in Sources */,
 				81B879121B691113003B1BB0 /* ForgotPasswordVC.swift in Sources */,
 				8185E2F81B60899B00059124 /* SignInVC.swift in Sources */,
+				99A6E8D61B69ECCA005179A6 /* TTTAttributedLabel.m in Sources */,
 				994C61351B692B3700E5EF7C /* UserProfileVC.swift in Sources */,
 				81008C101B5C44830019E297 /* DataApi.swift in Sources */,
 				8185E3031B60A20A00059124 /* InitialScreenVC.swift in Sources */,
 				995935EF1B5EDA1C009CDD26 /* FavoritesCell.swift in Sources */,
 				819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */,
 				81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */,
+				99A6E8D91B69ED97005179A6 /* Deals.swift in Sources */,
+				99A6E8DF1B69EE89005179A6 /* Restaurant.swift in Sources */,
 				813222DC1B681A3500613C60 /* RegisterRestaurantVC2.swift in Sources */,
 				995935F11B5EDA1C009CDD26 /* HomeSwipeViewController.swift in Sources */,
 				81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */,
@@ -494,6 +533,7 @@
 				995935EB1B5EDA1C009CDD26 /* CardContentView.swift in Sources */,
 				819281DD1B5B3FD20003AD4D /* Deal.swift in Sources */,
 				8185E2FD1B608FE800059124 /* SignInUserVC.swift in Sources */,
+				99A6E8DE1B69EE89005179A6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,7 +670,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c8ffcfe4-d04f-4632-890f-0a478ce7314b";
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -648,7 +688,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c8ffcfe4-d04f-4632-890f-0a478ce7314b";
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -671,7 +711,7 @@
 				INFOPLIST_FILE = FareDealTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c8ffcfe4-d04f-4632-890f-0a478ce7314b";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FareDeal.app/FareDeal";
 			};
 			name = Debug;
@@ -689,7 +729,7 @@
 				INFOPLIST_FILE = FareDealTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c8ffcfe4-d04f-4632-890f-0a478ce7314b";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FareDeal.app/FareDeal";
 			};
 			name = Release;

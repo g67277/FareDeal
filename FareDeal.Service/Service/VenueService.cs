@@ -15,9 +15,12 @@ namespace FareDeal.Service
             return db.venues.ToList();
         }
 
-        public void SaveVenue(venue _venue, contact _contact, location _location)
-        {
-            
+        public void AddVenue(venue _venue, contact _contact, location _location)
+        {            
+            db.locations.Add(_location);
+            db.venues.Add(_venue);
+            db.contacts.Add(_contact);
+            db.SaveChanges();
         }
 
         public venue GetByName(string name)

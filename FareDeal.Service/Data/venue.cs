@@ -41,7 +41,6 @@ namespace FareDeal.Service.Data
         public virtual ICollection<deal> deals { get; set; }
         public virtual ICollection<photo> photos { get; set; }
         public virtual contact contact { get; set; }
-        public virtual location location { get; set; }
         public virtual ICollection<category> categories { get; set; }
     }
 }

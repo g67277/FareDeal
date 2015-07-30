@@ -228,18 +228,6 @@ warning 6002: The table/view 'LocalAuthentication.dbo.venue_credit' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_venue_location">
-          <End Role="location" Type="Self.location" Multiplicity="1" />
-          <End Role="venue" Type="Self.venue" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="location">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="venue">
-              <PropertyRef Name="location_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_venue_picture_venue">
           <End Role="venue" Type="Self.venue" Multiplicity="1" />
           <End Role="photo" Type="Self.photo" Multiplicity="*" />
@@ -310,10 +298,6 @@ warning 6002: The table/view 'LocalAuthentication.dbo.venue_credit' does not hav
             <End Role="venue" EntitySet="venue" />
             <End Role="venue_category" EntitySet="venue_category" />
           </AssociationSet>
-          <AssociationSet Name="FK_venue_location" Association="Self.FK_venue_location">
-            <End Role="location" EntitySet="location" />
-            <End Role="venue" EntitySet="venue" />
-          </AssociationSet>
           <AssociationSet Name="FK_venue_picture_venue" Association="Self.FK_venue_picture_venue">
             <End Role="venue" EntitySet="venue" />
             <End Role="photo" EntitySet="photo" />
@@ -357,10 +341,6 @@ warning 6002: The table/view 'LocalAuthentication.dbo.venue_credit' does not hav
           <AssociationSet Name="FK_contact_venue1" Association="LocalAuthenticationModel.FK_contact_venue1">
             <End Role="venue" EntitySet="venues" />
             <End Role="contact" EntitySet="contacts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_venue_location" Association="LocalAuthenticationModel.FK_venue_location">
-            <End Role="location" EntitySet="locations" />
-            <End Role="venue" EntitySet="venues" />
           </AssociationSet>
           <AssociationSet Name="venue_category" Association="LocalAuthenticationModel.venue_category">
             <End Role="category" EntitySet="categories" />
@@ -442,7 +422,6 @@ warning 6002: The table/view 'LocalAuthentication.dbo.venue_credit' does not hav
           <Property Name="address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="crossStreet" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="cc" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="venues" Relationship="LocalAuthenticationModel.FK_venue_location" FromRole="location" ToRole="venue" />
         </EntityType>
         <EntityType Name="venue">
           <Key>
@@ -467,7 +446,6 @@ warning 6002: The table/view 'LocalAuthentication.dbo.venue_credit' does not hav
           <Property Name="weekEndsHours" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="photos" Relationship="LocalAuthenticationModel.FK_venue_picture_venue1" FromRole="venue" ToRole="photo" />
           <NavigationProperty Name="contact" Relationship="LocalAuthenticationModel.FK_contact_venue1" FromRole="venue" ToRole="contact" />
-          <NavigationProperty Name="location" Relationship="LocalAuthenticationModel.FK_venue_location" FromRole="venue" ToRole="location" />
           <NavigationProperty Name="categories" Relationship="LocalAuthenticationModel.venue_category" FromRole="venue" ToRole="category" />
         </EntityType>
         <Association Name="FK_credit_transactions_credit_master">
@@ -573,18 +551,6 @@ warning 6002: The table/view 'LocalAuthentication.dbo.venue_credit' does not hav
             </Principal>
             <Dependent Role="contact">
               <PropertyRef Name="venue_contact_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_venue_location">
-          <End Type="LocalAuthenticationModel.location" Role="location" Multiplicity="1" />
-          <End Type="LocalAuthenticationModel.venue" Role="venue" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="location">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="venue">
-              <PropertyRef Name="location_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

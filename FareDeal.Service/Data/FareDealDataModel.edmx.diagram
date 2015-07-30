@@ -11,17 +11,16 @@
         <EntityTypeShape EntityType="LocalAuthenticationModel.deal" PointX="5.25" PointY="4.75" Width="1.5" />
         <EntityTypeShape EntityType="LocalAuthenticationModel.deal_transcation" PointX="7.5" PointY="9.5" Width="1.5" />
         <EntityTypeShape EntityType="LocalAuthenticationModel.location" PointX="0.75" PointY="5.125" Width="1.5" />
-        <EntityTypeShape EntityType="LocalAuthenticationModel.venue" PointX="3" PointY="4.125" Width="1.5" />
+        <EntityTypeShape EntityType="LocalAuthenticationModel.venue" PointX="3" PointY="3.25" Width="1.5" />
         <AssociationConnector Association="LocalAuthenticationModel.FK_credit_transactions_credit_master" />
         <AssociationConnector Association="LocalAuthenticationModel.FK_credit_transactions_venue" />
         <AssociationConnector Association="LocalAuthenticationModel.FK_deal_transcation_deal" />
         <AssociationConnector Association="LocalAuthenticationModel.FK_deal_venue" />
         <EntityTypeShape EntityType="LocalAuthenticationModel.venue_credit" Width="1.5" PointX="8.375" PointY="0.75" />
-        <EntityTypeShape EntityType="LocalAuthenticationModel.contact" Width="1.5" PointX="0.75" PointY="9.625" />
+        <EntityTypeShape EntityType="LocalAuthenticationModel.contact" Width="1.5" PointX="0.625" PointY="8.75" />
         <EntityTypeShape EntityType="LocalAuthenticationModel.photo" Width="1.5" PointX="5.25" PointY="12.625" />
         <AssociationConnector Association="LocalAuthenticationModel.FK_venue_picture_venue1" />
         <AssociationConnector Association="LocalAuthenticationModel.FK_contact_venue1" />
-        <AssociationConnector Association="LocalAuthenticationModel.FK_venue_location" />
         <AssociationConnector Association="LocalAuthenticationModel.venue_category" />
       </Diagram>
     </edmx:Diagrams>

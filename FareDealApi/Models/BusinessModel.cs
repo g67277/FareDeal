@@ -18,7 +18,7 @@ namespace FareDealApi.Models
         public string ZipCode { get; set; }
 
         public string PhoneNumber {get; set;}
-        public int PriceTier {get; set;}
+        public short PriceTier {get; set;}
 
         public string WeekdaysHours {get; set;}
 

@@ -10,7 +10,6 @@
     self.registerPassword = ko.observable();
     self.registerPassword2 = ko.observable();
     self.registerUserName = ko.observable();
-    self.registerIsBusiness = ko.observable();
 
     self.loginEmail = ko.observable();
     self.loginPassword = ko.observable();
@@ -103,6 +102,39 @@
             //self.result("Done!");
         }).fail(showError);
     }
+
+    $('#btn').click(function () {
+
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+
+        var data = {
+            FirstName: 'Hemal',
+            LastName: 'Patel',
+            StreetName: 'Test St',
+            City: 'Washington',
+            State: 'DC',
+            ZipCode: '22055',
+            PhoneNumber: '2222222222',
+            PriceTier: 1,
+            WeekdaysHours: '10AM-10PM',
+            WeekEndHours: '10AM-12AM',
+            RestaurantName: 'Test Restaurent1'
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/Venue',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data),
+            headers: headers
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
 }
 
 var app = new ViewModel();

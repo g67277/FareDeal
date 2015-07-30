@@ -14,11 +14,6 @@ namespace FareDeal.Service.Data
     
     public partial class location
     {
-        public location()
-        {
-            this.venues = new HashSet<venue>();
-        }
-    
         public System.Guid id { get; set; }
         public string lat { get; set; }
         public string lang { get; set; }
@@ -28,7 +23,5 @@ namespace FareDeal.Service.Data
         public string address { get; set; }
         public string crossStreet { get; set; }
         public string cc { get; set; }
-    
-        public virtual ICollection<venue> venues { get; set; }
     }
 }

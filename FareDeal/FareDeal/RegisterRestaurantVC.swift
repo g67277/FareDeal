@@ -95,31 +95,31 @@ class RegisterRestaurantVC: UIViewController {
         if count(firstName.text) < 2 {
             firstName.text = ""
             firstName.attributedPlaceholder = NSAttributedString(string:"Please enter a valid name",
-                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
         }
         if count(lastName.text) < 2 {
             lastName.text = ""
             lastName.attributedPlaceholder = NSAttributedString(string:"Please enter a valid name",
-                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
         }
         if !validateEmail(emailAddressField.text) {
             emailAddressField.text = ""
             emailAddressField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid email address",
-                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
         }
         if count(passwordField.text) < 6 {
             passwordField.text = ""
             passwordField.attributedPlaceholder = NSAttributedString(string:"Password needs to be at least 6 characters",
-                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
         }else{
             if passwordField.text != passwordCField.text {
                 passwordField.text = ""
                 passwordCField.text = ""
                 passwordField.attributedPlaceholder = NSAttributedString(string:"Password does not match",
-                    attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+                    attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
                 
                 passwordCField.attributedPlaceholder = NSAttributedString(string:"Password does not match",
-                    attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+                    attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
 
             }else{
                 passwordValid = true

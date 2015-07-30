@@ -33,9 +33,9 @@ class DealsCell: UITableViewCell {
         dealTitle.text = title
         dealDesc.text = desc
         if time < 2 {
-            timeLimit.text = "\(time)hr time limit"
+            timeLimit.text = "\(time)hr"
         }else{
-            timeLimit.text = "\(time)hrs time limit"
+            timeLimit.text = "\(time)hrs"
         }
         dealValue.text = value
         

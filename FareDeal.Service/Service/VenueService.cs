@@ -14,5 +14,15 @@ namespace FareDeal.Service
         {
             return db.venues.ToList();
         }
+
+        public void SaveVenue(venue _venue, contact _contact, location _location)
+        {
+            
+        }
+
+        public venue GetByName(string name)
+        {
+            return db.venues.Where(v => v.name.ToLower() == name.ToLower()).FirstOrDefault();
+        }
     }
 }

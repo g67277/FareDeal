@@ -17,6 +17,8 @@ namespace FareDeal.Service.Data
         public string phone { get; set; }
         public string formattedphone { get; set; }
         public System.Guid venue_contact_id { get; set; }
+        public string first_name { get; set; }
+        public string last_name { get; set; }
     
         public virtual venue venue { get; set; }
     }

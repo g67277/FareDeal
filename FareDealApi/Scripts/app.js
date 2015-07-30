@@ -9,11 +9,15 @@
     self.registerEmail = ko.observable();
     self.registerPassword = ko.observable();
     self.registerPassword2 = ko.observable();
+    self.registerUserName = ko.observable();
+    self.registerIsBusiness = ko.observable();
 
     self.loginEmail = ko.observable();
     self.loginPassword = ko.observable();
 
     self.resetPasswordEmail = ko.observable();
+
+
     function showError(jqXHR) {
         self.result(jqXHR.status + ': ' + jqXHR.statusText);
     }
@@ -40,9 +44,11 @@
         self.result('');
 
         var data = {
+            UserName: self.registerUserName(),
             Email: self.registerEmail(),
             Password: self.registerPassword(),
-            ConfirmPassword: self.registerPassword2()
+            ConfirmPassword: self.registerPassword2(),
+            IsBusiness: true
         };
 
         $.ajax({

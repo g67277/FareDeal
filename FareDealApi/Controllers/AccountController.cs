@@ -416,10 +416,15 @@ namespace FareDealApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-            //user.Roles.Add(new IdentityUserRole(){RoleId = "E2720C18-012D-43B7-A4B3-3D65521CCEEA", UserId=model.Email});
+            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };                 
+            
+            if (model.IsBusiness)
+            {
+                user.Roles.Add(new IdentityUserRole() { RoleId = "E2720C18-012D-43B7-A4B3-3D65521CCEEA", UserId = user.Id });
+            }
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            
 
             if (!result.Succeeded)
             {

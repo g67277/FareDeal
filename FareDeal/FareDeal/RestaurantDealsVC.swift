@@ -19,11 +19,11 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     //@IBOutlet var topDealValueLabel: UILabel!
    // @IBOutlet var topDealView: UIView!
     
-    @IBOutlet var saloofingLabel: UILabel!
+   // @IBOutlet var saloofingLabel: UILabel!
    // @IBOutlet var activityIndicator: UIActivityIndicatorView!
    // @IBOutlet var searchFieldView: UITextField!
   // // @IBOutlet var priceParView: UIView!
-    @IBOutlet var searchBarView: UIView!
+   // @IBOutlet var searchBarView: UIView!
     
     var plistObjects: [AnyObject] = []
     // Holds all the restaurants
@@ -182,7 +182,8 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
                 dealList.insert(allRestaurants[currentRestaurantIndex], atIndex: 0)
                 currentRestaurantIndex = currentRestaurantIndex + 1
                 
-                displayFeaturedDeal(allRestaurants[currentRestaurantIndex])
+                //displayFeaturedDeal(allRestaurants[currentRestaurantIndex])
+                topRestaurant = allRestaurants[currentRestaurantIndex]
                 delayLoad()
             }
             
@@ -193,7 +194,8 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
            // activityIndicator.stopAnimating()
            // activityIndicator.hidden = true
             topDealReached = true
-            displayFeaturedDeal(allRestaurants[topBidIndex])
+            //displayFeaturedDeal(allRestaurants[topBidIndex])
+            topRestaurant = allRestaurants[topBidIndex]
             
         }
         
@@ -274,8 +276,8 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     
     // This delay starts the spinner giving the appearance a new deal is loading, then removes it and updates the list with a new deal
     func delayReload() {
-        self.activityIndicator.startAnimating()
-        self.saloofingLabel.hidden = false
+       // self.activityIndicator.startAnimating()
+       // self.saloofingLabel.hidden = false
         let timeDelay = Double(arc4random_uniform(1500000000) + 300000000)
         var dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(timeDelay))
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
@@ -294,7 +296,7 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 290
+        return 310
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -191,42 +191,11 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
                 return
                 }, cancelBlock: { ActionStringCancelBlock in return }, origin: sender)
             
-            
-            
-//            var datePicker = ActionSheetDatePicker(title: "Time:", datePickerMode: UIDatePickerMode.Time, selectedDate: NSDate(), doneBlock: {
-//                picker, value, index in
-//                
-//                var test:String = String(stringInterpolationSegment: value)
-//                
-//                let dateFormatter = NSDateFormatter()
-//                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSSxxx"
-//                let date = dateFormatter.dateFromString(test)
-//                
-//                
-//                if sender.tag == 5 {
-//                    self.weedayO.setTitle("\(value)", forState: UIControlState.Normal)
-//                }else if sender.tag == 6{
-//                    self.weekdayC.setTitle("\(value)", forState: UIControlState.Normal)
-//                }else if sender.tag == 7{
-//                    self.weekendO.setTitle("\(value)", forState: UIControlState.Normal)
-//                }else if sender.tag == 8{
-//                    self.weekendC.setTitle("\(value)", forState: UIControlState.Normal)
-//                }
-//                
-//                println("value = \(value)")
-//                println("index = \(index)")
-//                println("picker = \(picker.description)")
-//                return
-//                }, cancelBlock: { ActionStringCancelBlock in return }, origin: sender as! UIView)
-//            datePicker.minuteInterval = 20
-//            datePicker.showActionSheetPicker()
-        }
+          }
         
         
     }
-    
-    
-    
+
     @IBAction func priceControl(sender: AnyObject) {
         
         switch sender.selectedSegmentIndex{
@@ -234,7 +203,6 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             selectedPrice = 0
         case 1:
             selectedPrice = 1
-            println(selectedPrice)
         case 2:
             selectedPrice = 2
         case 3:
@@ -401,8 +369,6 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
                 attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
             validWeb = false
         }
-        
-        
         // Will have to come back to URL Validation
         
         if let validURL : NSURL = NSURL(string: websiteField.text){
@@ -422,7 +388,6 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             alertView.show()
         }
  
-        
         if nameValid && validAddress && validPhone && validWeb && validPhone && validImage {
             
             callPart2 = "\(callPart1), \"RestName\":\"\(restNameField.text)\", \(formattedAddress), \"PhoneNumber\":\"\(phoneNumField.text)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"Hours\":\"\(priceControls.selected)\""
@@ -436,16 +401,11 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
                     if self.authenticationCall.signIn(self.username, password: self.pass){
                         self.backTwo()
                     }
-                    
                 }))
                 self.presentViewController(refreshAlert, animated: true, completion: nil)
-                
             }
-            
             //authenticationCall.registerRestaurant(callPart2)
-            
         }
-        
         
     }
     

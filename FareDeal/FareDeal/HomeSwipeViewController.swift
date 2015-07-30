@@ -66,7 +66,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     @IBAction func showSearchOverlay(sender: AnyObject) {
         searchDisplayOverview.hidden = !searchDisplayOverview.hidden
         //searchButton.titleLabel?.text = (searchDisplayOverview.hidden) ? "Search" : "Cancel"
-        searchButton.titleLabel?.text = "Cancel"
+        //searchButton.titleLabel?.text = "Cancel"
     }
     
     

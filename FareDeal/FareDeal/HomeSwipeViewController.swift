@@ -40,6 +40,8 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         // Set up the Kolodo view delegate and data source
         swipeableView.dataSource = self
         swipeableView.delegate = self
+        //swipeableView.reloadData()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,8 +50,13 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     }
     
     override func viewDidLayoutSubviews() {
-        swipeableView.reloadData()
     }
+
+    override func viewDidAppear(animated: Bool) {
+        swipeableView.reloadData()
+
+    }
+    
     
     
     

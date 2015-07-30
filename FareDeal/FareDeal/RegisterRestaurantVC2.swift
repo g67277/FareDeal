@@ -16,58 +16,45 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     //Restaurant Name Field
     @IBOutlet weak var restNameField: UITextField!
     var nameValid = false
-    
     //Category
     @IBOutlet weak var catButton: UIButton!
     var categories:FoodCategories = FoodCategories()
     var categoryArray = []
-    
     // Address
     @IBOutlet weak var streetField: UITextField!
     @IBOutlet weak var cityField: UITextField!
     @IBOutlet weak var zipecodeField: UITextField!
     var formattedAddress = ""
     var validAddress = false
-    
     // Phone Number
     @IBOutlet weak var phoneNumField: UITextField!
     var validPhone = false
     @IBOutlet weak var websiteField: UITextField!
     var validWeb = false
-    
     // Price Tier
     @IBOutlet weak var priceControls: UISegmentedControl!
     var selectedPrice = 0
     var validPrice = false
-    
     //Hours
     @IBOutlet weak var weedayO: UIButton!
     @IBOutlet weak var weekdayC: UIButton!
     @IBOutlet weak var weekendO: UIButton!
     @IBOutlet weak var weekendC: UIButton!
-    
     //Picture
     @IBOutlet weak var imgView: UIImageView!
     var newMedia: Bool?
     var validImage = false
-    
     //Register/Edit button
     @IBOutlet var editNRegister: UIButton!
-    
+    @IBOutlet var errorLabel: UILabel!
     var callPart1 = ""
     var callPart2 = ""
     var profileView = false
-    
     //Testing
     var username = ""
     var pass = ""
     //Testing
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-
-
-    
-
-    
     let authenticationCall:AuthenticationCalls = AuthenticationCalls()
     
     override func viewDidLoad() {
@@ -121,6 +108,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             weedayO.roundCorners(.AllCorners, radius: 14)
             weekendC.roundCorners(.AllCorners, radius: 14)
             weekendO.roundCorners(.AllCorners, radius: 14)
+            priceControls.roundCorners(.AllCorners, radius: 9)
             
         }
     }
@@ -152,6 +140,11 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         }else if _sender.tag == 2{
             
             // save updated changes here
+            var refreshAlert = UIAlertController(title: "Good to go", message: "Changes have been saved", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
+                self.navigationController?.popViewControllerAnimated(true)
+            }))
+            self.presentViewController(refreshAlert, animated: true, completion: nil)
             
         }
         
@@ -172,7 +165,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             
         }else if sender.tag > 4 && sender.tag < 9{
             
-            ActionSheetStringPicker.showPickerWithTitle("Nav Bar From Picker", rows: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] as [AnyObject], initialSelection: 1, doneBlock: {
+            ActionSheetStringPicker.showPickerWithTitle("Time", rows: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] as [AnyObject], initialSelection: 1, doneBlock: {
                 picker, value, index in
                 
                 if sender.tag == 5 {
@@ -219,7 +212,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         // Take picture here
         
         //Create the AlertController
-        let actionSheetController: UIAlertController = UIAlertController(title: "Action Sheet", message: "Swiftly Now! Choose an option!", preferredStyle: .ActionSheet)
+        let actionSheetController: UIAlertController = UIAlertController(title: "Upload a picture", message: "It can be of your restaurant or a of a dish off your menu", preferredStyle: .ActionSheet)
         
         //Create and add the Cancel action
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
@@ -327,7 +320,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         }else{
             restNameField.text = ""
             restNameField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid name",
-                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
             self.nameValid = false
         }
         
@@ -341,11 +334,11 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             cityField.text = ""
             zipecodeField.text = ""
             streetField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid address",
-                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
             cityField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid city",
-                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
             zipecodeField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid zipcode",
-                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
             
             validAddress = false
         }
@@ -354,7 +347,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         if count(phoneNumField.text) < 10{
             phoneNumField.text = ""
             phoneNumField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid phone number",
-                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
             validPhone = false
         }else{
             validPhone = true
@@ -366,7 +359,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         if count(websiteField.text) < 4 {
             websiteField.text = ""
             websiteField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid website",
-                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
             validWeb = false
         }
         // Will have to come back to URL Validation
@@ -405,6 +398,8 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
                 self.presentViewController(refreshAlert, animated: true, completion: nil)
             }
             //authenticationCall.registerRestaurant(callPart2)
+        }else {
+            errorLabel.hidden = false
         }
         
     }

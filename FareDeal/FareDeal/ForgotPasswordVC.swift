@@ -29,6 +29,16 @@ class ForgotPasswordVC: UIViewController {
         resetPasswordButtonView.roundCorners(.AllCorners, radius: 14)
     }
     
+    @IBAction func onClick(_sender:UIButton){
+        
+        if _sender.tag == 0 {
+            println("Reset password")
+        } else if _sender.tag == 1 {
+            self.navigationController?.popViewControllerAnimated(true)
+            
+        }
+    }
+    
     func DismissKeyboard(){
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)

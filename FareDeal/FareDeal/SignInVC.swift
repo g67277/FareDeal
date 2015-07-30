@@ -27,11 +27,6 @@ class SignInVC: UIViewController {
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
         
-        userNameField.attributedPlaceholder = NSAttributedString(string:"Username",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        
-        passwordField.attributedPlaceholder = NSAttributedString(string:"Password",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -73,6 +68,10 @@ class SignInVC: UIViewController {
 
             
         }
+        
+    }
+    
+    @IBAction func returnToLogInScreen (segue:UIStoryboardSegue) {
         
     }
     

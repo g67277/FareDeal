@@ -7,20 +7,20 @@ nominals:
 - "P8FareDeal12Serializable"
 class-members:
 top-level:
-- !private "Int"
 - "IntegerLiteralType"
-- !private "String"
-- "AnyObject"
-- "FloatLiteralType"
-- "Serializable"
 - !private "Double"
+- !private "String"
+- "FloatLiteralType"
+- "AnyObject"
 - "NSObject"
+- !private "Int"
 - "StringLiteralType"
+- "Serializable"
 member-access:
-- !private "VSs10Dictionary"
-- "P8FareDeal12Serializable"
 - "V8FareDeal4Deal"
 - !private "CSo8NSObject"
+- !private "VSs10Dictionary"
+- "P8FareDeal12Serializable"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Swift.swiftmodule"

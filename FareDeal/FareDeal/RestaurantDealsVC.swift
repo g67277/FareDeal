@@ -13,16 +13,16 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     //var deals: [AnyObject] = []
     @IBOutlet weak var tableview: UITableView!
     
-    @IBOutlet var topDealTitle: UILabel!
-    @IBOutlet var topDealDescLabel: UILabel!
+    //@IBOutlet var topDealTitle: UILabel!
+    //@IBOutlet var topDealDescLabel: UILabel!
     
-    @IBOutlet var topDealValueLabel: UILabel!
-    @IBOutlet var topDealView: UIView!
+    //@IBOutlet var topDealValueLabel: UILabel!
+   // @IBOutlet var topDealView: UIView!
     
     @IBOutlet var saloofingLabel: UILabel!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var searchFieldView: UITextField!
-    @IBOutlet var priceParView: UIView!
+   // @IBOutlet var activityIndicator: UIActivityIndicatorView!
+   // @IBOutlet var searchFieldView: UITextField!
+  // // @IBOutlet var priceParView: UIView!
     @IBOutlet var searchBarView: UIView!
     
     var plistObjects: [AnyObject] = []
@@ -30,7 +30,7 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     var allRestaurants: [Restaurant] = []
     // Holds all the restaurants/Deals to be displayed
     var dealList: [Restaurant] = []
-    
+    var topRestaurant:Restaurant!
     var topDealReached = false
     var currentRestaurantIndex = 0
     // used in the featured section as to not display non-qualifying deals
@@ -71,21 +71,21 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchFieldView.attributedPlaceholder = NSAttributedString(string:"Burger",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+    //    searchFieldView.attributedPlaceholder = NSAttributedString(string:"Burger",
+      //      attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         let firstDate = NSDate()
         println(firstDate)
-        tableview.rowHeight = 217
+        tableview.rowHeight = 192
         loadDeals()
         
     }
-    
+   /*
     override func viewDidLayoutSubviews() {
         // set the rounded corners after autolayout has finished
         searchBarView.roundCorners(.AllCorners, radius: 10)
         priceParView.roundCorners(.AllCorners, radius: 10)
         topDealView.setBorder()
-    }
+    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -190,8 +190,8 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
             
             // Once we are done with the array, hide the indicator, set the topDealReached, display the top
             // deal in the featured section and update the text in the activityLabel
-            activityIndicator.stopAnimating()
-            activityIndicator.hidden = true
+           // activityIndicator.stopAnimating()
+           // activityIndicator.hidden = true
             topDealReached = true
             displayFeaturedDeal(allRestaurants[topBidIndex])
             
@@ -199,6 +199,7 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
         
     }
     
+    /*
     func displayFeaturedDeal(restaurant: Restaurant){
         topDealTitle.text = restaurant.deal.name
         topDealDescLabel.text = restaurant.deal.desc
@@ -210,7 +211,7 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
             saloofingLabel.text = "This is the best deal in the area! you've just saved $\(String(stringInterpolationSegment: restaurant.deal.value))"
         }
         
-    }
+    } */
     
     /* -----------------------  CHECK IF DEAL WAS PREVIOUSLY DISPLAYED  --------------------------- */
     
@@ -238,8 +239,6 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
             var arrayOfDealObjects: [Dictionary<String,String>] = []
             saveDealIdInDefaults(dealId, dealObjects: arrayOfDealObjects)
         }
-        
-        
     }
     
     func saveDealIdInDefaults(dealId: String, dealObjects: [Dictionary<String,String>]) {
@@ -280,7 +279,8 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
         let timeDelay = Double(arc4random_uniform(1500000000) + 300000000)
         var dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(timeDelay))
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            self.displayFeaturedDeal(self.allRestaurants[self.topBidIndex])
+            //self.displayFeaturedDeal(self.allRestaurants[self.topBidIndex])
+            self.topRestaurant = self.allRestaurants[self.topBidIndex]
             self.tableview.reloadData()
         })
         
@@ -291,6 +291,10 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return 1
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 290
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -311,6 +315,27 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableview.deselectRowAtIndexPath(indexPath, animated: true)
     }
+    
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("dealHeaderCell") as! DealHeaderCell
+        //headerCell.activityIndicator = self.activityIndicator
+        //headerCell.activityLabel = self.activityLabel
+        headerCell.titleLabel.text = topRestaurant.deal.name
+        headerCell.descLabel.text = topRestaurant.deal.desc
+        headerCell.priceView.roundCorners(.AllCorners, radius: 10)
+        headerCell.searchView.roundCorners(.AllCorners, radius: 10)
+        // reformat the float to display a monetary value
+        let valueFloat:Float = topRestaurant.deal.value, valueFormat = ".2"
+        headerCell.valueLabel.text = "Value: $\(valueFloat.format(valueFormat))"
+        
+        if topDealReached {
+            headerCell.activityLabel.text = "This is the best deal in the area! you've just saved $\(String(stringInterpolationSegment: topRestaurant.deal.value))"
+        }
+        headerCell.setNeedsDisplay()
+        return headerCell
+    }
+
     
     /* -----------------------  SEGUE --------------------------- */
     

@@ -55,6 +55,7 @@
 		99A6E8DB1B69EE2D005179A6 /* RestaurantData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99A6E8DA1B69EE2D005179A6 /* RestaurantData.plist */; };
 		99A6E8DE1B69EE89005179A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8DC1B69EE89005179A6 /* Constants.swift */; };
 		99A6E8DF1B69EE89005179A6 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8DD1B69EE89005179A6 /* Restaurant.swift */; };
+		99CD57781B6AC03300DBDF3A /* DealHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD57771B6AC03300DBDF3A /* DealHeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		99A6E8DA1B69EE2D005179A6 /* RestaurantData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RestaurantData.plist; sourceTree = "<group>"; };
 		99A6E8DC1B69EE89005179A6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		99A6E8DD1B69EE89005179A6 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		99CD57771B6AC03300DBDF3A /* DealHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealHeaderCell.swift; sourceTree = "<group>"; };
 		D8BB905533740AECB8C2BD9F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EFED01E1FD4AB234C93A922F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,6 +283,7 @@
 		995935F41B5EDA53009CDD26 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				99CD57771B6AC03300DBDF3A /* DealHeaderCell.swift */,
 				995935E21B5EDA1C009CDD26 /* CardContentView.swift */,
 				995935E31B5EDA1C009CDD26 /* CardContentView.xib */,
 				995935E41B5EDA1C009CDD26 /* CardOverlayView.swift */,
@@ -387,7 +390,7 @@
 				TargetAttributes = {
 					81481B341B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
+						DevelopmentTeam = 56R6M4W3X8;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -396,7 +399,7 @@
 					};
 					81481B491B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
+						DevelopmentTeam = 56R6M4W3X8;
 						TestTargetID = 81481B341B56A2D6000EC386;
 					};
 				};
@@ -533,6 +536,7 @@
 				995935EB1B5EDA1C009CDD26 /* CardContentView.swift in Sources */,
 				819281DD1B5B3FD20003AD4D /* Deal.swift in Sources */,
 				8185E2FD1B608FE800059124 /* SignInUserVC.swift in Sources */,
+				99CD57781B6AC03300DBDF3A /* DealHeaderCell.swift in Sources */,
 				99A6E8DE1B69EE89005179A6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -670,7 +674,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -688,7 +692,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};

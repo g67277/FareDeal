@@ -338,6 +338,8 @@ SWIFT_CLASS("_TtC8FareDeal23HomeSwipeViewController")
 - (void)awakeFromNib;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (void)viewDidLayoutSubviews;
+- (void)viewDidAppear:(BOOL)animated;
 - (IBAction)showSearchOverlay:(id __nonnull)sender;
 - (void)searchBarTextDidBeginEditing:(UISearchBar * __nonnull)searchBar;
 - (void)searchBarTextDidEndEditing:(UISearchBar * __nonnull)searchBar;
@@ -608,6 +610,7 @@ SWIFT_CLASS("_TtC8FareDeal12SignInUserVC")
 - (IBAction)onClick:(UIButton * __nonnull)_sender;
 - (void)didReceiveMemoryWarning;
 - (IBAction)returnToLogInScreen:(UIStoryboardSegue * __nonnull)segue;
+- (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __null_unspecified)sender;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -624,6 +627,7 @@ SWIFT_CLASS("_TtC8FareDeal8SignInVC")
 - (void)viewDidLayoutSubviews;
 - (void)DismissKeyboard;
 - (IBAction)onClick:(UIButton * __nonnull)_sender;
+- (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __null_unspecified)sender;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
 - (void)didReceiveMemoryWarning;

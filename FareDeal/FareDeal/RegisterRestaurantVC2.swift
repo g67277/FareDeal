@@ -109,6 +109,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             weekendC.roundCorners(.AllCorners, radius: 14)
             weekendO.roundCorners(.AllCorners, radius: 14)
             priceControls.roundCorners(.AllCorners, radius: 9)
+            editNRegister.roundCorners(.AllCorners, radius: 14)
             
         }
     }

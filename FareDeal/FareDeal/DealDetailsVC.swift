@@ -42,6 +42,9 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBarHidden = false
+
 
         // View to indicate selected hour button -- update color to black
         selectedHour.backgroundColor = .blackColor()

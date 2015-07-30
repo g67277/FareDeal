@@ -26,7 +26,8 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.navigationBarHidden = false
+
         
     }
 
@@ -53,7 +54,12 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if _sender?.tag == 0{
             
             // Publish deals here
-            
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "Published!"
+            alertView.message = "You are now live, get ready for the swarms"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
         }
     }
     
@@ -70,7 +76,7 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // load items from deal array here
         
-        cell.refreshCell(dealsArray[indexPath.row].title, desc: dealsArray[indexPath.row].desc, time: dealsArray[indexPath.row].timeLimit, value: "Value: $\(dealsArray[indexPath.row].value)")
+        cell.refreshCell(dealsArray[indexPath.row].title, desc: dealsArray[indexPath.row].desc, time: dealsArray[indexPath.row].timeLimit, value: "$\(dealsArray[indexPath.row].value)")
         
         //cell.refreshCell("10% off Drinks", desc: "10% off drinks when you buy anything from the lunch menu", time: 2, value: "Value: $0.80")
         

@@ -19,6 +19,8 @@ class StoreVC: UIViewController, UITableViewDataSource, UITableViewDelegate, SKP
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBarHidden = false
+        
         SKPaymentQueue.defaultQueue().addTransactionObserver(self)
         requestProductData()
 

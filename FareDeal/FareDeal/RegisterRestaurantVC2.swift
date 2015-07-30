@@ -358,7 +358,8 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             self.nameValid = true
         }else{
             restNameField.text = ""
-            restNameField.placeholder = "Please enter a valid name"
+            restNameField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid name",
+                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
             self.nameValid = false
         }
         
@@ -371,16 +372,21 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             streetField.text = ""
             cityField.text = ""
             zipecodeField.text = ""
-            streetField.placeholder = "Please enter a valid address"
-            cityField.placeholder = "Please enter a valid city"
-            zipecodeField.placeholder = "Please enter a valid zipcode"
+            streetField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid address",
+                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+            cityField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid city",
+                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+            zipecodeField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid zipcode",
+                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+            
             validAddress = false
         }
         
         // Checks if there are enough digits in the phone field
         if count(phoneNumField.text) < 10{
             phoneNumField.text = ""
-            phoneNumField.placeholder = "Please enter a valid phone number"
+            phoneNumField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid phone number",
+                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
             validPhone = false
         }else{
             validPhone = true
@@ -391,7 +397,8 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         
         if count(websiteField.text) < 4 {
             websiteField.text = ""
-            websiteField.placeholder = "Please enter a valid website"
+            websiteField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid website",
+                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
             validWeb = false
         }
         
@@ -455,6 +462,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewWillAppear(animated: Bool) {
         // Hide the navigation bar to display the full location image
+        self.navigationController?.navigationBarHidden = false
         let navBar:UINavigationBar! =  self.navigationController?.navigationBar
         navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         navBar.shadowImage = UIImage()

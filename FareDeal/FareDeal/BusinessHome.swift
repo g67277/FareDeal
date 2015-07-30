@@ -22,8 +22,15 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.navigationBar.tintColor = UIColor.darkGrayColor()
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
 
 //        let titleFont:UIFont = UIFont(name: "Middlecase Regular-Inline.otf", size: 20)!
@@ -41,6 +48,7 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     override func viewDidAppear(animated: Bool) {
         
+
         let creditsAvailable:Int = prefs.integerForKey("credits") as Int
         
         if creditsAvailable > 0 {

@@ -20,8 +20,7 @@ class ForgotPasswordVC: UIViewController {
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
         
-        emailTextField.attributedPlaceholder = NSAttributedString(string:"Email Address",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -32,11 +31,30 @@ class ForgotPasswordVC: UIViewController {
     @IBAction func onClick(_sender:UIButton){
         
         if _sender.tag == 0 {
-            println("Reset password")
+            
+            if validateEmail(emailTextField.text){
+                var refreshAlert = UIAlertController(title: "Done", message: "Check your email for a reset link", preferredStyle: UIAlertControllerStyle.Alert)
+                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
+                    self.navigationController?.popViewControllerAnimated(true)
+                }))
+                self.presentViewController(refreshAlert, animated: true, completion: nil)
+            }else{
+                var alertView:UIAlertView = UIAlertView()
+                alertView.title = "Please enter a valid email address"
+                alertView.delegate = self
+                alertView.addButtonWithTitle("OK")
+                alertView.show()
+            }
+            
         } else if _sender.tag == 1 {
             self.navigationController?.popViewControllerAnimated(true)
             
         }
+    }
+    
+    func validateEmail(candidate: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluateWithObject(candidate)
     }
     
     func DismissKeyboard(){

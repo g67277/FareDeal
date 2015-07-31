@@ -353,6 +353,14 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
                 destinationVC.thisRestaurant = restaurant
                 destinationVC.thisDeal = restaurantDeal
             }
+        } else if segue.identifier == "restaurantDealDetailSegue2" {
+            
+            let destinationVC = segue.destinationViewController as! RestaurantDealDetaislVC
+            // get the deal for this restaurant
+            let restaurant: Restaurant = topRestaurant
+            let restaurantDeal = restaurant.deal
+            destinationVC.thisRestaurant = restaurant
+            destinationVC.thisDeal = restaurantDeal
         }
     }
     

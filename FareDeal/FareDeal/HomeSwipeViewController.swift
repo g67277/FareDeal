@@ -32,8 +32,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     override func awakeFromNib() {
         super.awakeFromNib()
         // Retrieve the default data from the restaurants plist
-        let path = NSBundle.mainBundle().pathForResource("Restaurants", ofType:"plist")
-        restaurants = NSArray(contentsOfFile: path!) as! [Dictionary<String,AnyObject>]
+        
     }
     
     override func viewDidLoad() {
@@ -42,7 +41,6 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         // Set up the Kolodo view delegate and data source
         swipeableView.dataSource = self
         swipeableView.delegate = self
-        //swipeableView.reloadData()
 
     }
     
@@ -52,6 +50,8 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     }
     
     override func viewDidLayoutSubviews() {
+        let path = NSBundle.mainBundle().pathForResource("Restaurants", ofType:"plist")
+        restaurants = NSArray(contentsOfFile: path!) as! [Dictionary<String,AnyObject>]
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -60,13 +60,13 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         let logOutButton = UIBarButtonItem(image: UIImage(named: "logOut"), style: .Plain, target: self, action: "logOut")
         self.navigationItem.setLeftBarButtonItems([logOutButton, self.dealButton], animated: true)
         
-        swipeableView.reloadData()
-
     }
     
     
     func logOut () {
-    
+        
+        prefs.setObject(nil, forKey: "TOKEN")
+        self.dismissViewControllerAnimated(true, completion: nil)
     
     }
     

@@ -58,10 +58,10 @@ class RegisterUserVC: UIViewController {
             
             //sign up here
             
-            if authenticationCall.registerUser(usernameField.text, password: passwordField.text, confirm_password: passwordCField.text) {
+            if authenticationCall.registerUser(usernameField.text, email: emailField.text, password: passwordField.text, confirm_password: passwordCField.text) {
                 
                 if authenticationCall.signIn(usernameField.text, password: passwordField.text){
-                    self.navigationController?.popViewControllerAnimated(true)
+                    navigationController?.popToRootViewControllerAnimated(true)
                 }
             }
             

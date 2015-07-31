@@ -343,7 +343,7 @@ public class AuthenticationCalls {
     }
 
     // **TESTING REGISTRATION: Method will change**
-    func registerUser(username: NSString, password: NSString, confirm_password: NSString) -> (Bool){
+    func registerUser(username: NSString, email: NSString, password: NSString, confirm_password: NSString) -> (Bool){
         
         if ( username.isEqualToString("") || password.isEqualToString("") ) {
             
@@ -364,7 +364,7 @@ public class AuthenticationCalls {
         } else {
             
             
-            var post:NSString = "{\"Email\":\"\(username)\",\"Password\":\"\(password)\",\"ConfirmPassword\":\"\(confirm_password)\"}"
+            var post:NSString = "{\"UserName\":\"\(username)\",\"Email\":\"\(email)\",\"Password\":\"\(password)\",\"ConfirmPassword\":\"\(confirm_password)\"}"
             
             NSLog("PostData: %@",post);
             

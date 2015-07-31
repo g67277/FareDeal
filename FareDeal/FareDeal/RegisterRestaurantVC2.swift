@@ -62,6 +62,8 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         
         // Do any additional setup after loading the view.
         
+        println(callPart1)
+        
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
@@ -382,7 +384,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             alertView.show()
         }
  
-        if nameValid && validAddress && validPhone && validWeb && validPhone && validImage {
+        if nameValid && validAddress && validPhone && validImage {
             
             callPart2 = "\(callPart1), \"RestName\":\"\(restNameField.text)\", \(formattedAddress), \"PhoneNumber\":\"\(phoneNumField.text)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"Hours\":\"\(priceControls.selected)\""
             

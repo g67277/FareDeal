@@ -10,8 +10,8 @@ import UIKit
 
 class RegisterRestaurantVC: UIViewController {
     
-    @IBOutlet weak var firstName: UITextField!
-    @IBOutlet weak var lastName: UITextField!
+    @IBOutlet weak var userName: UITextField!
+    @IBOutlet weak var fullName: UITextField!
     @IBOutlet weak var emailAddressField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordCField: UITextField!
@@ -39,7 +39,7 @@ class RegisterRestaurantVC: UIViewController {
     }
     
     func styleElements(didLoad: Bool){
-        var elementArray = [firstName, lastName, emailAddressField, passwordField, passwordCField]
+        var elementArray = [userName, fullName, emailAddressField, passwordField, passwordCField]
 
         if didLoad{
             for element in elementArray{
@@ -85,21 +85,21 @@ class RegisterRestaurantVC: UIViewController {
     func validateInput(){
         
         //testing only
-        firstName.text = "naz"
-        lastName.text = "naz"
+        //username.text = "naz"
+        fullName.text = "naz"
         //emailAddressField.text = "naz@naz.com"
         passwordField.text = "Test@123"
         passwordCField.text = "Test@123"
         // Delete above
         
-        if count(firstName.text) < 2 {
-            firstName.text = ""
-            firstName.attributedPlaceholder = NSAttributedString(string:"Please enter a valid name",
+        if count(userName.text) < 2 {
+            userName.text = ""
+            userName.attributedPlaceholder = NSAttributedString(string:"Please enter a valid username",
                 attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
         }
-        if count(lastName.text) < 2 {
-            lastName.text = ""
-            lastName.attributedPlaceholder = NSAttributedString(string:"Please enter a valid name",
+        if count(fullName.text) < 2 {
+            fullName.text = ""
+            fullName.attributedPlaceholder = NSAttributedString(string:"Please enter a valid name",
                 attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
         }
         if !validateEmail(emailAddressField.text) {
@@ -126,7 +126,7 @@ class RegisterRestaurantVC: UIViewController {
             }
         }
         
-        if count(firstName.text) > 2 && count(lastName.text) > 2 && validateEmail(emailAddressField.text) && passwordValid{
+        if count(userName.text) > 2 && count(fullName.text) > 2 && validateEmail(emailAddressField.text) && passwordValid{
             self.performSegueWithIdentifier("toRegister2", sender: nil)
         }
         
@@ -143,10 +143,10 @@ class RegisterRestaurantVC: UIViewController {
             var svc = segue.destinationViewController as! RegisterRestaurantVC2;
             
 
-            svc.callPart1 = "{\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\"}"
+            svc.callPart1 = "{\"UserName\":\"\(userName.text)\",\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\"}"
             
             //Testing
-            svc.username = emailAddressField.text
+            svc.username = userName.text
             svc.pass = passwordField.text
             
             //svc.callPart1 = "\"FirstName\":\"\(firstName.text)\",\"LastName\":\"\(lastName.text)\",\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\""

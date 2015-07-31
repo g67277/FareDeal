@@ -432,10 +432,13 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     override func viewWillDisappear(animated: Bool) {
         // restore the navigation bar to origional
         let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-        navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        navBar.shadowImage = nil
-        // navBar the background color to whatever we choose
-        //bar.backgroundColor = UIColor.clearColor()
+        if navBar != nil {
+            navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+            navBar.shadowImage = nil
+            // navBar the background color to whatever we choose
+            //bar.backgroundColor = UIColor.clearColor()
+        }
+        
     }
 
     

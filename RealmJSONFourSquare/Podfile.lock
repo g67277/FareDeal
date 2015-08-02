@@ -1,0 +1,19 @@
+PODS:
+  - ActionSheetPicker-3.0 (1.7.0)
+  - Koloda (1.0.3):
+    - pop (~> 1.0)
+  - pop (1.0.7)
+  - SwiftyJSON (2.2.1)
+
+DEPENDENCIES:
+  - ActionSheetPicker-3.0
+  - Koloda
+  - SwiftyJSON (~> 2.2.0)
+
+SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 6516052442fc8ca8f3cc4b3c7aa0436de12373df
+  Koloda: 8d57fc3278cbea5f25235954e1a65466c795018a
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
+  SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
+
+COCOAPODS: 0.38.2

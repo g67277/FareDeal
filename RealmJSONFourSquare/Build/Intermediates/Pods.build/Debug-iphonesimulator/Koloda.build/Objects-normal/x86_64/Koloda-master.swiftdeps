@@ -1,0 +1,6 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "c2587f35f87bb0ad0b676d42d096fbc8"
+inputs: 
+- "/Users/angelasmith/Desktop/RD/RealmJSONFourSquare/Pods/Koloda/Pod/Classes/KolodaView/DraggableCardView/DraggableCardView.swift"
+- "/Users/angelasmith/Desktop/RD/RealmJSONFourSquare/Pods/Koloda/Pod/Classes/KolodaView/KolodaView.swift"
+- "/Users/angelasmith/Desktop/RD/RealmJSONFourSquare/Pods/Koloda/Pod/Classes/KolodaView/OverlayView/OverlayView.swift"

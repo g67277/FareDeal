@@ -1,0 +1,10 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "106039a4ca57380d0e8bc37328bdd515"
+inputs: 
+- "/Users/angelasmith/Desktop/RD/RealmJSONFourSquare/RealmJSONFourSquare/CardOverlayView.swift"
+- "/Users/angelasmith/Desktop/RD/RealmJSONFourSquare/RealmJSONFourSquare/Restaurant.swift"
+- "/Users/angelasmith/Desktop/RD/RealmJSONFourSquare/RealmJSONFourSquare/HomeSwipeViewController.swift"
+- "/Users/angelasmith/Desktop/RD/RealmJSONFourSquare/RealmJSONFourSquare/AppDelegate.swift"
+- "/Users/angelasmith/Desktop/RD/RealmJSONFourSquare/RealmJSONFourSquare/Deal.swift"
+- "/Users/angelasmith/Desktop/RD/RealmJSONFourSquare/RealmJSONFourSquare/CardContentView.swift"
+- "/Users/angelasmith/Desktop/RD/RealmJSONFourSquare/RealmJSONFourSquare/Constants.swift"

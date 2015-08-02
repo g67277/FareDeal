@@ -8,8 +8,8 @@
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Avenir.ttc">
-            <string>Avenir-Light</string>
             <string>Avenir-Book</string>
+            <string>Avenir-Light</string>
             <string>Avenir-Book</string>
             <string>Avenir-Book</string>
             <string>Avenir-Light</string>
@@ -40,7 +40,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="360"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="restaurantDealCell" rowHeight="217" id="UYm-ZB-Aed" userLabel="restaurant deal cell" customClass="RestaurantDealCell" customModule="BiddingCountdownTest" customModuleProvider="target">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="restaurantDealCell" rowHeight="217" id="UYm-ZB-Aed" userLabel="restaurant deal cell" customClass="RestaurantDealCell" customModule="RealmDeals" customModuleProvider="target">
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UYm-ZB-Aed" id="SF9-KH-zvY">
                                                     <autoresizingMask key="autoresizingMask"/>
@@ -316,7 +316,7 @@
                                     <constraint firstAttribute="centerX" secondItem="JPq-U1-a05" secondAttribute="centerX" id="dtP-nq-wEo"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HuF-VY-nAx" userLabel="Top Spot View">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HuF-VY-nAx" userLabel="Top Spot View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Top Deal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwa-Xk-qe3">

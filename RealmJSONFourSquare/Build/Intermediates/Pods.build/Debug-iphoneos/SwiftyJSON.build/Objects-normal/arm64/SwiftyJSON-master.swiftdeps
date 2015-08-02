@@ -1,0 +1,4 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "012b05b24f073de5929813395d10248d"
+inputs: 
+- "/Users/angelasmith/Desktop/RD/RealmJSONFourSquare/Pods/SwiftyJSON/Source/SwiftyJSON.swift"

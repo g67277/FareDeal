@@ -1,0 +1,5 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "f117b80cee40f6d67fdae1945f44e7ca"
+inputs: 
+- "/Users/angelasmith/Desktop/RD/CocoaRealmFoursquare/CocoaRealmFoursquare/ViewController.swift"
+- "/Users/angelasmith/Desktop/RD/CocoaRealmFoursquare/CocoaRealmFoursquare/AppDelegate.swift"

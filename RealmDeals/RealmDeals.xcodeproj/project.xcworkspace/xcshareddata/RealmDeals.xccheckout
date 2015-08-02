@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>EF376084-2F59-4709-BD1F-3D8052F1B2AB</string>
 	<key>IDESourceControlProjectName</key>
-	<string>RealmDeals</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7A050A765296F1E16C77CCF58816CBE429809774</key>
 		<string>https://github.com/g67277/FareDeal</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>RealmDeals/RealmDeals.xcodeproj</string>
+	<string>RealmDeals/RealmDeals.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7A050A765296F1E16C77CCF58816CBE429809774</key>

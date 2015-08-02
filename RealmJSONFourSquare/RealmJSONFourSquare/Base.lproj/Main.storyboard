@@ -6,6 +6,13 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Avenir.ttc">
+            <string>Avenir-Book</string>
+            <string>Avenir-Book</string>
+            <string>Avenir-Book</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Saloof-->
         <scene sceneID="9iw-5n-rGF">

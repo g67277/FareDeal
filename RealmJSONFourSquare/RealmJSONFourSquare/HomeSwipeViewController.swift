@@ -14,8 +14,10 @@ import SwiftyJSON
 
 class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate,  UISearchBarDelegate, CLLocationManagerDelegate {
 
+    typealias JSONParameters = [String: AnyObject]
+    let realm = Realm(inMemoryIdentifier: "TemporaryVenueRealm")
+    
     // Location Properties
- //   var session : Session!
     var locationManager : CLLocationManager!
     var venueLocations : [AnyObject] = []
     var venueItems : [[String: AnyObject]]?
@@ -34,7 +36,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     var searchActive : Bool = false
     var searchString = ""
     
-   var allRestaurants = Realm().objects(Venue)
+   var allRestaurants = Realm(inMemoryIdentifier: "TemporaryVenueRealm").objects(Restaurant)
     var haveItems: Bool = false
     
     
@@ -148,7 +150,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     // KolodaView DataSource
     func kolodaNumberOfCards(koloda: KolodaView) -> UInt {
-        return UInt(restaurants.count)
+        return UInt(allRestaurants.count)
     }
     
     func kolodaViewForCardAtIndex(koloda: KolodaView, index: UInt) -> UIView {
@@ -160,9 +162,9 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         
         var contentView = NSBundle.mainBundle().loadNibNamed("CardContentView", owner: self, options: nil).first! as! UIView
         contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        //contentView.backgroundColor = cardView.backgroundColor
         
-        let restaurant: AnyObject = restaurants[Int(index)]
+        let restaurant: Restaurant = allRestaurants[Int(index)]
+        println(restaurant)
         cardView.setUpRestaurant(contentView, dataObject: restaurant)
         cardView.addSubview(contentView)
         
@@ -182,7 +184,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     //KolodaView Delegate
     func kolodaDidSwipedCardAtIndex(koloda: KolodaView, index: UInt, direction: SwipeResultDirection) {
-        let restaurant: AnyObject = restaurants[Int(index)]
+        let restaurant: Restaurant = allRestaurants[Int(index)]
         // check the direction
         if direction == SwipeResultDirection.Left {
             
@@ -212,34 +214,6 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     func kolodaShouldApplyAppearAnimation(koloda: KolodaView) -> Bool {
         return true
     }
-    
-    // ----- PARSE THE RETURNED JSON DATA WITH SWIFTLYJSON AND STORE AS REALM RESTAURANT OBJECT -----------
-    /*
-    func parseJSON(json: JSON) {
-        
-        let isOpen = json["hours"]["isOpen"].boolValue
-        if isOpen {
-            // get the rest of the values
-            let phoneNum = json["contact"]["phone"].stringValue /* Not working*/
-            let locationName = json["name"].stringValue
-            let website = json["url"].stringValue                       /* Not working*/
-            let imagePrefix = json["photos"]["groups"][0]["items"][0]["prefix"].stringValue
-            let imageSuffix = json["photos"]["groups"][0]["items"][0]["suffix"].stringValue
-            let imageUrl = imagePrefix + "300x300" +  imageSuffix
-            let venueImage = NSURL(string: imageUrl)
-            var locationAddress = json["location"]["formattedAddress"][0].stringValue
-            var cityAddress = json["location"]["formattedAddress"][1].stringValue
-            var address = locationAddress + "\n" + cityAddress
-            let status = json["hours"]["status"].stringValue
-            let distance = json["location"]["distance"].floatValue
-            let priceTier = json["price"]["tier"].intValue
-            
-            let location = Restaurant(name: locationName, phone: phoneNum, imageUrl: venueImage!, address: address, hours: status, distance: distance, priceTier: priceTier, webUrl: website, isOpen: isOpen)
-            self.restaurantArray.append(location)
-            //  load the swipeable view with the locations
-        }
-    }*/
-
     
     // ------------------- USER LOCATION PERMISSION REQUEST  ----------------------
     
@@ -280,9 +254,11 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         // if we dont' have any locations, get some
-        //if venueItems == nil {
-        if !haveItems {
+        if allRestaurants.count == 0 {
+           // println("No restaurants stored")
             exploreVenues()
+        } else {
+           // println("restaurants stored")
         }
         // once we have locations, stop retrieving their location
         locationManager.stopUpdatingLocation()
@@ -292,12 +268,12 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         // Begin loading data from foursquare
         // get the location
         // check if we need to add a search string
+        let searchTerm = (searchActive) ? "&query=\(searchString)" : ""
         let location = self.locationManager.location
         let userLocation  = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
-        let foursquareURl = NSURL(string: "https://api.foursquare.com/v2/venues/explore?ll=40.7,-74&client_id=KNSDVZA1UWUPSYC1QDCHHTLD3UG5HDMBR5JA31L3PHGFYSA0&client_secret=U40WCCSESYMKAI4UYAWGK2FMVE3CBMS0FTON0KODNPEY0LBR&v=20150801&m=foursquare&venuePhotos=1&limit=10&ll=\(userLocation)&query=food")!
+        let foursquareURl = NSURL(string: "https://api.foursquare.com/v2/venues/explore?&client_id=KNSDVZA1UWUPSYC1QDCHHTLD3UG5HDMBR5JA31L3PHGFYSA0&client_secret=U40WCCSESYMKAI4UYAWGK2FMVE3CBMS0FTON0KODNPEY0LBR&section=food&openNow=1&v=20150101&m=foursquare&venuePhotos=1&limit=10&ll=\(userLocation)\(searchTerm)")!
         //println(foursquareURl)
         let response = NSData(contentsOfURL: foursquareURl)!
-        
         // De-serialize the response to JSON
         let json: AnyObject? = (NSJSONSerialization.JSONObjectWithData(response,
             options: NSJSONReadingOptions(0),
@@ -305,35 +281,49 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         
         if let object: AnyObject = json {
             haveItems = true
-            //   println(object)
             var groups = object["groups"] as! [AnyObject]
             //  get array of items
             var venues = groups[0]["items"] as! [AnyObject]
-            //println(venues)
-            let realm = Realm()
-            realm.write {
-                // Save one Venue object (and dependents) for each element of the array
-                for venue in venues {
-                    println(venue)
-                    realm.create(Venue.self, value: venue, update: true)
-                    // var venue = items[0]["venue"] as! NSDictionary
-                    // get venue image url
-                    if var photos = venue["photos"] as? NSDictionary {
-                        var photoGroups = photos["groups"] as! [AnyObject]
-                        //  get array of items
-                        var photoItems = photoGroups[0]["items"] as! [AnyObject]
-                        var firstPhoto = photoItems[0] as! NSDictionary
-                        
-                        var prefix = firstPhoto["prefix"] as! String
-                        var suffix = firstPhoto["suffix"] as! String
-                        var imageName = prefix + suffix
-                        realm.create(Venue.self, value: ["imageName": imageName], update: true)
-                    }
+            for item in venues {
+                // get the venue
+                if let venue = item["venue"] as? JSONParameters {
+                    //println(venue)
+                    let venueJson = JSON(venue)
+                    // Parse the JSON file using SwiftlyJSON
+                    self.parseJSON(venueJson)
                 }
             }
+            println("Data gathering completed, retrieved \(allRestaurants.count) venues")
+            swipeableView.reloadData()
         }
-        println(allRestaurants)
     }
     
-    
+    func parseJSON(json: JSON) {
+        let venue = Restaurant()
+        venue.identifier = json["id"].stringValue
+        venue.phone = json["contact"]["formattedPhone"].stringValue /* Not working*/
+        venue.name = json["name"].stringValue
+        venue.webUrl = json["url"].stringValue                       /* Not working*/
+        let imagePrefix = json["photos"]["groups"][0]["items"][0]["prefix"].stringValue
+        let imageSuffix = json["photos"]["groups"][0]["items"][0]["suffix"].stringValue
+        let imageName = imagePrefix + "400x400" +  imageSuffix
+        var locationAddress = json["location"]["formattedAddress"][0].stringValue
+        var cityAddress = json["location"]["formattedAddress"][1].stringValue
+        venue.address = locationAddress + "\n" + cityAddress
+        venue.hours = json["hours"]["status"].stringValue
+        venue.distance = json["location"]["distance"].floatValue
+        venue.priceTier = json["price"]["tier"].intValue
+        
+        let imageUrl = NSURL(string: imageName)
+        if let data = NSData(contentsOfURL: imageUrl!){
+   
+            let venueImage = UIImage(data: data)
+            venue.image = venueImage
+        }
+
+        realm.write {
+            self.realm.add(venue)
+        }
+        //println(venue)
+    }
 }

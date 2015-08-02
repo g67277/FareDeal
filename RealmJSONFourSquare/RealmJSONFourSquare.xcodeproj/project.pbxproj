@@ -12,10 +12,6 @@
 		993CE6D11B6D63510047AD8A /* CardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993CE6CD1B6D63510047AD8A /* CardContentView.xib */; };
 		993CE6D21B6D63510047AD8A /* CardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993CE6CE1B6D63510047AD8A /* CardOverlayView.swift */; };
 		993CE6D31B6D63510047AD8A /* CardOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993CE6CF1B6D63510047AD8A /* CardOverlayView.xib */; };
-		996A32F21B6D82C700FA9794 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A32F11B6D82C700FA9794 /* Venue.swift */; };
-		996A32F41B6D831300FA9794 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A32F31B6D831300FA9794 /* Contact.swift */; };
-		996A32F61B6D833800FA9794 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A32F51B6D833800FA9794 /* Location.swift */; };
-		996A32F81B6D83F000FA9794 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A32F71B6D83F000FA9794 /* Price.swift */; };
 		99730EF71B6D5C560082E1B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99730EF61B6D5C560082E1B5 /* AppDelegate.swift */; };
 		99730EFC1B6D5C560082E1B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99730EFA1B6D5C560082E1B5 /* Main.storyboard */; };
 		99730EFE1B6D5C560082E1B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99730EFD1B6D5C560082E1B5 /* Images.xcassets */; };
@@ -28,7 +24,6 @@
 		99730F221B6D5EC30082E1B5 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 99730F1F1B6D5EC30082E1B5 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99730F231B6D5EC30082E1B5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99730F201B6D5EC30082E1B5 /* RealmSwift.framework */; };
 		99730F241B6D5EC30082E1B5 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 99730F201B6D5EC30082E1B5 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		99730F271B6D5EF60082E1B5 /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99730F261B6D5EF60082E1B5 /* Deal.swift */; };
 		99730F2A1B6D5F610082E1B5 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99730F291B6D5F610082E1B5 /* Restaurant.swift */; };
 		99730F2C1B6D5F8F0082E1B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99730F2B1B6D5F8F0082E1B5 /* Constants.swift */; };
 /* End PBXBuildFile section */
@@ -64,10 +59,6 @@
 		993CE6CD1B6D63510047AD8A /* CardContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardContentView.xib; sourceTree = "<group>"; };
 		993CE6CE1B6D63510047AD8A /* CardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayView.swift; sourceTree = "<group>"; };
 		993CE6CF1B6D63510047AD8A /* CardOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardOverlayView.xib; sourceTree = "<group>"; };
-		996A32F11B6D82C700FA9794 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
-		996A32F31B6D831300FA9794 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		996A32F51B6D833800FA9794 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		996A32F71B6D83F000FA9794 /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		99730EF11B6D5C560082E1B5 /* RealmJSONFourSquare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealmJSONFourSquare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99730EF51B6D5C560082E1B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99730EF61B6D5C560082E1B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,7 +74,6 @@
 		99730F1D1B6D5E260082E1B5 /* HomeSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSwipeViewController.swift; sourceTree = "<group>"; };
 		99730F1F1B6D5EC30082E1B5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		99730F201B6D5EC30082E1B5 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
-		99730F261B6D5EF60082E1B5 /* Deal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
 		99730F291B6D5F610082E1B5 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		99730F2B1B6D5F8F0082E1B5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CDBD9B083EE76CC5AA445A9A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -205,12 +195,7 @@
 		99730F281B6D5F4C0082E1B5 /* Realm Objects */ = {
 			isa = PBXGroup;
 			children = (
-				99730F261B6D5EF60082E1B5 /* Deal.swift */,
 				99730F291B6D5F610082E1B5 /* Restaurant.swift */,
-				996A32F11B6D82C700FA9794 /* Venue.swift */,
-				996A32F31B6D831300FA9794 /* Contact.swift */,
-				996A32F51B6D833800FA9794 /* Location.swift */,
-				996A32F71B6D83F000FA9794 /* Price.swift */,
 			);
 			name = "Realm Objects";
 			sourceTree = "<group>";
@@ -390,15 +375,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				996A32F41B6D831300FA9794 /* Contact.swift in Sources */,
 				993CE6D21B6D63510047AD8A /* CardOverlayView.swift in Sources */,
-				996A32F61B6D833800FA9794 /* Location.swift in Sources */,
-				996A32F21B6D82C700FA9794 /* Venue.swift in Sources */,
 				99730F2A1B6D5F610082E1B5 /* Restaurant.swift in Sources */,
 				99730F1E1B6D5E260082E1B5 /* HomeSwipeViewController.swift in Sources */,
 				99730EF71B6D5C560082E1B5 /* AppDelegate.swift in Sources */,
-				99730F271B6D5EF60082E1B5 /* Deal.swift in Sources */,
-				996A32F81B6D83F000FA9794 /* Price.swift in Sources */,
 				993CE6D01B6D63510047AD8A /* CardContentView.swift in Sources */,
 				99730F2C1B6D5F8F0082E1B5 /* Constants.swift in Sources */,
 			);

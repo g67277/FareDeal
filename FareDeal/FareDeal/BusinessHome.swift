@@ -75,6 +75,9 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
             // Edit profile here
             println("add")
             
+        }else if _sender?.tag == 4{
+            var authenticationcall = AuthenticationCalls()
+            authenticationcall.test2(prefs.stringForKey("TOKEN")!)
         }
     }
     

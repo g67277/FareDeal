@@ -186,7 +186,7 @@ namespace FareDealApi.Controllers
         {
             if (!string.IsNullOrEmpty(email))
             {
-                var user = await UserManager.FindByNameAsync(email);
+                var user = await UserManager.FindByEmailAsync(email);
                 //if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 if (user == null)
                 {
@@ -210,9 +210,10 @@ namespace FareDealApi.Controllers
                                                         "Reset Password",
                                                         "Please reset your password by clicking <a href=\"" + s + "\">here</a>");
 
-                Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
+                //Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
 
-                return Created(locationHeader, user);
+                //return Created(locationHeader, user);
+                return Ok();
             }
             return NotFound();
 

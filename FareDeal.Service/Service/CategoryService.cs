@@ -31,8 +31,14 @@ namespace FareDeal.Service
                cat  = db.categories.Where(ca => ca.Id == categoryId).FirstOrDefault();
                return cat;
             }
-            cat = db.categories.Where(ca => ca.name == name).FirstOrDefault();
+            cat = db.categories.Where(ca => ca.name.ToLower() == name.ToLower()).FirstOrDefault();
             return cat;
+        }
+
+        public category GetCategoryForVenue(Guid venueId)
+        {
+            venue_category vencat = db.venue_category.Where(vc => vc.venue_id == venueId).FirstOrDefault();
+            return db.categories.Where(c => c.Id == vencat.category_id).FirstOrDefault();
         }
     }
 }

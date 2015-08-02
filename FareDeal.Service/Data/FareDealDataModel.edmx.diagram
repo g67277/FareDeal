@@ -21,7 +21,7 @@
         <EntityTypeShape EntityType="LocalAuthenticationModel.photo" Width="1.5" PointX="5.25" PointY="12.625" />
         <AssociationConnector Association="LocalAuthenticationModel.FK_venue_picture_venue1" />
         <AssociationConnector Association="LocalAuthenticationModel.FK_contact_venue1" />
-        <AssociationConnector Association="LocalAuthenticationModel.venue_category" />
+        <EntityTypeShape EntityType="LocalAuthenticationModel.venue_category" Width="1.5" PointX="3.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

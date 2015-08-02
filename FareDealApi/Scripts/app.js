@@ -111,6 +111,8 @@
             headers.Authorization = 'Bearer ' + token;
         }
 
+        var name = "Restaurent" + Math.random();
+
         var data = {
             FirstName: 'Hemal',
             LastName: 'Patel',
@@ -122,7 +124,10 @@
             PriceTier: 1,
             WeekdaysHours: '10AM-10PM',
             WeekEndHours: '10AM-12AM',
-            RestaurantName: 'Test Restaurent1'
+            RestaurantName: name,
+            Lat: "38.907192",
+            Lang: "-77.036871",
+            CategoryName:"Burger"
         };
 
         $.ajax({
@@ -134,6 +139,38 @@
         }).done(function (data) {
             self.result("Done!");
         }).fail(showError);
+    });
+
+
+    $('#btn_password_reset').click(function () {
+        var headers = {};
+        var token = $('#token').val();
+        var id = $('#id').val();
+        var p1 = $('#resetPassword1').val();
+        var p2 = $('#resetPassword2').val()
+        if (p1 != p2) {
+            alert("New Password and Confirm password do not match, try again!");
+            return;
+        }
+        var resetData = {
+            NewResetPassword: $('#resetPassword1').val(),
+            ConfirmResetPassword: $('#resetPassword2').val(),
+            id: id,
+            code: token
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/Account/ResetPassword',
+            data: resetData
+        }).done(function (data) {
+            alert("Password has been changed!");
+            //self.user(data.userName);
+            // Cache the access token in session storage.
+            //sessionStorage.setItem(tokenKey, data.access_token);
+        }).error(function (jqXHR) {
+            alert("There was an error resetting password! Your reset email link is expired.");
+        });
     });
 }
 

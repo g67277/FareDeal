@@ -18,7 +18,6 @@ namespace FareDeal.Service.Data
         {
             this.deals = new HashSet<deal>();
             this.photos = new HashSet<photo>();
-            this.categories = new HashSet<category>();
         }
     
         public System.Guid Id { get; set; }
@@ -41,6 +40,5 @@ namespace FareDeal.Service.Data
         public virtual ICollection<deal> deals { get; set; }
         public virtual ICollection<photo> photos { get; set; }
         public virtual contact contact { get; set; }
-        public virtual ICollection<category> categories { get; set; }
     }
 }

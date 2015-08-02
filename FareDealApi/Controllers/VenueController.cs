@@ -16,6 +16,7 @@ namespace FareDealApi.Controllers
     public class VenueController : BaseApiController
     {
         VenueService service = new VenueService();
+        CategoryService catService = new CategoryService();
         // GET: api/Venue
         public IEnumerable<venue> Get()
         {
@@ -23,7 +24,6 @@ namespace FareDealApi.Controllers
             return venues;
 
         }
-
 
         // GET: api/Venue/5
         public string Get(int id)
@@ -36,7 +36,7 @@ namespace FareDealApi.Controllers
         public async Task<IHttpActionResult> Post(BusinessModel model)
         {
             venue v = service.GetByName(model.RestaurantName);
-            if (v == null)
+            //if (v == null)
             {
 
                 location l = new location();
@@ -45,8 +45,8 @@ namespace FareDealApi.Controllers
                 l.city = model.City;
                 l.address = model.StreetName;
                 l.state = model.State;
-                l.lang = "-5.00";
-                l.lat = "-5.00";
+                l.lang = model.Lang;
+                l.lat = model.Lat;
                 l.cc = "US";
 
                 v = new venue();
@@ -64,7 +64,20 @@ namespace FareDealApi.Controllers
                 c.first_name = model.FirstName;
                 c.last_name = model.LastName;
                 c.phone = model.PhoneNumber;
-                service.AddVenue(v, c, l);
+
+                //find category
+
+                category cat = catService.GetCategry(model.CategoryName, null);
+                venue_category vc = new venue_category()
+                {
+                    id = Guid.NewGuid(),
+                    category_id = cat.Id,
+                    venue_id = v.Id
+                };
+                //cat.venue.Add(v);
+               // v.category.Add(cat);
+
+                service.AddVenue(v, c, l, vc);
             }
             return Ok();
         }

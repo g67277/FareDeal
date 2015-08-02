@@ -90,10 +90,14 @@
     <Compile Include="Data\venue.cs">
       <DependentUpon>FareDealDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\venue_category.cs">
+      <DependentUpon>FareDealDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\venue_credit.cs">
       <DependentUpon>FareDealDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\LocationService.cs" />
     <Compile Include="Service\CategoryService.cs" />
     <Compile Include="Service\VenueService.cs" />
   </ItemGroup>

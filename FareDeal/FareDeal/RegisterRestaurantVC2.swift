@@ -9,7 +9,6 @@
 import UIKit
 import MobileCoreServices
 import ActionSheetPicker_3_0
-import CoreLocation
 
 
 class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -50,14 +49,11 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     //Register/Edit button
     @IBOutlet var editNRegister: UIButton!
     @IBOutlet var errorLabel: UILabel!
-    var callPart1 = ""
-    var callPart2 = ""
+    
+    @IBOutlet weak var contactName: UITextField!
+    
     var profileView = false
-    //Testing
-    var username = ""
-    var pass = ""
-    //Testing
-    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     let authenticationCall:AuthenticationCalls = AuthenticationCalls()
     let validation = Validation()
     
@@ -65,9 +61,6 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        println(callPart1)
-        
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
@@ -96,7 +89,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     
     func styleElements(didLoad: Bool){
         
-        var elementArray = [restNameField, streetField, cityField, zipecodeField, phoneNumField, websiteField]
+        var elementArray = [restNameField, streetField, cityField, zipecodeField, phoneNumField, websiteField, contactName]
 
         if didLoad{
             for element in elementArray{
@@ -321,30 +314,40 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     // Registration Call Methods
     
     func signUP(){
+        var restaurantName = restNameField.text
+        var street = streetField.text
+        var city = cityField.text
+        var zipcode = zipecodeField.text
+        var phoneNum = phoneNumField.text
+        var website = websiteField.text
+        var selectedCategory = catButton.titleLabel?.text
+        var contact = contactName.text
         
-        if validation.validateInput(restNameField.text, check: 2, title: "Too Short", message: "Please enter a valid Restaurant name")
-            && validation.validateAddress(streetField.text, city: cityField.text, zipcode: zipecodeField.text).valid
-            && validation.validateInput(phoneNumField.text, check: 9, title: "Too Short", message: "Please enter a valid Phone number") {
+        if validation.validateInput(restaurantName, check: 1, title: "Too Short", message: "Please enter a valid Restaurant name")
+            && validation.validateAddress(street, city: city, zipcode: zipcode).valid
+            && validation.validateInput(phoneNumField.text, check: 9, title: "Too Short", message: "Please enter a valid Phone number")
+            && validation.category(selectedCategory!)
+            && validation.validateInput(contact, check: 1, title: "Too Short", message: "Please enter a valid name") {
                 
                 
             
-            callPart2 = "\(callPart1), \"RestName\":\"\(restNameField.text)\", \(formattedAddress), \"PhoneNumber\":\"\(phoneNumField.text)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"Hours\":\"\(priceControls.selected)\""
+            var callPart2 = "\"RestaurantName\":\"\(restNameField.text)\", \"FormattedAddress\":\"\(validation.validateAddress(street, city: city, zipcode: zipcode).formattedString)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"Hours\":\"\(priceControls.selected)\""
             
-            // Testing for now...
-            if authenticationCall.registerRestaurant(callPart1) {
-                
-                var refreshAlert = UIAlertController(title: "Thank you!", message: "Your information has been sent and is pending verification.  We will be in touch soon.  In the mean time, you can start setting-up your deals", preferredStyle: UIAlertControllerStyle.Alert)
-                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
-                    
-                    //tesitng for now
-                    var stringPost="grant_type=password&username=\(self.username)&password=\(self.pass)"
-
-                    if self.authenticationCall.signIn(stringPost){
-                        self.backTwo()
-                    }
-                }))
-                self.presentViewController(refreshAlert, animated: true, completion: nil)
-            }
+//            // Testing for now...
+//            if authenticationCall.registerRestaurant(callPart1) {
+//                
+//                var refreshAlert = UIAlertController(title: "Thank you!", message: "Your information has been sent and is pending verification.  We will be in touch soon.  In the mean time, you can start setting-up your deals", preferredStyle: UIAlertControllerStyle.Alert)
+//                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
+//                    
+//                    //tesitng for now
+//                    var stringPost="grant_type=password&username=\(self.username)&password=\(self.pass)"
+//
+//                    if self.authenticationCall.signIn(stringPost){
+//                        self.backTwo()
+//                    }
+//                }))
+//                self.presentViewController(refreshAlert, animated: true, completion: nil)
+//            }
             //authenticationCall.registerRestaurant(callPart2)
         }else {
             errorLabel.hidden = false
@@ -358,6 +361,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
         
     }
+    
     
     func saveData(){
         
@@ -385,19 +389,6 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         }
         
     }
-    
-    func findCoorinates(){
-        
-        var geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(formattedAddress, completionHandler: {(placemarks: [AnyObject]!, error: NSError!) -> Void in
-            if let placemark = placemarks?[0] as? CLPlacemark {
-                var test:CLLocation = placemark.location
-                var test2:CLLocationCoordinate2D = test.coordinate
-                println("latitute: \(test2.latitude), longitute: \(test2.longitude)")
-            }
-        })
-    }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

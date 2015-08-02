@@ -7,9 +7,14 @@
 //
 
 import Foundation
+import CoreLocation
 
 public class Validation{
     
+    var coordinates:CLLocationCoordinate2D = CLLocationCoordinate2D()
+
+    
+    //Validates entery lenght based on passed check integer
     func validateInput(input: String, check: Int, title: String, message: String) -> Bool{
         
         if count(input) > check {
@@ -26,19 +31,23 @@ public class Validation{
         if count(street) > 6 {
             
             if count(city) > 2{
-                
                 if count(zipcode) == 5 {
+                    
+                    var test1 = findCoorinates("\(street), \(city), \(zipcode)").valid
+                    var test2 = findCoorinates("\(street), \(city), \(zipcode)").lat
+                    var test3 = findCoorinates("\(street), \(city), \(zipcode)").lng
+                    
+                    
+
                     return ("\(street), \(city), \(zipcode)", true)
                 }else{
                     displayAlert("Invalid zipcode", message: "Please enter a valid zipcode ")
                     return ("invalid", false)
                 }
-                
             }else{
                 displayAlert("Too Short", message: "Please enter a valid city ")
                 return ("invalid", false)
             }
-            
         }else {
             displayAlert("Too Short", message: "Please enter a valid street address")
             return ("invalid", false)
@@ -58,7 +67,7 @@ public class Validation{
     }
     
     func validatePassword(pass: String, cpass: String) -> Bool{
-        
+    
         if count(pass) > 5 {
             
             if pass == cpass{
@@ -73,6 +82,36 @@ public class Validation{
             return false
         }
         
+    }
+    
+    func category(input: String) -> Bool{
+        
+        if input == "Category" || input == ""{
+            displayAlert("Invalid Category", message: "Please select a valid category")
+            return false
+        }else{
+            return true
+        }
+        
+    }
+    
+    func findCoorinates(formattedAddress: String) -> (valid: Bool, lat: Double, lng: Double){
+        
+        var geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(formattedAddress, completionHandler: {(placemarks: [AnyObject]!, error: NSError!) -> Void in
+            if let placemark = placemarks?[0] as? CLPlacemark {
+                var location:CLLocation = placemark.location
+                self.coordinates = location.coordinate
+                println("latitute: \(self.coordinates.latitude), longitute: \(self.coordinates.longitude)")
+                //return (true, Double(coordinates.latitude), Double(coordinates.longitude))
+            }
+        })
+        
+        if  CLLocationCoordinate2DIsValid(self.coordinates) {
+            return (true, coordinates.latitude, coordinates.longitude)
+        }
+        
+        return (false, 0, 0)
     }
     
     func displayAlert(title: String, message: String){

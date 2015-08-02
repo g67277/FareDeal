@@ -112,21 +112,6 @@ class RegisterRestaurantVC: UIViewController {
         
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "toRegister2") {
-            var svc = segue.destinationViewController as! RegisterRestaurantVC2;
-            
-
-            svc.callPart1 = "{\"UserName\":\"\(userName.text)\",\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\"}"
-            
-            //Testing
-            svc.username = userName.text
-            svc.pass = passwordField.text
-            
-            //svc.callPart1 = "\"FirstName\":\"\(firstName.text)\",\"LastName\":\"\(lastName.text)\",\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\""
-            
-        }
-    }
     
     override func viewWillAppear(animated: Bool) {
         // Hide the navigation bar to display the full location image

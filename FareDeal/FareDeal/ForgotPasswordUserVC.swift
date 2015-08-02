@@ -13,6 +13,7 @@ class ForgotPasswordUserVC: UIViewController {
     
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var resetPasswordButtonView: UIView!
+    let authenticationCall = AuthenticationCalls()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +35,13 @@ class ForgotPasswordUserVC: UIViewController {
         if _sender.tag == 0 {
             
             if validateEmail(emailTextField.text){
-                var refreshAlert = UIAlertController(title: "Done", message: "Check your email for a reset link", preferredStyle: UIAlertControllerStyle.Alert)
-                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
-                    self.navigationController?.popViewControllerAnimated(true)
-                }))
-                self.presentViewController(refreshAlert, animated: true, completion: nil)
+                if authenticationCall.resetPassword(emailTextField.text){
+                    var refreshAlert = UIAlertController(title: "Done", message: "Check your email for a reset link", preferredStyle: UIAlertControllerStyle.Alert)
+                    refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }))
+                    self.presentViewController(refreshAlert, animated: true, completion: nil)
+                }
             }else{
                 var alertView:UIAlertView = UIAlertView()
                 alertView.title = "Please enter a valid email address"

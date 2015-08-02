@@ -73,6 +73,11 @@ class RegisterUserVC: UIViewController {
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        // Hide the navigation bar to display the full location image
+        self.navigationController?.navigationBarHidden = true
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

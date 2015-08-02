@@ -57,6 +57,11 @@ class ForgotPasswordUserVC: UIViewController {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluateWithObject(candidate)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        // Hide the navigation bar to display the full location image
+        self.navigationController?.navigationBarHidden = true
+    }
 
     
     func DismissKeyboard(){

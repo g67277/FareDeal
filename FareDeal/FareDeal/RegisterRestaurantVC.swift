@@ -84,13 +84,6 @@ class RegisterRestaurantVC: UIViewController {
     
     func validateInput(){
         
-        //testing only
-        //username.text = "naz"
-        fullName.text = "naz"
-        //emailAddressField.text = "naz@naz.com"
-        passwordField.text = "Test@123"
-        passwordCField.text = "Test@123"
-        // Delete above
         
         if count(userName.text) < 2 {
             userName.text = ""

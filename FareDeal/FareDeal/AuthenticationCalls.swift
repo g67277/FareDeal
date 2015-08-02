@@ -44,15 +44,11 @@ public class AuthenticationCalls {
                     
                     var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
                     
-                    NSLog("Response ==> %@", responseData);
                     
                     var error: NSError?
                     
                     let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
-                    
-                    var testing: AnyObject? = jsonData["access_token"]
-                    println(testing)
-                    
+                                        
                     if(jsonData["access_token"] != nil){
                         
                         debugPrint("Login Success")
@@ -215,7 +211,6 @@ public class AuthenticationCalls {
                 
                 let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
                 
-                println(jsonData)
                 println(jsonData["error_message"])
                 
                 var alertView:UIAlertView = UIAlertView()
@@ -266,14 +261,10 @@ public class AuthenticationCalls {
             
             var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
             
-            println(urlData)
-            
             if ( urlData != nil ) {
                 let res = response as! NSHTTPURLResponse!;
                 
                 NSLog("Response code: %ld", res.statusCode);
-                println(res)
-                
                 if (res.statusCode >= 200 && res.statusCode < 300)
                 {
                     
@@ -324,7 +315,6 @@ public class AuthenticationCalls {
                     
                     let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
                     
-                    println(jsonData)
                     println(jsonData["error_message"])
                     
                     var alertView:UIAlertView = UIAlertView()
@@ -417,7 +407,6 @@ public class AuthenticationCalls {
                     
                     let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
                     
-                    println(jsonData)
                     println(jsonData["error_message"])
                     
                     var alertView:UIAlertView = UIAlertView()

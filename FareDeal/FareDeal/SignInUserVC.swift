@@ -77,7 +77,7 @@ class SignInUserVC: UIViewController {
                         self.passwordField.text = ""
                         prefs.setObject(userNameField.text, forKey: "USERNAME")
                         
-                        self.performSegueWithIdentifier("toMain", sender: self)
+                        self.performSegueWithIdentifier("toUserMain", sender: self)
                     }
             }
             
@@ -101,6 +101,22 @@ class SignInUserVC: UIViewController {
         if (segue.identifier == "toBusinessSide") {
             prefs.setInteger(1, forKey: "SIDE")
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        // Hide the navigation bar to display the full location image
+        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
+        navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navBar.shadowImage = UIImage()
+        navBar.backgroundColor = UIColor.clearColor()
+    }
+    
+    
+    override func viewWillDisappear(animated: Bool) {
+        // restore the navigation bar to origional
+        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
+        navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        navBar.shadowImage = nil
     }
     
 

@@ -17,8 +17,8 @@ class SignInUserVC: UIViewController {
 
     
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-    
     let authenticationCall:AuthenticationCalls = AuthenticationCalls()
+    let validation = Validation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,11 +68,19 @@ class SignInUserVC: UIViewController {
         if _sender.tag == 0{
 
             
-            if authenticationCall.signIn(userNameField.text, password: passwordField.text){
-                self.userNameField.text = ""
-                self.passwordField.text = ""
-                self.performSegueWithIdentifier("toUserMain", sender: self)
+            if validation.validateInput(userNameField.text, check: 3, title: "Too Short", message: "Please enter a valid username")
+                && validation.validateInput(passwordField.text, check: 0, title: "Empty Password", message: "Please enter a password"){
+                    
+                    var stringPost="grant_type=password&username=\(userNameField.text)&password=\(passwordField.text)"
+                    if authenticationCall.signIn(stringPost){
+                        self.userNameField.text = ""
+                        self.passwordField.text = ""
+                        prefs.setObject(userNameField.text, forKey: "USERNAME")
+                        
+                        self.performSegueWithIdentifier("toMain", sender: self)
+                    }
             }
+            
         } else if _sender.tag == 1 {
             self.performSegueWithIdentifier("userForgotPassword", sender: self)
 

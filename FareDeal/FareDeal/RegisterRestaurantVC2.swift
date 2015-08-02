@@ -9,6 +9,7 @@
 import UIKit
 import MobileCoreServices
 import ActionSheetPicker_3_0
+import CoreLocation
 
 
 class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -43,6 +44,8 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     //Picture
     @IBOutlet weak var imgView: UIImageView!
     var newMedia: Bool?
+    
+    @IBOutlet weak var requiredLabel: UILabel!
     var validImage = false
     //Register/Edit button
     @IBOutlet var editNRegister: UIButton!
@@ -56,6 +59,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     //Testing
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     let authenticationCall:AuthenticationCalls = AuthenticationCalls()
+    let validation = Validation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -282,6 +286,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             
             imgView.image = image
             validImage = true
+            requiredLabel.hidden = true
             
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self,
@@ -317,84 +322,24 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     
     func signUP(){
         
-        // Checks restaurant name
-        if count(restNameField.text) > 2{
-            self.nameValid = true
-        }else{
-            restNameField.text = ""
-            restNameField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid name",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-            self.nameValid = false
-        }
-        
-        // If those conditions are true, go ahead and format the address
-        if count(streetField.text) > 6 && count(cityField.text) > 3 && count(zipecodeField.text) == 5 {
-            //Check this later
-            formattedAddress = "\"FormattedAddress\":\"\(streetField.text) \(cityField.text) \(zipecodeField.text)\""
-            validAddress = true
-        }else if count(streetField.text) < 6 || count(cityField.text) < 3 || count(zipecodeField.text) != 5{
-            streetField.text = ""
-            cityField.text = ""
-            zipecodeField.text = ""
-            streetField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid address",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-            cityField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid city",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-            zipecodeField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid zipcode",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-            
-            validAddress = false
-        }
-        
-        // Checks if there are enough digits in the phone field
-        if count(phoneNumField.text) < 10{
-            phoneNumField.text = ""
-            phoneNumField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid phone number",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-            validPhone = false
-        }else{
-            validPhone = true
-        }
-        
-        //Checks if the website url is valid
-        var url:NSURL = NSURL(string: websiteField.text)!
-        
-        if count(websiteField.text) < 4 {
-            websiteField.text = ""
-            websiteField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid website",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-            validWeb = false
-        }
-        // Will have to come back to URL Validation
-        
-        if let validURL : NSURL = NSURL(string: websiteField.text){
-            validWeb = true
-        }else{
-            websiteField.text = ""
-            websiteField.placeholder = "Please enter a valid website"
-            validWeb = false
-        }
-        
-        if !validImage{
-            var alertView:UIAlertView = UIAlertView()
-            alertView.title = "Sign Up Failed!"
-            alertView.message = "Please add an image to the form"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
-        }
- 
-        if nameValid && validAddress && validPhone && validImage {
+        if validation.validateInput(restNameField.text, check: 2, title: "Too Short", message: "Please enter a valid Restaurant name")
+            && validation.validateAddress(streetField.text, city: cityField.text, zipcode: zipecodeField.text).valid
+            && validation.validateInput(phoneNumField.text, check: 9, title: "Too Short", message: "Please enter a valid Phone number") {
+                
+                
             
             callPart2 = "\(callPart1), \"RestName\":\"\(restNameField.text)\", \(formattedAddress), \"PhoneNumber\":\"\(phoneNumField.text)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"Hours\":\"\(priceControls.selected)\""
             
             // Testing for now...
-            if authenticationCall.registerRestaurant2(callPart1) {
+            if authenticationCall.registerRestaurant(callPart1) {
                 
                 var refreshAlert = UIAlertController(title: "Thank you!", message: "Your information has been sent and is pending verification.  We will be in touch soon.  In the mean time, you can start setting-up your deals", preferredStyle: UIAlertControllerStyle.Alert)
                 refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
                     
-                    if self.authenticationCall.signIn(self.username, password: self.pass){
+                    //tesitng for now
+                    var stringPost="grant_type=password&username=\(self.username)&password=\(self.pass)"
+
+                    if self.authenticationCall.signIn(stringPost){
                         self.backTwo()
                     }
                 }))
@@ -439,6 +384,18 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             //bar.backgroundColor = UIColor.clearColor()
         }
         
+    }
+    
+    func findCoorinates(){
+        
+        var geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(formattedAddress, completionHandler: {(placemarks: [AnyObject]!, error: NSError!) -> Void in
+            if let placemark = placemarks?[0] as? CLPlacemark {
+                var test:CLLocation = placemark.location
+                var test2:CLLocationCoordinate2D = test.coordinate
+                println("latitute: \(test2.latitude), longitute: \(test2.longitude)")
+            }
+        })
     }
 
     

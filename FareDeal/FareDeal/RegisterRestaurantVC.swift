@@ -11,13 +11,14 @@ import UIKit
 class RegisterRestaurantVC: UIViewController {
     
     @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var fullName: UITextField!
     @IBOutlet weak var emailAddressField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordCField: UITextField!
     @IBOutlet var nextBtn: UIButton!
     var passwordValid = false
     
+    let authenticationCall = AuthenticationCalls()
+    let validation = Validation()
     
     
     
@@ -39,7 +40,7 @@ class RegisterRestaurantVC: UIViewController {
     }
     
     func styleElements(didLoad: Bool){
-        var elementArray = [userName, fullName, emailAddressField, passwordField, passwordCField]
+        var elementArray = [userName, emailAddressField, passwordField, passwordCField]
 
         if didLoad{
             for element in elementArray{
@@ -86,56 +87,29 @@ class RegisterRestaurantVC: UIViewController {
         
         //testing only
         //username.text = "naz"
-        fullName.text = "naz"
         //emailAddressField.text = "naz@naz.com"
         passwordField.text = "Test@123"
         passwordCField.text = "Test@123"
         // Delete above
-        
-        if count(userName.text) < 2 {
-            userName.text = ""
-            userName.attributedPlaceholder = NSAttributedString(string:"Please enter a valid username",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-        }
-        if count(fullName.text) < 2 {
-            fullName.text = ""
-            fullName.attributedPlaceholder = NSAttributedString(string:"Please enter a valid name",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-        }
-        if !validateEmail(emailAddressField.text) {
-            emailAddressField.text = ""
-            emailAddressField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid email address",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-        }
-        if count(passwordField.text) < 6 {
-            passwordField.text = ""
-            passwordField.attributedPlaceholder = NSAttributedString(string:"Password needs to be at least 6 characters",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-        }else{
-            if passwordField.text != passwordCField.text {
-                passwordField.text = ""
-                passwordCField.text = ""
-                passwordField.attributedPlaceholder = NSAttributedString(string:"Password does not match",
-                    attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-                
-                passwordCField.attributedPlaceholder = NSAttributedString(string:"Password does not match",
-                    attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
 
-            }else{
-                passwordValid = true
-            }
+
+        
+        if validation.validateInput(userName.text, check: 2, title: "Somethings Missing", message: "Please enter a valid username")
+            && validation.validateEmail(emailAddressField.text)
+            && validation.validatePassword(passwordField.text, cpass: passwordCField.text){
+                
+                
+                var post:NSString = "{\"UserName\":\"\(userName.text)\",\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\",\"IsBusiness\":\"true\"}"
+                if authenticationCall.registerUser(post) {
+                    var stringPost="grant_type=password&username=\(userName.text)&password=\(passwordField.text)"
+                    
+                    if authenticationCall.signIn(stringPost){
+                        self.performSegueWithIdentifier("toRegister2", sender: nil)
+                    }
+                }
         }
         
-        if count(userName.text) > 2 && count(fullName.text) > 2 && validateEmail(emailAddressField.text) && passwordValid{
-            self.performSegueWithIdentifier("toRegister2", sender: nil)
-        }
         
-        
-    }
-    
-    func validateEmail(candidate: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
-        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluateWithObject(candidate)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

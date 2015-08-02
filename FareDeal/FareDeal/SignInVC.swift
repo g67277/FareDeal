@@ -10,6 +10,7 @@ import UIKit
 
 class SignInVC: UIViewController {
     
+
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet var logInButtonView: UIView!
@@ -60,10 +61,12 @@ class SignInVC: UIViewController {
             //authentication here
             //loginHere()
             //testing()
+            
             if authenticationCall.signIn(userNameField.text, password: passwordField.text){
                 self.userNameField.text = ""
                 self.passwordField.text = ""
                 self.performSegueWithIdentifier("toMain", sender: self)
+            }else{
             }
 
             

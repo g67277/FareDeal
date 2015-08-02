@@ -18,6 +18,8 @@
 		81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81481B431B56A2D6000EC386 /* LaunchScreen.xib */; };
 		81481B511B56A2D6000EC386 /* FareDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B501B56A2D6000EC386 /* FareDealTests.swift */; };
 		81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81481B5A1B56A359000EC386 /* StoreKit.framework */; };
+		817BC8721B6DA5F10059C31D /* BusinessDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BC8711B6DA5F10059C31D /* BusinessDeal.swift */; };
+		817BC8741B6DB86A0059C31D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BC8731B6DB86A0059C31D /* Reachability.swift */; };
 		8185E2F81B60899B00059124 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185E2F71B60899B00059124 /* SignInVC.swift */; };
 		8185E2FA1B608AD100059124 /* RegisterRestaurantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185E2F91B608AD100059124 /* RegisterRestaurantVC.swift */; };
 		8185E2FD1B608FE800059124 /* SignInUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185E2FC1B608FE800059124 /* SignInUserVC.swift */; };
@@ -84,6 +86,8 @@
 		81481B4F1B56A2D6000EC386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81481B501B56A2D6000EC386 /* FareDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FareDealTests.swift; sourceTree = "<group>"; };
 		81481B5A1B56A359000EC386 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		817BC8711B6DA5F10059C31D /* BusinessDeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDeal.swift; sourceTree = "<group>"; };
+		817BC8731B6DB86A0059C31D /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		8185E2F71B60899B00059124 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		8185E2F91B608AD100059124 /* RegisterRestaurantVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterRestaurantVC.swift; sourceTree = "<group>"; };
 		8185E2FC1B608FE800059124 /* SignInUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInUserVC.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 				8185E2FC1B608FE800059124 /* SignInUserVC.swift */,
 				8185E3001B609B1400059124 /* RegisterUserVC.swift */,
 				994C61321B69244600E5EF7C /* ForgotPasswordUserVC.swift */,
+				817BC8731B6DB86A0059C31D /* Reachability.swift */,
 			);
 			name = "Signing In/Up";
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				819281DC1B5B3FD20003AD4D /* Deal.swift */,
 				8132230E1B685F1800613C60 /* FoodCategories.swift */,
 				99A6E8D81B69ED97005179A6 /* Deals.swift */,
+				817BC8711B6DA5F10059C31D /* BusinessDeal.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 				81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */,
 				99A6E8D91B69ED97005179A6 /* Deals.swift in Sources */,
 				99A6E8DF1B69EE89005179A6 /* Restaurant.swift in Sources */,
+				817BC8721B6DA5F10059C31D /* BusinessDeal.swift in Sources */,
 				813222DC1B681A3500613C60 /* RegisterRestaurantVC2.swift in Sources */,
 				995935F11B5EDA1C009CDD26 /* HomeSwipeViewController.swift in Sources */,
 				81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */,
@@ -534,6 +541,7 @@
 				8185E2FD1B608FE800059124 /* SignInUserVC.swift in Sources */,
 				99CD57781B6AC03300DBDF3A /* DealHeaderCell.swift in Sources */,
 				99A6E8DE1B69EE89005179A6 /* Constants.swift in Sources */,
+				817BC8741B6DB86A0059C31D /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

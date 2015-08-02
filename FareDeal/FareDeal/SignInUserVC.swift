@@ -34,6 +34,8 @@ class SignInUserVC: UIViewController {
         
         passwordField.attributedPlaceholder = NSAttributedString(string:"Password",
             attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
+        //authenticationCall.displayIndicator(self.view, stop: false)
 
     }
     
@@ -64,6 +66,7 @@ class SignInUserVC: UIViewController {
     @IBAction func onClick(_sender:UIButton){
         
         if _sender.tag == 0{
+
             
             if authenticationCall.signIn(userNameField.text, password: passwordField.text){
                 self.userNameField.text = ""

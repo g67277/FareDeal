@@ -331,6 +331,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         var phoneNum = phoneNumField.text
         var website = websiteField.text
         var selectedCategory = catButton.titleLabel?.text
+        var price = priceControls.selectedSegmentIndex.value
         var contact = contactName.text
         var wkO = weekdayO.titleLabel?.text
         var wkC = weekdayC.titleLabel?.text
@@ -347,8 +348,10 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             && validation.category(selectedCategory!)
             && validation.validateInput(contact, check: 1, title: "Too Short", message: "Please enter a valid name") {
 
+                var registrationPost = "{\"FirstName\":\"\(contact)\",\"LastName\":\"void\",\"StreetName\":\"\(street)\",\"City\":\"\(city)\",\"State\":\"DC\",\"ZipCode\":\"\(zipcode)\",\"PhoneNumber\":\"\(phoneNum)\",\"PriceTier\":\(price),\"WeekdaysHours\":\"\(weekdayString)\",\"WeekEndHours\":\"\(weekendString)\",\"RestaurantName\":\"\(restaurantName)\",\"Lat\":\"\(validatedlat)\",\"Lang\":\"\(validatedlng)\",\"CategoryName\":\"\(selectedCategory)\"}"
+
                 
-            var registrationPost = "\"RestaurantName\":\"\(restNameField.text)\", \"PhoneNumber\":\"\(phoneNum)\", \"CategoryName\":\"\(selectedCategory)\", \"StreetName\":\"\(street)\", \"City\":\"\(city)\",\"State\":\"DC\", \"ZipCode\":\"\(zipcode)\", \"Lat\":\"\(validatedlat)\", \"Lang\":\"\(validatedlng)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"WeekdaysHours\":\"\(weekdayString)\",\"WeekEndHours\":\"\(weekendString)\",\"FirstName\":\"\(contact)\",\"LastName\":\"void\""
+           // var registrationPost = "\"RestaurantName\":\"\(restNameField.text)\", \"PhoneNumber\":\"\(phoneNum)\", \"CategoryName\":\"\(selectedCategory)\", \"StreetName\":\"\(street)\", \"City\":\"\(city)\",\"State\":\"DC\", \"ZipCode\":\"\(zipcode)\", \"Lat\":\"\(validatedlat)\", \"Lang\":\"\(validatedlng)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"WeekdaysHours\":\"\(weekdayString)\",\"WeekEndHours\":\"\(weekendString)\",\"FirstName\":\"\(contact)\",\"LastName\":\"void\""
                 
                 
                 authenticationCall.registerRestaurant(registrationPost, token: prefs.stringForKey("TOKEN")!)

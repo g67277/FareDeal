@@ -16,6 +16,8 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
     @IBOutlet weak var tierLabel: UILabel!
     @IBOutlet weak var titleTF: UITextField!
     @IBOutlet weak var descTF: UITextView!
+    
+    @IBOutlet weak var textCounterLabel: UILabel!
     @IBOutlet weak var valueTF: UITextField!
     @IBOutlet weak var hoursRequiredLabel: UILabel!
     @IBOutlet weak var hour1: UIButton!
@@ -44,9 +46,9 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
             updateHourButtons(hours)
         }
         if editingMode{
-            deleteBtn.hidden = true
-        }else{
             deleteBtn.hidden = false
+        }else{
+            deleteBtn.hidden = true
         }
     }
     
@@ -93,6 +95,14 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         }
     }
     
+    func textViewDidChange(textView: UITextView) {
+        var currentCount = 140 - count(descTF.text)
+        if currentCount <= 0{
+            //var updatedInput = count(descTF.text)
+            descTF.text = descTF.text.substringToIndex(descTF.text.endIndex.predecessor())
+        }
+        self.textCounterLabel.text = "\(currentCount) characters left"
+    }
 
     // Mark# OnClick Method
     
@@ -189,15 +199,18 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
     func deleteDeal(){
         
         if dealID != ""{
-            var dealToDelete = realm.objectForPrimaryKey(BusinessDeal.self, key: dealID)
             
-            realm.write{
-                self.realm.delete(dealToDelete!)
-            }
-            
-            var refreshAlert = UIAlertController(title: "Deleted", message: "Deal has been deleted", preferredStyle: UIAlertControllerStyle.Alert)
+            var refreshAlert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to delete this deal", preferredStyle: UIAlertControllerStyle.Alert)
             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
+                var dealToDelete = self.realm.objectForPrimaryKey(BusinessDeal.self, key: self.dealID)
+                
+                self.realm.write{
+                    self.realm.delete(dealToDelete!)
+                }
+
                 self.navigationController?.popViewControllerAnimated(true)
+            }))
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: {(action: UIAlertAction!) in
             }))
             self.presentViewController(refreshAlert, animated: true, completion: nil)
         }

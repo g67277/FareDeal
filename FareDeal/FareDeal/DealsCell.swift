@@ -11,7 +11,7 @@ import UIKit
 class DealsCell: UITableViewCell {
     
     @IBOutlet weak var dealTitle: UILabel!
-    @IBOutlet weak var dealDesc: UITextView!
+    @IBOutlet weak var dealDesc: UILabel!
     @IBOutlet weak var timeLimit: UILabel!
     @IBOutlet weak var dealValue: UILabel!
     

@@ -48,7 +48,7 @@ public class AuthenticationCalls {
                     var error: NSError?
                     
                     let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
-                                        
+                    
                     if(jsonData["access_token"] != nil){
                         
                         debugPrint("Login Success")
@@ -125,113 +125,77 @@ public class AuthenticationCalls {
         
         return false
     }
-
-    // **TESTING REGISTRATION: Method will change**
+    
     func registerRestaurant(call: NSString, token: String) -> (Bool){
         
-        var post:NSString = call
-        NSLog("PostData: %@",post);
-        
-        
-        var url:NSURL = NSURL(string: "http://ec2-52-2-195-214.compute-1.amazonaws.com/api/Venue")!
-        
-        var postData:NSData = post.dataUsingEncoding(NSUTF8StringEncoding)!
-        
-        var postLength:NSString = String( postData.length )
-        
-        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        request.HTTPBody = postData
-        //request.addValue(token, forHTTPHeaderField: "Authorization")
-        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
-        
-        var reponseError: NSError?
-        var response: NSURLResponse?
-        
-        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
-        
-        if ( urlData != nil ) {
-            let res = response as! NSHTTPURLResponse!;
+        if Reachability.isConnectedToNetwork(){
             
-            NSLog("Response code: %ld", res.statusCode);
+            var url:NSURL = NSURL(string: "http://ec2-52-2-195-214.compute-1.amazonaws.com/api/Venue")!
             
-            if (res.statusCode >= 200 && res.statusCode < 300)
-            {
-                // will re-add these once error_codes have been completed server side
+            var postData:NSData = call.dataUsingEncoding(NSASCIIStringEncoding)!
+            
+            var postLength:NSString = String( call.length)
+            
+            var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+            request.HTTPMethod = "POST"
+            request.HTTPBody = postData
+            request.timeoutInterval = 60
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            var reponseError: NSError?
+            var response: NSURLResponse?
+            
+            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+            
+            if ( urlData != nil ) {
+                let res = response as! NSHTTPURLResponse!;
                 
-                //                    var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-                //
-                //                    NSLog("Response ==> %@", responseData);
-                //
-                //                    var error: NSError?
-                //
-                //                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
-                //
-                //
-                //                    let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
-                //
-                //                    //[jsonData[@"success"] integerValue];
-                //
-                //                    NSLog("Success: %ld", success);
+                NSLog("Response code: %ld", res.statusCode);
+                println(res.debugDescription)
                 
-                if(res.statusCode == 200)
-                {
-                    NSLog("Sign Up SUCCESS");
+                if (res.statusCode >= 200 && res.statusCode < 300){
+                    
                     return true
-                } else {
+                    
+                }else {
                     
                     var error: NSError?
-                    
                     let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
                     
-                    var error_msg:NSString
-                    
-                    if jsonData["error_message"] as? NSString != nil {
-                        error_msg = jsonData["error_message"] as! NSString
-                    } else {
-                        error_msg = "Unknown Error"
-                    }
                     var alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Sign Up Failed!"
-                    alertView.message = error_msg as String
+                    alertView.title = "Sign in Failed!"
+                    alertView.message = jsonData["error_description"] as? String
                     alertView.delegate = self
                     alertView.addButtonWithTitle("OK")
                     alertView.show()
-                    
+                    debugPrint("another error")
+                    return false
                 }
-                
-            } else if res.statusCode == 400 {
-                
-                var error: NSError?
-                
-                let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
-                
-                println(jsonData["error_message"])
-                
+            }else{
                 var alertView:UIAlertView = UIAlertView()
-                alertView.title = "Sign Up Failed!"
-                alertView.message = "Email address is already taken"
+                alertView.title = "Sign in Failed!"
+                alertView.message = "Connection Failure"
+                if let error = reponseError {
+                    alertView.message = (error.localizedDescription)
+                }
                 alertView.delegate = self
                 alertView.addButtonWithTitle("OK")
                 alertView.show()
+                return false
             }
-        }  else {
+        }else{
             var alertView:UIAlertView = UIAlertView()
-            alertView.title = "Sign in Failed!"
-            alertView.message = "Connection Failure"
-            if let error = reponseError {
-                alertView.message = (error.localizedDescription)
-            }
+            alertView.title = "No network"
+            alertView.message = "Please make sure you are connected then try again"
             alertView.delegate = self
             alertView.addButtonWithTitle("OK")
             alertView.show()
-            
         }
-        
         return false
+        
     }
     
     func registerUser(post: NSString) -> (Bool){
@@ -266,20 +230,20 @@ public class AuthenticationCalls {
                 if (res.statusCode >= 200 && res.statusCode < 300)
                 {
                     
-//                    var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-//                    
-//                    NSLog("Response ==> %@", responseData);
-//                    
-//                    var error: NSError?
-//                    
-//                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
-//                    
-//                    
-//                    let success:String = jsonData.valueForKey("role") as! String
-//                    
-//                    //[jsonData[@"success"] integerValue];
-//                    
-//                    NSLog("Success: %ld", success);
+                    //                    var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                    //
+                    //                    NSLog("Response ==> %@", responseData);
+                    //
+                    //                    var error: NSError?
+                    //
+                    //                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
+                    //
+                    //
+                    //                    let success:String = jsonData.valueForKey("role") as! String
+                    //
+                    //                    //[jsonData[@"success"] integerValue];
+                    //
+                    //                    NSLog("Success: %ld", success);
                     
                     if(res.statusCode == 200)
                     {
@@ -433,141 +397,6 @@ public class AuthenticationCalls {
             alertView.show()
         }
         return false
-    }
-    
-    
-    func test() {
-        if Reachability.isConnectedToNetwork(){
-            
-            
-            var url:NSURL = NSURL(string: "http://ec2-52-2-195-214.compute-1.amazonaws.com/api/values")!
-            
-            
-            
-            var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-            request.HTTPMethod = "GET"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            //request.setValue("application/json", forHTTPHeaderField: "Accept")
-            
-            
-            var reponseError: NSError?
-            var response: NSURLResponse?
-            
-            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
-            
-            if ( urlData != nil ) {
-                let res = response as! NSHTTPURLResponse!;
-                
-                NSLog("Response code: %ld", res.statusCode);
-                if (res.statusCode >= 200 && res.statusCode < 300)
-                {
-                    
-                    //                    var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-                    //
-                    //                    NSLog("Response ==> %@", responseData);
-                    //
-                    //                    var error: NSError?
-                    //
-                    //                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
-                    //
-                    //
-                    //                    let success:String = jsonData.valueForKey("role") as! String
-                    //
-                    //                    //[jsonData[@"success"] integerValue];
-                    //
-                    //                    NSLog("Success: %ld", success);
-                    
-                    if(res.statusCode == 200)
-                    {
-                        NSLog("Sign Up SUCCESS");
-                    } else {
-                        
-                        var error: NSError?
-                        
-                        let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
-                        
-                        var error_msg:NSString
-                        
-                        if jsonData["error_message"] as? NSString != nil {
-                            error_msg = jsonData["error_message"] as! NSString
-                        } else {
-                            error_msg = "Unknown Error"
-                        }
-                        var alertView:UIAlertView = UIAlertView()
-                        alertView.title = "Sign Up Failed!"
-                        alertView.message = error_msg as String
-                        alertView.delegate = self
-                        alertView.addButtonWithTitle("OK")
-                        alertView.show()
-                        
-                    }
-                    
-                } else if res.statusCode == 405 {
-                    
-                    var error: NSError?
-                    
-                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
-                    
-                    println(jsonData["error_message"])
-                    
-                    var alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Sign Up Failed!"
-                    alertView.message = "Email address is already taken"
-                    alertView.delegate = self
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
-                }
-            }  else {
-                var alertView:UIAlertView = UIAlertView()
-                alertView.title = "Sign in Failed!"
-                alertView.message = "Connection Failure"
-                if let error = reponseError {
-                    alertView.message = (error.localizedDescription)
-                }
-                alertView.delegate = self
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
-            }
-            
-        }else{
-            var alertView:UIAlertView = UIAlertView()
-            alertView.title = "No network"
-            alertView.message = "Please make sure you are connected then try again"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
-        }
-    }
-    
-    func test2(token: String) {
-        
-        var url:NSURL = NSURL(string: "http://ec2-52-2-195-214.compute-1.amazonaws.com/api/values")!
-        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let userPasswordData = token.dataUsingEncoding(NSUTF8StringEncoding)
-        let base64EncodedCredential = userPasswordData!.base64EncodedStringWithOptions(nil)
-        let authString = "Bearer \(base64EncodedCredential)"
-        config.HTTPAdditionalHeaders = ["Authorization" : "Bearer \(token)"]
-        let session = NSURLSession(configuration: config)
-        
-        var running = false
-        let task = session.dataTaskWithURL(url) {
-            (let data, let response, let error) in
-            if let httpResponse = response as? NSHTTPURLResponse {
-                let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
-
-                println(dataString)
-                var alertView:UIAlertView = UIAlertView()
-                alertView.title = dataString as! String
-                alertView.delegate = self
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
-            }
-            running = false
-        }
-        
-        running = true
-        task.resume()
-        
     }
     
 }

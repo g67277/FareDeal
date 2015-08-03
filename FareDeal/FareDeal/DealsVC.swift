@@ -11,6 +11,7 @@ import RealmSwift
 
 class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var addBtn: UIBarButtonItem!
     @IBOutlet weak var dealsList: UITableView!
     
     var dealsArray = Realm().objects(BusinessDeal)
@@ -20,7 +21,13 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        
+        var test = dealsArray.count
+        if dealsArray.count == 10 {
+            addBtn.enabled = false
+            println("testing")
+        }else{
+            addBtn.enabled = true
+        }
         
     }
     
@@ -60,7 +67,7 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         }else if segue.identifier == "toAdd"{
             
-            IVC.tier = 2
+            IVC.tier = topTier + 1
             
         }
         

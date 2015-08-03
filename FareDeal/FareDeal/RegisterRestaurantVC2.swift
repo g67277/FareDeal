@@ -9,9 +9,10 @@
 import UIKit
 import MobileCoreServices
 import ActionSheetPicker_3_0
+import CoreLocation
 
 
-class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     //Restaurant Name Field
     @IBOutlet weak var restNameField: UITextField!
@@ -26,6 +27,8 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var zipecodeField: UITextField!
     var formattedAddress = ""
     var validAddress = false
+    var validatedlat = 0.0
+    var validatedlng = 0.0
     // Phone Number
     @IBOutlet weak var phoneNumField: UITextField!
     var validPhone = false
@@ -36,7 +39,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     var selectedPrice = 0
     var validPrice = false
     //Hours
-    @IBOutlet weak var weedayO: UIButton!
+    @IBOutlet weak var weekdayO: UIButton!
     @IBOutlet weak var weekdayC: UIButton!
     @IBOutlet weak var weekendO: UIButton!
     @IBOutlet weak var weekendC: UIButton!
@@ -64,6 +67,8 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
+        
+        zipecodeField.delegate = self
         
         if profileView {
             editNRegister.setTitle("Save", forState: UIControlState.Normal)
@@ -104,7 +109,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             }
             catButton.roundCorners(.AllCorners, radius: 14)
             weekdayC.roundCorners(.AllCorners, radius: 14)
-            weedayO.roundCorners(.AllCorners, radius: 14)
+            weekdayO.roundCorners(.AllCorners, radius: 14)
             weekendC.roundCorners(.AllCorners, radius: 14)
             weekendO.roundCorners(.AllCorners, radius: 14)
             priceControls.roundCorners(.AllCorners, radius: 9)
@@ -124,6 +129,11 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     func DismissKeyboard(){
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        // Validates address and retrives coordinates
+        findCoorinates(("\(streetField.text), \(cityField.text), \(zipecodeField.text)"))
     }
     
     @IBAction func onClick(_sender:UIButton){
@@ -169,7 +179,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
                 picker, value, index in
                 
                 if sender.tag == 5 {
-                    self.weedayO.setTitle("\(index) am", forState: UIControlState.Normal)
+                    self.weekdayO.setTitle("\(index) am", forState: UIControlState.Normal)
                 }else if sender.tag == 6{
                     self.weekdayC.setTitle("\(index) pm", forState: UIControlState.Normal)
                 }else if sender.tag == 7{
@@ -321,17 +331,30 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         var phoneNum = phoneNumField.text
         var website = websiteField.text
         var selectedCategory = catButton.titleLabel?.text
+        var price = priceControls.selectedSegmentIndex.value
         var contact = contactName.text
+        var wkO = weekdayO.titleLabel?.text
+        var wkC = weekdayC.titleLabel?.text
+        var wknO = weekendO.titleLabel?.text
+        var wknC = weekendC.titleLabel?.text
+        var weekdayString = validation.formatHours(wkO!, weekC: wkC!, weekendO: wknO!, weekendC: wknC!).weekdayHours
+        var weekendString = validation.formatHours(wkO!, weekC: wkC!, weekendO: wknO!, weekendC: wknC!).weekendHours
+        
+        println("Lat: \(validatedlat), Lng: \(validatedlng)")
         
         if validation.validateInput(restaurantName, check: 1, title: "Too Short", message: "Please enter a valid Restaurant name")
-            && validation.validateAddress(street, city: city, zipcode: zipcode).valid
+        && validation.validateAddress(street, city: city, zipcode: zipcode, lat: self.validatedlat, lng: self.validatedlng).valid
             && validation.validateInput(phoneNumField.text, check: 9, title: "Too Short", message: "Please enter a valid Phone number")
             && validation.category(selectedCategory!)
             && validation.validateInput(contact, check: 1, title: "Too Short", message: "Please enter a valid name") {
+
+                var registrationPost = "{\"FirstName\":\"\(contact)\",\"LastName\":\"void\",\"StreetName\":\"\(street)\",\"City\":\"\(city)\",\"State\":\"DC\",\"ZipCode\":\"\(zipcode)\",\"PhoneNumber\":\"\(phoneNum)\",\"PriceTier\":\(price),\"WeekdaysHours\":\"\(weekdayString)\",\"WeekEndHours\":\"\(weekendString)\",\"RestaurantName\":\"\(restaurantName)\",\"Lat\":\"\(validatedlat)\",\"Lang\":\"\(validatedlng)\",\"CategoryName\":\"\(selectedCategory)\"}"
+
+                
+           // var registrationPost = "\"RestaurantName\":\"\(restNameField.text)\", \"PhoneNumber\":\"\(phoneNum)\", \"CategoryName\":\"\(selectedCategory)\", \"StreetName\":\"\(street)\", \"City\":\"\(city)\",\"State\":\"DC\", \"ZipCode\":\"\(zipcode)\", \"Lat\":\"\(validatedlat)\", \"Lang\":\"\(validatedlng)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"WeekdaysHours\":\"\(weekdayString)\",\"WeekEndHours\":\"\(weekendString)\",\"FirstName\":\"\(contact)\",\"LastName\":\"void\""
                 
                 
-            
-            var callPart2 = "\"RestaurantName\":\"\(restNameField.text)\", \"FormattedAddress\":\"\(validation.validateAddress(street, city: city, zipcode: zipcode).formattedString)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"Hours\":\"\(priceControls.selected)\""
+                authenticationCall.registerRestaurant(registrationPost, token: prefs.stringForKey("TOKEN")!)
             
 //            // Testing for now...
 //            if authenticationCall.registerRestaurant(callPart1) {
@@ -364,6 +387,20 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     
     
     func saveData(){
+        
+    }
+    
+    func findCoorinates(formattedAddress: String) {
+        
+        var geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(formattedAddress, completionHandler: {(placemarks: [AnyObject]!, error: NSError!) -> Void in
+            if let placemark = placemarks?[0] as? CLPlacemark {
+                var location:CLLocation = placemark.location
+                var coordinates:CLLocationCoordinate2D = location.coordinate
+                self.validatedlat = coordinates.latitude
+                self.validatedlng = coordinates.longitude
+            }
+        })
         
     }
     

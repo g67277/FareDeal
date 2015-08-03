@@ -7,12 +7,8 @@
 //
 
 import Foundation
-import CoreLocation
 
 public class Validation{
-    
-    var coordinates:CLLocationCoordinate2D = CLLocationCoordinate2D()
-
     
     //Validates entery lenght based on passed check integer
     func validateInput(input: String, check: Int, title: String, message: String) -> Bool{
@@ -26,20 +22,18 @@ public class Validation{
         
     }
     
-    func validateAddress(street: String, city: String, zipcode: String) -> (formattedString: String, valid: Bool){
+    func validateAddress(street: String, city: String, zipcode: String, lat: Double, lng: Double) -> (formattedString: String, valid: Bool){
         
         if count(street) > 6 {
             
             if count(city) > 2{
                 if count(zipcode) == 5 {
-                    
-                    var test1 = findCoorinates("\(street), \(city), \(zipcode)").valid
-                    var test2 = findCoorinates("\(street), \(city), \(zipcode)").lat
-                    var test3 = findCoorinates("\(street), \(city), \(zipcode)").lng
-                    
-                    
-
-                    return ("\(street), \(city), \(zipcode)", true)
+                    if lat != 0.0 && lng != 0.0 {
+                        return ("\(street), \(city), \(zipcode)", true)
+                    }else{
+                        displayAlert("Invalid address", message: "Please enter a valid address")
+                        return ("invalid", false)
+                    }
                 }else{
                     displayAlert("Invalid zipcode", message: "Please enter a valid zipcode ")
                     return ("invalid", false)
@@ -52,7 +46,6 @@ public class Validation{
             displayAlert("Too Short", message: "Please enter a valid street address")
             return ("invalid", false)
         }
-        
     }
     
     func validateEmail(candidate: String) -> Bool {
@@ -92,26 +85,13 @@ public class Validation{
         }else{
             return true
         }
-        
     }
     
-    func findCoorinates(formattedAddress: String) -> (valid: Bool, lat: Double, lng: Double){
+    func formatHours(weekO: String, weekC: String, weekendO: String, weekendC: String) -> (weekdayHours: String, weekendHours: String){
         
-        var geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(formattedAddress, completionHandler: {(placemarks: [AnyObject]!, error: NSError!) -> Void in
-            if let placemark = placemarks?[0] as? CLPlacemark {
-                var location:CLLocation = placemark.location
-                self.coordinates = location.coordinate
-                println("latitute: \(self.coordinates.latitude), longitute: \(self.coordinates.longitude)")
-                //return (true, Double(coordinates.latitude), Double(coordinates.longitude))
-            }
-        })
-        
-        if  CLLocationCoordinate2DIsValid(self.coordinates) {
-            return (true, coordinates.latitude, coordinates.longitude)
-        }
-        
-        return (false, 0, 0)
+        var weekdayString = "weekO - weekC"
+        var weekendString = "weekendO - weekendC"
+        return (weekdayString, weekendString)
     }
     
     func displayAlert(title: String, message: String){

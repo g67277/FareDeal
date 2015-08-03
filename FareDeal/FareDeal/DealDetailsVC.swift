@@ -7,26 +7,33 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DealDetailsVC: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var container: UIView!
+    
     @IBOutlet weak var tierLabel: UILabel!
     @IBOutlet weak var titleTF: UITextField!
     @IBOutlet weak var descTF: UITextView!
+    
+    @IBOutlet weak var textCounterLabel: UILabel!
     @IBOutlet weak var valueTF: UITextField!
     @IBOutlet weak var hoursRequiredLabel: UILabel!
-    
     @IBOutlet weak var hour1: UIButton!
     @IBOutlet weak var hour2: UIButton!
     @IBOutlet weak var hour3: UIButton!
     
+    @IBOutlet weak var deleteBtn: UIButton!
     var tier = 0
     var dealTitle = ""
     var desc = ""
     var value = 0.0
     var hours = 0
+    var dealID = ""
+    var editingMode = false
     
-    let dataManager = DataManager.sharedInstance()
+    var realm = Realm()
     
     // View to indicate selected hour button
     let selectedHour:UIView = UIView()
@@ -38,8 +45,14 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         if hours > 0 {
             updateHourButtons(hours)
         }
-        
+        if editingMode{
+            deleteBtn.hidden = false
+        }else{
+            deleteBtn.hidden = true
+        }
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,6 +78,7 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         
         valueTF.text = String(stringInterpolationSegment: value)
         
+        
  
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
@@ -81,6 +95,14 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         }
     }
     
+    func textViewDidChange(textView: UITextView) {
+        var currentCount = 140 - count(descTF.text)
+        if currentCount <= 0{
+            //var updatedInput = count(descTF.text)
+            descTF.text = descTF.text.substringToIndex(descTF.text.endIndex.predecessor())
+        }
+        self.textCounterLabel.text = "\(currentCount) characters left"
+    }
 
     // Mark# OnClick Method
     
@@ -103,6 +125,8 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         }else if _sender?.tag == 3{
             // Save here
             saveDeal()
+        }else if _sender?.tag == 4{
+            deleteDeal()
         }
     }
     
@@ -111,67 +135,85 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         
         switch limit{
         case 1:
-            selectedHour.frame = CGRectMake(hour1.frame.origin.x, hour1.frame.origin.y + 150, hour1.frame.width, 2)
+            selectedHour.frame = CGRectMake(hour1.frame.origin.x, hour1.frame.origin.y + 35, hour1.frame.width, 2)
             break
         case 2:
-            selectedHour.frame = CGRectMake(hour2.frame.origin.x, hour2.frame.origin.y + 150, hour2.frame.width, 2)
+            selectedHour.frame = CGRectMake(hour2.frame.origin.x, hour2.frame.origin.y + 35, hour2.frame.width, 2)
             break
         case 3:
-            selectedHour.frame = CGRectMake(hour3.frame.origin.x, hour3.frame.origin.y + 150, hour3.frame.width, 2)
+            selectedHour.frame = CGRectMake(hour3.frame.origin.x, hour3.frame.origin.y + 35, hour3.frame.width, 2)
             break
         default:
             break
         }
         
         hoursRequiredLabel.hidden = true
-        self.view.addSubview(selectedHour)
+        container.addSubview(selectedHour)
         timeLimit = limit
         
     }
     
     func saveDeal(){
         
-        if count(titleTF.text) < 1{
-            titleTF.placeholder = "Required"
-        }
-        if count(descTF.text) < 1 {
-            descTF.text = "Required"
-            descTF.textColor = UIColor.lightGrayColor()
-        }
-        if count(valueTF.text) < 1 {
-            valueTF.placeholder = "Required"
-        }
-        
-        if timeLimit == 0 {
-            hoursRequiredLabel.hidden = false
-        }
-        
         if count(titleTF.text) > 0 && count(descTF.text) > 0 && count(valueTF.text) > 0 && timeLimit > 0 {
             
             // save here
-            var deal:Deal = Deal()
+            var deal = BusinessDeal()
             deal.tier = 1;
             deal.title = titleTF.text
             deal.desc = descTF.text
             deal.value = (valueTF.text as NSString).doubleValue
             deal.timeLimit = timeLimit
-            
-            self.dataManager.saveDeals(deal){ result in
-                
-                if result{
-                    
-                    var refreshAlert = UIAlertController(title: "Saved", message: "Deal has been saved", preferredStyle: UIAlertControllerStyle.Alert)
-                    refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
-                        self.navigationController?.popViewControllerAnimated(true)
-                    }))
-                    self.presentViewController(refreshAlert, animated: true, completion: nil)
-                    
-                    debugPrintln("saved!")
-                }
+            if editingMode {
+                deal.id = dealID
+            }else{
+                deal.id = NSUUID().UUIDString
             }
             
+            realm.write{
+                self.realm.add(deal, update: self.editingMode)
+            }
+            
+            println("saved")
+            
+            var refreshAlert = UIAlertController(title: "Saved", message: "Deal has been saved", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
+                self.navigationController?.popViewControllerAnimated(true)
+            }))
+            self.presentViewController(refreshAlert, animated: true, completion: nil)
+
+            
+        }else  if count(titleTF.text) < 1{
+            titleTF.placeholder = "Required"
+        }else if count(descTF.text) < 1 {
+            descTF.text = "Required"
+            descTF.textColor = UIColor.lightGrayColor()
+        }else if count(valueTF.text) < 1 {
+            valueTF.placeholder = "Required"
+        }else if timeLimit == 0 {
+            hoursRequiredLabel.hidden = false
         }
         
+    }
+    
+    func deleteDeal(){
+        
+        if dealID != ""{
+            
+            var refreshAlert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to delete this deal", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
+                var dealToDelete = self.realm.objectForPrimaryKey(BusinessDeal.self, key: self.dealID)
+                
+                self.realm.write{
+                    self.realm.delete(dealToDelete!)
+                }
+
+                self.navigationController?.popViewControllerAnimated(true)
+            }))
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: {(action: UIAlertAction!) in
+            }))
+            self.presentViewController(refreshAlert, animated: true, completion: nil)
+        }
     }
     
 
@@ -180,20 +222,10 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         view.endEditing(true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
 }

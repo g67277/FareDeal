@@ -54,7 +54,7 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
         if creditsAvailable > 0 {
             creditBalanceLabel.text = "\(creditsAvailable)C"
         }else{
-            creditBalanceLabel.text = "No Credits"
+            creditBalanceLabel.text = "No Testing"
         }
     }
     

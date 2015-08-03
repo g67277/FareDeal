@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var addBtn: UIBarButtonItem!
     @IBOutlet weak var dealsList: UITableView!
-    var dealsArray = [Deal]()
-    let dataManager = DataManager.sharedInstance() // retrives data from core data
+    
+    var dealsArray = Realm().objects(BusinessDeal)
+    var realm = Realm()
+    var topTier = 0
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.dataManager.getDeals{ results in
-            self.dealsArray = results
-            self.dealsList.reloadData()
+        var test = dealsArray.count
+        if dealsArray.count == 10 {
+            addBtn.enabled = false
+            println("testing")
+        }else{
+            addBtn.enabled = true
         }
         
     }
@@ -27,23 +34,41 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
+        
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        dealsList.reloadData()
 
+    }
+    
+    func findTopTier(){
+        
+        topTier = dealsArray.last!.tier
         
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+        let IVC = segue.destinationViewController as! DealDetailsVC
+
         if segue.identifier == "toDetails" {
             
-            var selectedItem:Deal = dealsArray[(dealsList.indexPathForSelectedRow()?.row)!]
+            var selectedItem = dealsArray[(dealsList.indexPathForSelectedRow()?.row)!]
             
-            let IVC: DealDetailsVC = segue.destinationViewController as! DealDetailsVC
             IVC.tier = selectedItem.tier
             IVC.dealTitle = selectedItem.title
             IVC.desc = selectedItem.desc
             IVC.value = selectedItem.value
             IVC.hours = selectedItem.timeLimit
+            IVC.dealID = selectedItem.id
+            IVC.editingMode = true
 
+        }else if segue.identifier == "toAdd"{
+            
+            IVC.tier = topTier + 1
+            
         }
         
     }

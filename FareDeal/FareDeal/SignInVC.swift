@@ -10,6 +10,7 @@ import UIKit
 
 class SignInVC: UIViewController {
     
+
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet var logInButtonView: UIView!
@@ -17,6 +18,7 @@ class SignInVC: UIViewController {
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     let authenticationCall:AuthenticationCalls = AuthenticationCalls()
+    let validation = Validation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,16 +59,22 @@ class SignInVC: UIViewController {
         
         if _sender.tag == 0{
             
-            //authentication here
-            //loginHere()
-            //testing()
-            if authenticationCall.signIn(userNameField.text, password: passwordField.text){
-                self.userNameField.text = ""
-                self.passwordField.text = ""
-                self.performSegueWithIdentifier("toMain", sender: self)
+            if validation.validateInput(userNameField.text, check: 3, title: "Too Short", message: "Please enter a valid username")
+                && validation.validateInput(passwordField.text, check: 0, title: "Empty Password", message: "Please enter a password"){
+                
+                    var stringPost="grant_type=password&username=\(userNameField.text)&password=\(passwordField.text)"
+                    if authenticationCall.signIn(stringPost){
+                        self.userNameField.text = ""
+                        self.passwordField.text = ""
+                        prefs.setObject(userNameField.text, forKey: "USERNAME")
+                        
+                        if prefs.boolForKey("ROLE"){
+                            self.performSegueWithIdentifier("toMain", sender: self)
+                        }else{
+                            validation.displayAlert("No Permission", message: "Please create a business account to access the business side")
+                        }
+                    }
             }
-
-            
         }
         
     }

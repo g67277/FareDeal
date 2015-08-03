@@ -9,9 +9,10 @@
 import UIKit
 import MobileCoreServices
 import ActionSheetPicker_3_0
+import CoreLocation
 
 
-class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     //Restaurant Name Field
     @IBOutlet weak var restNameField: UITextField!
@@ -26,6 +27,8 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var zipecodeField: UITextField!
     var formattedAddress = ""
     var validAddress = false
+    var validatedlat = 0.0
+    var validatedlng = 0.0
     // Phone Number
     @IBOutlet weak var phoneNumField: UITextField!
     var validPhone = false
@@ -36,37 +39,36 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     var selectedPrice = 0
     var validPrice = false
     //Hours
-    @IBOutlet weak var weedayO: UIButton!
+    @IBOutlet weak var weekdayO: UIButton!
     @IBOutlet weak var weekdayC: UIButton!
     @IBOutlet weak var weekendO: UIButton!
     @IBOutlet weak var weekendC: UIButton!
     //Picture
     @IBOutlet weak var imgView: UIImageView!
     var newMedia: Bool?
+    
+    @IBOutlet weak var requiredLabel: UILabel!
     var validImage = false
     //Register/Edit button
     @IBOutlet var editNRegister: UIButton!
     @IBOutlet var errorLabel: UILabel!
-    var callPart1 = ""
-    var callPart2 = ""
+    
+    @IBOutlet weak var contactName: UITextField!
+    
     var profileView = false
-    //Testing
-    var username = ""
-    var pass = ""
-    //Testing
-    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     let authenticationCall:AuthenticationCalls = AuthenticationCalls()
+    let validation = Validation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        println(callPart1)
-        
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
+        
+        zipecodeField.delegate = self
         
         if profileView {
             editNRegister.setTitle("Save", forState: UIControlState.Normal)
@@ -92,7 +94,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     
     func styleElements(didLoad: Bool){
         
-        var elementArray = [restNameField, streetField, cityField, zipecodeField, phoneNumField, websiteField]
+        var elementArray = [restNameField, streetField, cityField, zipecodeField, phoneNumField, websiteField, contactName]
 
         if didLoad{
             for element in elementArray{
@@ -107,7 +109,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             }
             catButton.roundCorners(.AllCorners, radius: 14)
             weekdayC.roundCorners(.AllCorners, radius: 14)
-            weedayO.roundCorners(.AllCorners, radius: 14)
+            weekdayO.roundCorners(.AllCorners, radius: 14)
             weekendC.roundCorners(.AllCorners, radius: 14)
             weekendO.roundCorners(.AllCorners, radius: 14)
             priceControls.roundCorners(.AllCorners, radius: 9)
@@ -127,6 +129,11 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     func DismissKeyboard(){
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        // Validates address and retrives coordinates
+        findCoorinates(("\(streetField.text), \(cityField.text), \(zipecodeField.text)"))
     }
     
     @IBAction func onClick(_sender:UIButton){
@@ -172,7 +179,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
                 picker, value, index in
                 
                 if sender.tag == 5 {
-                    self.weedayO.setTitle("\(index) am", forState: UIControlState.Normal)
+                    self.weekdayO.setTitle("\(index) am", forState: UIControlState.Normal)
                 }else if sender.tag == 6{
                     self.weekdayC.setTitle("\(index) pm", forState: UIControlState.Normal)
                 }else if sender.tag == 7{
@@ -282,6 +289,7 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             
             imgView.image = image
             validImage = true
+            requiredLabel.hidden = true
             
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self,
@@ -316,90 +324,53 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
     // Registration Call Methods
     
     func signUP(){
+        var restaurantName = restNameField.text
+        var street = streetField.text
+        var city = cityField.text
+        var zipcode = zipecodeField.text
+        var phoneNum = phoneNumField.text
+        var website = websiteField.text
+        var selectedCategory = catButton.titleLabel?.text
+        var price = priceControls.selectedSegmentIndex.value
+        var contact = contactName.text
+        var wkO = weekdayO.titleLabel?.text
+        var wkC = weekdayC.titleLabel?.text
+        var wknO = weekendO.titleLabel?.text
+        var wknC = weekendC.titleLabel?.text
+        var weekdayString = validation.formatHours(wkO!, weekC: wkC!, weekendO: wknO!, weekendC: wknC!).weekdayHours
+        var weekendString = validation.formatHours(wkO!, weekC: wkC!, weekendO: wknO!, weekendC: wknC!).weekendHours
         
-        // Checks restaurant name
-        if count(restNameField.text) > 2{
-            self.nameValid = true
-        }else{
-            restNameField.text = ""
-            restNameField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid name",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-            self.nameValid = false
-        }
+        println("Lat: \(validatedlat), Lng: \(validatedlng)")
         
-        // If those conditions are true, go ahead and format the address
-        if count(streetField.text) > 6 && count(cityField.text) > 3 && count(zipecodeField.text) == 5 {
-            //Check this later
-            formattedAddress = "\"FormattedAddress\":\"\(streetField.text) \(cityField.text) \(zipecodeField.text)\""
-            validAddress = true
-        }else if count(streetField.text) < 6 || count(cityField.text) < 3 || count(zipecodeField.text) != 5{
-            streetField.text = ""
-            cityField.text = ""
-            zipecodeField.text = ""
-            streetField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid address",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-            cityField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid city",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-            zipecodeField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid zipcode",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-            
-            validAddress = false
-        }
-        
-        // Checks if there are enough digits in the phone field
-        if count(phoneNumField.text) < 10{
-            phoneNumField.text = ""
-            phoneNumField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid phone number",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-            validPhone = false
-        }else{
-            validPhone = true
-        }
-        
-        //Checks if the website url is valid
-        var url:NSURL = NSURL(string: websiteField.text)!
-        
-        if count(websiteField.text) < 4 {
-            websiteField.text = ""
-            websiteField.attributedPlaceholder = NSAttributedString(string:"Please enter a valid website",
-                attributes:[NSForegroundColorAttributeName: UIColor(red: 214/255, green: 69/255, blue: 65/255, alpha: 1)])
-            validWeb = false
-        }
-        // Will have to come back to URL Validation
-        
-        if let validURL : NSURL = NSURL(string: websiteField.text){
-            validWeb = true
-        }else{
-            websiteField.text = ""
-            websiteField.placeholder = "Please enter a valid website"
-            validWeb = false
-        }
-        
-        if !validImage{
-            var alertView:UIAlertView = UIAlertView()
-            alertView.title = "Sign Up Failed!"
-            alertView.message = "Please add an image to the form"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
-        }
- 
-        if nameValid && validAddress && validPhone && validImage {
-            
-            callPart2 = "\(callPart1), \"RestName\":\"\(restNameField.text)\", \(formattedAddress), \"PhoneNumber\":\"\(phoneNumField.text)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"Hours\":\"\(priceControls.selected)\""
-            
-            // Testing for now...
-            if authenticationCall.registerRestaurant2(callPart1) {
+        if validation.validateInput(restaurantName, check: 1, title: "Too Short", message: "Please enter a valid Restaurant name")
+        && validation.validateAddress(street, city: city, zipcode: zipcode, lat: self.validatedlat, lng: self.validatedlng).valid
+            && validation.validateInput(phoneNumField.text, check: 9, title: "Too Short", message: "Please enter a valid Phone number")
+            && validation.category(selectedCategory!)
+            && validation.validateInput(contact, check: 1, title: "Too Short", message: "Please enter a valid name") {
+
+                var registrationPost = "{\"FirstName\":\"\(contact)\",\"LastName\":\"void\",\"StreetName\":\"\(street)\",\"City\":\"\(city)\",\"State\":\"DC\",\"ZipCode\":\"\(zipcode)\",\"PhoneNumber\":\"\(phoneNum)\",\"PriceTier\":\(price),\"WeekdaysHours\":\"\(weekdayString)\",\"WeekEndHours\":\"\(weekendString)\",\"RestaurantName\":\"\(restaurantName)\",\"Lat\":\"\(validatedlat)\",\"Lang\":\"\(validatedlng)\",\"CategoryName\":\"\(selectedCategory)\"}"
+
                 
-                var refreshAlert = UIAlertController(title: "Thank you!", message: "Your information has been sent and is pending verification.  We will be in touch soon.  In the mean time, you can start setting-up your deals", preferredStyle: UIAlertControllerStyle.Alert)
-                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
-                    
-                    if self.authenticationCall.signIn(self.username, password: self.pass){
-                        self.backTwo()
-                    }
-                }))
-                self.presentViewController(refreshAlert, animated: true, completion: nil)
-            }
+           // var registrationPost = "\"RestaurantName\":\"\(restNameField.text)\", \"PhoneNumber\":\"\(phoneNum)\", \"CategoryName\":\"\(selectedCategory)\", \"StreetName\":\"\(street)\", \"City\":\"\(city)\",\"State\":\"DC\", \"ZipCode\":\"\(zipcode)\", \"Lat\":\"\(validatedlat)\", \"Lang\":\"\(validatedlng)\",\"WebSite\":\"\(websiteField.text)\",\"PriceTier\":\"\(priceControls.selected)\",\"WeekdaysHours\":\"\(weekdayString)\",\"WeekEndHours\":\"\(weekendString)\",\"FirstName\":\"\(contact)\",\"LastName\":\"void\""
+                
+                
+                authenticationCall.registerRestaurant(registrationPost, token: prefs.stringForKey("TOKEN")!)
+            
+//            // Testing for now...
+//            if authenticationCall.registerRestaurant(callPart1) {
+//                
+//                var refreshAlert = UIAlertController(title: "Thank you!", message: "Your information has been sent and is pending verification.  We will be in touch soon.  In the mean time, you can start setting-up your deals", preferredStyle: UIAlertControllerStyle.Alert)
+//                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
+//                    
+//                    //tesitng for now
+//                    var stringPost="grant_type=password&username=\(self.username)&password=\(self.pass)"
+//
+//                    if self.authenticationCall.signIn(stringPost){
+//                        self.backTwo()
+//                    }
+//                }))
+//                self.presentViewController(refreshAlert, animated: true, completion: nil)
+//            }
             //authenticationCall.registerRestaurant(callPart2)
         }else {
             errorLabel.hidden = false
@@ -414,7 +385,22 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         
     }
     
+    
     func saveData(){
+        
+    }
+    
+    func findCoorinates(formattedAddress: String) {
+        
+        var geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(formattedAddress, completionHandler: {(placemarks: [AnyObject]!, error: NSError!) -> Void in
+            if let placemark = placemarks?[0] as? CLPlacemark {
+                var location:CLLocation = placemark.location
+                var coordinates:CLLocationCoordinate2D = location.coordinate
+                self.validatedlat = coordinates.latitude
+                self.validatedlng = coordinates.longitude
+            }
+        })
         
     }
     
@@ -440,7 +426,6 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         }
         
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -250,12 +250,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FareDeal/AuthenticationCalls.swift"
-            timestampString = "460231465.807564"
+            timestampString = "460250025.16138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "registerRestaurant(_:)"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "registerRestaurant(_:token:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FareDeal/DealDetailsVC.swift"
-            timestampString = "460173282.311655"
+            timestampString = "460256929.236035"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "deleteDeal()"
             landmarkType = "5">
          </BreakpointContent>
@@ -298,12 +298,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FareDeal/AuthenticationCalls.swift"
-            timestampString = "460231465.807564"
+            timestampString = "460250025.16138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
-            landmarkName = "registerUser(_:email:password:confirm_password:)"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
+            landmarkName = "resetPassword(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -319,7 +319,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "signIn(_:password:)"
+            landmarkName = "signIn(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -335,7 +335,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
             endingLineNumber = "59"
-            landmarkName = "signIn(_:password:)"
+            landmarkName = "signIn(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -346,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FareDeal/RegisterRestaurantVC2.swift"
-            timestampString = "460231465.807564"
+            timestampString = "460250025.16138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "333"
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FareDeal/RegisterRestaurantVC2.swift"
-            timestampString = "460231679.373731"
+            timestampString = "460250025.16138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
             landmarkName = "signUP()"
             landmarkType = "5">
          </BreakpointContent>
@@ -406,33 +406,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FareDeal/AuthenticationCalls.swift"
-            timestampString = "460232002.902755"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "registerRestaurant(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FareDeal/AuthenticationCalls.swift"
-            timestampString = "460232647.788827"
+            timestampString = "460250025.16138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "443"
-            endingLineNumber = "443"
-            landmarkName = "registerUser(_:email:password:confirm_password:)"
-            landmarkType = "5">
+            startingLineNumber = "488"
+            endingLineNumber = "488">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -442,12 +424,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FareDeal/AuthenticationCalls.swift"
-            timestampString = "460232773.79117"
+            timestampString = "460250005.353216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "461"
-            endingLineNumber = "461"
-            landmarkName = "registerUser(_:email:password:confirm_password:)"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "registerRestaurant(_:token:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -457,12 +439,30 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FareDeal/AuthenticationCalls.swift"
-            timestampString = "460244845.961959"
+            filePath = "FareDeal/DealsVC.swift"
+            timestampString = "460252982.88334"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "555"
-            endingLineNumber = "555">
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FareDeal/DealDetailsVC.swift"
+            timestampString = "460256952.792406"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "textViewDidChange(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7F3ED150FE02A7FACFF66180"
+               BlueprintIdentifier = "458E6BB990CD81DB91F1D31E"
                BuildableName = "Koloda.framework"
                BlueprintName = "Koloda"
                ReferencedContainer = "container:Pods.xcodeproj">

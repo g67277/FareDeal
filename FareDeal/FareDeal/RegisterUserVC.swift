@@ -17,6 +17,7 @@ class RegisterUserVC: UIViewController {
     @IBOutlet weak var passwordCField: UITextField!
     
     let authenticationCall:AuthenticationCalls = AuthenticationCalls()
+    let validation = Validation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,11 +59,18 @@ class RegisterUserVC: UIViewController {
             
             //sign up here
             
-            if authenticationCall.registerUser(usernameField.text, email: emailField.text, password: passwordField.text, confirm_password: passwordCField.text) {
-                
-                if authenticationCall.signIn(usernameField.text, password: passwordField.text){
-                    navigationController?.popToRootViewControllerAnimated(true)
-                }
+            if validation.validateInput(usernameField.text, check: 2, title: "Somethings Missing", message: "Please enter a valid username")
+            && validation.validateEmail(emailField.text)
+                && validation.validatePassword(passwordField.text, cpass: passwordCField.text){
+                    var post:NSString = "{\"UserName\":\"\(usernameField.text)\",\"Email\":\"\(emailField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\",\"IsBusiness\":\"false\"}"
+                    if authenticationCall.registerUser(post) {
+                        var stringPost="grant_type=password&username=\(usernameField.text)&password=\(passwordField.text)"
+                        
+                        if authenticationCall.signIn(stringPost){
+                            self.navigationController?.popViewControllerAnimated(false)
+                        }
+                    }
+
             }
             
         }else if _sender.tag == 1{
@@ -77,6 +85,9 @@ class RegisterUserVC: UIViewController {
         // Hide the navigation bar to display the full location image
         self.navigationController?.navigationBarHidden = true
     }
+    
+    
+   
     
     
     override func didReceiveMemoryWarning() {

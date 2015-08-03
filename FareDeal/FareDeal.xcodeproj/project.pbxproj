@@ -45,6 +45,8 @@
 		995935F01B5EDA1C009CDD26 /* FavoritesTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E81B5EDA1C009CDD26 /* FavoritesTVController.swift */; };
 		995935F11B5EDA1C009CDD26 /* HomeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E91B5EDA1C009CDD26 /* HomeSwipeViewController.swift */; };
 		995935F21B5EDA1C009CDD26 /* Restaurants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 995935EA1B5EDA1C009CDD26 /* Restaurants.plist */; };
+		99649B5A1B6EF1740001335A /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99649B591B6EF1740001335A /* Venue.swift */; };
+		99649B5C1B6EF1DB0001335A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99649B5B1B6EF1DB0001335A /* CoreLocation.framework */; };
 		99A04C5B1B604F9E00C3E35B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C5A1B604F9E00C3E35B /* GradientView.swift */; };
 		99A04C5D1B604FE700C3E35B /* RestaurantDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C5C1B604FE700C3E35B /* RestaurantDealCell.swift */; };
 		99A04C5F1B60509C00C3E35B /* RestaurantDealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C5E1B60509C00C3E35B /* RestaurantDealsVC.swift */; };
@@ -116,6 +118,8 @@
 		995935E81B5EDA1C009CDD26 /* FavoritesTVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTVController.swift; sourceTree = "<group>"; };
 		995935E91B5EDA1C009CDD26 /* HomeSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSwipeViewController.swift; sourceTree = "<group>"; };
 		995935EA1B5EDA1C009CDD26 /* Restaurants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Restaurants.plist; sourceTree = "<group>"; };
+		99649B591B6EF1740001335A /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		99649B5B1B6EF1DB0001335A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		99A04C5A1B604F9E00C3E35B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		99A04C5C1B604FE700C3E35B /* RestaurantDealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealCell.swift; sourceTree = "<group>"; };
 		99A04C5E1B60509C00C3E35B /* RestaurantDealsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealsVC.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99649B5C1B6EF1DB0001335A /* CoreLocation.framework in Frameworks */,
 				99A04C631B60586E00C3E35B /* QuartzCore.framework in Frameworks */,
 				81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */,
 				972B8D8EA6F19199DCF8C070 /* Pods.framework in Frameworks */,
@@ -260,6 +265,7 @@
 				8132230E1B685F1800613C60 /* FoodCategories.swift */,
 				99A6E8D81B69ED97005179A6 /* Deals.swift */,
 				817BC8711B6DA5F10059C31D /* BusinessDeal.swift */,
+				99649B591B6EF1740001335A /* Venue.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 		C31432AE2A16D3F550EAB896 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99649B5B1B6EF1DB0001335A /* CoreLocation.framework */,
 				99A04C621B60586E00C3E35B /* QuartzCore.framework */,
 				0C34D443EE29BEF7C8222446 /* Pods.framework */,
 			);
@@ -396,7 +403,7 @@
 				TargetAttributes = {
 					81481B341B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
+						DevelopmentTeam = 56R6M4W3X8;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -405,7 +412,7 @@
 					};
 					81481B491B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
+						DevelopmentTeam = 56R6M4W3X8;
 						TestTargetID = 81481B341B56A2D6000EC386;
 					};
 				};
@@ -534,6 +541,7 @@
 				99A6E8D91B69ED97005179A6 /* Deals.swift in Sources */,
 				99A6E8DF1B69EE89005179A6 /* Restaurant.swift in Sources */,
 				817BC8721B6DA5F10059C31D /* BusinessDeal.swift in Sources */,
+				99649B5A1B6EF1740001335A /* Venue.swift in Sources */,
 				813222DC1B681A3500613C60 /* RegisterRestaurantVC2.swift in Sources */,
 				995935F11B5EDA1C009CDD26 /* HomeSwipeViewController.swift in Sources */,
 				81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */,
@@ -682,7 +690,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -700,7 +708,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};

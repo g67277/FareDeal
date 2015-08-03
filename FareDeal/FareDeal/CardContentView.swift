@@ -40,6 +40,24 @@ class CardContentView: UIView {
         layer.cornerRadius = 10.0;
     }
     
+    func setUpRestaurant(contentView: UIView, dataObject: Venue){
+        
+        let venue: Venue = dataObject
+        if let label = contentView.viewWithTag(10) as? UILabel {
+            label.text = venue.name
+        }
+        if let phoneLabel = contentView.viewWithTag(15) as? UILabel {
+            phoneLabel.text = venue.phone
+        }
+        //var imageName = restaurant.imageName
+        if let locationImage = contentView.viewWithTag(20) as? UIImageView {
+            locationImage.contentMode = UIViewContentMode.ScaleAspectFill
+            locationImage.clipsToBounds = true
+            locationImage.image = venue.image
+        }
+    }
+
+    /*
     func setUpRestaurant(contentView: UIView, dataObject: AnyObject){
         
         let dataObject: AnyObject = dataObject
@@ -60,5 +78,5 @@ class CardContentView: UIView {
         }
         
     }
-    
+    */
 }

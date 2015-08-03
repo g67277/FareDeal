@@ -3,11 +3,11 @@
   'case-sensitive': 'false',
   'roots': [{
     'type': 'directory',
-    'name': '/Users/angelasmith/Desktop/Develop/FareDeal/Build/Products/Debug-iphoneos/Koloda.framework/Modules'
+    'name': '/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Build/Products/Debug-iphoneos/Koloda.framework/Modules'
     'contents': [{
       'type': 'file',
       'name': 'module.modulemap',
-      'external-contents': '/Users/angelasmith/Desktop/Develop/FareDeal/Build/Intermediates/Pods.build/Debug-iphoneos/Koloda.build/unextended-module.modulemap',
+      'external-contents': '/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Build/Intermediates/Pods.build/Debug-iphoneos/Koloda.build/unextended-module.modulemap',
     }]
   }]
 }

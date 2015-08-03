@@ -25,7 +25,7 @@ class RestaurantDetailController: UIViewController {
     @IBOutlet weak var dealTitleLabel: UILabel!
     @IBOutlet weak var dealValueLabel: UILabel!
     
-    var thisRestaurant: AnyObject?
+    var thisVenue: Venue?
     
     
     override func viewDidLoad() {
@@ -42,33 +42,33 @@ class RestaurantDetailController: UIViewController {
     
     func setUpRestaurant(){
         
-        if let restaurant: AnyObject = thisRestaurant {
+        if let venue: Venue = thisVenue {
             
             // String Labels
             if var locationLabel = locationName {
-                locationLabel.text = restaurant["name"] as? String
+                locationLabel.text = venue.name
             }
             if var phoneLabel = phoneTextView {
-                phoneLabel.text = restaurant["phone"] as? String
+                phoneLabel.text = venue.phone
             }
             if var addressTextView = addressTextview {
-                addressTextView.text = restaurant["address"] as? String
+                addressTextView.text = venue.address
             }
             if var websiteTextView = websiteUrlTextView {
-                websiteTextView.text = restaurant["url"] as? String
+                websiteTextView.text = venue.webUrl
             }
-
+            
             // Image
             if var imageView = locationImage {
                 imageView.contentMode = UIViewContentMode.ScaleAspectFill
                 imageView.clipsToBounds = true
-                imageView.image = UIImage (named: (restaurant["imageUrl"] as? String)!)
+                imageView.image = venue.image
             }
-
+            
             
             // Number Labels
             if var tierLabel = priceTierlabel {
-                var priceTierValue = restaurant["tier"] as! Int
+                var priceTierValue = venue.priceTier
                 switch priceTierValue {
                 case 0:
                     tierLabel.text = ""
@@ -81,24 +81,23 @@ class RestaurantDetailController: UIViewController {
                 default:
                     tierLabel.text = ""
                 }
-
+                
             }
-
+            
             if var distanceLabel = locationDistanceLabel {
                 // get the number of miles between the current user and the location,
-                var userDistance = restaurant["distance"] as? Float
-                var miles = userDistance!/5280
+                var userDistance = venue.distance
+                var miles = userDistance/5280
                 let distance = Int(floor(miles))
                 distanceLabel.text = (distance == 1) ? "\(distance) mile" : "\(distance) miles"
             }
             
             if var statusLabel = hoursStatusLabel {
-                let hours = restaurant["hoursStatus"] as? String
+                let hours = venue.hours
                 // set the status for the hours, or "Is Open" if one was not provided (only open locations are displayed)
                 statusLabel.text = (hours == "") ? "Is Open": hours
             }
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    var restaurants: [AnyObject] = []
+
     @IBOutlet weak var tableview: UITableView!
-    
+    // Query using a predicate string
+    var favoriteVenues = Realm().objects(Venue).filter("\(Constants.realmFilterFavorites) = \(1)")
     
     
     /* -----------------------  VIEW CONTROLLER  METHODS --------------------------- */
@@ -26,9 +27,7 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableview.rowHeight = 121
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,17 +43,15 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.restaurants.count
+        return self.favoriteVenues.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:FavoritesCell = tableView.dequeueReusableCellWithIdentifier("favoritesCell") as! FavoritesCell
-        
-        let restaurant: AnyObject = restaurants[indexPath.row]
-        var imageName = restaurant["imageUrl"] as! String
-        cell.setUpCell(restaurant["name"]as! String, phone: restaurant["phone"]as! String, image: UIImage (named: imageName)!)
+        let venue: Venue = favoriteVenues[indexPath.row]
+        cell.setUpCell(venue.name, phone: venue.phone, image: venue.image!)
         return cell
     }
     
@@ -63,11 +60,10 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
     // Pass the selected restaurant object to the detail view
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "restaurantDetailSegue" {
-            
             if let indexPath = self.tableview.indexPathForSelectedRow() {
-                var restaurant: AnyObject = restaurants[indexPath.row]
+                var venue: Venue = favoriteVenues[indexPath.row]
                 let destinationVC = segue.destinationViewController as! RestaurantDetailController
-                destinationVC.thisRestaurant = restaurant
+                destinationVC.thisVenue = venue
             }
         }
     }

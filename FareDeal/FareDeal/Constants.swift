@@ -51,5 +51,10 @@ struct Constants {
     // NSUserDefaults
     static let dealDefaults = "Saloof.dealArray"
     static let dealDateFormatter = "yyyy-MM-dd HH:mm:ss"
+    
+    // Realm Data Objects
+    static let sourceTypeFoursquare = "Foursquare"
+    static let sourceTypeSaloof = "Saloof"
+    static let realmFilterFavorites = "swipeValue"  // 0: not swiped, 1: favorite, 2: rejected
 
 }

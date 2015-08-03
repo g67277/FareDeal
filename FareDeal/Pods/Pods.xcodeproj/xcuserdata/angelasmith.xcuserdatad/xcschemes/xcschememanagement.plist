@@ -6,74 +6,73 @@
 	<dict>
 		<key>ActionSheetPicker-3.0.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Koloda.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
-		<key>Pods-Koloda.xcscheme</key>
-		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>Pods-pop.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
+		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>pop.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>038191BE4BA99F6899A7D329</key>
+		<key>07A7BC7802C4006AE3AA9AAB81FE646D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0795050702154C589B546AB09A03AA54</key>
+		<key>3DA374BB5346C86BB9E37D7D8A3F9705</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0A4A434A21314D9AC4554951878A0767</key>
+		<key>8530DEDBC37DD75056E54EB064F88745</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>34A04A4EB485C1C338373952F9934152</key>
+		<key>97749E7CCD0F3118CD6A16D7FAC235CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A1AA0C7E8C4A32017862EF6BE93C8077</key>
+		<key>B5DE40F53F73E32D28559931B7348C0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C82D8FB4F501D4367F5EB576</key>
+		<key>B9A04D3C9B208813656510FDA8ADAE02</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ED39F5BFB983FF6F0A52B47F</key>
+		<key>C2085F0E566024C8861015F9A0BD59B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

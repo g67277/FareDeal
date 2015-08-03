@@ -7,12 +7,43 @@
 //
 
 import RealmSwift
+import UIKit
+
+// IMPORTANT: Any changes to data model will either require migration (if app has been released to other devices) https://realm.io/docs/swift/latest/#migrations
+// or deletion from device to reset
+
 
 class Venue: Object {
     
-// Specify properties to ignore (Realm won't persist these)
+    dynamic var identifier = ""
+    dynamic var name = ""
+    dynamic var imageName = ""
+    dynamic var address = ""
+    dynamic var distance: Float = 0.0
+    dynamic var priceTier: Int = 0
+    dynamic var phone = ""
+    dynamic var webUrl = ""
+    dynamic var hours = ""
+    dynamic var imageData: NSData = NSData()
+    dynamic var imagePresent: Bool = false
+    dynamic var swipeValue: Int = 0
+    dynamic var sourceType = ""
+    var image: UIImage? {
+        get {
+            return UIImage(data: imageData)
+        }
+        set(newImage) {
+            imageData = UIImagePNGRepresentation(newImage)
+        }
+    }
+     // Specify properties to ignore (Realm won't persist)
+    override static func ignoredProperties() -> [String] {
+        return ["image"]
+    }
     
-//  override static func ignoredProperties() -> [String] {
-//    return []
-//  }
+    override class func primaryKey() -> String {
+        return "identifier"
+    }
+    
+
 }

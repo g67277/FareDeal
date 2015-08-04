@@ -7,49 +7,41 @@
 //
 
 import UIKit
+import RealmSwift
+import CoreLocation
+import SwiftyJSON
 
-class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDataSource {
+class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
-    //var deals: [AnyObject] = []
     @IBOutlet weak var tableview: UITableView!
     
-    //@IBOutlet var topDealTitle: UILabel!
-    //@IBOutlet var topDealDescLabel: UILabel!
-    
-    //@IBOutlet var topDealValueLabel: UILabel!
-   // @IBOutlet var topDealView: UIView!
-    
-   // @IBOutlet var saloofingLabel: UILabel!
-   // @IBOutlet var activityIndicator: UIActivityIndicatorView!
-   // @IBOutlet var searchFieldView: UITextField!
-  // // @IBOutlet var priceParView: UIView!
-   // @IBOutlet var searchBarView: UIView!
-    
+    let realm = Realm()
     var plistObjects: [AnyObject] = []
-    // Holds all the restaurants
-    var allRestaurants: [Restaurant] = []
-    // Holds all the restaurants/Deals to be displayed
-    var dealList: [Restaurant] = []
-    var topRestaurant:Restaurant!
+    // get access to all the current deals
+    var validDeals = Realm().objects(VenueDeal)
+    var haveItems: Bool = false;
+    
+    // Location objects
+    var locationManager : CLLocationManager!
+    var venueLocations : [AnyObject] = []
+    var venueItems : [[String: AnyObject]]?
+    var currentLocation: CLLocation!
+    
+    
     var topDealReached = false
-    var currentRestaurantIndex = 0
+    var currentDealIndex = 0
     // used in the featured section as to not display non-qualifying deals
     var topBidIndex = 0
     // Holds the last deal processesed for comparison
-    var lastDeal:Restaurant!
+    var lastDealRestId = ""
     
+    var topDeal = VenueDeal()
+    let dealList = List<VenueDeal>()
+
     let defaults = NSUserDefaults.standardUserDefaults()
 
     
     /* -----------------------  VIEW CONTROLLER  METHODS --------------------------- */
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Retrieve the default data from the restaurants plist
-        let path = NSBundle.mainBundle().pathForResource("RestaurantData", ofType:"plist")
-        plistObjects = NSArray(contentsOfFile: path!) as! [Dictionary<String,AnyObject>]
-    }
-    
     
     override func viewWillAppear(animated: Bool) {
         // Hide the navigation bar to display the full location image
@@ -70,194 +62,182 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    //    searchFieldView.attributedPlaceholder = NSAttributedString(string:"Burger",
-      //      attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        let firstDate = NSDate()
-        println(firstDate)
+        // Start getting the users location
+        locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+
         tableview.rowHeight = 192
-        loadDeals()
-        
+        //loadDeals()
+        //loadSaloofData()
     }
-   /*
-    override func viewDidLayoutSubviews() {
-        // set the rounded corners after autolayout has finished
-        searchBarView.roundCorners(.AllCorners, radius: 10)
-        priceParView.roundCorners(.AllCorners, radius: 10)
-        topDealView.setBorder()
-    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func loadDeals(){
+    func loadSaloofData () {
+        let saloofUrl = NSURL(string: "http://www.justwalkingonwater.com/json/venueResponse.json")!
+        let response = NSData(contentsOfURL: saloofUrl)!
+        let json: AnyObject? = (NSJSONSerialization.JSONObjectWithData(response,
+            options: NSJSONReadingOptions(0),
+            error: nil) as! NSDictionary)["response"]
         
-        let path = NSBundle.mainBundle().pathForResource("RestaurantData", ofType:"plist")
-        plistObjects = NSArray(contentsOfFile: path!) as! [Dictionary<String,AnyObject>]
-        
-        var dealsNRestaurants : [Restaurant] = []
-        
-        // Creates a restaurant object for each deal...
-        for object: AnyObject in plistObjects{
-            
-            var dealsObjects = object[Constants.dealsArray] as! [AnyObject]
-            
-            for eachDeal: AnyObject in dealsObjects {
-                
-                var deal = Deals(
-                    name: eachDeal[Constants.dealTitle] as! String,
-                    desc: eachDeal[Constants.dealDescription] as! String,
-                    timeLimit: eachDeal[Constants.dealExpires] as! Int,
-                    tier: eachDeal[Constants.dealTier] as! Int,
-                    value: eachDeal[Constants.dealValue] as! Float,
-                    isDefault: eachDeal[Constants.dealIsDefault] as! Bool,
-                    restId: object[Constants.restId] as! String,
-                    dealId: eachDeal[Constants.dealID] as! String)
-                // CHECK IF DEAL ALREADY LOADED
-                checkDeal(deal.dealId)
-                
-                // then create the restaurant object
-                var restaurant = Restaurant(
-                    identifier: object[Constants.restId] as! String,
-                    name: object[Constants.restName] as! String,
-                    phone: object[Constants.restContactPhone]  as! String,
-                    imageName: object[Constants.restImageName]  as! String,
-                    address: object[Constants.restAddressArray] as! String,
-                    hours: object[Constants.restStatus]  as! String,
-                    distance: object[Constants.restDistance] as! Float,
-                    priceTier: object[Constants.restTier]as! Int,
-                    webUrl: object[Constants.restUrl]  as! String,
-                    deal: deal)
-                // add the restaurant to the restaurant array
-                allRestaurants.append(restaurant)
+        if let object: AnyObject = json {
+            haveItems = true
+            var groups = object["groups"] as! [AnyObject]
+            //  get array of items
+            var venues = groups[0]["items"] as! [AnyObject]
+            for item in venues {
+                // get the venue
+                if let venue = item["venue"] as? [String: AnyObject] {
+                    // get each deal
+                    let venueJson = JSON(venue)
+                    // Parse the JSON file using SwiftlyJSON
+                    parseJSON(venueJson, source: Constants.sourceTypeSaloof)
+                }
             }
-            
-            // start out the list of restaurants to search with all restaurants
-            
+            // FINISHED CREATING DATA OBJECTS
+            // get a list of all deal objects in Realm
+            validDeals = Realm().objects(VenueDeal)
+            // Sort all deals by value
+            let sortedDeals = Realm().objects(VenueDeal).filter("\(Constants.dealValid) = \(1)").sorted("value", ascending:true)
+            validDeals = sortedDeals
+            //println("Sorted Deals from ParseJSON \(sortedDeals)")
+            biddingStart()
         }
-        
-        // Sorts all the restaurants by the deal they contain
-        allRestaurants.sort({$0.deal.value < $1.deal.value})
-        
-        biddingStart()
     }
     
     
-    func biddingStart(){
-        if currentRestaurantIndex < allRestaurants.count{
+    
+    func parseJSON(json: JSON, source: String) {
+        // Create the venue object first
+        let venue = Venue()
+        venue.identifier = json[Constants.restId].stringValue
+        venue.phone = json[Constants.restContactObject][Constants.restContactPhone].stringValue /* Not working*/
+        venue.name = json[Constants.restName].stringValue
+        venue.webUrl = json[Constants.restUrl].stringValue                       /* Not working*/
+        let imagePrefix = json[Constants.restPhotoObject][Constants.restPhotoGroupArray][0][Constants.restPhotoItemsArray][0][Constants.restPhotoPrefix].stringValue
+        let imageSuffix = json[Constants.restPhotoObject][Constants.restPhotoGroupArray][0][Constants.restPhotoItemsArray][0][Constants.restPhotoSuffix].stringValue
+        let imageName = imagePrefix + "400x400" +  imageSuffix
+        var locationAddress = json[Constants.restLocationObject][Constants.restAddressArray][0].stringValue
+        var cityAddress = json[Constants.restLocationObject][Constants.restAddressArray][1].stringValue
+        venue.address = locationAddress + "\n" + cityAddress
+        venue.hours = json[Constants.restHoursObject][Constants.restStats].stringValue
+        venue.distance = json[Constants.restLocationObject][Constants.restDistance].floatValue
+        venue.priceTier = json[Constants.restPriceObject][Constants.restTier].intValue
+        venue.sourceType = source
+        venue.swipeValue = 3  // this is a deal only restaurant
+        let imageUrl = NSURL(string: imageName)
+        if let data = NSData(contentsOfURL: imageUrl!){
             
-            // Checks if this is the first time this method is run
-            if lastDeal != nil {
+            let venueImage = UIImage(data: data)
+            venue.image = venueImage
+        }
+        // Then create the deal object and add the venue to it
+        if let deals = json[Constants.dealObject][Constants.dealsArray].array {
+            for deal in deals {
+                let venueDeal = VenueDeal()
+                venueDeal.name = deal[Constants.dealTitle].stringValue
+                venueDeal.desc = deal[Constants.dealDescription].stringValue
+                venueDeal.tier = deal[Constants.dealTier].intValue
+                venueDeal.timeLimit = deal[Constants.dealExpires].intValue
+                venueDeal.value = deal[Constants.dealValue].floatValue
+                venueDeal.venue = venue
+                var venueId = "\(venue.identifier).\(venueDeal.tier)"
+                venueDeal.id = venueId
+                // check for current object
+                let realm = Realm()
+                // Query using a predicate string
+                var dealPreviouslyDisplayed = realm.objectForPrimaryKey(VenueDeal.self, key: venueId)
+                if (dealPreviouslyDisplayed != nil) {
+                    println("This is a previously pulled deal, checking dates")
+                    // we need to check the date
+                    let expiresTime = dealPreviouslyDisplayed?.expirationDate
+                    // see how much time has lapsed
+                    var compareDates: NSComparisonResult = NSDate().compare(expiresTime!)
+                    if compareDates == NSComparisonResult.OrderedAscending {
+                        // the deal has not expired yet
+                        println("This deal is still good")
+                    } else {
+                        //the deal has expired
+                        println("This deal has expired")
+                        venueDeal.validValue = 2
+                        // update the db
+                        realm.write {
+                            self.realm.create(VenueDeal.self, value: venueDeal, update: true)
+                        }
+                    }
+                } else {
+                    println("This is a new deal, setting expiration date")
+                    // set date of expiration
+                    let firstLoad = NSDate()
+                    // add time based on expiration
+                    var time: NSTimeInterval = 0
+                    switch deal[Constants.dealExpires].intValue {
+                    case 2 :
+                        time = 7200
+                    case 3 :
+                        time = 10800
+                    default:
+                        time = 3600
+                    }
+                    println(time)
+                    let dealExpires = firstLoad.dateByAddingTimeInterval(time)
+                    venueDeal.expirationDate = dealExpires
+                    venueDeal.validValue = 1
+                    // write to db
+                    realm.write {
+                        self.realm.create(VenueDeal.self, value: venueDeal, update: true)
+                    }
+                }
+            }
+        }
+    }
+    
+    func biddingStart(){
+        if currentDealIndex < validDeals.count{
+            // we have more deals to sort
+            if lastDealRestId != "" {
                 
-                // if the restaurant identifier in the array matches the last restaurant saved, then don't add
-                // restaurant to the dealList because it means the same restaurant is trying to bid it self
-                if allRestaurants[currentRestaurantIndex].identifier != lastDeal.identifier {
+                if lastDealRestId != validDeals[currentDealIndex].venue.identifier {
+                    // if the restaurant identifier in the array matches the last restaurant saved, then don't add
+                    // restaurant to the dealList because it means the same restaurant is trying to bid it self
+                   //println("restaurant id: \(validDeals[currentDealIndex].restId), deal tier: \(validDeals[currentDealIndex].tier), deal value: \(validDeals[currentDealIndex].value)")
                     
-                    println("restaurant id: \(allRestaurants[currentRestaurantIndex].identifier), deal tier: \(allRestaurants[currentRestaurantIndex].deal.tier), deal value: \(allRestaurants[currentRestaurantIndex].deal.value)")
-                    
-                    
-                    // Update lastDeal to hold the current restaurant
-                    lastDeal = allRestaurants[currentRestaurantIndex]
+                    // Update lastDeal to hold the current restaurant id
+                    lastDealRestId = validDeals[currentDealIndex].venue.identifier
                     // Adding the new restaurant to the top of the array as it has a higher value
-                    dealList.insert(allRestaurants[currentRestaurantIndex], atIndex: 0)
+                    dealList.insert(validDeals[currentDealIndex], atIndex: 0)
                     delayReload()
                     // match the topBidIndex with current RestaurantIndex... This only happenes here.
-                    topBidIndex = currentRestaurantIndex
-                    currentRestaurantIndex = currentRestaurantIndex + 1
+                    topBidIndex = currentDealIndex
+                    currentDealIndex = currentDealIndex + 1
                     
                     delayLoad()
                 }else{
                     // increment current index to skip this deal, topBid is not updated so that we don't display this
                     // bad deal in the featured section
-                    currentRestaurantIndex = currentRestaurantIndex + 1
+                    currentDealIndex = currentDealIndex + 1
                     biddingStart()
                 }
                 
             }else{
-                println("restaurant Name: \(allRestaurants[currentRestaurantIndex].name), deal tier: \(allRestaurants[currentRestaurantIndex].deal.tier), deal value: \(allRestaurants[currentRestaurantIndex].deal.value)")
-                lastDeal = allRestaurants[currentRestaurantIndex]
-                dealList.insert(allRestaurants[currentRestaurantIndex], atIndex: 0)
-                currentRestaurantIndex = currentRestaurantIndex + 1
-                
-                //displayFeaturedDeal(allRestaurants[currentRestaurantIndex])
-                topRestaurant = allRestaurants[currentRestaurantIndex]
+                //println("restaurant Name: \(validDeals[currentDealIndex].name), deal tier: \(validDeals[currentDealIndex].tier), deal value: \(validDeals[currentDealIndex].value)")
+                lastDealRestId = validDeals[currentDealIndex].venue.identifier
+                dealList.insert(validDeals[currentDealIndex], atIndex: 0)
+                currentDealIndex = currentDealIndex + 1
                 delayLoad()
             }
             
-        }else{
+        } else {
             
             // Once we are done with the array, hide the indicator, set the topDealReached, display the top
-            // deal in the featured section and update the text in the activityLabel
-           // activityIndicator.stopAnimating()
-           // activityIndicator.hidden = true
+            // deal in the featured section
             topDealReached = true
-            //displayFeaturedDeal(allRestaurants[topBidIndex])
-            topRestaurant = allRestaurants[topBidIndex]
-            
         }
-        
-    }
-    
-    /*
-    func displayFeaturedDeal(restaurant: Restaurant){
-        topDealTitle.text = restaurant.deal.name
-        topDealDescLabel.text = restaurant.deal.desc
-        // reformat the float to display a monetary value
-        let valueFloat:Float = restaurant.deal.value, valueFormat = ".2"
-        topDealValueLabel.text = "$\(valueFloat.format(valueFormat))"
-        
-        if topDealReached {
-            saloofingLabel.text = "This is the best deal in the area! you've just saved $\(String(stringInterpolationSegment: restaurant.deal.value))"
-        }
-        
-    } */
-    
-    /* -----------------------  CHECK IF DEAL WAS PREVIOUSLY DISPLAYED  --------------------------- */
-    
-    func checkDeal(dealId: String){
-        // load any deals stored in nsuser defaults
-        if (NSUserDefaults.standardUserDefaults().objectForKey(Constants.dealDefaults) != nil) {
-            // we have saved data
-            var arrayOfDealObjects = defaults.objectForKey(Constants.dealDefaults) as! [Dictionary<String,String>]
-            // search through the objects
-            var found = false
-            for deal: [String: String] in arrayOfDealObjects {
-                // If we have this deal, get the time
-                if let timeStarted = deal[dealId] {
-                    println("Found deal: \(dealId) in defaults: \(timeStarted)")
-                    found = true
-                }
-            }
-            if !found {
-                println("Did not find deal: \(dealId), creating a new one")
-                // add this to the list
-                saveDealIdInDefaults(dealId, dealObjects: arrayOfDealObjects)
-            }
-        } else {
-            // save the first one
-            var arrayOfDealObjects: [Dictionary<String,String>] = []
-            saveDealIdInDefaults(dealId, dealObjects: arrayOfDealObjects)
-        }
-    }
-    
-    func saveDealIdInDefaults(dealId: String, dealObjects: [Dictionary<String,String>]) {
-        var arrayOfDealObjects = dealObjects
-        // it doen't exist yet, save it
-        let date = NSDate();
-        // add formatter to include seconds
-        var formatter = NSDateFormatter();
-        formatter.dateFormat = Constants.dealDateFormatter;
-        let completedateTime = formatter.stringFromDate(date);
-        // add this deal to array of deal objects
-        let newDealDictionary = [dealId:completedateTime]
-        arrayOfDealObjects.append(newDealDictionary)
-        // resave this to defaults
-        println("Saving deal: \(dealId) to defaults. Total deals saved: \(arrayOfDealObjects.count)")
-        defaults.setObject(arrayOfDealObjects, forKey: Constants.dealDefaults)
-        defaults.synchronize()
         
     }
     
@@ -276,13 +256,10 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     
     // This delay starts the spinner giving the appearance a new deal is loading, then removes it and updates the list with a new deal
     func delayReload() {
-       // self.activityIndicator.startAnimating()
-       // self.saloofingLabel.hidden = false
         let timeDelay = Double(arc4random_uniform(1500000000) + 300000000)
         var dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(timeDelay))
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            //self.displayFeaturedDeal(self.allRestaurants[self.topBidIndex])
-            self.topRestaurant = self.allRestaurants[self.topBidIndex]
+            self.topDeal = self.validDeals[self.topBidIndex]
             self.tableview.reloadData()
         })
         
@@ -307,9 +284,8 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UserDealCell = tableView.dequeueReusableCellWithIdentifier("restaurantDealCell") as! UserDealCell
         
-        let restaurant: Restaurant = dealList[indexPath.row]
-        let restaurantDeal = restaurant.deal
-        cell.setUpRestaurantDeal(restaurant, deal: restaurantDeal)
+        let deal: VenueDeal = dealList[indexPath.row]
+        cell.setUpVenueDeal(deal)
         return cell
         
     }
@@ -321,18 +297,9 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableCellWithIdentifier("dealHeaderCell") as! DealHeaderCell
-        //headerCell.activityIndicator = self.activityIndicator
-        //headerCell.activityLabel = self.activityLabel
-        headerCell.titleLabel.text = topRestaurant.deal.name
-        headerCell.descLabel.text = topRestaurant.deal.desc
-        headerCell.priceView.roundCorners(.AllCorners, radius: 10)
-        headerCell.searchView.roundCorners(.AllCorners, radius: 10)
-        // reformat the float to display a monetary value
-        let valueFloat:Float = topRestaurant.deal.value, valueFormat = ".2"
-        headerCell.valueLabel.text = "Value: $\(valueFloat.format(valueFormat))"
-        
+        headerCell.setUpVenueDeal(topDeal)
         if topDealReached {
-            headerCell.activityLabel.text = "This is the best deal in the area! you've just saved $\(String(stringInterpolationSegment: topRestaurant.deal.value))"
+            headerCell.activityLabel.text = "This is the best deal in the area! you've just saved $\(String(stringInterpolationSegment: topDeal.value))"
         }
         headerCell.setNeedsDisplay()
         return headerCell
@@ -348,19 +315,44 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
             if let indexPath = self.tableview.indexPathForSelectedRow() {
                 let destinationVC = segue.destinationViewController as! RestaurantDealDetaislVC
                 // get the deal for this restaurant
-                let restaurant: Restaurant = dealList[indexPath.row]
-                let restaurantDeal = restaurant.deal
-                destinationVC.thisRestaurant = restaurant
-                destinationVC.thisDeal = restaurantDeal
+                let deal: VenueDeal = dealList[indexPath.row]
+                destinationVC.thisDeal = deal
+                destinationVC.setUpForSaved = false
             }
         } else if segue.identifier == "restaurantDealDetailSegue2" {
             
             let destinationVC = segue.destinationViewController as! RestaurantDealDetaislVC
             // get the deal for this restaurant
-            let restaurant: Restaurant = topRestaurant
-            let restaurantDeal = restaurant.deal
-            destinationVC.thisRestaurant = restaurant
-            destinationVC.thisDeal = restaurantDeal
+            let deal: VenueDeal = topDeal
+            destinationVC.thisDeal = deal
+            destinationVC.setUpForSaved = false
+        }
+    }
+    
+    // ------------------- USER LOCATION PERMISSION REQUEST  ----------------------
+    
+    func showErrorAlert(error: NSError) {
+        let alertController = UIAlertController(title: "Error", message:error.localizedDescription, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "Ok", style: .Default, handler: {
+            (action) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        })
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        showErrorAlert(error)
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        locationManager.stopUpdatingLocation()
+        // if we dont' have any locations, get some
+        if haveItems == false {
+        // if dealList.count == 0 {
+            println("Have location, gather local deals")
+            loadSaloofData()
+           // pullLocalDeals()
         }
     }
     

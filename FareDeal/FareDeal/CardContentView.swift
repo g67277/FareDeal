@@ -57,26 +57,4 @@ class CardContentView: UIView {
         }
     }
 
-    /*
-    func setUpRestaurant(contentView: UIView, dataObject: AnyObject){
-        
-        let dataObject: AnyObject = dataObject
-        var name = dataObject["name"] as! String
-        if let label = contentView.viewWithTag(10) as? UILabel {
-            label.text = name
-        }
-        var phone = dataObject["phone"] as! String
-        if let phoneLabel = contentView.viewWithTag(15) as? UILabel {
-            phoneLabel.text = phone
-        }
-        var imageName = dataObject["imageUrl"] as! String
-        // stretch any square images to fill the view
-        if let locationImageView = contentView.viewWithTag(20) as? UIImageView {
-            locationImageView.contentMode = UIViewContentMode.ScaleAspectFill
-            locationImageView.clipsToBounds = true
-            locationImageView.image = UIImage (named: imageName)
-        }
-        
-    }
-    */
 }

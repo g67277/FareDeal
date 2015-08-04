@@ -37,32 +37,33 @@ class UserDealCell: UITableViewCell, TTCounterLabelDelegate {
         // Configure the view for the selected state
     }
     
-    func setUpRestaurantDeal(restaurant: Restaurant, deal: Deals) {
-        locationTitle.text = restaurant.name
-        locationPhone.text = restaurant.phone
-        locationImage.image = UIImage (named: restaurant.imageName)!
+    
+    func setUpVenueDeal(deal: VenueDeal) {
+        locationTitle.text = deal.venue.name
+        locationPhone.text = deal.venue.phone
+        locationImage.image = deal.venue.image
         dealTitle.text = deal.name
         dealDesc.text = deal.desc
         
         // Set up the timer countdown label
-        var timeLength: UInt64 = 3600000
-        switch deal.timeLimit {
-        case 2 :
-            timeLength = 7200000
-        case 3 :
-            timeLength = 10800000
-        default:
-            timeLength = 3600000
-        }
-        
+        let now = NSDate()
+        let expires = deal.expirationDate
+        let calendar = NSCalendar.currentCalendar()
+        let datecomponenets = calendar.components(NSCalendarUnit.CalendarUnitSecond, fromDate: now, toDate: expires, options: nil)
+        let seconds = datecomponenets.second * 1000
+        println("Seconds: \(seconds) times 1000")
         timeLimit.countDirection = 1
-        timeLimit.startValue = timeLength
+        timeLimit.startValue = UInt64(seconds)
         timeLimit.start()
+        if seconds <= 0 {
+            timeLimit.stop()
+        }
         
         // Set up the value
         let valueFloat:Float = deal.value, valueFormat = ".2"
         dealValue.text = "Value: $\(valueFloat.format(valueFormat))"
     }
+
     
 }
 

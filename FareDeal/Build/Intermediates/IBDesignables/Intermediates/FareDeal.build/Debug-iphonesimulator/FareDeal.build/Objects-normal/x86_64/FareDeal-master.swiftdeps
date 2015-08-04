@@ -1,5 +1,5 @@
 version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
-options: "3b4c19fcbd3ca33406ff03339a606032"
+options: "81294789eefcc94af102d9917bf54ab5"
 inputs: 
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RestaurantDealsVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/StoreVC.swift"
@@ -19,6 +19,8 @@ inputs:
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RestaurantDetailController.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/ForgotPasswordVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/SignInVC.swift"
+- "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/SavedDeal.swift"
+- "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/VenueDeal.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/DataApi.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/InitialScreenVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/FavoritesCell.swift"

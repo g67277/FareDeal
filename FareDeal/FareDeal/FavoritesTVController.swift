@@ -68,5 +68,30 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    @IBAction func shouldPushToSavedDeal(sender: AnyObject) {
+        // Check to make sure we have a saved deal
+        let realm = Realm()
+        var savedDeal = realm.objects(SavedDeal).first
+        if (savedDeal != nil) {
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            let dealDetailVC: RestaurantDealDetaislVC = storyboard.instantiateViewControllerWithIdentifier("dealDetailVC") as! RestaurantDealDetaislVC
+            dealDetailVC.setUpForSaved = true
+            navigationController?.pushViewController(dealDetailVC, animated: true)
+        } else {
+            // Alert them there isn't a current valid saved deal
+            let alertController = UIAlertController(title: "No Deals", message: "Either your deal expired, or you haven't saved one.", preferredStyle: .Alert)
+            // Add button action to swap
+            let cancelMove = UIAlertAction(title: "Ok", style: .Default, handler: {
+                (action) -> Void in
+            })
+            alertController.addAction(cancelMove)
+            presentViewController(alertController, animated: true, completion: nil)
+
+        }
+        
+        
+    }
+
+    
     
 }

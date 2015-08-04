@@ -37,21 +37,6 @@ class RestaurantDealCell: UITableViewCell, TTCounterLabelDelegate {
         // Configure the view for the selected state
     }
     
-    func setUpCell(name: String, phone: String, image: UIImage, title: String, desc: String, time: Int, value: String){
-        
-        locationTitle.text = name
-        locationPhone.text = phone
-        locationImage.image = image
-        dealTitle.text = title
-        dealDesc.text = desc
-        if time < 2 {
-            timeLimit.text = "\(time)hr time limit"
-        }else{
-            timeLimit.text = "\(time)hrs time limit"
-        }
-        //dealValue.text = value
-    }
-    
     func setUpRestaurantDeal(restaurant: Restaurant, deal: Deals) {
         locationTitle.text = restaurant.name
         locationPhone.text = restaurant.phone

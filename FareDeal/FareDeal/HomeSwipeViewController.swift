@@ -53,7 +53,31 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         // Set up the Kolodo view delegate and data source
         swipeableView.dataSource = self
         swipeableView.delegate = self
-        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        getLocationPermissionAndData()
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        // Add the second button to the nav bar
+        let logOutButton = UIBarButtonItem(image: UIImage(named: "logOut"), style: .Plain, target: self, action: "logOut")
+        self.navigationItem.setLeftBarButtonItems([logOutButton, self.dealButton], animated: true)
+    }
+    
+    
+    func logOut () {
+        prefs.setObject(nil, forKey: "TOKEN")
+        self.dismissViewControllerAnimated(true, completion: nil)
+    
+    }
+    
+    func getLocationPermissionAndData() {
         // Start getting the users location
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -71,31 +95,8 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             // We do not have premission, request it
             requestLocationPermission()
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidLayoutSubviews() {
-      //  let path = NSBundle.mainBundle().pathForResource("Restaurants", ofType:"plist")
-      //  restaurants = NSArray(contentsOfFile: path!) as! [Dictionary<String,AnyObject>]
-    }
 
-    override func viewDidAppear(animated: Bool) {
-        // Add the second button to the nav bar
-        let logOutButton = UIBarButtonItem(image: UIImage(named: "logOut"), style: .Plain, target: self, action: "logOut")
-        self.navigationItem.setLeftBarButtonItems([logOutButton, self.dealButton], animated: true)
     }
-    
-    
-    func logOut () {
-        prefs.setObject(nil, forKey: "TOKEN")
-        self.dismissViewControllerAnimated(true, completion: nil)
-    
-    }
-    
     
     /* --------  SEARCH BAR DISPLAY AND DELEGATE METHODS ---------- */
     
@@ -280,16 +281,43 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         // if we dont' have any locations, get some
         if venues.count == 0 {
-            // println("No restaurants stored")
-            exploreVenues()
+            println("No restaurants stored")
+            //exploreFoursquareVenues()
+            loadSaloofData()
         } else {
-            // println("restaurants stored")
+            println("restaurants stored")
         }
         // once we have locations, stop retrieving their location
         locationManager.stopUpdatingLocation()
     }
     
-    func exploreVenues() {
+    func loadSaloofData () {
+        let saloofUrl = NSURL(string: "http://www.justwalkingonwater.com/json/venueResponse.json")!
+        let response = NSData(contentsOfURL: saloofUrl)!
+        println(response)
+        let json: AnyObject? = (NSJSONSerialization.JSONObjectWithData(response,
+            options: NSJSONReadingOptions(0),
+            error: nil) as! NSDictionary)["response"]
+        
+        if let object: AnyObject = json {
+            haveItems = true
+            var groups = object["groups"] as! [AnyObject]
+            //  get array of items
+            var venues = groups[0]["items"] as! [AnyObject]
+            for item in venues {
+                // get the venue
+                if let venue = item["venue"] as? JSONParameters {
+                    println(venue)
+                    let venueJson = JSON(venue)
+                    // Parse the JSON file using SwiftlyJSON
+                    parseJSON(venueJson, source: Constants.sourceTypeSaloof)
+                }
+            }
+            swipeableView.reloadData()
+        }
+    }
+    
+    func exploreFoursquareVenues() {
         // Begin loading data from foursquare
         // get the location
         // check if we need to add a search string
@@ -315,7 +343,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
                     //println(venue)
                     let venueJson = JSON(venue)
                     // Parse the JSON file using SwiftlyJSON
-                    self.parseJSON(venueJson)
+                    parseJSON(venueJson, source: Constants.sourceTypeFoursquare)
                 }
             }
             println("Data gathering completed, retrieved \(venues.count) venues")
@@ -323,7 +351,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         }
     }
     
-    func parseJSON(json: JSON) {
+    func parseJSON(json: JSON, source: String) {
         let venue = Venue()
         venue.identifier = json["id"].stringValue
         venue.phone = json["contact"]["formattedPhone"].stringValue /* Not working*/
@@ -338,7 +366,13 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         venue.hours = json["hours"]["status"].stringValue
         venue.distance = json["location"]["distance"].floatValue
         venue.priceTier = json["price"]["tier"].intValue
-        venue.sourceType = Constants.sourceTypeFoursquare
+        venue.sourceType = source
+        if source == Constants.sourceTypeSaloof {
+            // get the default deal
+            venue.defaultDealTitle = json["deals"]["deal"][0]["title"].stringValue
+            venue.defaultDealDesc = json["deals"]["deal"][0]["description"].stringValue
+            venue.defaultDealValue = json["deals"]["deal"][0]["value"].floatValue
+        }
         let imageUrl = NSURL(string: imageName)
         if let data = NSData(contentsOfURL: imageUrl!){
             
@@ -349,6 +383,31 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         realm.write {
             self.realm.add(venue)
         }
-        //println(venue)
     }
+    
+    @IBAction func shouldPushToSavedDeal(sender: AnyObject) {
+        // Check to make sure we have a saved deal
+        var savedDeal = realm.objects(SavedDeal).first
+        if (savedDeal != nil) {
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            let dealDetailVC: RestaurantDealDetaislVC = storyboard.instantiateViewControllerWithIdentifier("dealDetailVC") as! RestaurantDealDetaislVC
+            dealDetailVC.setUpForSaved = true
+            navigationController?.pushViewController(dealDetailVC, animated: true)
+        } else {
+            // Alert them there isn't a current valid saved deal
+            let alertController = UIAlertController(title: "No Deals", message: "Either your deal expired, or you haven't saved one.", preferredStyle: .Alert)
+            // Add button action to swap
+            let cancelMove = UIAlertAction(title: "Ok", style: .Default, handler: {
+                (action) -> Void in
+            })
+            alertController.addAction(cancelMove)
+            presentViewController(alertController, animated: true, completion: nil)
+        }
+
+        
+    }
+    
+    
+
+    
 }

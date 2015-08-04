@@ -58,13 +58,15 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         
         self.navigationController?.navigationBarHidden = false
 
-
         // View to indicate selected hour button -- update color to black
         selectedHour.backgroundColor = .blackColor()
         
-        tierLabel.text = String(tier)
+        if editingMode{
+            tierLabel.text = "Tier \(tier)"
+        }else{
+            tierLabel.text = "They are going to love this..."
+        }
         titleTF.text = dealTitle
-        
         if desc != "" {
             
             descTF.text = desc
@@ -77,15 +79,10 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         }
         
         valueTF.text = String(stringInterpolationSegment: value)
-        
-        
- 
+
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
-        
-        
-        
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
@@ -159,7 +156,6 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
             
             // save here
             var deal = BusinessDeal()
-            deal.tier = 1;
             deal.title = titleTF.text
             deal.desc = descTF.text
             deal.value = (valueTF.text as NSString).doubleValue

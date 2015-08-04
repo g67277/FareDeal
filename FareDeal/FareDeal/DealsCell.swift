@@ -14,6 +14,7 @@ class DealsCell: UITableViewCell {
     @IBOutlet weak var dealDesc: UILabel!
     @IBOutlet weak var timeLimit: UILabel!
     @IBOutlet weak var dealValue: UILabel!
+    @IBOutlet weak var tierLabel: UILabel!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,7 +29,7 @@ class DealsCell: UITableViewCell {
         // Initialization code
     }
     
-    func refreshCell(title: String, desc: String, time: Int, value: String){
+    func refreshCell(title: String, desc: String, time: Int, value: String, tier: Int){
         
         dealTitle.text = title
         dealDesc.text = desc
@@ -38,6 +39,7 @@ class DealsCell: UITableViewCell {
             timeLimit.text = "\(time)hrs"
         }
         dealValue.text = value
+        tierLabel.text = "Tier \(tier)"
         
     }
 

@@ -14,7 +14,7 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var addBtn: UIBarButtonItem!
     @IBOutlet weak var dealsList: UITableView!
     
-    var dealsArray = Realm().objects(BusinessDeal)
+    var dealsArray = Realm().objects(BusinessDeal).sorted("value", ascending: true)
     var realm = Realm()
     var topTier = 0
     
@@ -24,7 +24,6 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         var test = dealsArray.count
         if dealsArray.count == 10 {
             addBtn.enabled = false
-            println("testing")
         }else{
             addBtn.enabled = true
         }
@@ -33,9 +32,7 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = false
-        
-        
+        self.navigationController?.navigationBarHidden = false 
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -45,7 +42,6 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func findTopTier(){
         
-        topTier = dealsArray.last!.tier
         
     }
 
@@ -57,7 +53,7 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             var selectedItem = dealsArray[(dealsList.indexPathForSelectedRow()?.row)!]
             
-            IVC.tier = selectedItem.tier
+            IVC.tier = (dealsList.indexPathForSelectedRow()?.row)!
             IVC.dealTitle = selectedItem.title
             IVC.desc = selectedItem.desc
             IVC.value = selectedItem.value
@@ -67,7 +63,6 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         }else if segue.identifier == "toAdd"{
             
-            IVC.tier = topTier + 1
             
         }
         
@@ -101,7 +96,7 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // load items from deal array here
         
-        cell.refreshCell(dealsArray[indexPath.row].title, desc: dealsArray[indexPath.row].desc, time: dealsArray[indexPath.row].timeLimit, value: "$\(dealsArray[indexPath.row].value)")
+        cell.refreshCell(dealsArray[indexPath.row].title, desc: dealsArray[indexPath.row].desc, time: dealsArray[indexPath.row].timeLimit, value: "$\(dealsArray[indexPath.row].value)", tier: indexPath.row)
         
         //cell.refreshCell("10% off Drinks", desc: "10% off drinks when you buy anything from the lunch menu", time: 2, value: "Value: $0.80")
         

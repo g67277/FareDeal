@@ -53,6 +53,8 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         // Set up the Kolodo view delegate and data source
         swipeableView.dataSource = self
         swipeableView.delegate = self
+        getLocationPermissionAndData()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,13 +63,13 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     }
     
     override func viewDidLayoutSubviews() {
-        getLocationPermissionAndData()
     }
 
     override func viewDidAppear(animated: Bool) {
         // Add the second button to the nav bar
         let logOutButton = UIBarButtonItem(image: UIImage(named: "logOut"), style: .Plain, target: self, action: "logOut")
         self.navigationItem.setLeftBarButtonItems([logOutButton, self.dealButton], animated: true)
+        swipeableView.reloadData()
     }
     
     

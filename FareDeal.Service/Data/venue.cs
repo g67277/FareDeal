@@ -17,28 +17,27 @@ namespace FareDeal.Service.Data
         public venue()
         {
             this.deals = new HashSet<deal>();
-            this.photos = new HashSet<photo>();
         }
     
         public System.Guid Id { get; set; }
         public string name { get; set; }
         public bool chain { get; set; }
         public string url { get; set; }
-        public System.Guid location_id { get; set; }
         public bool verified { get; set; }
         public string status { get; set; }
         public bool hasMenu { get; set; }
         public short priceTier { get; set; }
         public string defaultPicUrl { get; set; }
         public bool isOpen { get; set; }
-        public Nullable<System.Guid> photo_id { get; set; }
         public Nullable<int> likes { get; set; }
         public Nullable<int> favourites { get; set; }
-        public string weekDaysHours { get; set; }
-        public string weekEndsHours { get; set; }
+        public string contactName { get; set; }
+        public string phone { get; set; }
+        public string weekdayHours { get; set; }
+        public string weekendHours { get; set; }
     
         public virtual ICollection<deal> deals { get; set; }
-        public virtual ICollection<photo> photos { get; set; }
-        public virtual contact contact { get; set; }
+        public virtual category category { get; set; }
+        public virtual location location { get; set; }
     }
 }

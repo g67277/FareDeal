@@ -33,8 +33,5 @@ namespace FareDeal.Service.Data
         public virtual DbSet<location> locations { get; set; }
         public virtual DbSet<venue> venues { get; set; }
         public virtual DbSet<venue_credit> venue_credit { get; set; }
-        public virtual DbSet<contact> contacts { get; set; }
-        public virtual DbSet<photo> photos { get; set; }
-        public virtual DbSet<venue_category> venue_category { get; set; }
     }
 }

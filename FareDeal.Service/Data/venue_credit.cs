@@ -14,9 +14,11 @@ namespace FareDeal.Service.Data
     
     public partial class venue_credit
     {
-        public System.Guid id { get; set; }
+        public System.Guid Id { get; set; }
         public int credit_available { get; set; }
         public int credit_threhold { get; set; }
         public int credit_auto_increase { get; set; }
+    
+        public virtual venue venue { get; set; }
     }
 }

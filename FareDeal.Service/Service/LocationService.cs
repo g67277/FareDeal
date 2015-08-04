@@ -7,9 +7,14 @@ using FareDeal.Service.Data;
 
 namespace FareDeal.Service
 {
-    public class LocationService
+    public class LocationService : BaseService
     {
-        FareDealDbContext db = new FareDealDbContext();
+        //FareDealDbContext db = new FareDealDbContext();
+        
+        public LocationService() : base(new FareDealDbContext())
+        {
+
+        }
         public List<location> GetLocations()
         {
             List<location> c = db.locations.ToList();

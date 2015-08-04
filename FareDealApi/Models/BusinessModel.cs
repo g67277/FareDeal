@@ -24,13 +24,17 @@ namespace FareDealApi.Models
 
         public string WeekdaysHours {get; set;}
 
-        public string WeekEndHours {get; set;}
+        public string WeekendHours {get; set;}
 
-        public string Lang { get; set; }
+        public string Lng { get; set; }
 
         public string Lat { get; set; }
 
         public string CategoryName { get; set; }
+
+        public string ContactName { get; set; }
+
+        public string Website { get; set; }
     }
 
     public class Address

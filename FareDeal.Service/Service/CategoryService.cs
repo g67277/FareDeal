@@ -7,11 +7,19 @@ using FareDeal.Service.Data;
 
 namespace FareDeal.Service
 {
-    public class CategoryService
+    public class CategoryService : BaseService
     {
-        FareDealDbContext db = new FareDealDbContext();
+        //FareDealDbContext db = FareDealDbContextSngleton.Instance;
+
+        //FareDealDbContext db = new FareDealDbContext();
+
+        public CategoryService() : base(new FareDealDbContext())
+        {
+            //db = 
+        }
         public List<category> GetCategories()
         {
+            
             List<category> c = db.categories.ToList();
             return c;
         }
@@ -28,17 +36,18 @@ namespace FareDeal.Service
             category cat = null;
             if (categoryId != null)
             {
-               cat  = db.categories.Where(ca => ca.Id == categoryId).FirstOrDefault();
+               cat  = db.categories.AsNoTracking().Where(ca => ca.Id == categoryId).FirstOrDefault();
                return cat;
             }
-            cat = db.categories.Where(ca => ca.name.ToLower() == name.ToLower()).FirstOrDefault();
+            cat = db.categories.AsNoTracking().Where(ca => ca.name.ToLower() == name.ToLower()).FirstOrDefault();
             return cat;
         }
 
-        public category GetCategoryForVenue(Guid venueId)
-        {
-            venue_category vencat = db.venue_category.Where(vc => vc.venue_id == venueId).FirstOrDefault();
-            return db.categories.Where(c => c.Id == vencat.category_id).FirstOrDefault();
-        }
+        //public category GetCategoryForVenue(Guid venueId)
+        //{
+        //    venue_category vencat = db.venue_category.Where(vc => vc.venue_id == venueId).FirstOrDefault();
+        //    return db.categories.Where(c => c.Id == vencat.category_id).FirstOrDefault();
+        //}
+
     }
 }

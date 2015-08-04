@@ -126,8 +126,9 @@
             WeekEndHours: '10AM-12AM',
             RestaurantName: name,
             Lat: "38.907192",
-            Lang: "-77.036871",
-            CategoryName:"Burger"
+            Lng: "-77.036871",
+            CategoryName: "Burger",
+            Website: "http://test.com"
         };
 
         $.ajax({

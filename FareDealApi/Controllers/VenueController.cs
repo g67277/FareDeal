@@ -15,15 +15,15 @@ namespace FareDealApi.Controllers
     
     public class VenueController : BaseApiController
     {
-        VenueService service = new VenueService();
-        CategoryService catService = new CategoryService();
+       // VenueService service = new VenueService();
+       // CategoryService catService = new CategoryService();
         // GET: api/Venue
-        public IEnumerable<venue> Get()
-        {
-            IEnumerable<venue> venues = service.GetVenues();
-            return venues;
+        //public IEnumerable<venue> Get()
+        //{
+        //    IEnumerable<venue> venues = service.GetVenues();
+        //    return venues;
 
-        }
+        //}
 
         // GET: api/Venue/5
         public string Get(int id)
@@ -32,52 +32,53 @@ namespace FareDealApi.Controllers
         }
 
         // POST: api/Venue
-        [Authorize(Roles = "business")]
+        //[Authorize(Roles = "business")]
         public async Task<IHttpActionResult> Post(BusinessModel model)
         {
-            venue v = service.GetByName(model.RestaurantName);
-            //if (v == null)
+            category cat;
+            using (CategoryService catService = new CategoryService())
             {
-
-                location l = new location();
-                l.id = Guid.NewGuid();
-                l.postalcode = model.ZipCode;
-                l.city = model.City;
-                l.address = model.StreetName;
-                l.state = model.State;
-                l.lang = model.Lang;
-                l.lat = model.Lat;
-                l.cc = "US";
-
-                v = new venue();
-                v.Id = Guid.NewGuid();
-                v.isOpen = true;
-                v.name = model.RestaurantName;
-                v.url = "http://test.com";
-                v.priceTier = model.PriceTier;
-                v.defaultPicUrl = "http://test.com/a.png";
-                v.location_id = l.id;
-
-
-                contact c = new contact();
-                c.venue_contact_id = v.Id;
-                c.first_name = model.FirstName;
-                c.last_name = model.LastName;
-                c.phone = model.PhoneNumber;
-
-                //find category
-
-                category cat = catService.GetCategry(model.CategoryName, null);
-                venue_category vc = new venue_category()
+                 cat = catService.GetCategry(model.CategoryName, null);
+            }
+            using (VenueService service = new VenueService())
+            {
+                venue v = service.GetByName(model.RestaurantName);
+                //if (v == null)
                 {
-                    id = Guid.NewGuid(),
-                    category_id = cat.Id,
-                    venue_id = v.Id
-                };
-                //cat.venue.Add(v);
-               // v.category.Add(cat);
 
-                service.AddVenue(v, c, l, vc);
+                    location l = new location();
+                    l.id = Guid.NewGuid();
+                    l.postalcode = model.ZipCode;
+                    l.city = model.City;
+                    l.address = model.StreetName;
+                    l.state = model.State;
+                    l.lang = model.Lng;
+                    l.lat = model.Lat;
+                    l.cc = "US";
+
+                    v = new venue();
+                    v.Id = Guid.NewGuid();
+                    v.isOpen = true;
+                    v.name = model.RestaurantName;
+                    v.url = model.Website;
+                    v.priceTier = model.PriceTier;
+                    v.defaultPicUrl = "http://test.com/a.png";
+                    //v.location_id = l.id;
+
+                    v.contactName = model.ContactName;
+                    v.phone = model.PhoneNumber;
+
+                    v.location = l;
+
+
+                    //find category
+
+                    
+                    //v.categoryId = cat.Id;
+                    v.category = cat;
+
+                    service.AddVenue(v, l, cat);
+                }
             }
             return Ok();
         }

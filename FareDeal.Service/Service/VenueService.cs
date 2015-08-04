@@ -7,22 +7,32 @@ using FareDeal.Service.Data;
 
 namespace FareDeal.Service
 {
-    public class VenueService
+    public class VenueService : BaseService
     {
-        FareDealDbContext db = new FareDealDbContext();
+        //FareDealDbContext db = FareDealDbContextSngleton.Instance;
+        
+        public VenueService() : base(new FareDealDbContext())
+        {
+
+        }
+        
         public IEnumerable<venue> GetVenues()
         {
             return db.venues.ToList();
         }
 
-        public void AddVenue(venue _venue, contact _contact, location _location, venue_category vc)
+        public void AddVenue(venue _venue, location _location, category c)
         {
-            db.locations.Add(_location);
-            db.venues.Add(_venue);
-            db.contacts.Add(_contact);
-            db.venue_category.Add(vc);
-
-            db.SaveChanges();
+            try
+            {
+                db.Entry(_venue.category).State = System.Data.Entity.EntityState.Unchanged;
+                db.venues.Add(_venue);
+                db.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         public venue GetByName(string name)

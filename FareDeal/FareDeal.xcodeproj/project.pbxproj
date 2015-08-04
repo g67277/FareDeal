@@ -47,6 +47,8 @@
 		995935F21B5EDA1C009CDD26 /* Restaurants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 995935EA1B5EDA1C009CDD26 /* Restaurants.plist */; };
 		99649B5A1B6EF1740001335A /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99649B591B6EF1740001335A /* Venue.swift */; };
 		99649B5C1B6EF1DB0001335A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99649B5B1B6EF1DB0001335A /* CoreLocation.framework */; };
+		998038F71B6FC71A007C53B7 /* VenueDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998038F61B6FC71A007C53B7 /* VenueDeal.swift */; };
+		998038FC1B704998007C53B7 /* SavedDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998038FB1B704998007C53B7 /* SavedDeal.swift */; };
 		99A04C5B1B604F9E00C3E35B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C5A1B604F9E00C3E35B /* GradientView.swift */; };
 		99A04C5D1B604FE700C3E35B /* RestaurantDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C5C1B604FE700C3E35B /* RestaurantDealCell.swift */; };
 		99A04C5F1B60509C00C3E35B /* RestaurantDealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C5E1B60509C00C3E35B /* RestaurantDealsVC.swift */; };
@@ -120,6 +122,8 @@
 		995935EA1B5EDA1C009CDD26 /* Restaurants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Restaurants.plist; sourceTree = "<group>"; };
 		99649B591B6EF1740001335A /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		99649B5B1B6EF1DB0001335A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		998038F61B6FC71A007C53B7 /* VenueDeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDeal.swift; sourceTree = "<group>"; };
+		998038FB1B704998007C53B7 /* SavedDeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedDeal.swift; sourceTree = "<group>"; };
 		99A04C5A1B604F9E00C3E35B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		99A04C5C1B604FE700C3E35B /* RestaurantDealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealCell.swift; sourceTree = "<group>"; };
 		99A04C5E1B60509C00C3E35B /* RestaurantDealsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealsVC.swift; sourceTree = "<group>"; };
@@ -265,7 +269,6 @@
 				8132230E1B685F1800613C60 /* FoodCategories.swift */,
 				99A6E8D81B69ED97005179A6 /* Deals.swift */,
 				817BC8711B6DA5F10059C31D /* BusinessDeal.swift */,
-				99649B591B6EF1740001335A /* Venue.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 		995935F31B5EDA29009CDD26 /* User Side */ = {
 			isa = PBXGroup;
 			children = (
+				998038F81B6FC74D007C53B7 /* Model */,
 				995935F41B5EDA53009CDD26 /* View */,
 				995935F51B5EDA5B009CDD26 /* Controller */,
 			);
@@ -319,6 +323,16 @@
 				99A04C601B6050B900C3E35B /* RestaurantDealDetaislVC.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		998038F81B6FC74D007C53B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				998038F61B6FC71A007C53B7 /* VenueDeal.swift */,
+				99649B591B6EF1740001335A /* Venue.swift */,
+				998038FB1B704998007C53B7 /* SavedDeal.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		99A6E8D71B69ECEA005179A6 /* Timer Label */ = {
@@ -533,6 +547,8 @@
 				81B879121B691113003B1BB0 /* ForgotPasswordVC.swift in Sources */,
 				8185E2F81B60899B00059124 /* SignInVC.swift in Sources */,
 				99A6E8D61B69ECCA005179A6 /* TTTAttributedLabel.m in Sources */,
+				998038FC1B704998007C53B7 /* SavedDeal.swift in Sources */,
+				998038F71B6FC71A007C53B7 /* VenueDeal.swift in Sources */,
 				81008C101B5C44830019E297 /* DataApi.swift in Sources */,
 				8185E3031B60A20A00059124 /* InitialScreenVC.swift in Sources */,
 				995935EF1B5EDA1C009CDD26 /* FavoritesCell.swift in Sources */,

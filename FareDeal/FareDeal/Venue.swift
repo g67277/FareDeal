@@ -28,6 +28,10 @@ class Venue: Object {
     dynamic var imagePresent: Bool = false
     dynamic var swipeValue: Int = 0
     dynamic var sourceType = ""
+    dynamic var defaultDealTitle = ""
+    dynamic var defaultDealDesc = ""
+    dynamic var defaultDealValue: Float = 0.0
+   // dynamic let defaultDeal = VenueDeal()
     var image: UIImage? {
         get {
             return UIImage(data: imageData)

@@ -280,16 +280,43 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         // if we dont' have any locations, get some
         if venues.count == 0 {
-            // println("No restaurants stored")
-            exploreVenues()
+            println("No restaurants stored")
+            //exploreFoursquareVenues()
+            loadSaloofData()
         } else {
-            // println("restaurants stored")
+            println("restaurants stored")
         }
         // once we have locations, stop retrieving their location
         locationManager.stopUpdatingLocation()
     }
     
-    func exploreVenues() {
+    func loadSaloofData () {
+        let saloofUrl = NSURL(string: "http://www.justwalkingonwater.com/json/venueResponse.json")!
+        let response = NSData(contentsOfURL: saloofUrl)!
+        println(response)
+        let json: AnyObject? = (NSJSONSerialization.JSONObjectWithData(response,
+            options: NSJSONReadingOptions(0),
+            error: nil) as! NSDictionary)["response"]
+        
+        if let object: AnyObject = json {
+            haveItems = true
+            var groups = object["groups"] as! [AnyObject]
+            //  get array of items
+            var venues = groups[0]["items"] as! [AnyObject]
+            for item in venues {
+                // get the venue
+                if let venue = item["venue"] as? JSONParameters {
+                    println(venue)
+                    let venueJson = JSON(venue)
+                    // Parse the JSON file using SwiftlyJSON
+                    parseJSON(venueJson, source: Constants.sourceTypeSaloof)
+                }
+            }
+            swipeableView.reloadData()
+        }
+    }
+    
+    func exploreFoursquareVenues() {
         // Begin loading data from foursquare
         // get the location
         // check if we need to add a search string
@@ -315,7 +342,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
                     //println(venue)
                     let venueJson = JSON(venue)
                     // Parse the JSON file using SwiftlyJSON
-                    self.parseJSON(venueJson)
+                    parseJSON(venueJson, source: Constants.sourceTypeFoursquare)
                 }
             }
             println("Data gathering completed, retrieved \(venues.count) venues")
@@ -323,7 +350,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         }
     }
     
-    func parseJSON(json: JSON) {
+    func parseJSON(json: JSON, source: String) {
         let venue = Venue()
         venue.identifier = json["id"].stringValue
         venue.phone = json["contact"]["formattedPhone"].stringValue /* Not working*/
@@ -338,7 +365,13 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         venue.hours = json["hours"]["status"].stringValue
         venue.distance = json["location"]["distance"].floatValue
         venue.priceTier = json["price"]["tier"].intValue
-        venue.sourceType = Constants.sourceTypeFoursquare
+        venue.sourceType = source
+        if source == Constants.sourceTypeSaloof {
+            // get the default deal
+            venue.defaultDealTitle = json["deals"]["deal"][0]["title"].stringValue
+            venue.defaultDealDesc = json["deals"]["deal"][0]["description"].stringValue
+            venue.defaultDealValue = json["deals"]["deal"][0]["value"].floatValue
+        }
         let imageUrl = NSURL(string: imageName)
         if let data = NSData(contentsOfURL: imageUrl!){
             
@@ -349,6 +382,8 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         realm.write {
             self.realm.add(venue)
         }
-        //println(venue)
     }
+    
+
+    
 }

@@ -1,5 +1,5 @@
 version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
-options: "316a54781612986e8b1ecaa1de7bd155"
+options: "126913c417d4320e915b4ce615ae4e68"
 inputs: 
 - !dirty "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RestaurantDealsVC.swift"
 - !dirty "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/StoreVC.swift"
@@ -19,6 +19,8 @@ inputs:
 - !dirty "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RestaurantDetailController.swift"
 - !dirty "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/ForgotPasswordVC.swift"
 - !dirty "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/SignInVC.swift"
+- !dirty "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/SavedDeal.swift"
+- !dirty "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/VenueDeal.swift"
 - !dirty "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/DataApi.swift"
 - !dirty "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/InitialScreenVC.swift"
 - !dirty "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/FavoritesCell.swift"

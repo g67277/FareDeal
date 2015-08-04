@@ -4,7 +4,7 @@ inputs:
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RestaurantDealsVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/StoreVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/UserDealCell.swift"
-- !dirty "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RestaurantDealDetaislVC.swift"
+- "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RestaurantDealDetaislVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/DataManager.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/DealDetailsVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/FavoritesTVController.swift"

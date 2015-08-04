@@ -317,6 +317,7 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
                 // get the deal for this restaurant
                 let deal: VenueDeal = dealList[indexPath.row]
                 destinationVC.thisDeal = deal
+                destinationVC.setUpForSaved = false
             }
         } else if segue.identifier == "restaurantDealDetailSegue2" {
             
@@ -324,6 +325,7 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
             // get the deal for this restaurant
             let deal: VenueDeal = topDeal
             destinationVC.thisDeal = deal
+            destinationVC.setUpForSaved = false
         }
     }
     

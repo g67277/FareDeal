@@ -19,15 +19,22 @@ class RestaurantDealDetaislVC: UIViewController, TTCounterLabelDelegate {
     @IBOutlet weak var dealValueLabel: UILabel!
     @IBOutlet weak var dealTimeRemainingLabel: TTCounterLabel!
     
+    @IBOutlet var saveSwapButton: UIButton!
     
+    var setUpForSaved: Bool = false
     var thisDeal: VenueDeal?
     let realm = Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setUpDeal()
-        
+        if setUpForSaved {
+            // set up for the SavedDeal
+            setUpSaveSwapButton()
+        } else {
+            // set up for the VenueDeal
+            setUpDeal()
+        }
     }
     
     func setUpDeal(){
@@ -71,11 +78,81 @@ class RestaurantDealDetaislVC: UIViewController, TTCounterLabelDelegate {
                 dealTimeRemainingLabel.stop()
             }
             
-
-
+            // see if we have a valid saved deal
+            var savedDeal = realm.objects(SavedDeal).first
+            if (savedDeal != nil) {
+                println("The user has a saved deal")
+                // make sure the deal is not expired
+                let valid = checkDealIsValid(savedDeal!)
+                if valid {
+                    // and update the button
+                    setButtonTitle("Swap for this deal")
+                } else {
+                    // delete the old deal
+                    realm.write {
+                        self.realm.delete(savedDeal!)
+                    }
+                    // and update the button
+                    setButtonTitle("Save Deal")
+                }
+            } else {
+                // and update the button
+                setButtonTitle("Save Deal")
+            }
         }
-        
     }
+    
+    func setButtonTitle (title: String) {
+        saveSwapButton.setTitle(title, forState: UIControlState.Normal)
+        saveSwapButton.setTitle(title, forState: UIControlState.Selected)
+    }
+    
+    
+    func setUpSaveSwapButton () {
+        var savedDeal = realm.objects(SavedDeal).first
+        if (savedDeal != nil) {
+            if var locationLabel = locationName {
+                locationLabel.text = savedDeal!.venue.name
+            }
+            
+            // Image
+            if var imageView = locationImage {
+                imageView.contentMode = UIViewContentMode.ScaleAspectFill
+                imageView.clipsToBounds = true
+                imageView.image = savedDeal!.venue.image
+            }
+            
+            if var dealTitle = dealTitleLabel {
+                dealTitle.text = savedDeal!.name             }
+            if var dealDescription = dealdescriptionLabel {
+                dealDescription.text = savedDeal?.desc
+             }
+            if var dealValue = dealValueLabel {
+                let valueFloat:Float = savedDeal!.value, valueFormat = ".2"
+                dealValue.text = "$\(valueFloat.format(valueFormat))"
+            }
+            
+            // Set up the timer countdown label
+            let now = NSDate()
+            println("Now: \(now)")
+            let expires = savedDeal!.expirationDate
+            println("Deal Expires: \(expires)")
+            let calendar = NSCalendar.currentCalendar()
+            let datecomponenets = calendar.components(NSCalendarUnit.CalendarUnitSecond, fromDate: now, toDate: expires, options: nil)
+            let seconds = datecomponenets.second * 1000
+            println("Seconds: \(seconds) until the deal expires")
+            dealTimeRemainingLabel.countDirection = 1
+            dealTimeRemainingLabel.startValue = UInt64(seconds)
+            dealTimeRemainingLabel.start()
+            if seconds <= 0 {
+                dealTimeRemainingLabel.stop()
+            }
+            
+            // and update the button
+            setButtonTitle("Remove Deal")
+        }
+    }
+    
     
     
     @IBAction func checkForPreviouslySavedDeal(sender: AnyObject) {
@@ -92,7 +169,6 @@ class RestaurantDealDetaislVC: UIViewController, TTCounterLabelDelegate {
                 // Add button action to swap
                 let cancelSwap = UIAlertAction(title: "Cancel", style: .Default, handler: {
                     (action) -> Void in
-                    self.dismissViewControllerAnimated(true, completion: nil)
                 })
                 let swapDeals = UIAlertAction(title: "Swap", style: .Default, handler: {
                     (action) -> Void in
@@ -100,7 +176,6 @@ class RestaurantDealDetaislVC: UIViewController, TTCounterLabelDelegate {
                     self.realm.write {
                         self.realm.delete(savedDeal!)
                     }
-                    self.dismissViewControllerAnimated(true, completion: nil)
                     self.saveNewDeal()
                 })
                 alertController.addAction(cancelSwap)
@@ -108,6 +183,9 @@ class RestaurantDealDetaislVC: UIViewController, TTCounterLabelDelegate {
                 presentViewController(alertController, animated: true, completion: nil)
             } else {
                 // deleted old deal, save new one
+                realm.write {
+                    self.realm.delete(savedDeal!)
+                }
                 println("Deleted expired deal and saving new one")
                 // save this deal as the saved deal
                 saveNewDeal()

@@ -53,7 +53,31 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         // Set up the Kolodo view delegate and data source
         swipeableView.dataSource = self
         swipeableView.delegate = self
-        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        getLocationPermissionAndData()
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        // Add the second button to the nav bar
+        let logOutButton = UIBarButtonItem(image: UIImage(named: "logOut"), style: .Plain, target: self, action: "logOut")
+        self.navigationItem.setLeftBarButtonItems([logOutButton, self.dealButton], animated: true)
+    }
+    
+    
+    func logOut () {
+        prefs.setObject(nil, forKey: "TOKEN")
+        self.dismissViewControllerAnimated(true, completion: nil)
+    
+    }
+    
+    func getLocationPermissionAndData() {
         // Start getting the users location
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -71,31 +95,8 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             // We do not have premission, request it
             requestLocationPermission()
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidLayoutSubviews() {
-      //  let path = NSBundle.mainBundle().pathForResource("Restaurants", ofType:"plist")
-      //  restaurants = NSArray(contentsOfFile: path!) as! [Dictionary<String,AnyObject>]
-    }
 
-    override func viewDidAppear(animated: Bool) {
-        // Add the second button to the nav bar
-        let logOutButton = UIBarButtonItem(image: UIImage(named: "logOut"), style: .Plain, target: self, action: "logOut")
-        self.navigationItem.setLeftBarButtonItems([logOutButton, self.dealButton], animated: true)
     }
-    
-    
-    func logOut () {
-        prefs.setObject(nil, forKey: "TOKEN")
-        self.dismissViewControllerAnimated(true, completion: nil)
-    
-    }
-    
     
     /* --------  SEARCH BAR DISPLAY AND DELEGATE METHODS ---------- */
     
@@ -383,6 +384,29 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             self.realm.add(venue)
         }
     }
+    
+    @IBAction func shouldPushToSavedDeal(sender: AnyObject) {
+        // Check to make sure we have a saved deal
+        var savedDeal = realm.objects(SavedDeal).first
+        if (savedDeal != nil) {
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            let dealDetailVC: RestaurantDealDetaislVC = storyboard.instantiateViewControllerWithIdentifier("dealDetailVC") as! RestaurantDealDetaislVC
+            dealDetailVC.setUpForSaved = true
+            navigationController?.pushViewController(dealDetailVC, animated: true)
+        } else {
+            // Alert them there isn't a current valid saved deal
+            let alertController = UIAlertController(title: "No Deals", message: "Either your deal expired, or you haven't saved one.", preferredStyle: .Alert)
+            // Add button action to swap
+            let cancelMove = UIAlertAction(title: "Ok", style: .Default, handler: {
+                (action) -> Void in
+            })
+            alertController.addAction(cancelMove)
+            presentViewController(alertController, animated: true, completion: nil)
+        }
+
+        
+    }
+    
     
 
     

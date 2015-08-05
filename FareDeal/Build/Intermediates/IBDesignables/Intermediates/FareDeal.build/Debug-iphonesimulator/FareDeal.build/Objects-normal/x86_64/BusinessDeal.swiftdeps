@@ -6,24 +6,24 @@ nominals:
 class-members:
 - "id"
 - "timeLimit"
+- "title"
 - "value"
+- "desc"
 - "tier"
 - "primaryKey"
-- "desc"
-- "title"
 top-level:
-- "String"
 - "FloatLiteralType"
-- "Object"
+- "String"
 - "IntegerLiteralType"
 - "StringLiteralType"
+- "Object"
 member-access:
-- "CSo13RLMObjectBase"
-- "PSs9AnyObject"
-- "CSo8NSObject"
-- !private "Sq"
-- "C8FareDeal12BusinessDeal"
 - "C10RealmSwift6Object"
+- "PSs9AnyObject"
+- "C8FareDeal12BusinessDeal"
+- "CSo8NSObject"
+- "CSo13RLMObjectBase"
+- !private "Sq"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Swift.swiftmodule"

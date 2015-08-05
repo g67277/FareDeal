@@ -1,5 +1,5 @@
 version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
-options: "81294789eefcc94af102d9917bf54ab5"
+options: "40e5e852addd836c19891cf7727f9871"
 inputs: 
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RestaurantDealsVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/StoreVC.swift"
@@ -11,7 +11,6 @@ inputs:
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RegisterRestaurantVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/ForgotPasswordUserVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RegisterUserVC.swift"
-- "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RestaurantDealCell.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/FoodCategories.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/CardOverlayView.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/GradientView.swift"
@@ -21,6 +20,7 @@ inputs:
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/SignInVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/SavedDeal.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/VenueDeal.swift"
+- "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/FavoriteVenue.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/DataApi.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/InitialScreenVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/FavoritesCell.swift"

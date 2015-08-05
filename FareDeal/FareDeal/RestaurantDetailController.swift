@@ -24,15 +24,34 @@ class RestaurantDetailController: UIViewController {
     
     @IBOutlet weak var dealView: UIView!
     @IBOutlet weak var dealTitleLabel: UILabel!
+    @IBOutlet weak var dealDescLabel: UILabel!
     @IBOutlet weak var dealValueLabel: UILabel!
     
     var thisVenue: Venue?
+    var favVenue: FavoriteVenue?
+    var isFavorite: Bool = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpRestaurant()
         // Do any additional setup after loading the view.
+        if isFavorite {
+            if let venue: FavoriteVenue = favVenue {
+                if venue.sourceType == "Saloof" {
+                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: venue.defaultDealTitle, dealDesc: venue.defaultDealDesc, dealValue: venue.defaultDealValue)
+                } else {
+                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: "", dealDesc: "", dealValue: 0.0)
+                }
+            }
+        } else {
+            if let venue: Venue = thisVenue {
+                if venue.sourceType == "Saloof" {
+                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: venue.defaultDealTitle, dealDesc: venue.defaultDealDesc, dealValue: venue.defaultDealValue)
+                } else {
+                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: "", dealDesc: "", dealValue: 0.0)
+                }
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,65 +59,76 @@ class RestaurantDetailController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func setUpRestaurant(){
+    func setUpDetailView (name: String, phone: String, address: String, website: String, image: UIImage, priceTier: Int, distance: Float, hours: String, sourceType: String, dealName: String, dealDesc: String, dealValue: Float) {
+        // String Labels
+        if var locationLabel = locationName {
+            locationLabel.text = name
+        }
+        if var phoneLabel = phoneTextView {
+            phoneLabel.text = phone
+        }
+        if var addressTextView = addressTextview {
+            addressTextView.text = address
+        }
+        if var websiteTextView = websiteUrlTextView {
+            websiteTextView.text = website
+        }
+        if var statusLabel = hoursStatusLabel {
+            let hours = hours
+            // set the status for the hours, or "Is Open" if one was not provided (only open locations are displayed)
+            statusLabel.text = (hours == "") ? "Is Open": hours
+        }
         
-        if let venue: Venue = thisVenue {
-            
-            // String Labels
-            if var locationLabel = locationName {
-                locationLabel.text = venue.name
-            }
-            if var phoneLabel = phoneTextView {
-                phoneLabel.text = venue.phone
-            }
-            if var addressTextView = addressTextview {
-                addressTextView.text = venue.address
-            }
-            if var websiteTextView = websiteUrlTextView {
-                websiteTextView.text = venue.webUrl
-            }
-            
-            // Image
-            if var imageView = locationImage {
-                imageView.contentMode = UIViewContentMode.ScaleAspectFill
-                imageView.clipsToBounds = true
-                imageView.image = venue.image
-            }
-            
-            
-            // Number Labels
-            if var tierLabel = priceTierlabel {
-                var priceTierValue = venue.priceTier
-                switch priceTierValue {
-                case 0:
-                    tierLabel.text = ""
-                case 1:
-                    tierLabel.text = "$"
-                case 2:
-                    tierLabel.text = "$$"
-                case 3:
-                    tierLabel.text = "$$$"
-                default:
-                    tierLabel.text = ""
-                }
-                
-            }
-            
-            if var distanceLabel = locationDistanceLabel {
-                // get the number of miles between the current user and the location,
-                var userDistance = venue.distance
-                var miles = userDistance/5280
-                let distance = Int(floor(miles))
-                distanceLabel.text = (distance == 1) ? "\(distance) mile" : "\(distance) miles"
-            }
-            
-            if var statusLabel = hoursStatusLabel {
-                let hours = venue.hours
-                // set the status for the hours, or "Is Open" if one was not provided (only open locations are displayed)
-                statusLabel.text = (hours == "") ? "Is Open": hours
+        // Image
+        if var imageView = locationImage {
+            imageView.contentMode = UIViewContentMode.ScaleAspectFill
+            imageView.clipsToBounds = true
+            imageView.image = image
+        }
+        
+        
+        // Number Labels
+        if var tierLabel = priceTierlabel {
+            var priceTierValue = priceTier
+            switch priceTierValue {
+            case 0:
+                tierLabel.text = ""
+            case 1:
+                tierLabel.text = "$"
+            case 2:
+                tierLabel.text = "$$"
+            case 3:
+                tierLabel.text = "$$$"
+            default:
+                tierLabel.text = ""
             }
         }
+        
+        if var distanceLabel = locationDistanceLabel {
+            // get the number of miles between the current user and the location,
+            var userDistance = distance
+            var miles = userDistance/5280
+            let distance = Int(floor(miles))
+            distanceLabel.text = (distance == 1) ? "\(distance) mile" : "\(distance) miles"
+        }
+        
+        // Default Deal
+        if sourceType == "Saloof" {
+            // Set up the value
+            let valueFloat:Float = dealValue, valueFormat = ".2"
+            dealValueLabel.text = "Value: $\(valueFloat.format(valueFormat))"
+            if var dealTitle = dealTitleLabel {
+                dealTitle.text = dealName
+            }
+            if var dealDes = dealDescLabel {
+                dealDes.text = dealDesc
+            }
+            // set up the deal
+        } else {
+            // hide the deal view
+            dealView.hidden = true
+        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -121,16 +151,42 @@ class RestaurantDetailController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "viewDefaultDealSegue" {
-
             let detailVC = segue.destinationViewController as! RestaurantDealDetaislVC
-           /* detailVC.thisRestaurant = thisRestaurant
-            // get the deal for this restaurant
-            if let locationDeals: AnyObject = thisRestaurant {
-                 var locationDeals = locationDeals["deals"] as! [AnyObject]
-                 var deal = locationDeals[0] as! [String: AnyObject]
-                detailVC.thisDeal = deal
-            }*/
+            //create a temporary default deal
+            var deal = createDealForDetailView()
+            detailVC.thisDeal = deal
+            detailVC.setUpForDefault = true
+            detailVC.setUpForSaved = false
         }
+    }
+    
+    func createDealForDetailView()-> VenueDeal {
+        let venueDeal = VenueDeal()
+        venueDeal.name = dealTitleLabel.text!
+        venueDeal.desc = dealDescLabel.text!
+        venueDeal.tier = 0
+        venueDeal.timeLimit = 4
+        if isFavorite {
+            venueDeal.value = favVenue!.defaultDealValue
+            venueDeal.venue.name = favVenue!.name
+            venueDeal.venue.identifier = favVenue!.identifier
+            venueDeal.venue.image = favVenue!.image
+            var venueId = "\(venueDeal.venue.identifier).0)"
+            venueDeal.id = venueId
+        } else  {
+            venueDeal.value = thisVenue!.defaultDealValue
+            venueDeal.venue.name = thisVenue!.name
+            venueDeal.venue.identifier = thisVenue!.identifier
+            var venueId = "\(venueDeal.venue.identifier).0)"
+            venueDeal.venue.image = thisVenue!.image
+            venueDeal.id = venueId
+        }
+        let realm = Realm()
+        realm.write {
+            realm.create(VenueDeal.self, value: venueDeal, update: true)
+        }
+
+        return venueDeal
     }
     
     @IBAction func shouldPushToSavedDeal(sender: AnyObject) {

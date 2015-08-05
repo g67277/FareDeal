@@ -41,7 +41,7 @@ class CardContentView: UIView {
     }
     
     func setUpRestaurant(contentView: UIView, dataObject: Venue){
-        
+
         let venue: Venue = dataObject
         if let label = contentView.viewWithTag(10) as? UILabel {
             label.text = venue.name
@@ -49,7 +49,6 @@ class CardContentView: UIView {
         if let phoneLabel = contentView.viewWithTag(15) as? UILabel {
             phoneLabel.text = venue.phone
         }
-        //var imageName = restaurant.imageName
         if let locationImage = contentView.viewWithTag(20) as? UIImageView {
             locationImage.contentMode = UIViewContentMode.ScaleAspectFill
             locationImage.clipsToBounds = true

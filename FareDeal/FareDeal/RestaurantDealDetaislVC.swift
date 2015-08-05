@@ -22,19 +22,55 @@ class RestaurantDealDetaislVC: UIViewController, TTCounterLabelDelegate {
     @IBOutlet var saveSwapButton: UIButton!
     
     var setUpForSaved: Bool = false
+    var setUpForDefault: Bool = false
     var thisDeal: VenueDeal?
     let realm = Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        if setUpForSaved {
-            // set up for the SavedDeal
-            setUpSaveSwapButton()
+        // is the user here from restaurant details to view default deal?
+        if setUpForDefault {
+            
         } else {
-            // set up for the VenueDeal
-            setUpDeal()
+            // Is the user here to view the saved deal?
+            if setUpForSaved {
+                // set up for the SavedDeal
+                setUpSaveSwapButton()
+            } else {
+                // set up for the passed in VenueDeal
+                setUpDeal()
+            }
+
         }
+    }
+    
+    func setUpDefaultDeal() {
+        if let deal: VenueDeal = thisDeal {
+            
+            // String Labels
+            if var locationLabel = locationName {
+                locationLabel.text = deal.venue.name
+            }
+            
+            // Image
+            if var imageView = locationImage {
+                imageView.contentMode = UIViewContentMode.ScaleAspectFill
+                imageView.clipsToBounds = true
+                imageView.image = deal.venue.image
+            }
+            
+            if var dealTitle = dealTitleLabel {
+                dealTitle.text = deal.name             }
+            if var dealDescription = dealdescriptionLabel {
+                dealDescription.text = deal.desc            }
+            if var dealValue = dealValueLabel {
+                let valueFloat:Float = deal.value, valueFormat = ".2"
+                dealValue.text = "$\(valueFloat.format(valueFormat))"
+            }
+            // for now, hide the button and view
+            
+        }
+
     }
     
     func setUpDeal(){

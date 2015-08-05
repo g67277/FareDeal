@@ -175,17 +175,17 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
             
         }else if sender.tag > 4 && sender.tag < 9{
             
-            ActionSheetStringPicker.showPickerWithTitle("Time", rows: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] as [AnyObject], initialSelection: 1, doneBlock: {
+            ActionSheetStringPicker.showPickerWithTitle("Time", rows: ["12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"] as [AnyObject], initialSelection: 1, doneBlock: {
                 picker, value, index in
                 
                 if sender.tag == 5 {
-                    self.weekdayO.setTitle("\(index) am", forState: UIControlState.Normal)
+                    self.weekdayO.setTitle("\(index)", forState: UIControlState.Normal)
                 }else if sender.tag == 6{
-                    self.weekdayC.setTitle("\(index) pm", forState: UIControlState.Normal)
+                    self.weekdayC.setTitle("\(index)", forState: UIControlState.Normal)
                 }else if sender.tag == 7{
-                    self.weekendO.setTitle("\(index) am", forState: UIControlState.Normal)
+                    self.weekendO.setTitle("\(index)", forState: UIControlState.Normal)
                 }else if sender.tag == 8{
-                    self.weekendC.setTitle("\(index) pm", forState: UIControlState.Normal)
+                    self.weekendC.setTitle("\(index)", forState: UIControlState.Normal)
                 }
                 
                 println("value = \(value)")

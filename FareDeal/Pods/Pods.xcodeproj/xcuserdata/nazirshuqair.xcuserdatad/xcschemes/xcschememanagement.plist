@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Koloda.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,12 +52,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>0B66737C6260FFAEEF62346890C3B458</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>25E0F0AEF3D0FF9A663EBD748DD275FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4CB69E9D2210E6AB25FC2A6B3154540C</key>
+		<key>7962CCC20BBB1A8E2DFE39384E173758</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>897131398B29023EDC5AA177CA652684</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,17 +77,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8DE435015357D86F7A13E5ED8EBD49DD</key>
+		<key>B7AD3502B8B1E02ACBFC1A76C7B87AAC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A6EE2EDE7A2E1463482227BEA8A5CC9D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F474B8B130781F7E73A14DF1487074B6</key>
+		<key>C7F03823B7724DA3C87796A091FA65B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

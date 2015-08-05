@@ -167,7 +167,6 @@
 		81481B2C1B56A2D6000EC386 = {
 			isa = PBXGroup;
 			children = (
-				81481B5A1B56A359000EC386 /* StoreKit.framework */,
 				81481B371B56A2D6000EC386 /* FareDeal */,
 				81481B4D1B56A2D6000EC386 /* FareDealTests */,
 				81481B361B56A2D6000EC386 /* Products */,
@@ -337,6 +336,7 @@
 		C31432AE2A16D3F550EAB896 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81481B5A1B56A359000EC386 /* StoreKit.framework */,
 				99649B5B1B6EF1DB0001335A /* CoreLocation.framework */,
 				99A04C621B60586E00C3E35B /* QuartzCore.framework */,
 				0C34D443EE29BEF7C8222446 /* Pods.framework */,

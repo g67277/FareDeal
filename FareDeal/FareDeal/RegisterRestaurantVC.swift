@@ -101,7 +101,7 @@ class RegisterRestaurantVC: UIViewController {
                 
                 
                 var post:NSString = "{\"UserName\":\"\(userName.text)\",\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\",\"IsBusiness\":\"true\"}"
-                                
+                
                 if authenticationCall.registerUser(post) {
                     var stringPost="grant_type=password&username=\(userName.text)&password=\(passwordField.text)"
                     

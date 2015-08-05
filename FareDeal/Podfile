@@ -6,3 +6,4 @@ pod "Koloda"
 pod 'ActionSheetPicker-3.0'
 pod 'RealmSwift', '~> 0.94'
 pod 'SwiftyJSON', '~> 2.2.0'
+pod 'IQKeyboardManager', '~> 3.2'

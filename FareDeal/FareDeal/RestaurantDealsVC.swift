@@ -332,10 +332,9 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     // ------------------- USER LOCATION PERMISSION REQUEST  ----------------------
     
     func showErrorAlert(error: NSError) {
-        let alertController = UIAlertController(title: "Error", message:error.localizedDescription, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Our Bad!", message:"Sorry, but we are having trouble finding where you are right now. Maybe try agian later.", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "Ok", style: .Default, handler: {
             (action) -> Void in
-            self.dismissViewControllerAnimated(true, completion: nil)
         })
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)

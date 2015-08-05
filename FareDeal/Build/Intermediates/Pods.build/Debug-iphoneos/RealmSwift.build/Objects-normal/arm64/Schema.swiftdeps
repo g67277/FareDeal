@@ -7,23 +7,23 @@ nominals:
 - "C10RealmSwift6Schema"
 class-members:
 top-level:
-- "Bool"
-- "Schema"
-- "Printable"
-- "ObjectSchema"
 - !private "RLMObjectSchema"
+- "Printable"
+- "Schema"
+- "Equatable"
 - "String"
 - "RLMSchema"
-- "Equatable"
+- "Bool"
+- "ObjectSchema"
 - "=="
 member-access:
-- !private "CSo9RLMSchema"
-- !private "Sa"
 - "C10RealmSwift6Schema"
-- !private "CSo8NSObject"
 - "PSs9Equatable"
-- "PSs9AnyObject"
 - "PSs9Printable"
+- !private "Sa"
+- !private "CSo8NSObject"
+- !private "CSo9RLMSchema"
+- "PSs9AnyObject"
 - !private "C10RealmSwift12ObjectSchema"
 dynamic-lookup:
 cross-module:

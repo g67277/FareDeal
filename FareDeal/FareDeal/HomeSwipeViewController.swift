@@ -36,14 +36,17 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     @IBOutlet var searchButton: UIButton!
     @IBOutlet weak var searchDisplayOverview: UIView!
     @IBOutlet weak var swipeableView: KolodaView!
+    @IBOutlet var activityView: UIView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var activityLabel: UILabel!
     
-    //var restaurants: [AnyObject] = []
-    //var favoriteRestaurants: [AnyObject] = []
+    
+    // Search Properties
     var searchActive : Bool = false
     var searchString = ""
+    var offsetCount: Int = 0
     
     let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-
     
     
     /* -----------------------  VIEW CONTROLLER METHODS --------------------------- */
@@ -53,23 +56,20 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         // Set up the Kolodo view delegate and data source
         swipeableView.dataSource = self
         swipeableView.delegate = self
-        getLocationPermissionAndData()
-
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidLayoutSubviews() {
-    }
 
+    
     override func viewDidAppear(animated: Bool) {
         // Add the second button to the nav bar
         let logOutButton = UIBarButtonItem(image: UIImage(named: "logOut"), style: .Plain, target: self, action: "logOut")
         self.navigationItem.setLeftBarButtonItems([logOutButton, self.dealButton], animated: true)
-        swipeableView.reloadData()
+        getLocationPermissionAndData()
     }
     
     
@@ -79,8 +79,18 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     }
     
+    func activityIndicatorDisplaying(appear: Bool, message: String) {
+        activityView.hidden = !appear
+        if appear {
+            activityIndicator.startAnimating()
+            activityLabel.text = message
+        } else {
+            activityIndicator.stopAnimating()
+        }
+    }
     func getLocationPermissionAndData() {
         // Start getting the users location
+        activityIndicatorDisplaying(true, message: "Locating...")
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.delegate = self
@@ -89,6 +99,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         if status == .NotDetermined {
             // Request access
             locationManager.requestWhenInUseAuthorization()
+            activityIndicatorDisplaying(false, message: "")
         } else if status == CLAuthorizationStatus.AuthorizedWhenInUse
             || status == CLAuthorizationStatus.AuthorizedAlways {
                 // we have permission, get location
@@ -96,6 +107,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         } else {
             // We do not have premission, request it
             requestLocationPermission()
+            activityIndicatorDisplaying(false, message: "")
         }
 
     }
@@ -155,16 +167,15 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     // KolodaView DataSource
     func kolodaNumberOfCards(koloda: KolodaView) -> UInt {
+
         return UInt(venues.count)
     }
     
     func kolodaViewForCardAtIndex(koloda: KolodaView, index: UInt) -> UIView {
-        
         //Check this for a better fix of the sizing issue...
         //println("bounds for first 3: \(self.swipeableView.bounds)")
         
         var cardView = CardContentView(frame: self.swipeableView.bounds)
-        
         var contentView = NSBundle.mainBundle().loadNibNamed("CardContentView", owner: self, options: nil).first! as! UIView
         contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
         
@@ -172,13 +183,11 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         //println(restaurant)
         cardView.setUpRestaurant(contentView, dataObject: restaurant)
         cardView.addSubview(contentView)
-        
         // Layout constraints to keep card view within the swipeable view bounds as it moves
         let metrics = ["width":cardView.bounds.width, "height": cardView.bounds.height]
         let views = ["contentView": contentView, "cardView": cardView]
         cardView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView(width)]", options: .AlignAllLeft, metrics: metrics, views: views))
         cardView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(height)]", options: .AlignAllLeft, metrics: metrics, views: views))
-        
         return cardView
     }
     
@@ -194,25 +203,37 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         println(swipedVenue)
         // check the direction
         if direction == SwipeResultDirection.Left {
+            // set up for deletion
             realm.write {
                 swipedVenue.swipeValue = 2
                 self.realm.create(Venue.self, value: swipedVenue, update: true)
             }
         }
         if direction == SwipeResultDirection.Right {
+            // save this venue as a favorite
+            var favorite = FavoriteVenue()
+            favorite.name = swipedVenue.name
+            favorite.phone = swipedVenue.phone
+            favorite.webUrl = swipedVenue.webUrl
+            favorite.image = swipedVenue.image
+            favorite.distance = swipedVenue.distance
+            favorite.identifier = swipedVenue.identifier
+            favorite.address = swipedVenue.address
+            favorite.priceTier = swipedVenue.priceTier
+            favorite.hours = swipedVenue.hours
+            favorite.swipeValue = 1
+            favorite.sourceType = swipedVenue.sourceType
+            favorite.defaultDealDesc = swipedVenue.defaultDealDesc
+            favorite.defaultDealTitle = swipedVenue.defaultDealTitle
+            favorite.defaultDealValue = swipedVenue.defaultDealValue
             realm.write {
-                swipedVenue.swipeValue = 1
+                self.realm.create(FavoriteVenue.self, value: favorite, update: true)
+                // and set up this one for deletion
+                swipedVenue.swipeValue = 2
                 self.realm.create(Venue.self, value: swipedVenue, update: true)
             }
         }
-        
-        /*
-        //Load more cards
-        if index == UInt(venues.count) {
-            removeRejectedVenues()
-           // swipeableView.reloadData()
-            println("Need more cards")
-        }*/
+
     }
     
     func removeRejectedVenues () {
@@ -222,11 +243,17 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         realm.write {
             self.realm.delete(rejectedVenues)
         }
+        // update the venues array (test to see if this handles the out of bounds issue)
+        venues = Realm().objects(Venue)
     }
     
     func kolodaDidRunOutOfCards(koloda: KolodaView) {
+        println("Ran out of cards, getting foursquare locations")
+        activityIndicatorDisplaying(true, message: "Saloofing...")
         removeRejectedVenues()
         swipeableView.resetCurrentCardNumber()
+        // get more foursquare items
+        fetchFoursquareVenues()
     }
     
     func kolodaDidSelectCardAtIndex(koloda: KolodaView, index: UInt) {
@@ -235,6 +262,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("restaurantDetailVC") as! RestaurantDetailController
         self.navigationController?.pushViewController(detailVC, animated: true)
         detailVC.thisVenue = venue
+        detailVC.isFavorite = false
     }
 
     
@@ -252,17 +280,16 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             (action) -> Void in
             let URL = NSURL(string: UIApplicationOpenSettingsURLString)
             UIApplication.sharedApplication().openURL(URL!)
-            self.dismissViewControllerAnimated(true, completion: nil)
+            //self.dismissViewControllerAnimated(true, completion: nil)
         })
         alertController.addAction(openSettings)
         presentViewController(alertController, animated: true, completion: nil)
     }
     
     func showErrorAlert(error: NSError) {
-        let alertController = UIAlertController(title: "Error", message:error.localizedDescription, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Our Bad!", message:"Sorry, but we are having trouble finding where you are right now. Maybe try agian later.", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "Ok", style: .Default, handler: {
             (action) -> Void in
-            self.dismissViewControllerAnimated(true, completion: nil)
         })
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -291,6 +318,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         }
         // once we have locations, stop retrieving their location
         locationManager.stopUpdatingLocation()
+        activityIndicatorDisplaying(false, message: "")
     }
     
     func loadSaloofData () {
@@ -315,43 +343,60 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
                     parseJSON(venueJson, source: Constants.sourceTypeSaloof)
                 }
             }
-            swipeableView.reloadData()
         }
+        // see if we have at least 10 venues
+        if venues.count < 10 {
+            println("We have room for more venues, adding foursquare locations")
+            // load some foursquare locations
+            fetchFoursquareVenues()
+        } else {
+            println("We have enough saloof vanues, loading locations")
+             swipeableView.reloadData()
+            activityIndicatorDisplaying(false, message: "")
+        }
+
     }
     
-    func exploreFoursquareVenues() {
+    func fetchFoursquareVenues() {
         // Begin loading data from foursquare
-        // get the location
-        // check if we need to add a search string
+        // get the location & possible search string
         let searchTerm = (searchActive) ? "&query=\(searchString)" : ""
         let location = self.locationManager.location
         let userLocation  = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
-        let foursquareURl = NSURL(string: "https://api.foursquare.com/v2/venues/explore?&client_id=KNSDVZA1UWUPSYC1QDCHHTLD3UG5HDMBR5JA31L3PHGFYSA0&client_secret=U40WCCSESYMKAI4UYAWGK2FMVE3CBMS0FTON0KODNPEY0LBR&section=food&openNow=1&v=20150101&m=foursquare&venuePhotos=1&limit=10&ll=\(userLocation)\(searchTerm)")!
+        let foursquareURl = NSURL(string: "https://api.foursquare.com/v2/venues/explore?&client_id=KNSDVZA1UWUPSYC1QDCHHTLD3UG5HDMBR5JA31L3PHGFYSA0&client_secret=U40WCCSESYMKAI4UYAWGK2FMVE3CBMS0FTON0KODNPEY0LBR&section=food&openNow=1&v=20150101&m=foursquare&venuePhotos=1&limit=10&offset=\(offsetCount)&ll=\(userLocation)\(searchTerm)")!
         //println(foursquareURl)
-        let response = NSData(contentsOfURL: foursquareURl)!
-        // De-serialize the response to JSON
-        let json: AnyObject? = (NSJSONSerialization.JSONObjectWithData(response,
-            options: NSJSONReadingOptions(0),
-            error: nil) as! NSDictionary)["response"]
-        
-        if let object: AnyObject = json {
-            haveItems = true
-            var groups = object["groups"] as! [AnyObject]
-            //  get array of items
-            var venues = groups[0]["items"] as! [AnyObject]
-            for item in venues {
-                // get the venue
-                if let venue = item["venue"] as? JSONParameters {
-                    //println(venue)
-                    let venueJson = JSON(venue)
-                    // Parse the JSON file using SwiftlyJSON
-                    parseJSON(venueJson, source: Constants.sourceTypeFoursquare)
+        if  let response = NSData(contentsOfURL: foursquareURl) {
+            let json: AnyObject? = (NSJSONSerialization.JSONObjectWithData(response,
+                options: NSJSONReadingOptions(0),
+                error: nil) as! NSDictionary)["response"]
+            
+            if let object: AnyObject = json {
+                haveItems = true
+                var groups = object["groups"] as! [AnyObject]
+                //  get array of items
+                var venues = groups[0]["items"] as! [AnyObject]
+                for item in venues {
+                    // get the venue
+                    if let venue = item["venue"] as? JSONParameters {
+                        //println(venue)
+                        let venueJson = JSON(venue)
+                        // Parse the JSON file using SwiftlyJSON
+                        parseJSON(venueJson, source: Constants.sourceTypeFoursquare)
+                    }
                 }
+                println("Data gathering completed, retrieved \(venues.count) venues")
+                swipeableView.reloadData()
+                activityIndicatorDisplaying(false, message: "")
             }
-            println("Data gathering completed, retrieved \(venues.count) venues")
-            swipeableView.reloadData()
+            
+            offsetCount = offsetCount + 10
+
+        } else {
+            activityIndicatorDisplaying(false, message: "That's It!")
         }
+        // De-serialize the response to JSON
     }
+    
     
     func parseJSON(json: JSON, source: String) {
         let venue = Venue()

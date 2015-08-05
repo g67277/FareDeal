@@ -13,7 +13,7 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var tableview: UITableView!
     // Query using a predicate string
-    var favoriteVenues = Realm().objects(Venue).filter("\(Constants.realmFilterFavorites) = \(1)")
+    var favoriteVenues = Realm().objects(FavoriteVenue).filter("\(Constants.realmFilterFavorites) = \(1)")
     
     
     /* -----------------------  VIEW CONTROLLER  METHODS --------------------------- */
@@ -50,7 +50,7 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:FavoritesCell = tableView.dequeueReusableCellWithIdentifier("favoritesCell") as! FavoritesCell
-        let venue: Venue = favoriteVenues[indexPath.row]
+        let venue: FavoriteVenue = favoriteVenues[indexPath.row]
         cell.setUpCell(venue.name, phone: venue.phone, image: venue.image!)
         return cell
     }
@@ -61,9 +61,10 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "restaurantDetailSegue" {
             if let indexPath = self.tableview.indexPathForSelectedRow() {
-                var venue: Venue = favoriteVenues[indexPath.row]
+                var venue: FavoriteVenue = favoriteVenues[indexPath.row]
                 let destinationVC = segue.destinationViewController as! RestaurantDetailController
-                destinationVC.thisVenue = venue
+                destinationVC.favVenue = venue
+                destinationVC.isFavorite = true
             }
         }
     }

@@ -63,6 +63,7 @@ class SignInVC: UIViewController {
                 && validation.validateInput(passwordField.text, check: 0, title: "Empty Password", message: "Please enter a password"){
                 
                     var stringPost="grant_type=password&username=\(userNameField.text)&password=\(passwordField.text)"
+                    
                     if authenticationCall.signIn(stringPost){
                         self.userNameField.text = ""
                         self.passwordField.text = ""

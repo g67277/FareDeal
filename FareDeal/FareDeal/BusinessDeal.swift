@@ -11,7 +11,6 @@ import RealmSwift
 
 class BusinessDeal:Object{
     
-    dynamic var tier = 0
     dynamic var title = ""
     dynamic var desc = ""
     dynamic var timeLimit = 0

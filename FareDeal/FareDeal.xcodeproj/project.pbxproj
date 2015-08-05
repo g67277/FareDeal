@@ -29,11 +29,9 @@
 		8185E3031B60A20A00059124 /* InitialScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185E3021B60A20A00059124 /* InitialScreenVC.swift */; };
 		819281D91B5B3E680003AD4D /* DealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281D81B5B3E680003AD4D /* DealsVC.swift */; };
 		819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DA1B5B3EA40003AD4D /* DealDetailsVC.swift */; };
-		819281DD1B5B3FD20003AD4D /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DC1B5B3FD20003AD4D /* Deal.swift */; };
 		819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DF1B5B427C0003AD4D /* DealsCell.swift */; };
 		81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B5B6AE1B56D375009B522A /* StoreVC.swift */; };
 		81B879121B691113003B1BB0 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */; };
-		81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81FA1BA01B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld */; };
 		972B8D8EA6F19199DCF8C070 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C34D443EE29BEF7C8222446 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		993285D51B5F3DF8003C19E1 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */; };
 		994C61331B69244600E5EF7C /* ForgotPasswordUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C61321B69244600E5EF7C /* ForgotPasswordUserVC.swift */; };
@@ -74,8 +72,6 @@
 
 /* Begin PBXFileReference section */
 		0C34D443EE29BEF7C8222446 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		81008C0F1B5C44830019E297 /* DataApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataApi.swift; sourceTree = "<group>"; };
-		81008C111B5C46AE0019E297 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		813222DB1B681A3500613C60 /* RegisterRestaurantVC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterRestaurantVC2.swift; sourceTree = "<group>"; };
 		8132230E1B685F1800613C60 /* FoodCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCategories.swift; sourceTree = "<group>"; };
 		81481B351B56A2D6000EC386 /* FareDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FareDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,13 +96,11 @@
 		8185E3021B60A20A00059124 /* InitialScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialScreenVC.swift; sourceTree = "<group>"; };
 		819281D81B5B3E680003AD4D /* DealsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsVC.swift; sourceTree = "<group>"; };
 		819281DA1B5B3EA40003AD4D /* DealDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealDetailsVC.swift; sourceTree = "<group>"; };
-		819281DC1B5B3FD20003AD4D /* Deal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
 		819281DF1B5B427C0003AD4D /* DealsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsCell.swift; sourceTree = "<group>"; };
 		81B5B6AE1B56D375009B522A /* StoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreVC.swift; sourceTree = "<group>"; };
 		81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MidCase RegLine.otf"; sourceTree = "<group>"; };
 		81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		81B879171B6931CB003B1BB0 /* FareDeal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FareDeal-Bridging-Header.h"; sourceTree = "<group>"; };
-		81FA1BA11B5B0FFB00ABCD53 /* FareDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FareDeal.xcdatamodel; sourceTree = "<group>"; };
 		993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
 		994C61321B69244600E5EF7C /* ForgotPasswordUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordUserVC.swift; sourceTree = "<group>"; };
 		995935E21B5EDA1C009CDD26 /* CardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
@@ -164,8 +158,6 @@
 		81008C131B5C46B40019E297 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				81008C0F1B5C44830019E297 /* DataApi.swift */,
-				81008C111B5C46AE0019E297 /* DataManager.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -205,7 +197,6 @@
 				81481B411B56A2D6000EC386 /* Images.xcassets */,
 				81481B431B56A2D6000EC386 /* LaunchScreen.xib */,
 				81481B381B56A2D6000EC386 /* Supporting Files */,
-				81FA1BA01B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld */,
 				81B879171B6931CB003B1BB0 /* FareDeal-Bridging-Header.h */,
 			);
 			path = FareDeal;
@@ -259,7 +250,6 @@
 			children = (
 				99A6E8DC1B69EE89005179A6 /* Constants.swift */,
 				99A6E8DD1B69EE89005179A6 /* Restaurant.swift */,
-				819281DC1B5B3FD20003AD4D /* Deal.swift */,
 				8132230E1B685F1800613C60 /* FoodCategories.swift */,
 				99A6E8D81B69ED97005179A6 /* Deals.swift */,
 				817BC8711B6DA5F10059C31D /* BusinessDeal.swift */,
@@ -411,7 +401,7 @@
 				TargetAttributes = {
 					81481B341B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 56R6M4W3X8;
+						DevelopmentTeam = 9J676A68SR;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -524,7 +514,6 @@
 				99A6E8D01B69EC6C005179A6 /* UserDealCell.swift in Sources */,
 				99A6E8D51B69ECCA005179A6 /* TTCounterLabel.m in Sources */,
 				99A04C611B6050B900C3E35B /* RestaurantDealDetaislVC.swift in Sources */,
-				81008C121B5C46AE0019E297 /* DataManager.swift in Sources */,
 				819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */,
 				995935F01B5EDA1C009CDD26 /* FavoritesTVController.swift in Sources */,
 				8185E2FA1B608AD100059124 /* RegisterRestaurantVC.swift in Sources */,
@@ -540,12 +529,9 @@
 				99A6E8D61B69ECCA005179A6 /* TTTAttributedLabel.m in Sources */,
 				998038FC1B704998007C53B7 /* SavedDeal.swift in Sources */,
 				998038F71B6FC71A007C53B7 /* VenueDeal.swift in Sources */,
-				99ECB7691B71278B0008BAC5 /* FavoriteVenue.swift in Sources */,
-				81008C101B5C44830019E297 /* DataApi.swift in Sources */,
 				8185E3031B60A20A00059124 /* InitialScreenVC.swift in Sources */,
 				995935EF1B5EDA1C009CDD26 /* FavoritesCell.swift in Sources */,
 				819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */,
-				81FA1BA21B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld in Sources */,
 				99A6E8D91B69ED97005179A6 /* Deals.swift in Sources */,
 				99A6E8DF1B69EE89005179A6 /* Restaurant.swift in Sources */,
 				817BC8721B6DA5F10059C31D /* BusinessDeal.swift in Sources */,
@@ -556,7 +542,6 @@
 				8185E2FF1B6090A000059124 /* AuthenticationCalls.swift in Sources */,
 				81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */,
 				995935EB1B5EDA1C009CDD26 /* CardContentView.swift in Sources */,
-				819281DD1B5B3FD20003AD4D /* Deal.swift in Sources */,
 				8185E2FD1B608FE800059124 /* SignInUserVC.swift in Sources */,
 				99CD57781B6AC03300DBDF3A /* DealHeaderCell.swift in Sources */,
 				99A6E8DE1B69EE89005179A6 /* Constants.swift in Sources */,
@@ -793,19 +778,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		81FA1BA01B5B0FFB00ABCD53 /* FareDeal.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				81FA1BA11B5B0FFB00ABCD53 /* FareDeal.xcdatamodel */,
-			);
-			currentVersion = 81FA1BA11B5B0FFB00ABCD53 /* FareDeal.xcdatamodel */;
-			path = FareDeal.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 81481B2D1B56A2D6000EC386 /* Project object */;
 }

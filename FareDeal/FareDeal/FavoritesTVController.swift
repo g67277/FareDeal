@@ -52,6 +52,12 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
         var cell:FavoritesCell = tableView.dequeueReusableCellWithIdentifier("favoritesCell") as! FavoritesCell
         let venue: FavoriteVenue = favoriteVenues[indexPath.row]
         cell.setUpCell(venue.name, phone: venue.phone, image: venue.image!)
+        if venue.sourceType == Constants.sourceTypeFoursquare {
+            // hide the favorites/likes view
+            cell.likesBarView.hidden = true
+        } else {
+            cell.setUpLikesBar(venue.likes, favorites: venue.favorites, price: venue.priceTier, distance: venue.distance)
+        }
         return cell
     }
     

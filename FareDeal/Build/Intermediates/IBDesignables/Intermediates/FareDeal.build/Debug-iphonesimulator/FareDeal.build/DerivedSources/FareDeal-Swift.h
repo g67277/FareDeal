@@ -100,10 +100,6 @@ typedef struct _NSZone NSZone;
 @class UIWindow;
 @class UIApplication;
 @class NSObject;
-@class NSURL;
-@class NSManagedObjectModel;
-@class NSPersistentStoreCoordinator;
-@class NSManagedObjectContext;
 
 SWIFT_CLASS("_TtC8FareDeal11AppDelegate")
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -114,11 +110,6 @@ SWIFT_CLASS("_TtC8FareDeal11AppDelegate")
 - (void)applicationWillEnterForeground:(UIApplication * __nonnull)application;
 - (void)applicationDidBecomeActive:(UIApplication * __nonnull)application;
 - (void)applicationWillTerminate:(UIApplication * __nonnull)application;
-@property (nonatomic) NSURL * __nonnull applicationDocumentsDirectory;
-@property (nonatomic) NSManagedObjectModel * __nonnull managedObjectModel;
-@property (nonatomic) NSPersistentStoreCoordinator * __nullable persistentStoreCoordinator;
-@property (nonatomic) NSManagedObjectContext * __nullable managedObjectContext;
-- (void)saveContext;
 - (SWIFT_NULLABILITY(nonnull) instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -128,7 +119,6 @@ SWIFT_CLASS("_TtC8FareDeal11AppDelegate")
 
 SWIFT_CLASS("_TtC8FareDeal12BusinessDeal")
 @interface BusinessDeal : Object
-@property (nonatomic) NSInteger tier;
 @property (nonatomic, copy) NSString * __nonnull title;
 @property (nonatomic, copy) NSString * __nonnull desc;
 @property (nonatomic) NSInteger timeLimit;
@@ -272,10 +262,11 @@ SWIFT_CLASS("_TtC8FareDeal9DealsCell")
 @property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealDesc;
 @property (nonatomic, weak) IBOutlet UILabel * __null_unspecified timeLimit;
 @property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealValue;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified tierLabel;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * __nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)awakeFromNib;
-- (void)refreshCell:(NSString * __nonnull)title desc:(NSString * __nonnull)desc time:(NSInteger)time value:(NSString * __nonnull)value;
+- (void)refreshCell:(NSString * __nonnull)title desc:(NSString * __nonnull)desc time:(NSInteger)time value:(NSString * __nonnull)value tier:(NSInteger)tier;
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 @end
 
@@ -320,6 +311,8 @@ SWIFT_CLASS("_TtC8FareDeal13FavoriteVenue")
 @property (nonatomic, copy) NSString * __nonnull defaultDealTitle;
 @property (nonatomic, copy) NSString * __nonnull defaultDealDesc;
 @property (nonatomic) float defaultDealValue;
+@property (nonatomic) NSInteger favorites;
+@property (nonatomic) NSInteger likes;
 @property (nonatomic) UIImage * __nullable image;
 + (NSArray * __nonnull)ignoredProperties;
 + (NSString * __nonnull)primaryKey;
@@ -334,12 +327,17 @@ SWIFT_CLASS("_TtC8FareDeal13FavoritesCell")
 @interface FavoritesCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet UILabel * __null_unspecified locationTitle;
 @property (nonatomic, weak) IBOutlet UILabel * __null_unspecified locationPhone;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified likesLabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified favoritesLabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified priceDistanceLabel;
 @property (nonatomic, weak) IBOutlet UIImageView * __null_unspecified locationImage;
+@property (nonatomic) IBOutlet UIView * __null_unspecified likesBarView;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * __nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)awakeFromNib;
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 - (void)setUpCell:(NSString * __nonnull)name phone:(NSString * __nonnull)phone image:(UIImage * __nonnull)image;
+- (void)setUpLikesBar:(NSInteger)likes favorites:(NSInteger)favorites price:(NSInteger)price distance:(float)distance;
 @end
 
 
@@ -425,6 +423,8 @@ SWIFT_CLASS("_TtC8FareDeal23HomeSwipeViewController")
 @property (nonatomic) IBOutlet UIView * __null_unspecified activityView;
 @property (nonatomic) IBOutlet UIActivityIndicatorView * __null_unspecified activityIndicator;
 @property (nonatomic) IBOutlet UILabel * __null_unspecified activityLabel;
+@property (nonatomic) UIBarButtonItem * __null_unspecified searchBarButton;
+@property (nonatomic) UIBarButtonItem * __null_unspecified cancelButton;
 @property (nonatomic) BOOL searchActive;
 @property (nonatomic, copy) NSString * __nonnull searchString;
 @property (nonatomic) NSInteger offsetCount;
@@ -435,12 +435,13 @@ SWIFT_CLASS("_TtC8FareDeal23HomeSwipeViewController")
 - (void)logOut;
 - (void)activityIndicatorDisplaying:(BOOL)appear message:(NSString * __nonnull)message;
 - (void)getLocationPermissionAndData;
-- (IBAction)showSearchOverlay:(id __nonnull)sender;
+- (void)shouldOpenSearch;
 - (void)searchBarTextDidBeginEditing:(UISearchBar * __nonnull)searchBar;
 - (void)searchBarTextDidEndEditing:(UISearchBar * __nonnull)searchBar;
 - (void)searchBarCancelButtonClicked:(UISearchBar * __nonnull)searchBar;
 - (void)searchBarSearchButtonClicked:(UISearchBar * __nonnull)searchBar;
 - (void)searchBar:(UISearchBar * __nonnull)searchBar textDidChange:(NSString * __nonnull)searchText;
+- (void)pullNewSearchResults;
 - (IBAction)leftButtonTapped;
 - (IBAction)rightButtonTapped;
 - (NSUInteger)kolodaNumberOfCards:(KolodaView * __nonnull)koloda;
@@ -678,12 +679,15 @@ SWIFT_CLASS("_TtC8FareDeal26RestaurantDetailController")
 @property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealDescLabel;
 @property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealValueLabel;
+@property (nonatomic) IBOutlet UIView * __null_unspecified favoriteLikesView;
+@property (nonatomic) IBOutlet UILabel * __null_unspecified favoritesLabel;
+@property (nonatomic) IBOutlet UILabel * __null_unspecified likesLabel;
 @property (nonatomic) Venue * __nullable thisVenue;
 @property (nonatomic) FavoriteVenue * __nullable favVenue;
 @property (nonatomic) BOOL isFavorite;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
-- (void)setUpDetailView:(NSString * __nonnull)name phone:(NSString * __nonnull)phone address:(NSString * __nonnull)address website:(NSString * __nonnull)website image:(UIImage * __nonnull)image priceTier:(NSInteger)priceTier distance:(float)distance hours:(NSString * __nonnull)hours sourceType:(NSString * __nonnull)sourceType dealName:(NSString * __nonnull)dealName dealDesc:(NSString * __nonnull)dealDesc dealValue:(float)dealValue;
+- (void)setUpDetailView:(NSString * __nonnull)name phone:(NSString * __nonnull)phone address:(NSString * __nonnull)address website:(NSString * __nonnull)website image:(UIImage * __nonnull)image priceTier:(NSInteger)priceTier distance:(float)distance hours:(NSString * __nonnull)hours sourceType:(NSString * __nonnull)sourceType dealName:(NSString * __nonnull)dealName dealDesc:(NSString * __nonnull)dealDesc dealValue:(float)dealValue likes:(NSInteger)likes favorites:(NSInteger)favorites;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
 - (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
@@ -799,6 +803,8 @@ SWIFT_CLASS("_TtC8FareDeal12UserDealCell")
 @property (nonatomic, weak) IBOutlet UITextView * __null_unspecified dealDesc;
 @property (nonatomic, weak) IBOutlet TTCounterLabel * __null_unspecified timeLimit;
 @property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dealValue;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified likesLabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified favoritesLabel;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * __nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)awakeFromNib;
@@ -823,6 +829,8 @@ SWIFT_CLASS("_TtC8FareDeal5Venue")
 @property (nonatomic, copy) NSString * __nonnull defaultDealTitle;
 @property (nonatomic, copy) NSString * __nonnull defaultDealDesc;
 @property (nonatomic) float defaultDealValue;
+@property (nonatomic) NSInteger favorites;
+@property (nonatomic) NSInteger likes;
 @property (nonatomic) UIImage * __nullable image;
 + (NSArray * __nonnull)ignoredProperties;
 + (NSString * __nonnull)primaryKey;

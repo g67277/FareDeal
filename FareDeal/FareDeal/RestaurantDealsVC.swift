@@ -49,6 +49,11 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
         navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         navBar.shadowImage = UIImage()
         navBar.backgroundColor = UIColor.clearColor()
+        // Start getting the users location
+        locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
     }
     
     
@@ -62,12 +67,6 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Start getting the users location
-        locationManager = CLLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
-
         tableview.rowHeight = 192
         //loadDeals()
         //loadSaloofData()
@@ -129,7 +128,12 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
         venue.distance = json[Constants.restLocationObject][Constants.restDistance].floatValue
         venue.priceTier = json[Constants.restPriceObject][Constants.restTier].intValue
         venue.sourceType = source
-        venue.swipeValue = 3  // this is a deal only restaurant
+        venue.swipeValue = 3  // deal only
+        venue.favorites = json[Constants.restStats][Constants.restFavorites].intValue
+        venue.likes = json[Constants.restStats][Constants.restLikes].intValue
+        
+        
+        // this is a deal only restaurant
         let imageUrl = NSURL(string: imageName)
         if let data = NSData(contentsOfURL: imageUrl!){
             

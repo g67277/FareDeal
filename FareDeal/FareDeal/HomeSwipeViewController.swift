@@ -39,6 +39,9 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     @IBOutlet var activityView: UIView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var activityLabel: UILabel!
+    var searchBarButton: UIBarButtonItem!
+    var cancelButton: UIBarButtonItem!
+    
     
     
     // Search Properties
@@ -68,6 +71,8 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     override func viewDidAppear(animated: Bool) {
         // Add the second button to the nav bar
         let logOutButton = UIBarButtonItem(image: UIImage(named: "logOut"), style: .Plain, target: self, action: "logOut")
+        searchBarButton = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Done, target: self, action: "shouldOpenSearch")
+        self.navigationItem.setRightBarButtonItem(searchBarButton, animated: false)
         self.navigationItem.setLeftBarButtonItems([logOutButton, self.dealButton], animated: true)
         getLocationPermissionAndData()
     }
@@ -114,8 +119,10 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     /* --------  SEARCH BAR DISPLAY AND DELEGATE METHODS ---------- */
     
-    @IBAction func showSearchOverlay(sender: AnyObject) {
-        searchDisplayOverview.hidden = !searchDisplayOverview.hidden
+    func shouldOpenSearch () {
+        searchDisplayOverview.hidden = false
+        self.navigationItem.rightBarButtonItem?.enabled = false
+        
     }
     
     
@@ -125,8 +132,6 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        searchActive = false;
-        //println("User: Home: User finished editing text")
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
@@ -134,25 +139,35 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         searchBar.text = ""
         searchBar.endEditing(true)
         searchDisplayOverview.hidden = true
-        // reload cards with active search using search string
-        swipeableView.reloadData()
+        self.navigationItem.rightBarButtonItem?.enabled = true
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchActive = false;
+        println("search button clicked")
+        searchActive = true;
+        searchString = searchBar.text
         searchBar.text = ""
         searchBar.endEditing(true)
-       // println("User: Home: User clicked search button to search for \(searchString)")
-        searchDisplayOverview.hidden = true
+        pullNewSearchResults()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         searchString = searchText
         searchActive = (searchString.isEmpty) ? false : true
-        
     }
     
-    
+    func pullNewSearchResults () {
+        realm.write {
+            // empty out the current stack
+            self.realm.delete(self.venues)
+        }
+        // reset the offset 
+        offsetCount = 0
+        fetchFoursquareVenues()
+        searchDisplayOverview.hidden = true
+        self.navigationItem.rightBarButtonItem?.enabled = true
+        swipeableView.reloadData()
+    }
     
     
     /* --------  SWIPEABLE KOLODA VIEW ACTIONS, DATA SOURCE, AND DELEGATE METHODS ---------- */
@@ -226,6 +241,8 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             favorite.defaultDealDesc = swipedVenue.defaultDealDesc
             favorite.defaultDealTitle = swipedVenue.defaultDealTitle
             favorite.defaultDealValue = swipedVenue.defaultDealValue
+            favorite.favorites =  swipedVenue.favorites
+            favorite.likes =  swipedVenue.likes
             realm.write {
                 self.realm.create(FavoriteVenue.self, value: favorite, update: true)
                 // and set up this one for deletion
@@ -360,11 +377,11 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     func fetchFoursquareVenues() {
         // Begin loading data from foursquare
         // get the location & possible search string
-        let searchTerm = (searchActive) ? "&query=\(searchString)" : ""
+        let searchTerm = (searchActive) ? "&query=\(searchString)" : "&section=food"
         let location = self.locationManager.location
         let userLocation  = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
-        let foursquareURl = NSURL(string: "https://api.foursquare.com/v2/venues/explore?&client_id=KNSDVZA1UWUPSYC1QDCHHTLD3UG5HDMBR5JA31L3PHGFYSA0&client_secret=U40WCCSESYMKAI4UYAWGK2FMVE3CBMS0FTON0KODNPEY0LBR&section=food&openNow=1&v=20150101&m=foursquare&venuePhotos=1&limit=10&offset=\(offsetCount)&ll=\(userLocation)\(searchTerm)")!
-        //println(foursquareURl)
+        let foursquareURl = NSURL(string: "https://api.foursquare.com/v2/venues/explore?&client_id=KNSDVZA1UWUPSYC1QDCHHTLD3UG5HDMBR5JA31L3PHGFYSA0&client_secret=U40WCCSESYMKAI4UYAWGK2FMVE3CBMS0FTON0KODNPEY0LBR&openNow=1&v=20150101&m=foursquare&venuePhotos=1&limit=10&offset=\(offsetCount)&ll=\(userLocation)\(searchTerm)")!
+        println(foursquareURl)
         if  let response = NSData(contentsOfURL: foursquareURl) {
             let json: AnyObject? = (NSJSONSerialization.JSONObjectWithData(response,
                 options: NSJSONReadingOptions(0),
@@ -419,6 +436,8 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             venue.defaultDealTitle = json["deals"]["deal"][0]["title"].stringValue
             venue.defaultDealDesc = json["deals"]["deal"][0]["description"].stringValue
             venue.defaultDealValue = json["deals"]["deal"][0]["value"].floatValue
+            venue.favorites = json[Constants.restStats][Constants.restFavorites].intValue
+            venue.likes = json[Constants.restStats][Constants.restLikes].intValue
         }
         let imageUrl = NSURL(string: imageName)
         if let data = NSData(contentsOfURL: imageUrl!){

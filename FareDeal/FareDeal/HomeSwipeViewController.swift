@@ -15,7 +15,7 @@ import Koloda
 import CoreLocation
 import SwiftyJSON
 
-class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate {
+class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
     
     typealias JSONParameters = [String: AnyObject]
     
@@ -32,20 +32,28 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     //View Properties
     @IBOutlet var dealButton: UIBarButtonItem!
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet var searchButton: UIButton!
+   // @IBOutlet weak var searchBar: UISearchBar!
+   // @IBOutlet var searchButton: UIButton!
     @IBOutlet weak var searchDisplayOverview: UIView!
     @IBOutlet weak var swipeableView: KolodaView!
     @IBOutlet var activityView: UIView!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var indicatorView: UIView!
     @IBOutlet var activityLabel: UILabel!
     var searchBarButton: UIBarButtonItem!
     var cancelButton: UIBarButtonItem!
+    let activityIndicator = CustomActivityView(frame: CGRect (x: 0, y: 0, width: 70, height: 70), color: UIColor.orangeColor(), size: CGSize(width: 70, height: 70))
     
+    @IBOutlet var menuView: UIView!
     
+    // Search
+    @IBOutlet var burgerTextField: UITextField!
+    @IBOutlet var searchView: UIView!
+    @IBOutlet var priceView: UIView!
+    @IBOutlet var priceTextField: UITextField!
     
     // Search Properties
     var searchActive : Bool = false
+    var searchPrice : Bool = false
     var searchString = ""
     var offsetCount: Int = 0
     
@@ -59,6 +67,9 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         // Set up the Kolodo view delegate and data source
         swipeableView.dataSource = self
         swipeableView.delegate = self
+        indicatorView.addSubview(activityIndicator)
+        let image = UIImage(named: "navBarLogo")
+        navigationItem.titleView = UIImageView(image: image)
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,30 +78,48 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     }
     
 
+    @IBAction func onClick(sender: UIButton) {
+        if sender.tag == 3 {
+            //log out
+            menuView.hidden = true
+            prefs.setObject(nil, forKey: "TOKEN")
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    func displayMenu (){
+        menuView.hidden = !menuView.hidden
+        shouldCloseSearch()
+    }
     
     override func viewDidAppear(animated: Bool) {
         // Add the second button to the nav bar
-        let logOutButton = UIBarButtonItem(image: UIImage(named: "logOut"), style: .Plain, target: self, action: "logOut")
-        searchBarButton = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Done, target: self, action: "shouldOpenSearch")
+        let menuButton = UIBarButtonItem(image: UIImage(named: "menuButton"), style: .Plain, target: self, action: "displayMenu")
+        searchBarButton = UIBarButtonItem(image: UIImage(named: "searchButton"), style: .Plain, target: self, action: "shouldOpenSearch")
+        cancelButton = UIBarButtonItem(image: UIImage(named: "closeIcon"), style: .Plain, target: self, action: "shouldCloseSearch")
         self.navigationItem.setRightBarButtonItem(searchBarButton, animated: false)
-        self.navigationItem.setLeftBarButtonItems([logOutButton, self.dealButton], animated: true)
+        self.navigationItem.setLeftBarButtonItems([menuButton, self.dealButton], animated: true)
+        
+        burgerTextField.attributedPlaceholder = NSAttributedString(string:"Burger",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
+        priceTextField.attributedPlaceholder = NSAttributedString(string:"$",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        searchView.roundCorners(.AllCorners, radius: 14)
+        priceView.roundCorners(.AllCorners, radius: 14)
+        
         getLocationPermissionAndData()
     }
     
     
-    func logOut () {
-        prefs.setObject(nil, forKey: "TOKEN")
-        self.dismissViewControllerAnimated(true, completion: nil)
-    
-    }
-    
     func activityIndicatorDisplaying(appear: Bool, message: String) {
-        activityView.hidden = !appear
         if appear {
-            activityIndicator.startAnimating()
+            activityView.hidden = false
+            activityIndicator.startAnimation()
             activityLabel.text = message
         } else {
-            activityIndicator.stopAnimating()
+            activityView.hidden = true
+            activityIndicator.stopAnimation()
         }
     }
     func getLocationPermissionAndData() {
@@ -121,11 +150,63 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     func shouldOpenSearch () {
         searchDisplayOverview.hidden = false
-        self.navigationItem.rightBarButtonItem?.enabled = false
+        menuView.hidden = true
+        //let cancel = UIBarButtonItem(image: UIImage(named: "closeIcon"), style: .Plain, target: self, action: "shouldCloseSearch")
+        self.navigationItem.setRightBarButtonItem(cancelButton, animated: true)
+        
+    }
+    
+    func shouldCloseSearch () {
+        searchDisplayOverview.hidden = true
+        searchActive = false;
+        burgerTextField.text = ""
+        burgerTextField.editing
+        //searchBar.text = ""
+        //searchBar.endEditing(true)
+        //let search = UIBarButtonItem(image: UIImage(named: "searchButton"), style: .Plain, target: self, action: "shouldOpenSearch")
+        self.navigationItem.setRightBarButtonItem(searchBarButton, animated: true)
         
     }
     
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        println("Textfield returned")
+        self.view.endEditing(true)
+        self.navigationItem.setRightBarButtonItem(searchBarButton, animated: true)
+        // see which text field was entered
+        if textField.tag == 3 {
+            // Search
+            if textField.text != "" {
+                searchString = textField.text
+                searchActive = true
+                textField.text = ""
+                pullNewSearchResults()
+            }
+        } else if textField.tag == 4 {
+            // $
+            if textField.text != "" {
+                let price: String = textField.text as String
+                searchPrice = true
+                switch price {
+                case "$" :
+                    searchString = "1"
+                case "$$" :
+                    searchString = "2"
+                case "$$$" :
+                    searchString = "3"
+                case "$$$$" :
+                    searchString = "4"
+                default:
+                    searchString = ""
+                }
+                textField.text = ""
+                pullNewSearchResults()
+            }
+        }
+        return false
+    }
+    
+    /*
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchActive = true;
         //println("User: Home: User started editing text")
@@ -134,16 +215,10 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchActive = false;
-        searchBar.text = ""
-        searchBar.endEditing(true)
-        searchDisplayOverview.hidden = true
-        self.navigationItem.rightBarButtonItem?.enabled = true
-    }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         println("search button clicked")
+        menuView.hidden = true
         searchActive = true;
         searchString = searchBar.text
         searchBar.text = ""
@@ -155,7 +230,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         searchString = searchText
         searchActive = (searchString.isEmpty) ? false : true
     }
-    
+    */
     func pullNewSearchResults () {
         realm.write {
             // empty out the current stack
@@ -165,7 +240,6 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         offsetCount = 0
         fetchFoursquareVenues()
         searchDisplayOverview.hidden = true
-        self.navigationItem.rightBarButtonItem?.enabled = true
         swipeableView.reloadData()
     }
     
@@ -203,6 +277,8 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         let views = ["contentView": contentView, "cardView": cardView]
         cardView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView(width)]", options: .AlignAllLeft, metrics: metrics, views: views))
         cardView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(height)]", options: .AlignAllLeft, metrics: metrics, views: views))
+        
+        cardView.roundCorners( .AllCorners, radius: 14)
         return cardView
     }
     
@@ -378,9 +454,10 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         // Begin loading data from foursquare
         // get the location & possible search string
         let searchTerm = (searchActive) ? "&query=\(searchString)" : "&section=food"
+        let priceTier = (searchPrice) ? "&price=\(searchString)" : ""
         let location = self.locationManager.location
         let userLocation  = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
-        let foursquareURl = NSURL(string: "https://api.foursquare.com/v2/venues/explore?&client_id=KNSDVZA1UWUPSYC1QDCHHTLD3UG5HDMBR5JA31L3PHGFYSA0&client_secret=U40WCCSESYMKAI4UYAWGK2FMVE3CBMS0FTON0KODNPEY0LBR&openNow=1&v=20150101&m=foursquare&venuePhotos=1&limit=10&offset=\(offsetCount)&ll=\(userLocation)\(searchTerm)")!
+        let foursquareURl = NSURL(string: "https://api.foursquare.com/v2/venues/explore?&client_id=KNSDVZA1UWUPSYC1QDCHHTLD3UG5HDMBR5JA31L3PHGFYSA0&client_secret=U40WCCSESYMKAI4UYAWGK2FMVE3CBMS0FTON0KODNPEY0LBR&openNow=1&v=20150101&m=foursquare&venuePhotos=1&limit=10&offset=\(offsetCount)&ll=\(userLocation)\(searchTerm)\(priceTier)")!
         println(foursquareURl)
         if  let response = NSData(contentsOfURL: foursquareURl) {
             let json: AnyObject? = (NSJSONSerialization.JSONObjectWithData(response,
@@ -473,7 +550,13 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         
     }
     
-    
+    // Pass the selected restaurant deal object to the detail view
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "mainToFavoritesSegue" {
+            // rehide the menu
+            menuView.hidden = true
+        }
+    }
 
     
 }

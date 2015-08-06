@@ -31,35 +31,10 @@ class RegisterRestaurantVC: UIViewController {
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
-        styleElements(true)
         
     }
     
-    override func viewDidLayoutSubviews() {
-        // set the rounded corners after autolayout has finished
-        styleElements(false)
-    }
-    
-    func styleElements(didLoad: Bool){
-        var elementArray = [userName, emailAddressField, passwordField, passwordCField]
-
-        if didLoad{
-            for element in elementArray{
-                let paddingView = UIView(frame: CGRectMake(0, 0, 15, element.frame.height))
-                element.leftView = paddingView
-                element.leftViewMode = UITextFieldViewMode.Always
-                
-            }
-        }else {
-            for element in elementArray{
-                element.roundCorners(.AllCorners, radius: 6)
-            }
-            nextBtn.roundCorners(.AllCorners, radius: 14)
-            
-        }
-    }
-    
-    
+  
     func DismissKeyboard(){
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
@@ -117,19 +92,19 @@ class RegisterRestaurantVC: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         // Hide the navigation bar to display the full location image
-        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-        navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        navBar.shadowImage = UIImage()
-        navBar.tintColor = .whiteColor()
-        navBar.backgroundColor = UIColor.clearColor()
+//        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
+//        navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+//        navBar.shadowImage = UIImage()
+//        navBar.tintColor = .whiteColor()
+//        navBar.backgroundColor = UIColor.clearColor()
     }
     
     
     override func viewWillDisappear(animated: Bool) {
         // restore the navigation bar to origional
-        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-        navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        navBar.shadowImage = nil
+//        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
+//        navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+//        navBar.shadowImage = nil
         // navBar the background color to whatever we choose
         //bar.backgroundColor = UIColor.clearColor()
     }

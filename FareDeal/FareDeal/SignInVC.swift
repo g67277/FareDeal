@@ -13,7 +13,6 @@ class SignInVC: UIViewController {
 
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet var logInButtonView: UIView!
     
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     

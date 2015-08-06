@@ -336,7 +336,7 @@ public class AuthenticationCalls {
                 if (res.statusCode >= 200 && res.statusCode < 300)
                 {
                     
-                    if(res.statusCode == 201)
+                    if(res.statusCode == 201 || res.statusCode == 200)
                     {
                         NSLog("Sign Up SUCCESS");
                         return true

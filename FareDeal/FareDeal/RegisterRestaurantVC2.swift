@@ -68,54 +68,26 @@ class RegisterRestaurantVC2: UIViewController, UIImagePickerControllerDelegate, 
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
         
-        zipecodeField.delegate = self
-        
-        if profileView {
-            editNRegister.setTitle("Save", forState: UIControlState.Normal)
-            editNRegister.tag = 2
-            
-            var signOutBtn = UIBarButtonItem(title: "Log off", style: UIBarButtonItemStyle.Done, target: self, action: "signOut")
-            navigationItem.rightBarButtonItem = signOutBtn
-            
-            
-        }else{
-            editNRegister.setTitle("Register", forState: UIControlState.Normal)
-            editNRegister.tag = 1
-        }
-        
-        categoryArray = categories.loadCategories()
-        styleElements(true)
+//        zipecodeField.delegate = self
+//        
+//        if profileView {
+//            editNRegister.setTitle("Save", forState: UIControlState.Normal)
+//            editNRegister.tag = 2
+//            
+//            var signOutBtn = UIBarButtonItem(title: "Log off", style: UIBarButtonItemStyle.Done, target: self, action: "signOut")
+//            navigationItem.rightBarButtonItem = signOutBtn
+//            
+//            
+//        }else{
+//            editNRegister.setTitle("Register", forState: UIControlState.Normal)
+//            editNRegister.tag = 1
+//        }
+//        
+//        categoryArray = categories.loadCategories()
     }
     
     override func viewDidLayoutSubviews() {
         // set the rounded corners after autolayout has finished
-        styleElements(false)
-    }
-    
-    func styleElements(didLoad: Bool){
-        
-        var elementArray = [restNameField, streetField, cityField, zipecodeField, phoneNumField, websiteField, contactName]
-
-        if didLoad{
-            for element in elementArray{
-                let paddingView = UIView(frame: CGRectMake(0, 0, 15, element.frame.height))
-                element.leftView = paddingView
-                element.leftViewMode = UITextFieldViewMode.Always
-                
-            }
-        }else {
-            for element in elementArray{
-                element.roundCorners(.AllCorners, radius: 6)
-            }
-            catButton.roundCorners(.AllCorners, radius: 14)
-            weekdayC.roundCorners(.AllCorners, radius: 14)
-            weekdayO.roundCorners(.AllCorners, radius: 14)
-            weekendC.roundCorners(.AllCorners, radius: 14)
-            weekendO.roundCorners(.AllCorners, radius: 14)
-            priceControls.roundCorners(.AllCorners, radius: 9)
-            editNRegister.roundCorners(.AllCorners, radius: 14)
-            
-        }
     }
     
     

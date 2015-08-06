@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "address.png"
+      "filename" : "phoneWhite.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "address@2x.png"
+      "filename" : "phoneWhite@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "address@3x.png"
+      "filename" : "phoneWhite@3x.png"
     }
   ],
   "info" : {

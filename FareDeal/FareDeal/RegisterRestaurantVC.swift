@@ -15,7 +15,6 @@ class RegisterRestaurantVC: UIViewController {
     @IBOutlet weak var emailAddressField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordCField: UITextField!
-    @IBOutlet var nextBtn: UIButton!
     var passwordValid = false
     
     let authenticationCall = AuthenticationCalls()
@@ -91,12 +90,7 @@ class RegisterRestaurantVC: UIViewController {
 
     
     override func viewWillAppear(animated: Bool) {
-        // Hide the navigation bar to display the full location image
-//        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-//        navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-//        navBar.shadowImage = UIImage()
-//        navBar.tintColor = .whiteColor()
-//        navBar.backgroundColor = UIColor.clearColor()
+        navigationController?.navigationBarHidden = true
     }
     
     

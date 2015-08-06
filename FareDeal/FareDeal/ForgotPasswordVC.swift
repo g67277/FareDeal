@@ -11,7 +11,6 @@ import UIKit
 class ForgotPasswordVC: UIViewController {
 
     @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var resetPasswordButtonView: UIView!
     let authenticationCall:AuthenticationCalls = AuthenticationCalls()
     let validation = Validation()
     
@@ -21,13 +20,6 @@ class ForgotPasswordVC: UIViewController {
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
-        
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        // set the rounded corners after autolayout has finished
-        resetPasswordButtonView.roundCorners(.AllCorners, radius: 14)
     }
     
     @IBAction func onClick(_sender:UIButton){

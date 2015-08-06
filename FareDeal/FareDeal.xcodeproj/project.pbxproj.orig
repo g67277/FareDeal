@@ -30,6 +30,15 @@
 		819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819281DF1B5B427C0003AD4D /* DealsCell.swift */; };
 		81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B5B6AE1B56D375009B522A /* StoreVC.swift */; };
 		81B879121B691113003B1BB0 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */; };
+		81BD093C1B71A369007B3C92 /* FavoriteVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BD093B1B71A369007B3C92 /* FavoriteVenue.swift */; };
+		81C9DC8C1B729A4E00C51249 /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81C9DC841B729A4E00C51249 /* Montserrat-Black.otf */; };
+		81C9DC8D1B729A4E00C51249 /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81C9DC851B729A4E00C51249 /* Montserrat-Bold.otf */; };
+		81C9DC8E1B729A4E00C51249 /* Montserrat-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81C9DC861B729A4E00C51249 /* Montserrat-ExtraBold.otf */; };
+		81C9DC8F1B729A4E00C51249 /* Montserrat-Hairline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81C9DC871B729A4E00C51249 /* Montserrat-Hairline.otf */; };
+		81C9DC901B729A4E00C51249 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81C9DC881B729A4E00C51249 /* Montserrat-Light.otf */; };
+		81C9DC911B729A4E00C51249 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81C9DC891B729A4E00C51249 /* Montserrat-Regular.otf */; };
+		81C9DC921B729A4E00C51249 /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81C9DC8A1B729A4E00C51249 /* Montserrat-SemiBold.otf */; };
+		81C9DC931B729A4E00C51249 /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81C9DC8B1B729A4E00C51249 /* Montserrat-UltraLight.otf */; };
 		972B8D8EA6F19199DCF8C070 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C34D443EE29BEF7C8222446 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		993285D51B5F3DF8003C19E1 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */; };
 		994C61331B69244600E5EF7C /* ForgotPasswordUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C61321B69244600E5EF7C /* ForgotPasswordUserVC.swift */; };
@@ -55,7 +64,12 @@
 		99A6E8DE1B69EE89005179A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8DC1B69EE89005179A6 /* Constants.swift */; };
 		99A6E8DF1B69EE89005179A6 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8DD1B69EE89005179A6 /* Restaurant.swift */; };
 		99CD57781B6AC03300DBDF3A /* DealHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD57771B6AC03300DBDF3A /* DealHeaderCell.swift */; };
-		99ECB7691B71278B0008BAC5 /* FavoriteVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ECB7681B71278B0008BAC5 /* FavoriteVenue.swift */; };
+<<<<<<< HEAD
+=======
+		99FC57051B71AA95006AA9C4 /* FavoriteVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ECB7681B71278B0008BAC5 /* FavoriteVenue.swift */; };
+		99FC570B1B727406006AA9C4 /* CustomActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC570A1B727406006AA9C4 /* CustomActivityView.swift */; };
+		99FC570E1B72D980006AA9C4 /* FavoriteHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC570D1B72D980006AA9C4 /* FavoriteHeaderCell.swift */; };
+>>>>>>> 59590b5914da742401e5c3b4e483e39177e4144e
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +113,15 @@
 		81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MidCase RegLine.otf"; sourceTree = "<group>"; };
 		81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		81B879171B6931CB003B1BB0 /* FareDeal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FareDeal-Bridging-Header.h"; sourceTree = "<group>"; };
+		81BD093B1B71A369007B3C92 /* FavoriteVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteVenue.swift; sourceTree = "<group>"; };
+		81C9DC841B729A4E00C51249 /* Montserrat-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.otf"; sourceTree = "<group>"; };
+		81C9DC851B729A4E00C51249 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
+		81C9DC861B729A4E00C51249 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
+		81C9DC871B729A4E00C51249 /* Montserrat-Hairline.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Hairline.otf"; sourceTree = "<group>"; };
+		81C9DC881B729A4E00C51249 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
+		81C9DC891B729A4E00C51249 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		81C9DC8A1B729A4E00C51249 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
+		81C9DC8B1B729A4E00C51249 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
 		993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
 		994C61321B69244600E5EF7C /* ForgotPasswordUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordUserVC.swift; sourceTree = "<group>"; };
 		995935E21B5EDA1C009CDD26 /* CardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
@@ -127,6 +150,8 @@
 		99A6E8DD1B69EE89005179A6 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		99CD57771B6AC03300DBDF3A /* DealHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealHeaderCell.swift; sourceTree = "<group>"; };
 		99ECB7681B71278B0008BAC5 /* FavoriteVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteVenue.swift; sourceTree = "<group>"; };
+		99FC570A1B727406006AA9C4 /* CustomActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomActivityView.swift; sourceTree = "<group>"; };
+		99FC570D1B72D980006AA9C4 /* FavoriteHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteHeaderCell.swift; sourceTree = "<group>"; };
 		D8BB905533740AECB8C2BD9F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EFED01E1FD4AB234C93A922F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,7 +188,6 @@
 		81481B2C1B56A2D6000EC386 = {
 			isa = PBXGroup;
 			children = (
-				81481B5A1B56A359000EC386 /* StoreKit.framework */,
 				81481B371B56A2D6000EC386 /* FareDeal */,
 				81481B4D1B56A2D6000EC386 /* FareDealTests */,
 				81481B361B56A2D6000EC386 /* Products */,
@@ -185,6 +209,11 @@
 		81481B371B56A2D6000EC386 /* FareDeal */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+				81C9DC941B729A5400C51249 /* Fonts */,
+=======
+				99FC570C1B72740A006AA9C4 /* ActivityView */,
+>>>>>>> 59590b5914da742401e5c3b4e483e39177e4144e
 				99A6E8D71B69ECEA005179A6 /* Timer Label */,
 				81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */,
 				81481B3A1B56A2D6000EC386 /* AppDelegate.swift */,
@@ -269,6 +298,21 @@
 			name = "Business Side";
 			sourceTree = "<group>";
 		};
+		81C9DC941B729A5400C51249 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				81C9DC841B729A4E00C51249 /* Montserrat-Black.otf */,
+				81C9DC851B729A4E00C51249 /* Montserrat-Bold.otf */,
+				81C9DC861B729A4E00C51249 /* Montserrat-ExtraBold.otf */,
+				81C9DC871B729A4E00C51249 /* Montserrat-Hairline.otf */,
+				81C9DC881B729A4E00C51249 /* Montserrat-Light.otf */,
+				81C9DC891B729A4E00C51249 /* Montserrat-Regular.otf */,
+				81C9DC8A1B729A4E00C51249 /* Montserrat-SemiBold.otf */,
+				81C9DC8B1B729A4E00C51249 /* Montserrat-UltraLight.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		995935F31B5EDA29009CDD26 /* User Side */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +334,11 @@
 				995935E71B5EDA1C009CDD26 /* FavoritesCell.swift */,
 				99A04C5A1B604F9E00C3E35B /* GradientView.swift */,
 				99A6E8CF1B69EC6C005179A6 /* UserDealCell.swift */,
+<<<<<<< HEAD
+				81BD093B1B71A369007B3C92 /* FavoriteVenue.swift */,
+=======
+				99FC570D1B72D980006AA9C4 /* FavoriteHeaderCell.swift */,
+>>>>>>> 59590b5914da742401e5c3b4e483e39177e4144e
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -328,9 +377,18 @@
 			name = "Timer Label";
 			sourceTree = "<group>";
 		};
+		99FC570C1B72740A006AA9C4 /* ActivityView */ = {
+			isa = PBXGroup;
+			children = (
+				99FC570A1B727406006AA9C4 /* CustomActivityView.swift */,
+			);
+			name = ActivityView;
+			sourceTree = "<group>";
+		};
 		C31432AE2A16D3F550EAB896 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81481B5A1B56A359000EC386 /* StoreKit.framework */,
 				99649B5B1B6EF1DB0001335A /* CoreLocation.framework */,
 				99A04C621B60586E00C3E35B /* QuartzCore.framework */,
 				0C34D443EE29BEF7C8222446 /* Pods.framework */,
@@ -408,7 +466,7 @@
 					};
 					81481B491B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 56R6M4W3X8;
+						DevelopmentTeam = 9J676A68SR;
 						TestTargetID = 81481B341B56A2D6000EC386;
 					};
 				};
@@ -437,10 +495,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81C9DC8E1B729A4E00C51249 /* Montserrat-ExtraBold.otf in Resources */,
 				995935EC1B5EDA1C009CDD26 /* CardContentView.xib in Resources */,
 				81481B401B56A2D6000EC386 /* Main.storyboard in Resources */,
+				81C9DC8D1B729A4E00C51249 /* Montserrat-Bold.otf in Resources */,
 				81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */,
+				81C9DC901B729A4E00C51249 /* Montserrat-Light.otf in Resources */,
 				995935EE1B5EDA1C009CDD26 /* CardOverlayView.xib in Resources */,
+				81C9DC8F1B729A4E00C51249 /* Montserrat-Hairline.otf in Resources */,
+				81C9DC911B729A4E00C51249 /* Montserrat-Regular.otf in Resources */,
+				81C9DC921B729A4E00C51249 /* Montserrat-SemiBold.otf in Resources */,
+				81C9DC8C1B729A4E00C51249 /* Montserrat-Black.otf in Resources */,
+				81C9DC931B729A4E00C51249 /* Montserrat-UltraLight.otf in Resources */,
 				81481B421B56A2D6000EC386 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,8 +576,14 @@
 				99A04C5F1B60509C00C3E35B /* RestaurantDealsVC.swift in Sources */,
 				81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */,
 				99A6E8D01B69EC6C005179A6 /* UserDealCell.swift in Sources */,
+<<<<<<< HEAD
+				81BD093C1B71A369007B3C92 /* FavoriteVenue.swift in Sources */,
+=======
+				99FC57051B71AA95006AA9C4 /* FavoriteVenue.swift in Sources */,
+>>>>>>> 59590b5914da742401e5c3b4e483e39177e4144e
 				99A6E8D51B69ECCA005179A6 /* TTCounterLabel.m in Sources */,
 				99A04C611B6050B900C3E35B /* RestaurantDealDetaislVC.swift in Sources */,
+				99FC570E1B72D980006AA9C4 /* FavoriteHeaderCell.swift in Sources */,
 				819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */,
 				995935F01B5EDA1C009CDD26 /* FavoritesTVController.swift in Sources */,
 				8185E2FA1B608AD100059124 /* RegisterRestaurantVC.swift in Sources */,
@@ -527,11 +599,6 @@
 				99A6E8D61B69ECCA005179A6 /* TTTAttributedLabel.m in Sources */,
 				998038FC1B704998007C53B7 /* SavedDeal.swift in Sources */,
 				998038F71B6FC71A007C53B7 /* VenueDeal.swift in Sources */,
-<<<<<<< HEAD
-				99ECB7691B71278B0008BAC5 /* FavoriteVenue.swift in Sources */,
-				81008C101B5C44830019E297 /* DataApi.swift in Sources */,
-=======
->>>>>>> 9b0499b845e564f9169e5fe1e7ccd6e034ffaccd
 				8185E3031B60A20A00059124 /* InitialScreenVC.swift in Sources */,
 				995935EF1B5EDA1C009CDD26 /* FavoritesCell.swift in Sources */,
 				819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */,
@@ -541,6 +608,7 @@
 				99649B5A1B6EF1740001335A /* Venue.swift in Sources */,
 				813222DC1B681A3500613C60 /* RegisterRestaurantVC2.swift in Sources */,
 				995935F11B5EDA1C009CDD26 /* HomeSwipeViewController.swift in Sources */,
+				99FC570B1B727406006AA9C4 /* CustomActivityView.swift in Sources */,
 				81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */,
 				8185E2FF1B6090A000059124 /* AuthenticationCalls.swift in Sources */,
 				81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */,
@@ -686,7 +754,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+<<<<<<< HEAD
+				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+=======
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
+>>>>>>> 59590b5914da742401e5c3b4e483e39177e4144e
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -704,7 +776,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+<<<<<<< HEAD
+				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+=======
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
+>>>>>>> 59590b5914da742401e5c3b4e483e39177e4144e
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};

@@ -12,7 +12,7 @@ class ForgotPasswordUserVC: UIViewController {
 
     
     @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var resetPasswordButtonView: UIView!
+    //@IBOutlet var resetPasswordButtonView: UIView!
     let authenticationCall = AuthenticationCalls()
     let validation = Validation()
     
@@ -28,7 +28,7 @@ class ForgotPasswordUserVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         // set the rounded corners after autolayout has finished
-        resetPasswordButtonView.roundCorners(.AllCorners, radius: 14)
+        //resetPasswordButtonView.roundCorners(.AllCorners, radius: 14)
     }
     
     @IBAction func onClick(_sender:UIButton){

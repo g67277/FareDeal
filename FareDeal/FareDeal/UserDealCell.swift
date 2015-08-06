@@ -17,6 +17,8 @@ class UserDealCell: UITableViewCell, TTCounterLabelDelegate {
     @IBOutlet weak var dealDesc: UITextView!
     @IBOutlet weak var timeLimit: TTCounterLabel!
     @IBOutlet weak var dealValue: UILabel!
+    @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var favoritesLabel: UILabel!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -44,6 +46,9 @@ class UserDealCell: UITableViewCell, TTCounterLabelDelegate {
         locationImage.image = deal.venue.image
         dealTitle.text = deal.name
         dealDesc.text = deal.desc
+        
+        likesLabel.text = "\(deal.venue.likes)"
+        favoritesLabel.text = "\(deal.venue.favorites)"
         
         // Set up the timer countdown label
         let now = NSDate()

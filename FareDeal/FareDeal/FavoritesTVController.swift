@@ -28,6 +28,8 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         tableview.rowHeight = 121
+        let image = UIImage(named: "navBarLogo")
+        navigationItem.titleView = UIImageView(image: image)
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,7 +54,22 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
         var cell:FavoritesCell = tableView.dequeueReusableCellWithIdentifier("favoritesCell") as! FavoritesCell
         let venue: FavoriteVenue = favoriteVenues[indexPath.row]
         cell.setUpCell(venue.name, phone: venue.phone, image: venue.image!)
+        if venue.sourceType == Constants.sourceTypeFoursquare {
+            // hide the favorites/likes view
+            cell.likesBarView.hidden = true
+        } else {
+            cell.setUpLikesBar(venue.likes, favorites: venue.favorites, price: venue.priceTier, distance: venue.distance)
+        }
         return cell
+    }
+    
+    // Header Cell
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("favHeaderCell") as! FavoriteHeaderCell
+        return headerCell
     }
     
     /* -----------------------  SEGUE --------------------------- */

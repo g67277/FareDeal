@@ -64,6 +64,9 @@
 		99A6E8DE1B69EE89005179A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8DC1B69EE89005179A6 /* Constants.swift */; };
 		99A6E8DF1B69EE89005179A6 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8DD1B69EE89005179A6 /* Restaurant.swift */; };
 		99CD57781B6AC03300DBDF3A /* DealHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD57771B6AC03300DBDF3A /* DealHeaderCell.swift */; };
+		99FC57051B71AA95006AA9C4 /* FavoriteVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ECB7681B71278B0008BAC5 /* FavoriteVenue.swift */; };
+		99FC570B1B727406006AA9C4 /* CustomActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC570A1B727406006AA9C4 /* CustomActivityView.swift */; };
+		99FC570E1B72D980006AA9C4 /* FavoriteHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC570D1B72D980006AA9C4 /* FavoriteHeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +147,8 @@
 		99A6E8DD1B69EE89005179A6 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		99CD57771B6AC03300DBDF3A /* DealHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealHeaderCell.swift; sourceTree = "<group>"; };
 		99ECB7681B71278B0008BAC5 /* FavoriteVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteVenue.swift; sourceTree = "<group>"; };
+		99FC570A1B727406006AA9C4 /* CustomActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomActivityView.swift; sourceTree = "<group>"; };
+		99FC570D1B72D980006AA9C4 /* FavoriteHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteHeaderCell.swift; sourceTree = "<group>"; };
 		D8BB905533740AECB8C2BD9F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EFED01E1FD4AB234C93A922F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,7 +206,7 @@
 		81481B371B56A2D6000EC386 /* FareDeal */ = {
 			isa = PBXGroup;
 			children = (
-				81C9DC941B729A5400C51249 /* Fonts */,
+				99FC570C1B72740A006AA9C4 /* ActivityView */,
 				99A6E8D71B69ECEA005179A6 /* Timer Label */,
 				81B5B6B11B574BCE009B522A /* MidCase RegLine.otf */,
 				81481B3A1B56A2D6000EC386 /* AppDelegate.swift */,
@@ -322,7 +327,7 @@
 				995935E71B5EDA1C009CDD26 /* FavoritesCell.swift */,
 				99A04C5A1B604F9E00C3E35B /* GradientView.swift */,
 				99A6E8CF1B69EC6C005179A6 /* UserDealCell.swift */,
-				81BD093B1B71A369007B3C92 /* FavoriteVenue.swift */,
+				99FC570D1B72D980006AA9C4 /* FavoriteHeaderCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -359,6 +364,14 @@
 				99A6E8D41B69ECCA005179A6 /* TTTAttributedLabel.m */,
 			);
 			name = "Timer Label";
+			sourceTree = "<group>";
+		};
+		99FC570C1B72740A006AA9C4 /* ActivityView */ = {
+			isa = PBXGroup;
+			children = (
+				99FC570A1B727406006AA9C4 /* CustomActivityView.swift */,
+			);
+			name = ActivityView;
 			sourceTree = "<group>";
 		};
 		C31432AE2A16D3F550EAB896 /* Frameworks */ = {
@@ -552,9 +565,10 @@
 				99A04C5F1B60509C00C3E35B /* RestaurantDealsVC.swift in Sources */,
 				81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */,
 				99A6E8D01B69EC6C005179A6 /* UserDealCell.swift in Sources */,
-				81BD093C1B71A369007B3C92 /* FavoriteVenue.swift in Sources */,
+				99FC57051B71AA95006AA9C4 /* FavoriteVenue.swift in Sources */,
 				99A6E8D51B69ECCA005179A6 /* TTCounterLabel.m in Sources */,
 				99A04C611B6050B900C3E35B /* RestaurantDealDetaislVC.swift in Sources */,
+				99FC570E1B72D980006AA9C4 /* FavoriteHeaderCell.swift in Sources */,
 				819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */,
 				995935F01B5EDA1C009CDD26 /* FavoritesTVController.swift in Sources */,
 				8185E2FA1B608AD100059124 /* RegisterRestaurantVC.swift in Sources */,
@@ -579,6 +593,7 @@
 				99649B5A1B6EF1740001335A /* Venue.swift in Sources */,
 				813222DC1B681A3500613C60 /* RegisterRestaurantVC2.swift in Sources */,
 				995935F11B5EDA1C009CDD26 /* HomeSwipeViewController.swift in Sources */,
+				99FC570B1B727406006AA9C4 /* CustomActivityView.swift in Sources */,
 				81481B3D1B56A2D6000EC386 /* BusinessHome.swift in Sources */,
 				8185E2FF1B6090A000059124 /* AuthenticationCalls.swift in Sources */,
 				81481B3B1B56A2D6000EC386 /* AppDelegate.swift in Sources */,

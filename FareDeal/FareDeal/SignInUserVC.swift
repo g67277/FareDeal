@@ -41,7 +41,7 @@ class SignInUserVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         // set the rounded corners after autolayout has finished
-        logInButtonView.roundCorners(.AllCorners, radius: 14)
+        //logInButtonView.roundCorners(.AllCorners, radius: 14)
     }
     
     override func viewDidAppear(animated: Bool) {

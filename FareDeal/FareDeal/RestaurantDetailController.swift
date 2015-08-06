@@ -27,6 +27,10 @@ class RestaurantDetailController: UIViewController {
     @IBOutlet weak var dealDescLabel: UILabel!
     @IBOutlet weak var dealValueLabel: UILabel!
     
+    @IBOutlet var favoriteLikesView: UIView!
+    @IBOutlet var favoritesLabel: UILabel!
+    @IBOutlet var likesLabel: UILabel!
+    
     var thisVenue: Venue?
     var favVenue: FavoriteVenue?
     var isFavorite: Bool = false
@@ -34,21 +38,25 @@ class RestaurantDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let image = UIImage(named: "navBarLogo")
+        navigationItem.titleView = UIImageView(image: image)
+
         // Do any additional setup after loading the view.
         if isFavorite {
             if let venue: FavoriteVenue = favVenue {
                 if venue.sourceType == "Saloof" {
-                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: venue.defaultDealTitle, dealDesc: venue.defaultDealDesc, dealValue: venue.defaultDealValue)
+                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: venue.defaultDealTitle, dealDesc: venue.defaultDealDesc, dealValue: venue.defaultDealValue, likes: venue.likes, favorites: venue.favorites)
                 } else {
-                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: "", dealDesc: "", dealValue: 0.0)
+                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: "", dealDesc: "", dealValue: 0.0, likes: 0, favorites: 0)
                 }
             }
         } else {
             if let venue: Venue = thisVenue {
                 if venue.sourceType == "Saloof" {
-                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: venue.defaultDealTitle, dealDesc: venue.defaultDealDesc, dealValue: venue.defaultDealValue)
+                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: venue.defaultDealTitle, dealDesc: venue.defaultDealDesc, dealValue: venue.defaultDealValue, likes: venue.likes, favorites: venue.favorites)
                 } else {
-                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: "", dealDesc: "", dealValue: 0.0)
+                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: "", dealDesc: "", dealValue: 0.0, likes: 0, favorites: 0)
                 }
             }
         }
@@ -59,19 +67,19 @@ class RestaurantDetailController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setUpDetailView (name: String, phone: String, address: String, website: String, image: UIImage, priceTier: Int, distance: Float, hours: String, sourceType: String, dealName: String, dealDesc: String, dealValue: Float) {
+    func setUpDetailView (name: String, phone: String, address: String, website: String, image: UIImage, priceTier: Int, distance: Float, hours: String, sourceType: String, dealName: String, dealDesc: String, dealValue: Float, likes: Int, favorites: Int) {
         // String Labels
         if var locationLabel = locationName {
             locationLabel.text = name
         }
         if var phoneLabel = phoneTextView {
-            phoneLabel.text = phone
+            phoneLabel.text = (phone == "") ? "Unavailable" : phone
         }
         if var addressTextView = addressTextview {
-            addressTextView.text = address
+            addressTextView.text = (address == "") ? "Unavailable" : address
         }
         if var websiteTextView = websiteUrlTextView {
-            websiteTextView.text = website
+            websiteTextView.text = (website == "") ? "Unavailable" : website
         }
         if var statusLabel = hoursStatusLabel {
             let hours = hours
@@ -123,29 +131,21 @@ class RestaurantDetailController: UIViewController {
             if var dealDes = dealDescLabel {
                 dealDes.text = dealDesc
             }
+            if var favsLabel = favoritesLabel {
+                favsLabel.text = "\(favorites)"
+            }
+            if var likeLabel = likesLabel {
+                likeLabel.text = "\(likes)"
+            }
             // set up the deal
         } else {
-            // hide the deal view
-            dealView.hidden = true
+            // hide the deal and favorites views
+            //dealView.hidden = true
+           // favoriteLikesView.hidden = true
         }
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        // Hide the navigation bar to display the full location image
-        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-        navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        navBar.shadowImage = UIImage()
-        navBar.backgroundColor = UIColor.clearColor()
-    }
-    
-    
-    override func viewWillDisappear(animated: Bool) {
-        // restore the navigation bar to origional
-        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-        navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        navBar.shadowImage = nil
-    }
     
     /* -------------------------  SEGUE  -------------------------- */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

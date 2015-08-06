@@ -7,21 +7,21 @@ nominals:
 - "C10RealmSwift8Property"
 class-members:
 top-level:
-- "String"
 - "RLMProperty"
 - "Printable"
 - "Bool"
-- "Property"
 - "=="
-- "Equatable"
+- "String"
 - "PropertyType"
+- "Property"
+- "Equatable"
 member-access:
 - !private "CSo11RLMProperty"
 - "PSs9AnyObject"
 - !private "CSo8NSObject"
-- "PSs9Printable"
 - "PSs9Equatable"
 - "C10RealmSwift8Property"
+- "PSs9Printable"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Swift.swiftmodule"

@@ -81,6 +81,113 @@
     },
     {
       'type': 'directory',
+      'name': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Build/Intermediates/IBDesignables/Products/Debug-iphonesimulator/IQKeyboardManager.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "IQBarButtonItem.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/IQToolbar/IQBarButtonItem.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQKeyboardManager-Swift.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Build/Intermediates/IBDesignables/Products/Debug-iphonesimulator/IQKeyboardManager.framework/Headers/IQKeyboardManager-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQKeyboardManager-umbrella.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/Target Support Files/IQKeyboardManager/IQKeyboardManager-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQKeyboardManager.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/IQKeyboardManager.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQKeyboardManagerConstants.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/Constants/IQKeyboardManagerConstants.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQKeyboardManagerConstantsInternal.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/Constants/IQKeyboardManagerConstantsInternal.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQKeyboardReturnKeyHandler.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/IQKeyboardReturnKeyHandler.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQNSArray+Sort.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/Categories/IQNSArray+Sort.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQSegmentedNextPrevious.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/IQSegmentedNextPrevious/IQSegmentedNextPrevious.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQTextView.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/IQTextView/IQTextView.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQTitleBarButtonItem.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/IQToolbar/IQTitleBarButtonItem.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQToolbar.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/IQToolbar/IQToolbar.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQUITextFieldView+Additions.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/Categories/IQUITextFieldView+Additions.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQUIView+Hierarchy.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/Categories/IQUIView+Hierarchy.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQUIView+IQKeyboardToolbar.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/IQToolbar/IQUIView+IQKeyboardToolbar.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQUIViewController+Additions.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/Categories/IQUIViewController+Additions.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQUIWindow+Hierarchy.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/Categories/IQUIWindow+Hierarchy.h"
+        },
+        {
+          'type': 'file',
+          'name': "KeyboardManager.h",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/IQKeyboardManager/IQKeyBoardManager/KeyboardManager.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Build/Intermediates/IBDesignables/Products/Debug-iphonesimulator/IQKeyboardManager.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Build/Intermediates/IBDesignables/Intermediates/Pods.build/Debug-iphonesimulator/IQKeyboardManager.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
       'name': "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Build/Intermediates/IBDesignables/Products/Debug-iphonesimulator/Koloda.framework/Headers",
       'contents': [
         {

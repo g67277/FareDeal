@@ -10,7 +10,7 @@ import UIKit
 
 class RegisterUserVC: UIViewController {
     
-    @IBOutlet var registerButtonView: UIView!
+    //@IBOutlet var registerButtonView: UIView!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -44,7 +44,7 @@ class RegisterUserVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         
-        registerButtonView.roundCorners(.AllCorners, radius: 14)
+        //registerButtonView.roundCorners(.AllCorners, radius: 14)
     }
     
     

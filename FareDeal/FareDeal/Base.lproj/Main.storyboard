@@ -1298,7 +1298,7 @@
                                                             </mask>
                                                         </variation>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIZ-Vn-vpa">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIZ-Vn-vpa">
                                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="E79-AL-faO"/>
@@ -1321,8 +1321,11 @@
                                                                 <include reference="KIR-gf-znM"/>
                                                             </mask>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="onClick:" destination="yo1-xz-xND" eventType="touchUpInside" id="kEG-vE-JnN"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXJ-LZ-r0m">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXJ-LZ-r0m">
                                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="52" id="uWm-yS-5Ev"/>
@@ -1343,6 +1346,9 @@
                                                                 <include reference="v4z-Un-TNb"/>
                                                             </mask>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="onClick:" destination="yo1-xz-xND" eventType="touchUpInside" id="hhp-AK-DsK"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1479,6 +1485,9 @@
                                                             <segment title="$$$$"/>
                                                         </segments>
                                                         <color key="tintColor" red="0.78592096560846558" green="0.78592096560846558" blue="0.78592096560846558" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="priceControl:" destination="yo1-xz-xND" eventType="touchUpInside" id="vvg-tD-357"/>
+                                                        </connections>
                                                     </segmentedControl>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1699,6 +1708,9 @@
                                                                 <include reference="sRb-Y7-uyy"/>
                                                             </mask>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="pickerSelected:" destination="yo1-xz-xND" eventType="touchUpInside" id="hTi-83-Ndb"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yB-S2-3dv">
                                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1723,6 +1735,9 @@
                                                                 <include reference="JUW-cd-IMd"/>
                                                             </mask>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="pickerSelected:" destination="yo1-xz-xND" eventType="touchUpInside" id="3Sv-Wb-bGn"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMa-wj-NIG">
                                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1747,6 +1762,9 @@
                                                                 <include reference="mcI-Sk-mq2"/>
                                                             </mask>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="pickerSelected:" destination="yo1-xz-xND" eventType="touchUpInside" id="322-fg-AVk"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tn-HG-CN3">
                                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1771,6 +1789,9 @@
                                                                 <include reference="mzA-uY-lev"/>
                                                             </mask>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="pickerSelected:" destination="yo1-xz-xND" eventType="touchUpInside" id="2LW-O9-2R3"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1868,7 +1889,7 @@
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKH-KX-a7D">
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKH-KX-a7D">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="cxD-7Q-FQx"/>
@@ -1888,6 +1909,9 @@
                                                         <include reference="cxD-7Q-FQx"/>
                                                     </mask>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="pickerSelected:" destination="yo1-xz-xND" eventType="touchUpInside" id="viB-4e-FDW"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2019,11 +2043,25 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="uI3-Gn-O5n">
-                        <barButtonItem key="rightBarButtonItem" image="signOut" id="i5b-lQ-IHi">
+                        <barButtonItem key="rightBarButtonItem" tag="2" image="signOut" id="i5b-lQ-IHi">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onClick:" destination="yo1-xz-xND" id="ZZE-jQ-G41"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="RestaurantTitleLabel" destination="75L-C3-6aP" id="QDf-8G-jkd"/>
+                        <outlet property="catButton" destination="IKH-KX-a7D" id="BNs-S5-Hgk"/>
+                        <outlet property="contactField" destination="coA-IT-lz5" id="Yhy-O8-Uqz"/>
+                        <outlet property="imgView" destination="ZWF-IT-BnC" id="n9d-PW-JGQ"/>
+                        <outlet property="priceControls" destination="i6g-vt-upz" id="s1a-jr-kH1"/>
+                        <outlet property="weekdayC" destination="2yB-S2-3dv" id="krP-dM-ACV"/>
+                        <outlet property="weekdayO" destination="QoD-vS-hnD" id="FRt-fL-qWg"/>
+                        <outlet property="weekendC" destination="1tn-HG-CN3" id="ukv-FG-TU5"/>
+                        <outlet property="weekendO" destination="ZMa-wj-NIG" id="CQ0-bE-7qs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vid-U4-oUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

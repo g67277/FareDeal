@@ -4,6 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Montserrat-Light.otf</string>
+		<string>Montserrat-Bold.otf</string>
+		<string>Montserrat-Hairline.otf</string>
+		<string>Montserrat-UltraLight.otf</string>
+		<string>Montserrat-Regular.otf</string>
 		<string>Avenir.ttc</string>
 	</array>
 </dict>

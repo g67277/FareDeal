@@ -124,9 +124,6 @@ class SignInUserVC: UIViewController {
         }
         
     }
-    
-
-    
 }
 
 extension UIView {

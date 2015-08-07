@@ -113,7 +113,6 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
         if (segue.identifier == "toProfile") {
             var svc = segue.destinationViewController as! RegisterRestaurantVC2;
             
-            svc.profileView = true
             
         }
     }

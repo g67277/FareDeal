@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FareDeal/RegisterRestaurantVC2.swift"
-            timestampString = "460581275.803024"
+            timestampString = "460607737.188773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "pickerSelected(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -128,22 +128,6 @@
             startingLineNumber = "35"
             endingLineNumber = "35"
             landmarkName = "viewDidAppear(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FareDeal/RegisterRestaurantVC2.swift"
-            timestampString = "460581275.803024"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "signOut()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -265,22 +249,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FareDeal/RegisterRestaurantVC2.swift"
-            timestampString = "460581275.803024"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "onClick(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FareDeal/DealDetailsVC.swift"
             timestampString = "460410437.079911"
             startingColumnNumber = "9223372036854775807"
@@ -346,12 +314,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FareDeal/RegisterRestaurantVC2.swift"
-            timestampString = "460581275.803024"
+            timestampString = "460607737.188773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
-            landmarkName = "signUP()"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "continueRegistration()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -378,12 +346,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FareDeal/RegisterRestaurantVC2.swift"
-            timestampString = "460581275.803024"
+            timestampString = "460607737.188773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
-            landmarkName = "signUP()"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "continueRegistration()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -394,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FareDeal/RegisterRestaurantVC2.swift"
-            timestampString = "460581275.803024"
+            timestampString = "460603104.673928"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "textFieldDidEndEditing(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -478,6 +446,22 @@
             startingLineNumber = "329"
             endingLineNumber = "329"
             landmarkName = "resetPassword(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FareDeal/RegisterRestaurantVC2.swift"
+            timestampString = "460607814.535451"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "pickerSelected(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

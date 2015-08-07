@@ -19,7 +19,7 @@ class RegisterRestaurantVC: UIViewController {
     
     let authenticationCall = AuthenticationCalls()
     let validation = Validation()
-    
+    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     
     override func viewDidLoad() {
@@ -53,6 +53,10 @@ class RegisterRestaurantVC: UIViewController {
         
     }
     
+    @IBAction func returnToReg1 (segue:UIStoryboardSegue) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -76,13 +80,18 @@ class RegisterRestaurantVC: UIViewController {
                 
                 var post:NSString = "{\"UserName\":\"\(userName.text)\",\"Email\":\"\(emailAddressField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\",\"IsBusiness\":\"true\"}"
                 
-                if authenticationCall.registerUser(post) {
-                    var stringPost="grant_type=password&username=\(userName.text)&password=\(passwordField.text)"
-                    
-                    if authenticationCall.signIn(stringPost){
-                        self.performSegueWithIdentifier("toRegister2", sender: nil)
+                if (prefs.objectForKey("TOKEN") == nil){
+                    if authenticationCall.registerUser(post) {
+                        var stringPost="grant_type=password&username=\(userName.text)&password=\(passwordField.text)"
+                        
+                        if authenticationCall.signIn(stringPost){
+                            self.performSegueWithIdentifier("toRegister2", sender: nil)
+                        }
                     }
+                }else{
+                    self.performSegueWithIdentifier("toRegister2", sender: nil)
                 }
+                
         }
         
         

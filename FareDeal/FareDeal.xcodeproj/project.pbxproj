@@ -36,6 +36,7 @@
 		81A88D621B739F64003220E3 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81A88D5A1B739F64003220E3 /* Montserrat-Regular.otf */; };
 		81A88D631B739F64003220E3 /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81A88D5B1B739F64003220E3 /* Montserrat-SemiBold.otf */; };
 		81A88D641B739F64003220E3 /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81A88D5C1B739F64003220E3 /* Montserrat-UltraLight.otf */; };
+		81A88D671B7439EC003220E3 /* RegisterRestaurantVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A88D661B7439EC003220E3 /* RegisterRestaurantVC3.swift */; };
 		81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B5B6AE1B56D375009B522A /* StoreVC.swift */; };
 		81B879121B691113003B1BB0 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */; };
 		972B8D8EA6F19199DCF8C070 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C34D443EE29BEF7C8222446 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -113,6 +114,7 @@
 		81A88D5A1B739F64003220E3 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
 		81A88D5B1B739F64003220E3 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
 		81A88D5C1B739F64003220E3 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
+		81A88D661B7439EC003220E3 /* RegisterRestaurantVC3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterRestaurantVC3.swift; sourceTree = "<group>"; };
 		81B5B6AE1B56D375009B522A /* StoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreVC.swift; sourceTree = "<group>"; };
 		81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		81B879171B6931CB003B1BB0 /* FareDeal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FareDeal-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				8185E2F71B60899B00059124 /* SignInVC.swift */,
 				8185E2F91B608AD100059124 /* RegisterRestaurantVC.swift */,
 				813222DB1B681A3500613C60 /* RegisterRestaurantVC2.swift */,
+				81A88D661B7439EC003220E3 /* RegisterRestaurantVC3.swift */,
 				81B879111B691113003B1BB0 /* ForgotPasswordVC.swift */,
 				8185E2FC1B608FE800059124 /* SignInUserVC.swift */,
 				8185E3001B609B1400059124 /* RegisterUserVC.swift */,
@@ -599,6 +602,7 @@
 				99CD57781B6AC03300DBDF3A /* DealHeaderCell.swift in Sources */,
 				99A6E8DE1B69EE89005179A6 /* Constants.swift in Sources */,
 				817BC8A41B6DD8FA0059C31D /* Validation.swift in Sources */,
+				81A88D671B7439EC003220E3 /* RegisterRestaurantVC3.swift in Sources */,
 				817BC8741B6DB86A0059C31D /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // make back buttons throughout the app dark grey
         var navBarAppearance = UINavigationBar.appearance()
         navBarAppearance.tintColor = UIColor.whiteColor()
+        navBarAppearance.translucent = false
+        navBarAppearance.barStyle = .Black
+        navBarAppearance.barTintColor = UIColor(red: 249/255, green: 99/255, blue: 50/255, alpha: 1)
         IQKeyboardManager.sharedManager().enable = true
         return true
     }

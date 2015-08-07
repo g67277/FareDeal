@@ -7,26 +7,22 @@
 //
 
 import UIKit
+import ActionSheetPicker_3_0
 
-class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BusinessHome: UIViewController {
     
     @IBOutlet weak var creditBalanceLabel: UILabel!
     @IBOutlet weak var dealsSelectedLabel: UILabel!
     @IBOutlet weak var dealsSwapedLabel: UILabel!
-    @IBOutlet weak var monthSelector: UITableView!
     @IBOutlet weak var monthsBtn: UIButton!
+    
+    @IBOutlet weak var profileImgView: UIImageView!
+    
     
     // holds all the months to display in selector
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-    
-    
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
-        self.navigationController?.navigationBar.tintColor = UIColor.darkGrayColor()
-
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +31,14 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
 
 //        let titleFont:UIFont = UIFont(name: "Middlecase Regular-Inline.otf", size: 20)!
 //        self.navigationController!.navigationBar.titleTextAttributes = [ NSFontAttributeName: titleFont]
+        
+
+        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 249/255, green: 99/255, blue: 50/255, alpha: 1)
+        
+        let image = UIImage(named: "navBarLogo")
+        navigationItem.titleView = UIImageView(image: image)
         
         
         let date = NSDate();
@@ -46,6 +50,13 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
         
     }
     
+    override func viewDidLayoutSubviews() {
+        profileImgView.layer.masksToBounds = false
+        profileImgView.layer.borderColor = UIColor.blackColor().CGColor
+        profileImgView.layer.cornerRadius = profileImgView.frame.height/2
+        profileImgView.clipsToBounds = true
+    }
+    
     override func viewDidAppear(animated: Bool) {
         
 
@@ -54,7 +65,7 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
         if creditsAvailable > 0 {
             creditBalanceLabel.text = "\(creditsAvailable)C"
         }else{
-            creditBalanceLabel.text = "No Testing"
+            creditBalanceLabel.text = "No Credits"
         }
     }
     
@@ -62,7 +73,6 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         if _sender?.tag == 1{
             
-            monthSelector.hidden = false
             
         }else if _sender?.tag == 2{
             
@@ -79,29 +89,24 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     
-    //Mark# Tableview methods
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return months.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    @IBAction func pickerSelected(sender: AnyObject) {
         
-        var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = months[indexPath.row]
-        cell.textLabel?.textColor = .whiteColor()
-        cell.textLabel?.font = UIFont(name: "Avenir Medium", size: 12)
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        monthsBtn.setTitle(months[indexPath.row], forState: UIControlState.Normal)
-        updateAnalytics()
-        monthSelector.hidden = true
+        if sender.tag == 0 {
+            ActionSheetStringPicker.showPickerWithTitle("Month", rows: months as [AnyObject], initialSelection: 1, doneBlock: {
+                picker, value, index in
+                
+                self.monthsBtn.setTitle("\(index)", forState: UIControlState.Normal)
+                
+                println("value = \(value)")
+                println("index = \(index)")
+                println("picker = \(picker)")
+                return
+                }, cancelBlock: { ActionStringCancelBlock in return }, origin: sender)
+            
+        }
         
     }
+
     
     func updateAnalytics(){
         

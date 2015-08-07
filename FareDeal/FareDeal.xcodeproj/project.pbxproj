@@ -16,6 +16,7 @@
 		81481B451B56A2D6000EC386 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81481B431B56A2D6000EC386 /* LaunchScreen.xib */; };
 		81481B511B56A2D6000EC386 /* FareDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81481B501B56A2D6000EC386 /* FareDealTests.swift */; };
 		81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81481B5A1B56A359000EC386 /* StoreKit.framework */; };
+		816B56741B747D79000BC65E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B56731B747D79000BC65E /* ProfileVC.swift */; };
 		817BC8721B6DA5F10059C31D /* BusinessDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BC8711B6DA5F10059C31D /* BusinessDeal.swift */; };
 		817BC8741B6DB86A0059C31D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BC8731B6DB86A0059C31D /* Reachability.swift */; };
 		817BC8A41B6DD8FA0059C31D /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BC8A31B6DD8FA0059C31D /* Validation.swift */; };
@@ -94,6 +95,7 @@
 		81481B4F1B56A2D6000EC386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81481B501B56A2D6000EC386 /* FareDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FareDealTests.swift; sourceTree = "<group>"; };
 		81481B5A1B56A359000EC386 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		816B56731B747D79000BC65E /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		817BC8711B6DA5F10059C31D /* BusinessDeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDeal.swift; sourceTree = "<group>"; };
 		817BC8731B6DB86A0059C31D /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		817BC8A31B6DD8FA0059C31D /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				819281D81B5B3E680003AD4D /* DealsVC.swift */,
 				819281DA1B5B3EA40003AD4D /* DealDetailsVC.swift */,
 				819281DF1B5B427C0003AD4D /* DealsCell.swift */,
+				816B56731B747D79000BC65E /* ProfileVC.swift */,
 				819281DE1B5B3FD50003AD4D /* Model */,
 				81008C131B5C46B40019E297 /* Data */,
 			);
@@ -571,6 +574,7 @@
 				99FC570E1B72D980006AA9C4 /* FavoriteHeaderCell.swift in Sources */,
 				819281DB1B5B3EA40003AD4D /* DealDetailsVC.swift in Sources */,
 				995935F01B5EDA1C009CDD26 /* FavoritesTVController.swift in Sources */,
+				816B56741B747D79000BC65E /* ProfileVC.swift in Sources */,
 				8185E2FA1B608AD100059124 /* RegisterRestaurantVC.swift in Sources */,
 				994C61331B69244600E5EF7C /* ForgotPasswordUserVC.swift in Sources */,
 				8185E3011B609B1400059124 /* RegisterUserVC.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 import MobileCoreServices
 import ActionSheetPicker_3_0
 import CoreLocation
+import RealmSwift
 
 
 class RegisterRestaurantVC2: UIViewController, UITextFieldDelegate {
@@ -45,6 +46,8 @@ class RegisterRestaurantVC2: UIViewController, UITextFieldDelegate {
     //Register/Edit button
     @IBOutlet var errorLabel: UILabel!
     
+    var continueSession = false
+    
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     let validation = Validation()
     var call = ""
@@ -78,6 +81,10 @@ class RegisterRestaurantVC2: UIViewController, UITextFieldDelegate {
             //sign up here
             self.continueRegistration()
     
+        }else if _sender.tag == 10{
+            if continueSession{
+                navigationController?.popViewControllerAnimated(true)
+            }
         }
         
     }
@@ -152,7 +159,7 @@ class RegisterRestaurantVC2: UIViewController, UITextFieldDelegate {
         var phoneNum = phoneNumField.text
         var website = websiteField.text
         var selectedCategory = catButton.titleLabel?.text
-        var price = priceControls.selectedSegmentIndex.value
+        var price = priceControls.selectedSegmentIndex
         var wkO = weekdayO.titleLabel?.text
         var wkC = weekdayC.titleLabel?.text
         var wknO = weekendO.titleLabel?.text
@@ -167,8 +174,9 @@ class RegisterRestaurantVC2: UIViewController, UITextFieldDelegate {
             && validation.validateInput(phoneNumField.text, check: 9, title: "Too Short", message: "Please enter a valid Phone number")
             && validation.category(selectedCategory!){
 
+                
                 call = "{\"StreetName\":\"\(street)\",\"City\":\"\(city)\",\"State\":\"DC\",\"ZipCode\":\"\(zipcode)\",\"PhoneNumber\":\"\(phoneNum)\",\"PriceTier\":\(price),\"WeekdaysHours\":\"\(weekdayString)\",\"WeekEndHours\":\"\(weekendString)\",\"RestaurantName\":\"\(restaurantName)\",\"Lat\":\"\(validatedlat)\",\"Lang\":\"\(validatedlng)\",\"CategoryName\":\"\(selectedCategory)\""
-                self.performSegueWithIdentifier("toReg3", sender: nil)
+                self.saveData(restaurantName, street: street, city: city, zipcode: zipcode.toInt()!, phoneNum: phoneNum.toInt()!, website: website, category: selectedCategory!, price: price, wkO: wkO!, wkC: wkC!, wknO: wknO!, wknC: wknC!, weekdayString: weekdayString, weekendString: weekendString)
                 
         }else {
             errorLabel.hidden = false
@@ -186,8 +194,32 @@ class RegisterRestaurantVC2: UIViewController, UITextFieldDelegate {
     }
     
     
-    func saveData(){
+    func saveData(name: String, street: String, city: String, zipcode: Int, phoneNum: Int, website: String, category: String, price: Int, wkO: String, wkC: String, wknO: String, wknC: String, weekdayString: String, weekendString: String){
         
+        var model = ProfileModel()
+        model.restaurantName = name
+        model.streetAddress = street
+        model.city = city
+        model.zipcode = zipcode
+        model.phoneNum = phoneNum
+        model.website = website
+        model.category = category
+        model.priceTier = price
+        model.weekdayO = wkO
+        model.weekdayC = wkC
+        model.weekendO = wknO
+        model.weekendC = wknC
+        model.weekdayHours = weekdayString
+        model.weekendHours = weekendString
+        model.id = "will change"
+        
+        var realm = Realm()
+        realm.write({
+            realm.add(model, update: true)
+        })
+        
+        self.performSegueWithIdentifier("toReg3", sender: nil)
+
     }
     
     func findCoorinates(formattedAddress: String) {

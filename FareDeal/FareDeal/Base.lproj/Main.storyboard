@@ -1207,7 +1207,7 @@
                     <view key="view" contentMode="scaleToFill" id="ND9-F1-ReQ">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1X-e2-4zx">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1X-e2-4zx">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0E-fg-cwP">
@@ -1216,7 +1216,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaD-MC-Woy">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75L-C3-6aP">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75L-C3-6aP">
                                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="193" id="ZtC-hX-fIG"/>
@@ -3234,8 +3234,7 @@
                                                         <exclude reference="DFD-TH-OuR"/>
                                                     </mask>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="50" y="49" width="184" height="135"/>
+                                                <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="constraints">
                                                         <include reference="DFD-TH-OuR"/>
                                                     </mask>
@@ -3262,8 +3261,7 @@
                                                 <exclude reference="Ob4-tO-Fua"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="8" y="8" width="284" height="184"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="subviews">
                                                 <include reference="SD6-AK-132"/>
                                             </mask>
@@ -3282,9 +3280,6 @@
                                                 <fontDescription key="fontDescription" name="Montserrat-Hairline" family="Montserrat" pointSize="40"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="8" width="284" height="113"/>
-                                                </variation>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3309,8 +3304,7 @@
                                                 <exclude reference="axt-nC-Jnf"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="8" y="193" width="284" height="129"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="subviews">
                                                 <include reference="48S-Z7-u5v"/>
                                             </mask>
@@ -3351,8 +3345,7 @@
                                         <exclude reference="yZR-3R-FW5"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="50" y="28" width="300" height="322"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="1H1-qs-vUV"/>
                                         <include reference="L8V-mE-BCU"/>
@@ -4819,7 +4812,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0M-bo-pn9" userLabel="Sign Up Button View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="i9W-WT-eqK">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="i9W-WT-eqK">
                                         <rect key="frame" x="0.0" y="20" width="500" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="V2E-CB-7H3"/>
@@ -4840,7 +4833,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <segue destination="sCP-PT-wcz" kind="show" id="fqD-OD-xmy"/>
+                                            <action selector="onClick:" destination="xuF-nn-tOX" eventType="touchUpInside" id="IRZ-W5-dbU"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -4959,6 +4952,8 @@
                         <outlet property="passwordField" destination="V3a-8d-rGm" id="bWw-L2-Jzp"/>
                         <outlet property="userNameField" destination="3Rp-6q-XEc" id="r6L-Y0-dcM"/>
                         <segue destination="iEF-20-nAw" kind="presentation" identifier="toMain" id="GOR-ji-cjE"/>
+                        <segue destination="Yq0-fr-wxg" kind="show" identifier="toReg2" id="kvg-FW-cke"/>
+                        <segue destination="sCP-PT-wcz" kind="show" identifier="toReg1" id="aRe-eL-1lr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJM-uN-ffx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5580,13 +5575,14 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mF7-Ad-Vsu">
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mF7-Ad-Vsu">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="onClick:" destination="Yq0-fr-wxg" eventType="touchUpInside" id="4UJ-gY-2iZ"/>
                                     <segue destination="xeS-8D-r4q" kind="unwind" unwindAction="returnToReg1:" id="xds-yg-xbS"/>
                                 </connections>
                             </button>
@@ -14129,8 +14125,9 @@
         <image name="userRegBg" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3oE-9l-YGH"/>
+        <segue reference="tNh-7g-8QF"/>
         <segue reference="P2g-X9-MZX"/>
+        <segue reference="kvg-FW-cke"/>
         <segue reference="ewe-a6-IF6"/>
         <segue reference="gTw-bM-aav"/>
     </inferredMetricsTieBreakers>

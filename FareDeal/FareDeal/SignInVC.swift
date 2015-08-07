@@ -32,13 +32,10 @@ class SignInVC: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
-        if (prefs.objectForKey("TOKEN") == nil) {
-            debugPrint("NO token")
-            //self.performSegueWithIdentifier("goto_login", sender: self)
-        } else {
+        if (prefs.objectForKey("TOKEN") == nil) || (prefs.objectForKey("restID") == nil) {
+            debugPrint("NO token or restaurant ID")
+        } else{
             self.performSegueWithIdentifier("toMain", sender: self)
-            //self.usernameLabel.text = prefs.valueForKey("USERNAME") as? String
-            
         }
         
     }
@@ -75,6 +72,19 @@ class SignInVC: UIViewController {
                         }
                     }
             }
+        } else if _sender.tag == 1{
+            if (prefs.objectForKey("TOKEN") == nil) {
+                self.performSegueWithIdentifier("toReg1", sender: nil)
+            } else  {
+                var refreshAlert = UIAlertController(title: "Continue?", message: "Want to continue your last registration?", preferredStyle: UIAlertControllerStyle.Alert)
+                refreshAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {(action: UIAlertAction!) in
+                    self.performSegueWithIdentifier("toReg2", sender: nil)
+                }))
+                refreshAlert.addAction(UIAlertAction(title: "No", style: .Default, handler: {(action: UIAlertAction!) in
+                    self.performSegueWithIdentifier("toReg1", sender: nil)
+                }))
+                self.presentViewController(refreshAlert, animated: true, completion: nil)
+            }
         }
         
     }
@@ -86,6 +96,12 @@ class SignInVC: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "toUserSide") {
             prefs.setInteger(2, forKey: "SIDE")
+        }else if (segue.identifier == "toReg1"){
+            
+        }else if (segue.identifier == "toReg2"){
+            var svc = segue.destinationViewController as! RegisterRestaurantVC2;
+            
+            svc.continueSession = true
         }
     }
 

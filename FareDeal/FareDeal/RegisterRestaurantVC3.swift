@@ -9,15 +9,17 @@
 import UIKit
 import MobileCoreServices
 import ActionSheetPicker_3_0
+import RealmSwift
+import AssetsLibrary
 
 class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
     
     //Picture
     @IBOutlet weak var imgView: UIImageView!
+    var imgUri:NSURL = NSURL()
     var newMedia: Bool?
     var validImage = false
     @IBOutlet weak var contactName: UITextField!
-    
     @IBOutlet weak var descTextView: UITextView!
     
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -25,7 +27,7 @@ class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, U
     let validation = Validation()
     
     var callPart1 = ""
-
+    var continueSession = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,15 +64,20 @@ class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, U
             
                 var callPart2 = "\"ContactName\":\"\(contactName.text)\",\"Desc\":\"\(descTextView.text)\"}"
                 var completeCall = "\(callPart1), \(callPart2)"
-                var token = prefs.stringForKey("TOKEN")
-                if authentication.registerRestaurant(completeCall, token: token!){
-                    
-                    var refreshAlert = UIAlertController(title: "Thank you!", message: "Your data has been sent for validation, we'll be in touch soon.  In the mean time, you can start setting up some amazing deals", preferredStyle: UIAlertControllerStyle.Alert)
-                    refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
-                        self.backThree()
-                    }))
-                    self.presentViewController(refreshAlert, animated: true, completion: nil)
-                }
+                //var token = prefs.stringForKey("TOKEN")
+                //testing...
+                self.saveData()
+                prefs.setObject("restID", forKey: "restID")
+                self.backThree()
+//                if authentication.registerRestaurant(completeCall, token: token!){
+//                    
+//                    prefs.setObject("restID", forKey: "restID")
+//                    var refreshAlert = UIAlertController(title: "Thank you!", message: "Your data has been sent for validation, we'll be in touch soon.  In the mean time, you can start setting up some amazing deals", preferredStyle: UIAlertControllerStyle.Alert)
+//                    refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
+//                        self.backThree()
+//                    }))
+//                    self.presentViewController(refreshAlert, animated: true, completion: nil)
+//                }
                 
         }else if !validImage{
             validation.displayAlert("No Picture", message: "Please add a picture")
@@ -78,10 +85,27 @@ class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, U
         
     }
     
+    func saveData(){
+        
+        var realm = Realm()
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+
+        realm.write({
+            data?.contactName = self.contactName.text
+            data?.desc = self.descTextView.text
+            data?.imgUri = "\(self.imgUri)"
+        })
+        
+    }
+    
     func backThree() {
         
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
-        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 4], animated: true);
+        if continueSession{
+            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
+        }else{
+            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 4], animated: true);
+        }
         
     }
     
@@ -167,6 +191,19 @@ class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, U
             }
             
         }
+        
+        let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first as! NSURL
+        if let fileAbsoluteUrl = documentsUrl.URLByAppendingPathComponent( "profile.png").absoluteURL {
+            println(fileAbsoluteUrl)
+        }
+        var imageData = UIImageJPEGRepresentation(imgView.image, 0.6)
+        var compressedJPGImage = UIImage(data: imageData)
+        ALAssetsLibrary().writeImageToSavedPhotosAlbum(compressedJPGImage!.CGImage, orientation: ALAssetOrientation(rawValue: compressedJPGImage!.imageOrientation.rawValue)!,
+            completionBlock:{ (path:NSURL!, error:NSError!) -> Void in
+                self.imgUri = path
+                println("\(path)")  //Here you will get your path
+        })
+        
     }
     
     func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>) {

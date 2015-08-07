@@ -9,6 +9,8 @@
 import UIKit
 import MobileCoreServices
 import ActionSheetPicker_3_0
+import RealmSwift
+import AssetsLibrary
 
 class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -42,6 +44,84 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         view.addGestureRecognizer(tap)
         
         categoryArray = categories.loadCategories()
+        
+        loadElements()
+        
+    }
+    
+    func loadElements(){
+        
+        var realm = Realm()
+        
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        
+        RestaurantTitleLabel.text = data?.restaurantName
+        var name = data?.contactName
+        contactField.text = name
+        var category = data?.category
+        catButton.setTitle(category, forState: UIControlState.Normal)
+        var price = data?.priceTier
+        priceControls.selectedSegmentIndex = price!
+        weekdayO.setTitle(data?.weekdayO, forState: .Normal)
+        weekdayC.setTitle(data?.weekdayC, forState: .Normal)
+        weekendO.setTitle(data?.weekendO, forState: .Normal)
+        weekendC.setTitle(data?.weekendC, forState: .Normal)
+        var path = data?.imgUri
+        //var test = UIImage(contentsOfFile: path!)
+        var imgURL = NSURL(string: path!)
+        getUIImagefromAsseturl(imgURL!)
+//        var imgData = NSData(contentsOfURL: imgURL!)
+//        var image = UIImage(data: imgData!)
+//        imgView.image = image
+//        let image = UIImage(
+//        let image = UIImage(contentsOfFile: imgURL)
+//        imgView.image = image
+
+    }
+    
+    func getUIImagefromAsseturl (url: NSURL) {
+        var asset = ALAssetsLibrary()
+
+        asset.assetForURL(NSURL(), resultBlock: { asset in
+            if let ast = asset {
+                let assetRep = ast.defaultRepresentation()
+                let iref = assetRep.fullResolutionImage().takeUnretainedValue()
+                let image = UIImage(CGImage: iref)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.imgView.image = image
+                })
+            }
+            }, failureBlock: { error in
+                println("Error: \(error)")
+        })
+    }
+    
+    func saveData(){
+        
+        var category = self.catButton.titleLabel?.text
+        var wkO = self.weekdayO.titleLabel?.text
+        var wkC = self.weekdayC.titleLabel?.text
+        var wknO = self.weekendO.titleLabel?.text
+        var wknC = self.weekendC.titleLabel?.text
+
+        var realm = Realm()
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        
+        realm.write({
+            data?.contactName = self.contactField.text
+            data?.category = category!
+            data?.priceTier = self.priceControls.selectedSegmentIndex
+            data?.weekdayO = wkO!
+            data?.weekdayC = wkC!
+            data?.weekendO = wknO!
+            data?.weekendC = wknC!
+        })
+        
+        var alertView:UIAlertView = UIAlertView()
+        alertView.title = "Saved"
+        alertView.delegate = self
+        alertView.addButtonWithTitle("OK")
+        alertView.show()
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,6 +142,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         if _sender.tag == 0{
             
             //save here
+            self.saveData()
             
         }else if _sender.tag == 1{
             self.startImageAction()
@@ -132,6 +213,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     
     func signOff(){
         prefs.setObject(nil, forKey: "TOKEN")
+        prefs.setObject(nil, forKey: "restID")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 

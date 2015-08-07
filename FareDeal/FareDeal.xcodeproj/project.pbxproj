@@ -18,6 +18,7 @@
 		81481B5B1B56A359000EC386 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81481B5A1B56A359000EC386 /* StoreKit.framework */; };
 		816B56741B747D79000BC65E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B56731B747D79000BC65E /* ProfileVC.swift */; };
 		816B56761B74FF53000BC65E /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B56751B74FF53000BC65E /* ProfileModel.swift */; };
+		816B56781B755AC0000BC65E /* APICalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B56771B755AC0000BC65E /* APICalls.swift */; };
 		817BC8721B6DA5F10059C31D /* BusinessDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BC8711B6DA5F10059C31D /* BusinessDeal.swift */; };
 		817BC8741B6DB86A0059C31D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BC8731B6DB86A0059C31D /* Reachability.swift */; };
 		817BC8A41B6DD8FA0059C31D /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BC8A31B6DD8FA0059C31D /* Validation.swift */; };
@@ -98,6 +99,7 @@
 		81481B5A1B56A359000EC386 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		816B56731B747D79000BC65E /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		816B56751B74FF53000BC65E /* ProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		816B56771B755AC0000BC65E /* APICalls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICalls.swift; sourceTree = "<group>"; };
 		817BC8711B6DA5F10059C31D /* BusinessDeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDeal.swift; sourceTree = "<group>"; };
 		817BC8731B6DB86A0059C31D /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		817BC8A31B6DD8FA0059C31D /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				816B56731B747D79000BC65E /* ProfileVC.swift */,
 				819281DE1B5B3FD50003AD4D /* Model */,
 				81008C131B5C46B40019E297 /* Data */,
+				816B56771B755AC0000BC65E /* APICalls.swift */,
 			);
 			name = "Business Side";
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				998038FC1B704998007C53B7 /* SavedDeal.swift in Sources */,
 				998038F71B6FC71A007C53B7 /* VenueDeal.swift in Sources */,
 				8185E3031B60A20A00059124 /* InitialScreenVC.swift in Sources */,
+				816B56781B755AC0000BC65E /* APICalls.swift in Sources */,
 				995935EF1B5EDA1C009CDD26 /* FavoritesCell.swift in Sources */,
 				819281E01B5B427C0003AD4D /* DealsCell.swift in Sources */,
 				99A6E8D91B69ED97005179A6 /* Deals.swift in Sources */,

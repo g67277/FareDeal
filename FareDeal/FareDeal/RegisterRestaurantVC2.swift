@@ -60,7 +60,10 @@ class RegisterRestaurantVC2: UIViewController, UITextFieldDelegate {
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
         
+        phoneNumField.delegate = self
+        phoneNumField.tag = 0
         zipecodeField.delegate = self
+        zipecodeField.tag = 1
         categoryArray = categories.loadCategories()
     }
     
@@ -71,7 +74,20 @@ class RegisterRestaurantVC2: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         // Validates address and retrives coordinates
-        findCoorinates(("\(streetField.text), \(cityField.text), \(zipecodeField.text)"))
+        if textField.tag == 1{
+            findCoorinates(("\(streetField.text), \(cityField.text), \(zipecodeField.text)"))
+        }
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if textField.tag == 0{
+            println(count(phoneNumField.text))
+            if count(phoneNumField.text) > 10{
+                //var updatedInput = count(descTF.text)
+                phoneNumField.text = phoneNumField.text.substringToIndex(phoneNumField.text.endIndex.predecessor())
+            }
+        }
+        return true
     }
     
     @IBAction func onClick(_sender:UIButton){

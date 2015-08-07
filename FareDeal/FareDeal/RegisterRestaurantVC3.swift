@@ -179,30 +179,28 @@ class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, U
         if mediaType.isEqualToString(kUTTypeImage as! String) {
             let image = info[UIImagePickerControllerOriginalImage]
                 as! UIImage
-            
             imgView.image = image
             validImage = true
             
             if (newMedia == true) {
-                UIImageWriteToSavedPhotosAlbum(image, self,
-                    "image:didFinishSavingWithError:contextInfo:", nil)
+                var imageData = UIImageJPEGRepresentation(imgView.image, 0.6)
+                var compressedJPGImage = UIImage(data: imageData)
+                ALAssetsLibrary().writeImageToSavedPhotosAlbum(compressedJPGImage!.CGImage, orientation: ALAssetOrientation(rawValue: compressedJPGImage!.imageOrientation.rawValue)!,
+                    completionBlock:{ (path:NSURL!, error:NSError!) -> Void in
+                        self.imgUri = path
+                        println("\(path)")  //Here you will get your path
+                })
+
             } else if mediaType.isEqualToString(kUTTypeMovie as! String) {
                 // Code to support video here
+            }else{
+                imgUri = info[UIImagePickerControllerReferenceURL] as! NSURL
             }
             
+
         }
         
-        let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first as! NSURL
-        if let fileAbsoluteUrl = documentsUrl.URLByAppendingPathComponent( "profile.png").absoluteURL {
-            println(fileAbsoluteUrl)
-        }
-        var imageData = UIImageJPEGRepresentation(imgView.image, 0.6)
-        var compressedJPGImage = UIImage(data: imageData)
-        ALAssetsLibrary().writeImageToSavedPhotosAlbum(compressedJPGImage!.CGImage, orientation: ALAssetOrientation(rawValue: compressedJPGImage!.imageOrientation.rawValue)!,
-            completionBlock:{ (path:NSURL!, error:NSError!) -> Void in
-                self.imgUri = path
-                println("\(path)")  //Here you will get your path
-        })
+        // Will use this when we save pics from web
         
     }
     

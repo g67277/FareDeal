@@ -151,7 +151,12 @@ class RegisterRestaurantVC2: UIViewController, UITextFieldDelegate {
 
     // Registration Call Methods
     
+
+    
     func continueRegistration(){
+        
+        runTestingMethod()
+        
         var restaurantName = restNameField.text
         var street = streetField.text
         var city = cityField.text
@@ -171,17 +176,36 @@ class RegisterRestaurantVC2: UIViewController, UITextFieldDelegate {
         
         if validation.validateInput(restaurantName, check: 1, title: "Too Short", message: "Please enter a valid Restaurant name")
         && validation.validateAddress(street, city: city, zipcode: zipcode, lat: self.validatedlat, lng: self.validatedlng).valid
-            && validation.validateInput(phoneNumField.text, check: 9, title: "Too Short", message: "Please enter a valid Phone number")
+            && validation.validatePhone(phoneNumField.text, check: 10, title: "Invalid Number", message: "Please enter a valid Phone number")
             && validation.category(selectedCategory!){
 
                 
                 call = "{\"StreetName\":\"\(street)\",\"City\":\"\(city)\",\"State\":\"DC\",\"ZipCode\":\"\(zipcode)\",\"PhoneNumber\":\"\(phoneNum)\",\"PriceTier\":\(price),\"WeekdaysHours\":\"\(weekdayString)\",\"WeekEndHours\":\"\(weekendString)\",\"RestaurantName\":\"\(restaurantName)\",\"Lat\":\"\(validatedlat)\",\"Lang\":\"\(validatedlng)\",\"CategoryName\":\"\(selectedCategory)\""
                 self.saveData(restaurantName, street: street, city: city, zipcode: zipcode.toInt()!, phoneNum: phoneNum.toInt()!, website: website, category: selectedCategory!, price: price, wkO: wkO!, wkC: wkC!, wknO: wknO!, wknC: wknC!, weekdayString: weekdayString, weekendString: weekendString)
                 
+//                self.saveData(restaurantName, street: street, city: city, zipcode: zipcode.toInt()!, phoneNum: phoneNum.toInt()!, website: "wfioewjfo.com", category: "burger", price: 2, wkO: "23", wkC: "23", wknO: "23", wknC: "23", weekdayString: "hey you", weekendString: "hey you")
+                
         }else {
             errorLabel.hidden = false
         }
         
+    }
+    
+    func runTestingMethod(){
+        
+        restNameField.text = "Nazir"
+        streetField.text = "43124 Shadow Ter"
+        cityField.text = "leesburg"
+        zipecodeField.text = "20176"
+        phoneNumField.text = "1234567890"
+        websiteField.text = "weofijewof.com"
+        catButton.setTitle("testing", forState: .Normal)
+        priceControls.selectedSegmentIndex = 2
+        weekdayO.setTitle("10am", forState: .Normal)
+        weekdayC.setTitle("10am", forState: .Normal)
+        weekendO.setTitle("10am", forState: .Normal)
+        weekendC.setTitle("10am", forState: .Normal)
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -192,7 +216,6 @@ class RegisterRestaurantVC2: UIViewController, UITextFieldDelegate {
             
         }
     }
-    
     
     func saveData(name: String, street: String, city: String, zipcode: Int, phoneNum: Int, website: String, category: String, price: Int, wkO: String, wkC: String, wknO: String, wknC: String, weekdayString: String, weekendString: String){
         

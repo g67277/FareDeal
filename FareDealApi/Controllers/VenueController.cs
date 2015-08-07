@@ -17,18 +17,23 @@ namespace FareDealApi.Controllers
     {
        // VenueService service = new VenueService();
        // CategoryService catService = new CategoryService();
-        // GET: api/Venue
-        //public IEnumerable<venue> Get()
-        //{
-        //    IEnumerable<venue> venues = service.GetVenues();
-        //    return venues;
-
-        //}
+       //  GET: api/Venue
+        public IEnumerable<venue> Get()
+        {
+            using (VenueService service = new VenueService())
+            {
+                IEnumerable<venue> venues = service.GetVenues();
+                return venues;
+            }
+        }
 
         // GET: api/Venue/5
-        public string Get(int id)
+        public venue Get(Guid id)
         {
-            return "value";
+            using (VenueService service = new VenueService())
+            {
+                return service.GetById(id);
+            }
         }
 
         // POST: api/Venue
@@ -43,7 +48,8 @@ namespace FareDealApi.Controllers
             using (VenueService service = new VenueService())
             {
                 venue v = service.GetByName(model.RestaurantName);
-                //if (v == null)
+                
+                if (v == null)
                 {
 
                     location l = new location();
@@ -77,11 +83,38 @@ namespace FareDealApi.Controllers
                     //v.categoryId = cat.Id;
                     v.category = cat;
 
-                    service.AddVenue(v, l, cat);
+                    service.AddVenue(v);
+                }
+                else
+                {
+
                 }
             }
             return Ok();
         }
+
+        [HttpGet]
+        [Route("api/Venue/BalanceSummary")]
+        [Authorize(Roles="business")]
+        public VenueCreditSummary BalanceSummary(Guid id)
+        {
+            using (VenueService vc = new VenueService())
+            {
+                return vc.GetSummary(id);
+            }
+        }
+
+        [HttpGet]
+        [Route("api/Venue/Like")]
+        public async Task<IHttpActionResult> Like(Guid id)
+        {
+            using(VenueService service = new VenueService())
+            {
+                service.SaveLike(id);
+            }
+            return Ok();
+        }
+
 
         // PUT: api/Venue/5
         public void Put(int id, [FromBody]string value)

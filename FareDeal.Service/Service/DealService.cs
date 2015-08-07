@@ -31,5 +31,56 @@ namespace FareDeal.Service
                 throw e;
             }
         }
+
+        public void PurchaseDeal(deal_transcation transaction)
+        {
+            try
+            {
+                deal _deal = db.deals.Where(d => d.id == transaction.deal_id).FirstOrDefault();
+                db.Entry(_deal).Reference<venue>(d=>d.venue).Load();
+                db.Entry(_deal.venue).Collection<venue_credit>(v => v.venue_credit).Load();
+                
+                //add transactions
+                db.deal_transcation.Add(transaction);
+                
+                //debit venue credit
+                venue_credit vc = _deal.venue.venue_credit.First();
+                vc.credit_available = vc.credit_available - 1;
+                //update count
+                _deal.totalPurchased += 1;
+
+                db.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public void SwapDeal(deal_transcation transaction)
+        {
+            try
+            {
+                deal _deal = db.deals.Where(d => d.id == transaction.deal_id).FirstOrDefault();
+                db.Entry(_deal).Reference<venue>(d => d.venue).Load();
+                db.Entry(_deal.venue).Collection<venue_credit>(v => v.venue_credit).Load();
+                
+
+                //add transactions
+                db.deal_transcation.Add(transaction);
+
+                //debit venue credit
+                venue_credit vc = _deal.venue.venue_credit.First();
+                vc.credit_available = vc.credit_available + 1;
+
+                //update counts
+                _deal.totalSwapped += 1;
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

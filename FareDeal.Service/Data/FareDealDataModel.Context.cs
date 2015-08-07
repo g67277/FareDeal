@@ -28,10 +28,10 @@ namespace FareDeal.Service.Data
         public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<credit_master> credit_master { get; set; }
         public virtual DbSet<credit_transactions> credit_transactions { get; set; }
-        public virtual DbSet<deal> deals { get; set; }
-        public virtual DbSet<deal_transcation> deal_transcation { get; set; }
         public virtual DbSet<location> locations { get; set; }
         public virtual DbSet<venue> venues { get; set; }
+        public virtual DbSet<deal> deals { get; set; }
+        public virtual DbSet<deal_transcation> deal_transcation { get; set; }
         public virtual DbSet<venue_credit> venue_credit { get; set; }
     }
 }

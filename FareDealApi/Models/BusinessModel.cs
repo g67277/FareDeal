@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 using FareDeal.Service.Data;
 
@@ -44,12 +46,17 @@ namespace FareDealApi.Models
         public string ZipCode {get; set;}
     }
 
-   [Serializable]
-    public class RestaurentModel
-    {
-        venue Venue { get; set; }
-        location Location { get; set; }
-        category Categories { get; set; }
 
+    public class DealModel
+    {
+        [Required]
+        public Guid VenueId { get; set; }
+        [Required]
+        public string DealTitle { get; set; }
+        public string DealDescription { get; set; }
+        [Required]
+        public decimal DealValue { get; set; }
+        [Required]
+        public int TimeLimit { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace FareDeal.Service.Data
         public venue()
         {
             this.deals = new HashSet<deal>();
+            this.venue_credit = new HashSet<venue_credit>();
         }
     
         public System.Guid Id { get; set; }
@@ -36,8 +37,9 @@ namespace FareDeal.Service.Data
         public string weekdayHours { get; set; }
         public string weekendHours { get; set; }
     
-        public virtual ICollection<deal> deals { get; set; }
         public virtual category category { get; set; }
         public virtual location location { get; set; }
+        public virtual ICollection<deal> deals { get; set; }
+        public virtual ICollection<venue_credit> venue_credit { get; set; }
     }
 }

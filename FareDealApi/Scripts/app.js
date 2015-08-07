@@ -142,6 +142,104 @@
         }).fail(showError);
     });
 
+    $('#btnCreateDeal').click(function () {
+
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+
+        var title = "DealTitle" + Math.random().toPrecision(3);
+
+        var data = {
+            VenueId: 'CB29A448-84C9-4630-A0B0-06497A613DA6',
+            DealTitle: title,
+            DealDescription: 'Deal description',
+            DealValue: 2.99,
+            TimeLimit: 2
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/Deal',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data),
+            headers: headers
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
+
+
+    $('#btnPurchaseDeal').click(function () {
+
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+        $.ajax({
+            type: 'GET',
+            url: '/api/Deal/Purchase?dealId=E1D72619-C35E-4F47-949A-0227AF1957B8',
+            contentType: 'application/json; charset=utf-8',
+            headers: headers
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
+
+    $('#btnSwapDeal').click(function () {
+
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+        $.ajax({
+            type: 'GET',
+            url: '/api/Deal/Swap?originalDealId=E1D72619-C35E-4F47-949A-0227AF1957B8&newDealId=0F2A43BF-B902-4243-BB67-188B3F9EDE05',
+            contentType: 'application/json; charset=utf-8',
+            headers: headers
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
+
+    $('#btnGetBalanceSummary').click(function () {
+
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+        $.ajax({
+            type: 'GET',
+            url: '/api/Venue/BalanceSummary?id=CB29A448-84C9-4630-A0B0-06497A613DA6',
+            contentType: 'application/json; charset=utf-8',
+            headers: headers
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
+
+    $('#btnLike').click(function () {
+
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+        $.ajax({
+            type: 'GET',
+            url: '/api/Venue/Like?id=CB29A448-84C9-4630-A0B0-06497A613DA6',
+            contentType: 'application/json; charset=utf-8',
+            headers: headers
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
+
 
     $('#btn_password_reset').click(function () {
         var headers = {};
@@ -173,6 +271,9 @@
             alert("There was an error resetting password! Your reset email link is expired.");
         });
     });
+
+
+
 }
 
 var app = new ViewModel();

@@ -12,6 +12,7 @@ namespace FareDeal.Service
         public BaseService(FareDealDbContext dbContext)
         {
             db = dbContext;
+            db.Configuration.LazyLoadingEnabled = false; 
         }
         public void Dispose()
         {

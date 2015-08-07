@@ -46,11 +46,13 @@
           <Property Name="active" Type="bit" Nullable="false" />
           <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="tier" Type="smallint" Nullable="false" />
-          <Property Name="original_value" Type="int" Nullable="false" />
-          <Property Name="deal_value" Type="int" Nullable="false" />
-          <Property Name="credit_required" Type="int" Nullable="false" />
-          <Property Name="epirationTime" Type="int" />
+          <Property Name="tier" Type="smallint" />
+          <Property Name="original_value" Type="int" />
+          <Property Name="deal_value" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="credit_required" Type="int" />
+          <Property Name="timeLimit" Type="int" Nullable="false" />
+          <Property Name="totalPurchased" Type="int" />
+          <Property Name="totalSwapped" Type="int" />
         </EntityType>
         <EntityType Name="deal_transcation">
           <Key>
@@ -241,8 +243,6 @@
           <EntitySet Name="categories" EntityType="LocalAuthenticationModel.category" />
           <EntitySet Name="credit_master" EntityType="LocalAuthenticationModel.credit_master" />
           <EntitySet Name="credit_transactions" EntityType="LocalAuthenticationModel.credit_transactions" />
-          <EntitySet Name="deals" EntityType="LocalAuthenticationModel.deal" />
-          <EntitySet Name="deal_transcation" EntityType="LocalAuthenticationModel.deal_transcation" />
           <EntitySet Name="locations" EntityType="LocalAuthenticationModel.location" />
           <EntitySet Name="venues" EntityType="LocalAuthenticationModel.venue" />
           <AssociationSet Name="FK_credit_transactions_credit_master" Association="LocalAuthenticationModel.FK_credit_transactions_credit_master">
@@ -253,14 +253,6 @@
             <End EntitySet="venues" Role="venue" />
             <End EntitySet="credit_transactions" Role="credit_transactions" />
           </AssociationSet>
-          <AssociationSet Name="FK_deal_transcation_deal" Association="LocalAuthenticationModel.FK_deal_transcation_deal">
-            <End EntitySet="deals" Role="deal" />
-            <End EntitySet="deal_transcation" Role="deal_transcation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_deal_venue" Association="LocalAuthenticationModel.FK_deal_venue">
-            <End EntitySet="venues" Role="venue" />
-            <End EntitySet="deals" Role="deal" />
-          </AssociationSet>
           <AssociationSet Name="FK_venue_category" Association="LocalAuthenticationModel.FK_venue_category">
             <End Role="category" EntitySet="categories" />
             <End Role="venue" EntitySet="venues" />
@@ -269,12 +261,22 @@
             <End Role="location" EntitySet="locations" />
             <End Role="venue" EntitySet="venues" />
           </AssociationSet>
+          <EntitySet Name="deals" EntityType="LocalAuthenticationModel.deal" />
+          <EntitySet Name="deal_transcation" EntityType="LocalAuthenticationModel.deal_transcation" />
+          <AssociationSet Name="FK_deal_transcation_deal" Association="LocalAuthenticationModel.FK_deal_transcation_deal">
+            <End Role="deal" EntitySet="deals" />
+            <End Role="deal_transcation" EntitySet="deal_transcation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deal_venue" Association="LocalAuthenticationModel.FK_deal_venue">
+            <End Role="venue" EntitySet="venues" />
+            <End Role="deal" EntitySet="deals" />
+          </AssociationSet>
           <EntitySet Name="venue_credit" EntityType="LocalAuthenticationModel.venue_credit" />
           <AssociationSet Name="FK_venue_credit_venue" Association="LocalAuthenticationModel.FK_venue_credit_venue">
             <End Role="venue" EntitySet="venues" />
             <End Role="venue_credit" EntitySet="venue_credit" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="category">
           <Key>
             <PropertyRef Name="Id" />
@@ -310,33 +312,6 @@
           <NavigationProperty Name="credit_master" Relationship="LocalAuthenticationModel.FK_credit_transactions_credit_master" FromRole="credit_transactions" ToRole="credit_master" />
           <NavigationProperty Name="venue" Relationship="LocalAuthenticationModel.FK_credit_transactions_venue" FromRole="credit_transactions" ToRole="venue" />
         </EntityType>
-        <EntityType Name="deal">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Nullable="false" Type="Guid" />
-          <Property Name="venue_id" Nullable="false" Type="Guid" />
-          <Property Name="active" Nullable="false" Type="Boolean" />
-          <Property Name="title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="description" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="tier" Nullable="false" Type="Int16" />
-          <Property Name="original_value" Nullable="false" Type="Int32" />
-          <Property Name="deal_value" Nullable="false" Type="Int32" />
-          <Property Name="credit_required" Nullable="false" Type="Int32" />
-          <Property Name="epirationTime" Type="Int32" />
-        </EntityType>
-        <EntityType Name="deal_transcation">
-          <Key>
-            <PropertyRef Name="tran_id" />
-          </Key>
-          <Property Name="tran_id" Nullable="false" Type="Guid" />
-          <Property Name="deal_id" Nullable="false" Type="Guid" />
-          <Property Name="user_id" Nullable="false" Type="Guid" />
-          <Property Name="tran_time" Nullable="false" Precision="3" Type="DateTime" />
-          <Property Name="quantity_redeemed" Nullable="false" Type="Int32" />
-          <Property Name="active" Nullable="false" Type="Boolean" />
-          <NavigationProperty Name="deal" Relationship="LocalAuthenticationModel.FK_deal_transcation_deal" FromRole="deal_transcation" ToRole="deal" />
-        </EntityType>
         <EntityType Name="location">
           <Key>
             <PropertyRef Name="id" />
@@ -361,7 +336,6 @@
           <Property Name="url" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
           <Property Name="verified" Nullable="false" Type="Boolean" />
           <Property Name="status" MaxLength="500" FixedLength="false" Unicode="false" Type="String" />
-          <NavigationProperty Name="deals" Relationship="LocalAuthenticationModel.FK_deal_venue" FromRole="venue" ToRole="deal" />
           <Property Name="hasMenu" Type="Boolean" Nullable="false" />
           <Property Name="priceTier" Type="Int16" Nullable="false" />
           <Property Name="defaultPicUrl" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -374,6 +348,8 @@
           <Property Name="weekdayHours" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="weekendHours" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="location" Relationship="LocalAuthenticationModel.FK_venue_location" FromRole="venue" ToRole="location" />
+          <NavigationProperty Name="deals" Relationship="LocalAuthenticationModel.FK_deal_venue" FromRole="venue" ToRole="deal" />
+          <NavigationProperty Name="venue_credit" Relationship="LocalAuthenticationModel.FK_venue_credit_venue" FromRole="venue" ToRole="venue_credit" />
         </EntityType>
         <Association Name="FK_credit_transactions_credit_master">
           <End Type="LocalAuthenticationModel.credit_master" Multiplicity="1" Role="credit_master" />
@@ -399,9 +375,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_venue_category">
+          <End Type="LocalAuthenticationModel.category" Role="category" Multiplicity="1" />
+          <End Type="LocalAuthenticationModel.venue" Role="venue" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_venue_location">
+          <End Type="LocalAuthenticationModel.location" Role="location" Multiplicity="1" />
+          <End Type="LocalAuthenticationModel.venue" Role="venue" Multiplicity="1" />
+        </Association>
+        <EntityType Name="deal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="venue_id" Type="Guid" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tier" Type="Int16" />
+          <Property Name="original_value" Type="Int32" />
+          <Property Name="deal_value" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="credit_required" Type="Int32" />
+          <Property Name="timeLimit" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="deal_transcation" Relationship="LocalAuthenticationModel.FK_deal_transcation_deal" FromRole="deal" ToRole="deal_transcation" />
+          <NavigationProperty Name="venue" Relationship="LocalAuthenticationModel.FK_deal_venue" FromRole="deal" ToRole="venue" />
+          <Property Name="totalPurchased" Type="Int32" />
+          <Property Name="totalSwapped" Type="Int32" />
+        </EntityType>
+        <EntityType Name="deal_transcation">
+          <Key>
+            <PropertyRef Name="tran_id" />
+          </Key>
+          <Property Name="tran_id" Type="Guid" Nullable="false" />
+          <Property Name="deal_id" Type="Guid" Nullable="false" />
+          <Property Name="user_id" Type="Guid" Nullable="false" />
+          <Property Name="tran_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="quantity_redeemed" Type="Int32" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="deal" Relationship="LocalAuthenticationModel.FK_deal_transcation_deal" FromRole="deal_transcation" ToRole="deal" />
+        </EntityType>
         <Association Name="FK_deal_transcation_deal">
-          <End Type="LocalAuthenticationModel.deal" Multiplicity="1" Role="deal" />
-          <End Type="LocalAuthenticationModel.deal_transcation" Multiplicity="*" Role="deal_transcation" />
+          <End Type="LocalAuthenticationModel.deal" Role="deal" Multiplicity="1" />
+          <End Type="LocalAuthenticationModel.deal_transcation" Role="deal_transcation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="deal">
               <PropertyRef Name="id" />
@@ -412,8 +427,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_deal_venue">
-          <End Type="LocalAuthenticationModel.venue" Multiplicity="1" Role="venue" />
-          <End Type="LocalAuthenticationModel.deal" Multiplicity="*" Role="deal" />
+          <End Type="LocalAuthenticationModel.venue" Role="venue" Multiplicity="1" />
+          <End Type="LocalAuthenticationModel.deal" Role="deal" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="venue">
               <PropertyRef Name="Id" />
@@ -423,19 +438,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_venue_category">
-          <End Type="LocalAuthenticationModel.category" Role="category" Multiplicity="1" />
-          <End Type="LocalAuthenticationModel.venue" Role="venue" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_venue_location">
-          <End Type="LocalAuthenticationModel.location" Role="location" Multiplicity="1" />
-          <End Type="LocalAuthenticationModel.venue" Role="venue" Multiplicity="1" />
-        </Association>
         <EntityType Name="venue_credit">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="venue_id" Type="Guid" Nullable="false" />
           <Property Name="credit_available" Type="Int32" Nullable="false" />
           <Property Name="credit_threhold" Type="Int32" Nullable="false" />
           <Property Name="credit_auto_increase" Type="Int32" Nullable="false" />
@@ -443,9 +451,17 @@
         </EntityType>
         <Association Name="FK_venue_credit_venue">
           <End Type="LocalAuthenticationModel.venue" Role="venue" Multiplicity="1" />
-          <End Type="LocalAuthenticationModel.venue_credit" Role="venue_credit" Multiplicity="0..1" />
+          <End Type="LocalAuthenticationModel.venue_credit" Role="venue_credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="venue">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="venue_credit">
+              <PropertyRef Name="venue_id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -482,34 +498,6 @@
                 <ScalarProperty Name="purchase_time" ColumnName="purchase_time" />
                 <ScalarProperty Name="credit_id" ColumnName="credit_id" />
                 <ScalarProperty Name="venue_id" ColumnName="venue_id" />
-                <ScalarProperty Name="tran_id" ColumnName="tran_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="deals">
-            <EntityTypeMapping TypeName="LocalAuthenticationModel.deal">
-              <MappingFragment StoreEntitySet="deal">
-                <ScalarProperty Name="epirationTime" ColumnName="epirationTime" />
-                <ScalarProperty Name="credit_required" ColumnName="credit_required" />
-                <ScalarProperty Name="deal_value" ColumnName="deal_value" />
-                <ScalarProperty Name="original_value" ColumnName="original_value" />
-                <ScalarProperty Name="tier" ColumnName="tier" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="active" ColumnName="active" />
-                <ScalarProperty Name="venue_id" ColumnName="venue_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="deal_transcation">
-            <EntityTypeMapping TypeName="LocalAuthenticationModel.deal_transcation">
-              <MappingFragment StoreEntitySet="deal_transcation">
-                <ScalarProperty Name="active" ColumnName="active" />
-                <ScalarProperty Name="quantity_redeemed" ColumnName="quantity_redeemed" />
-                <ScalarProperty Name="tran_time" ColumnName="tran_time" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="deal_id" ColumnName="deal_id" />
                 <ScalarProperty Name="tran_id" ColumnName="tran_id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -567,25 +555,47 @@
               <ScalarProperty Name="id" ColumnName="location_id" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="deals">
+            <EntityTypeMapping TypeName="LocalAuthenticationModel.deal">
+              <MappingFragment StoreEntitySet="deal">
+                <ScalarProperty Name="totalSwapped" ColumnName="totalSwapped" />
+                <ScalarProperty Name="totalPurchased" ColumnName="totalPurchased" />
+                <ScalarProperty Name="timeLimit" ColumnName="timeLimit" />
+                <ScalarProperty Name="credit_required" ColumnName="credit_required" />
+                <ScalarProperty Name="deal_value" ColumnName="deal_value" />
+                <ScalarProperty Name="original_value" ColumnName="original_value" />
+                <ScalarProperty Name="tier" ColumnName="tier" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="venue_id" ColumnName="venue_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deal_transcation">
+            <EntityTypeMapping TypeName="LocalAuthenticationModel.deal_transcation">
+              <MappingFragment StoreEntitySet="deal_transcation">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="quantity_redeemed" ColumnName="quantity_redeemed" />
+                <ScalarProperty Name="tran_time" ColumnName="tran_time" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="deal_id" ColumnName="deal_id" />
+                <ScalarProperty Name="tran_id" ColumnName="tran_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="venue_credit">
             <EntityTypeMapping TypeName="LocalAuthenticationModel.venue_credit">
               <MappingFragment StoreEntitySet="venue_credit">
                 <ScalarProperty Name="credit_auto_increase" ColumnName="credit_auto_increase" />
                 <ScalarProperty Name="credit_threhold" ColumnName="credit_threhold" />
                 <ScalarProperty Name="credit_available" ColumnName="credit_available" />
+                <ScalarProperty Name="venue_id" ColumnName="venue_id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="FK_venue_credit_venue" TypeName="LocalAuthenticationModel.FK_venue_credit_venue" StoreEntitySet="venue_credit">
-            <EndProperty Name="venue_credit">
-              <ScalarProperty Name="Id" ColumnName="Id" />
-            </EndProperty>
-            <EndProperty Name="venue">
-              <ScalarProperty Name="Id" ColumnName="venue_id" />
-            </EndProperty>
-            <Condition ColumnName="venue_id" IsNull="false" />
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -600,7 +610,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

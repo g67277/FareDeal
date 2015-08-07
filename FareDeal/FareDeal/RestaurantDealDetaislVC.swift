@@ -283,16 +283,20 @@ class RestaurantDealDetaislVC: UIViewController, TTCounterLabelDelegate {
     override func viewWillAppear(animated: Bool) {
         // Hide the navigation bar to display the full location image
         let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-        navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        navBar.shadowImage = UIImage()
-        navBar.backgroundColor = UIColor.clearColor()
+        if navBar != nil{
+            navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+            navBar.shadowImage = UIImage()
+            navBar.backgroundColor = UIColor.clearColor()
+        }
     }
     
     
     override func viewWillDisappear(animated: Bool) {
         // restore the navigation bar to origional
         let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-        navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        navBar.shadowImage = nil
+        if navBar != nil{
+            navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+            navBar.shadowImage = nil
+        }
     }
 }

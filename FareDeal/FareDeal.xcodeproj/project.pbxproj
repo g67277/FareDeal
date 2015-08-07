@@ -452,7 +452,7 @@
 				TargetAttributes = {
 					81481B341B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
+						DevelopmentTeam = 56R6M4W3X8;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -461,7 +461,7 @@
 					};
 					81481B491B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
+						DevelopmentTeam = 56R6M4W3X8;
 						TestTargetID = 81481B341B56A2D6000EC386;
 					};
 				};
@@ -748,7 +748,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -766,7 +766,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};

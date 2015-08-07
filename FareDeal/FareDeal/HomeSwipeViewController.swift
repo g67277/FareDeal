@@ -15,7 +15,7 @@ import Koloda
 import CoreLocation
 import SwiftyJSON
 
-class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
+class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate,  UIPickerViewDataSource, UIPickerViewDelegate {
     
     typealias JSONParameters = [String: AnyObject]
     
@@ -32,8 +32,6 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     //View Properties
     @IBOutlet var dealButton: UIBarButtonItem!
-   // @IBOutlet weak var searchBar: UISearchBar!
-   // @IBOutlet var searchButton: UIButton!
     @IBOutlet weak var searchDisplayOverview: UIView!
     @IBOutlet weak var swipeableView: KolodaView!
     @IBOutlet var activityView: UIView!
@@ -50,12 +48,16 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     @IBOutlet var searchView: UIView!
     @IBOutlet var priceView: UIView!
     @IBOutlet var priceTextField: UITextField!
-    
+    @IBOutlet var searchPickerView: UIView!
+    @IBOutlet var pickerSpinnerView: UIView!
+    @IBOutlet var searchPicker: UIPickerView!
+
     // Search Properties
     var searchActive : Bool = false
     var searchPrice : Bool = false
     var searchString = ""
     var offsetCount: Int = 0
+    var pickerDataSource = ["Any","$", "$$", "$$$", "$$$$"];
     
     let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
@@ -101,10 +103,10 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         self.navigationItem.setLeftBarButtonItems([menuButton, self.dealButton], animated: true)
         
         burgerTextField.attributedPlaceholder = NSAttributedString(string:"Burger",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+            attributes:[NSForegroundColorAttributeName: UIColor(red:0.93, green:0.93, blue:0.93, alpha:0.85)])
         
         priceTextField.attributedPlaceholder = NSAttributedString(string:"$",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+            attributes:[NSForegroundColorAttributeName: UIColor(red:0.93, green:0.93, blue:0.93, alpha:0.85)])
         searchView.roundCorners(.AllCorners, radius: 14)
         priceView.roundCorners(.AllCorners, radius: 14)
         
@@ -148,10 +150,111 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     /* --------  SEARCH BAR DISPLAY AND DELEGATE METHODS ---------- */
     
+    // -------------------- UIPICKERVIEW ----------------------------------
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerDataSource.count;
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return pickerDataSource[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        searchActive = true
+        searchPrice = true
+        switch row {
+        case 0:
+            priceTextField.text = "";
+            searchString = ""
+            // reload search
+            didSelectPricePoint(false)
+        case 1:
+            priceTextField.text = "$";
+            searchString = "1"
+            didSelectPricePoint(true)
+        case 2:
+            priceTextField.text = "$$";
+            searchString = "2"
+            didSelectPricePoint(true)
+        case 3:
+            priceTextField.text = "$$$";
+            searchString = "3"
+            didSelectPricePoint(true)
+        case 4:
+            priceTextField.text = "$$$$";
+            searchString = "4"
+            didSelectPricePoint(true)
+        default:
+            priceTextField.text = ""
+            searchString = ""
+            didSelectPricePoint(false)
+        }
+    }
+    
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let titleData = pickerDataSource[row]
+        var myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 14.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()])
+        return myTitle
+    }
+    
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int,
+        reusingView view: UIView!) -> UIView {
+            var pickerLabel = view as! UILabel!
+            if view == nil {  //if no label there yet
+                pickerLabel = UILabel()
+            }
+            let titleData = pickerDataSource[row]
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 18.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()])
+            pickerLabel!.attributedText = myTitle
+            pickerLabel.textAlignment = .Center
+            return pickerLabel
+            
+    }
+    
+    //size the components of the UIPickerView
+    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 30
+    }
+    
+    func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return pickerSpinnerView.bounds.width
+    }
+    
+    func didSelectPricePoint(shouldSearch: Bool) {
+        UIView.transitionWithView(searchPickerView, duration: 0.5, options:
+            .CurveEaseOut | .TransitionCrossDissolve, animations: {
+                //...animations
+            }, completion: {_ in
+                self.searchPickerView.hidden = true
+                UIView.transitionWithView(self.searchDisplayOverview, duration: 0.5, options:
+                    .CurveEaseOut | .TransitionCrossDissolve, animations: {
+                        //...animations
+                    }, completion: {_ in
+                        self.resetView(shouldSearch)
+                        
+                })
+        })
+    }
+    
+    func resetView(shouldSearch: Bool) {
+        searchDisplayOverview.hidden = true
+        searchActive = shouldSearch
+        searchPrice = shouldSearch
+        self.navigationItem.setRightBarButtonItem(searchBarButton, animated: false)
+        if shouldSearch {
+            // reload search
+             pullNewSearchResults()
+        }
+    }
+
+    
     func shouldOpenSearch () {
         searchDisplayOverview.hidden = false
         menuView.hidden = true
-        //let cancel = UIBarButtonItem(image: UIImage(named: "closeIcon"), style: .Plain, target: self, action: "shouldCloseSearch")
         self.navigationItem.setRightBarButtonItem(cancelButton, animated: true)
         
     }
@@ -161,14 +264,19 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         searchActive = false;
         burgerTextField.text = ""
         burgerTextField.editing
-        //searchBar.text = ""
-        //searchBar.endEditing(true)
-        //let search = UIBarButtonItem(image: UIImage(named: "searchButton"), style: .Plain, target: self, action: "shouldOpenSearch")
         self.navigationItem.setRightBarButtonItem(searchBarButton, animated: true)
         
     }
     
-    
+    //  ---------------------  UITEXTFIELD DELEGATE  ---------------------------------
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField.tag == 4 {
+        textField.resignFirstResponder()
+        // display the picker view
+        searchPickerView.hidden = false
+        }
+    }
+
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         println("Textfield returned")
         self.view.endEditing(true)
@@ -182,55 +290,10 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
                 textField.text = ""
                 pullNewSearchResults()
             }
-        } else if textField.tag == 4 {
-            // $
-            if textField.text != "" {
-                let price: String = textField.text as String
-                searchPrice = true
-                switch price {
-                case "$" :
-                    searchString = "1"
-                case "$$" :
-                    searchString = "2"
-                case "$$$" :
-                    searchString = "3"
-                case "$$$$" :
-                    searchString = "4"
-                default:
-                    searchString = ""
-                }
-                textField.text = ""
-                pullNewSearchResults()
-            }
         }
         return false
     }
     
-    /*
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        searchActive = true;
-        //println("User: Home: User started editing text")
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-    }
-    
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        println("search button clicked")
-        menuView.hidden = true
-        searchActive = true;
-        searchString = searchBar.text
-        searchBar.text = ""
-        searchBar.endEditing(true)
-        pullNewSearchResults()
-    }
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        searchString = searchText
-        searchActive = (searchString.isEmpty) ? false : true
-    }
-    */
     func pullNewSearchResults () {
         realm.write {
             // empty out the current stack

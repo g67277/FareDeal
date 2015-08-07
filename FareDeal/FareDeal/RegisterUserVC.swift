@@ -47,6 +47,8 @@ class RegisterUserVC: UIViewController {
             
             //sign up here
             
+            var testing = usernameField.text
+            
             if validation.validateInput(usernameField.text, check: 2, title: "Somethings Missing", message: "Please enter a valid username")
             && validation.validateEmail(emailField.text)
                 && validation.validatePassword(passwordField.text, cpass: passwordCField.text){

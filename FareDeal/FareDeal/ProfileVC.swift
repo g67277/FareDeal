@@ -17,6 +17,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     
     @IBOutlet weak var RestaurantTitleLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
+    var imgURI = NSURL()
     var newMedia: Bool?
     var validImage = false
     @IBOutlet weak var contactField: UITextField!
@@ -67,22 +68,15 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         weekendO.setTitle(data?.weekendO, forState: .Normal)
         weekendC.setTitle(data?.weekendC, forState: .Normal)
         var path = data?.imgUri
-        //var test = UIImage(contentsOfFile: path!)
         var imgURL = NSURL(string: path!)
         getUIImagefromAsseturl(imgURL!)
-//        var imgData = NSData(contentsOfURL: imgURL!)
-//        var image = UIImage(data: imgData!)
-//        imgView.image = image
-//        let image = UIImage(
-//        let image = UIImage(contentsOfFile: imgURL)
-//        imgView.image = image
 
     }
     
     func getUIImagefromAsseturl (url: NSURL) {
         var asset = ALAssetsLibrary()
 
-        asset.assetForURL(NSURL(), resultBlock: { asset in
+        asset.assetForURL(url, resultBlock: { asset in
             if let ast = asset {
                 let assetRep = ast.defaultRepresentation()
                 let iref = assetRep.fullResolutionImage().takeUnretainedValue()
@@ -115,6 +109,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
             data?.weekdayC = wkC!
             data?.weekendO = wknO!
             data?.weekendC = wknC!
+            data?.imgUri = "\(self.imgURI)"
         })
         
         var alertView:UIAlertView = UIAlertView()
@@ -288,7 +283,8 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         if mediaType.isEqualToString(kUTTypeImage as! String) {
             let image = info[UIImagePickerControllerOriginalImage]
                 as! UIImage
-            
+            imgURI = info[UIImagePickerControllerReferenceURL] as! NSURL
+            //println(test.debugDescription)
             imgView.image = image
             validImage = true
             

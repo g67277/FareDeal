@@ -87,10 +87,21 @@ public class Validation{
         }
     }
     
+    func validatePhone(phone: String, check: Int, title: String, message: String) -> Bool{
+        
+        if count(phone) == check{
+            return true
+        }else{
+            displayAlert(title, message: message)
+            return false
+        }
+        
+    }
+    
     func formatHours(weekO: String, weekC: String, weekendO: String, weekendC: String) -> (weekdayHours: String, weekendHours: String){
         
-        var weekdayString = "weekO - weekC"
-        var weekendString = "weekendO - weekendC"
+        var weekdayString = "\(weekO) - \(weekC)"
+        var weekendString = "\(weekendO) - \(weekendC)"
         return (weekdayString, weekendString)
     }
     

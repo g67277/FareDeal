@@ -8,17 +8,20 @@
 
 import UIKit
 import ActionSheetPicker_3_0
+import AssetsLibrary
+import RealmSwift
 
 class BusinessHome: UIViewController {
     
+    @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var creditBalanceLabel: UILabel!
     @IBOutlet weak var dealsSelectedLabel: UILabel!
     @IBOutlet weak var dealsSwapedLabel: UILabel!
     @IBOutlet weak var monthsBtn: UIButton!
     
     @IBOutlet weak var profileImgView: UIImageView!
-    
-    
+    let realm = Realm()
+
     // holds all the months to display in selector
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
@@ -26,11 +29,6 @@ class BusinessHome: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
-
-//        let titleFont:UIFont = UIFont(name: "Middlecase Regular-Inline.otf", size: 20)!
-//        self.navigationController!.navigationBar.titleTextAttributes = [ NSFontAttributeName: titleFont]
         
 
         self.navigationController?.navigationBar.translucent = false
@@ -47,7 +45,45 @@ class BusinessHome: UIViewController {
         let defaultTimeZoneStr = formatter.stringFromDate(date);
         monthsBtn.setTitle(defaultTimeZoneStr, forState: UIControlState.Normal)
         
+        updateDisplay()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        updateImg()
+    }
+    
+    func updateImg(){
         
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        var path = data?.imgUri
+        var imgURL = NSURL(string: path!)
+        getUIImagefromAsseturl(imgURL!)
+        
+    }
+    
+    func updateDisplay(){
+        
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        restaurantNameLabel.text = data?.restaurantName
+        updateImg()
+        
+    }
+    
+    func getUIImagefromAsseturl (url: NSURL) {
+        var asset = ALAssetsLibrary()
+        
+        asset.assetForURL(url, resultBlock: { asset in
+            if let ast = asset {
+                let assetRep = ast.defaultRepresentation()
+                let iref = assetRep.fullResolutionImage().takeUnretainedValue()
+                let image = UIImage(CGImage: iref)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.profileImgView.image = image
+                })
+            }
+            }, failureBlock: { error in
+                println("Error: \(error)")
+        })
     }
     
     override func viewDidLayoutSubviews() {

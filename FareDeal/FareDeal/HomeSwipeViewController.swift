@@ -23,6 +23,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     let realm = Realm()
     var venues = Realm().objects(Venue)
     var haveItems: Bool = false
+    let venueList = List<Venue>()
     
     // Location Properties
     var locationManager : CLLocationManager!
@@ -65,7 +66,6 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     /* -----------------------  VIEW CONTROLLER METHODS --------------------------- */
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Set up the Kolodo view delegate and data source
         swipeableView.dataSource = self
         swipeableView.delegate = self
@@ -109,8 +109,9 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             attributes:[NSForegroundColorAttributeName: UIColor(red:0.93, green:0.93, blue:0.93, alpha:0.85)])
         searchView.roundCorners(.AllCorners, radius: 14)
         priceView.roundCorners(.AllCorners, radius: 14)
-        
-        getLocationPermissionAndData()
+        if venueList.count == 0 {
+            getLocationPermissionAndData()
+        }
     }
     
     
@@ -126,7 +127,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     }
     func getLocationPermissionAndData() {
         // Start getting the users location
-        activityIndicatorDisplaying(true, message: "Locating...")
+        //activityIndicatorDisplaying(true, message: "Locating...")
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.delegate = self
@@ -143,7 +144,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         } else {
             // We do not have premission, request it
             requestLocationPermission()
-            activityIndicatorDisplaying(false, message: "")
+            //activityIndicatorDisplaying(false, message: "")
         }
 
     }
@@ -320,7 +321,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     // KolodaView DataSource
     func kolodaNumberOfCards(koloda: KolodaView) -> UInt {
 
-        return UInt(venues.count)
+        return UInt(venueList.count)
     }
     
     func kolodaViewForCardAtIndex(koloda: KolodaView, index: UInt) -> UIView {
@@ -331,7 +332,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         var contentView = NSBundle.mainBundle().loadNibNamed("CardContentView", owner: self, options: nil).first! as! UIView
         contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        let restaurant: Venue = venues[Int(index)]
+        let restaurant: Venue = venueList[Int(index)]
         //println(restaurant)
         cardView.setUpRestaurant(contentView, dataObject: restaurant)
         cardView.addSubview(contentView)
@@ -353,7 +354,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     //KolodaView Delegate
     
     func kolodaDidSwipedCardAtIndex(koloda: KolodaView, index: UInt, direction: SwipeResultDirection) {
-        let swipedVenue: Venue = venues[Int(index)]
+        let swipedVenue: Venue = venueList[Int(index)]
         println(swipedVenue)
         // check the direction
         if direction == SwipeResultDirection.Left {
@@ -377,9 +378,13 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             favorite.hours = swipedVenue.hours
             favorite.swipeValue = 1
             favorite.sourceType = swipedVenue.sourceType
-            favorite.defaultDealDesc = swipedVenue.defaultDealDesc
-            favorite.defaultDealTitle = swipedVenue.defaultDealTitle
-            favorite.defaultDealValue = swipedVenue.defaultDealValue
+            // save deal
+            if swipedVenue.sourceType == Constants.sourceTypeSaloof {
+                favorite.defaultDealTitle = swipedVenue.defaultDealTitle
+                 favorite.defaultDealID = swipedVenue.defaultDealID
+                 favorite.defaultDealValue = swipedVenue.defaultDealValue
+                 favorite.defaultDealDesc = swipedVenue.defaultDealDesc
+            }
             favorite.favorites =  swipedVenue.favorites
             favorite.likes =  swipedVenue.likes
             realm.write {
@@ -394,7 +399,13 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     
     func removeRejectedVenues () {
          println("removing rejected venues")
-        // get all the rejected venues
+        // remove each from the list
+        for venue in venueList {
+            if venue.swipeValue == 2 {
+                venueList.delete(venue)
+            }
+        }
+        // get all the rejected venues from realm
         var rejectedVenues = Realm().objects(Venue).filter("\(Constants.realmFilterFavorites) = \(2)")
         realm.write {
             self.realm.delete(rejectedVenues)
@@ -464,20 +475,46 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        // if we dont' have any locations, get some
-        if venues.count == 0 {
-            println("No restaurants stored")
-            //exploreFoursquareVenues()
-            loadSaloofData()
-        } else {
-            println("restaurants stored")
-        }
         // once we have locations, stop retrieving their location
         locationManager.stopUpdatingLocation()
+        // if we dont' have any locations, get some
+        if venueList.count == 0 {
+            //println("No restaurants stored")
+            //exploreFoursquareVenues()
+            //loadSaloofData()
+        } else {
+           // println("restaurants stored")
+        }
+        fetchSaloofVenues()
         activityIndicatorDisplaying(false, message: "")
     }
     
-    func loadSaloofData () {
+    
+    func fetchSaloofVenues() {
+        var token = prefs.stringForKey("TOKEN")
+        let location = self.locationManager.location
+        var userLocation = "?lat=\(location.coordinate.latitude)&lng=\(location.coordinate.longitude)"
+        if APICalls.getLocalVenues(token!, location: userLocation){
+            println("Pulling data from saloof!!")
+            for venue in venues {
+                venueList.append(venue)
+            }
+            if venueList.count < 10 {
+                fetchFoursquareVenues()
+            } else {
+                swipeableView.reloadData()
+            }
+        } else {
+            println("Not Pulling data from saloof!!")
+            // pull from foursquare
+            fetchFoursquareVenues()
+            swipeableView.reloadData()
+        }
+    
+    }
+    
+    /*
+    func fetchSaloofVenues () {
         let saloofUrl = NSURL(string: "http://www.justwalkingonwater.com/json/venueResponse.json")!
         let response = NSData(contentsOfURL: saloofUrl)!
         println(response)
@@ -512,7 +549,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
         }
 
     }
-    
+*/
     func fetchFoursquareVenues() {
         // Begin loading data from foursquare
         // get the location & possible search string
@@ -542,12 +579,10 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
                     }
                 }
                 println("Data gathering completed, retrieved \(venues.count) venues")
-                swipeableView.reloadData()
+               // swipeableView.reloadData()
                 activityIndicatorDisplaying(false, message: "")
             }
-            
             offsetCount = offsetCount + 10
-
         } else {
             activityIndicatorDisplaying(false, message: "That's It!")
         }
@@ -608,9 +643,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             })
             alertController.addAction(cancelMove)
             presentViewController(alertController, animated: true, completion: nil)
-        }
-
-        
+        }        
     }
     
     // Pass the selected restaurant deal object to the detail view
@@ -620,6 +653,4 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             menuView.hidden = true
         }
     }
-
-    
 }

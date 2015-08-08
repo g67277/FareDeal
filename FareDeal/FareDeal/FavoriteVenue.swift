@@ -18,10 +18,12 @@ class FavoriteVenue: Object {
     dynamic var phone = ""
     dynamic var webUrl = ""
     dynamic var hours = ""
+    dynamic var hasImage: Bool = false
     dynamic var imageData: NSData = NSData()
     dynamic var swipeValue: Int = 0  // 0: not swiped, 1: favorite, 2: rejected  3: Deal only
     dynamic var sourceType = ""
     dynamic var defaultDealTitle = ""
+    dynamic var defaultDealID = ""
     dynamic var defaultDealDesc = ""
     dynamic var defaultDealValue: Float = 0.0
     
@@ -34,9 +36,14 @@ class FavoriteVenue: Object {
             return UIImage(data: imageData)
         }
         set(newImage) {
-            imageData = UIImagePNGRepresentation(newImage)
+            if(newImage != nil) {
+                imageData = UIImagePNGRepresentation(newImage)
+            } else {
+                hasImage = false
+            }
         }
     }
+
     // Specify properties to ignore (Realm won't persist)
     override static func ignoredProperties() -> [String] {
         return ["image"]

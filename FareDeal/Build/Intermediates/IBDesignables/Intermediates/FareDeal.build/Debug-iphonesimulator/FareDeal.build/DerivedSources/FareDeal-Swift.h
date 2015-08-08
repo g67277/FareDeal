@@ -353,10 +353,12 @@ SWIFT_CLASS("_TtC8FareDeal13FavoriteVenue")
 @property (nonatomic, copy) NSString * __nonnull phone;
 @property (nonatomic, copy) NSString * __nonnull webUrl;
 @property (nonatomic, copy) NSString * __nonnull hours;
+@property (nonatomic) BOOL hasImage;
 @property (nonatomic) NSData * __nonnull imageData;
 @property (nonatomic) NSInteger swipeValue;
 @property (nonatomic, copy) NSString * __nonnull sourceType;
 @property (nonatomic, copy) NSString * __nonnull defaultDealTitle;
+@property (nonatomic, copy) NSString * __nonnull defaultDealID;
 @property (nonatomic, copy) NSString * __nonnull defaultDealDesc;
 @property (nonatomic) float defaultDealValue;
 @property (nonatomic) NSInteger favorites;
@@ -459,6 +461,7 @@ SWIFT_CLASS("_TtC8FareDeal23HomeSwipeViewController")
 @interface HomeSwipeViewController : UIViewController <CLLocationManagerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 @property (nonatomic) /* Results<Venue> */ venues;
 @property (nonatomic) BOOL haveItems;
+@property (nonatomic, readonly) /* List<Venue> */ venueList;
 @property (nonatomic) CLLocationManager * __null_unspecified locationManager;
 @property (nonatomic, copy) NSArray * __nonnull venueLocations;
 @property (nonatomic, copy) NSArray * __nullable venueItems;
@@ -522,7 +525,7 @@ SWIFT_CLASS("_TtC8FareDeal23HomeSwipeViewController")
 - (void)locationManager:(CLLocationManager * __null_unspecified)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
 - (void)locationManager:(CLLocationManager * __null_unspecified)manager didFailWithError:(NSError * __null_unspecified)error;
 - (void)locationManager:(CLLocationManager * __null_unspecified)manager didUpdateToLocation:(CLLocation * __null_unspecified)newLocation fromLocation:(CLLocation * __null_unspecified)oldLocation;
-- (void)loadSaloofData;
+- (void)fetchSaloofVenues;
 - (void)fetchFoursquareVenues;
 - (IBAction)shouldPushToSavedDeal:(id __nonnull)sender;
 - (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
@@ -691,6 +694,8 @@ SWIFT_CLASS("_TtC8FareDeal21RegisterRestaurantVC3")
 @property (nonatomic) BOOL validImage;
 @property (nonatomic, weak) IBOutlet UITextField * __null_unspecified contactName;
 @property (nonatomic, weak) IBOutlet UITextView * __null_unspecified descTextView;
+@property (nonatomic, weak) IBOutlet UIView * __null_unspecified indicatorContainer;
+@property (nonatomic, weak) IBOutlet UIView * __null_unspecified indicatorView;
 @property (nonatomic, readonly) NSUserDefaults * __nonnull prefs;
 @property (nonatomic, copy) NSString * __nonnull callPart1;
 @property (nonatomic) BOOL continueSession;
@@ -845,7 +850,7 @@ SWIFT_CLASS("_TtC8FareDeal26RestaurantDetailController")
 @property (nonatomic) BOOL isFavorite;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
-- (void)setUpDetailView:(NSString * __nonnull)name phone:(NSString * __nonnull)phone address:(NSString * __nonnull)address website:(NSString * __nonnull)website image:(UIImage * __nonnull)image priceTier:(NSInteger)priceTier distance:(float)distance hours:(NSString * __nonnull)hours sourceType:(NSString * __nonnull)sourceType dealName:(NSString * __nonnull)dealName dealDesc:(NSString * __nonnull)dealDesc dealValue:(float)dealValue likes:(NSInteger)likes favorites:(NSInteger)favorites;
+- (void)setUpDetailView:(NSString * __nonnull)name phone:(NSString * __nonnull)phone address:(NSString * __nonnull)address website:(NSString * __nonnull)website image:(UIImage * __nonnull)image priceTier:(NSInteger)priceTier distance:(float)distance hours:(NSString * __nonnull)hours sourceType:(NSString * __nonnull)sourceType dealName:(NSString * __nonnull)dealName dealDesc:(NSString * __nonnull)dealDesc dealValue:(float)dealValue likes:(NSInteger)likes favorites:(NSInteger)favorites hasImage:(BOOL)hasImage;
 - (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
 - (VenueDeal * __nonnull)createDealForDetailView;
 - (IBAction)shouldPushToSavedDeal:(id __nonnull)sender;
@@ -958,10 +963,12 @@ SWIFT_CLASS("_TtC8FareDeal5Venue")
 @property (nonatomic, copy) NSString * __nonnull phone;
 @property (nonatomic, copy) NSString * __nonnull webUrl;
 @property (nonatomic, copy) NSString * __nonnull hours;
+@property (nonatomic) BOOL hasImage;
 @property (nonatomic) NSData * __nonnull imageData;
 @property (nonatomic) NSInteger swipeValue;
 @property (nonatomic, copy) NSString * __nonnull sourceType;
 @property (nonatomic, copy) NSString * __nonnull defaultDealTitle;
+@property (nonatomic, copy) NSString * __nonnull defaultDealID;
 @property (nonatomic, copy) NSString * __nonnull defaultDealDesc;
 @property (nonatomic) float defaultDealValue;
 @property (nonatomic) NSInteger favorites;
@@ -986,6 +993,7 @@ SWIFT_CLASS("_TtC8FareDeal9VenueDeal")
 @property (nonatomic) BOOL isDefault;
 @property (nonatomic, copy) NSString * __nonnull restId;
 @property (nonatomic, copy) NSString * __nonnull dealId;
+@property (nonatomic) NSInteger dealType;
 @property (nonatomic) NSDate * __nonnull expirationDate;
 @property (nonatomic) NSInteger validValue;
 @property (nonatomic) Venue * __nonnull venue;

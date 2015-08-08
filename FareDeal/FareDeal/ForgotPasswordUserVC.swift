@@ -61,6 +61,7 @@ class ForgotPasswordUserVC: UIViewController {
         // Hide the navigation bar to display the full location image
         let navBar:UINavigationBar! =  self.navigationController?.navigationBar
         if navBar != nil{
+            self.navigationController!.navigationBar.hidden = true
             navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
             navBar.shadowImage = UIImage()
             navBar.backgroundColor = UIColor.clearColor()

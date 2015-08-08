@@ -46,17 +46,17 @@ class RestaurantDetailController: UIViewController {
         if isFavorite {
             if let venue: FavoriteVenue = favVenue {
                 if venue.sourceType == "Saloof" {
-                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: venue.defaultDealTitle, dealDesc: venue.defaultDealDesc, dealValue: venue.defaultDealValue, likes: venue.likes, favorites: venue.favorites)
+                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: venue.defaultDealTitle, dealDesc: venue.defaultDealDesc, dealValue: venue.defaultDealValue, likes: venue.likes, favorites: venue.favorites, hasImage: venue.hasImage)
                 } else {
-                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: "", dealDesc: "", dealValue: 0.0, likes: 0, favorites: 0)
+                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: "", dealDesc: "", dealValue: 0.0, likes: 0, favorites: 0, hasImage: venue.hasImage)
                 }
             }
         } else {
             if let venue: Venue = thisVenue {
                 if venue.sourceType == "Saloof" {
-                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: venue.defaultDealTitle, dealDesc: venue.defaultDealDesc, dealValue: venue.defaultDealValue, likes: venue.likes, favorites: venue.favorites)
+                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: venue.defaultDealTitle, dealDesc: venue.defaultDealDesc, dealValue: venue.defaultDealValue, likes: venue.likes, favorites: venue.favorites, hasImage: venue.hasImage)
                 } else {
-                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: "", dealDesc: "", dealValue: 0.0, likes: 0, favorites: 0)
+                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: "", dealDesc: "", dealValue: 0.0, likes: 0, favorites: 0, hasImage: venue.hasImage)
                 }
             }
         }
@@ -67,7 +67,7 @@ class RestaurantDetailController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setUpDetailView (name: String, phone: String, address: String, website: String, image: UIImage, priceTier: Int, distance: Float, hours: String, sourceType: String, dealName: String, dealDesc: String, dealValue: Float, likes: Int, favorites: Int) {
+    func setUpDetailView (name: String, phone: String, address: String, website: String, image: UIImage, priceTier: Int, distance: Float, hours: String, sourceType: String, dealName: String, dealDesc: String, dealValue: Float, likes: Int, favorites: Int, hasImage: Bool) {
         // String Labels
         if var locationLabel = locationName {
             locationLabel.text = name
@@ -91,7 +91,11 @@ class RestaurantDetailController: UIViewController {
         if var imageView = locationImage {
             imageView.contentMode = UIViewContentMode.ScaleAspectFill
             imageView.clipsToBounds = true
-            imageView.image = image
+            if hasImage {
+                imageView.image = image
+            } else {
+                imageView.image = UIImage(named: "redHen")
+            }
         }
         
         

@@ -8,23 +8,23 @@ nominals:
 class-members:
 top-level:
 - "Bool"
-- !private "RLMObjectSchema"
 - "Schema"
-- "Printable"
 - "String"
+- "Printable"
+- "RLMSchema"
 - "ObjectSchema"
 - "Equatable"
-- "RLMSchema"
 - "=="
+- !private "RLMObjectSchema"
 member-access:
-- "C10RealmSwift6Schema"
+- !private "CSo8NSObject"
 - !private "CSo9RLMSchema"
+- !private "C10RealmSwift12ObjectSchema"
+- "PSs9Equatable"
+- "PSs9AnyObject"
+- "C10RealmSwift6Schema"
 - "PSs9Printable"
 - !private "Sa"
-- "PSs9Equatable"
-- !private "C10RealmSwift12ObjectSchema"
-- "PSs9AnyObject"
-- !private "CSo8NSObject"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/Swift.swiftmodule"

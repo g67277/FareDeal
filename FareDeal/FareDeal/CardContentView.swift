@@ -50,9 +50,16 @@ class CardContentView: UIView {
             phoneLabel.text = venue.phone
         }
         if let locationImage = contentView.viewWithTag(20) as? UIImageView {
-            locationImage.contentMode = UIViewContentMode.ScaleAspectFill
-            locationImage.clipsToBounds = true
-            locationImage.image = venue.image
+            if venue.hasImage {
+                locationImage.contentMode = UIViewContentMode.ScaleAspectFill
+                locationImage.clipsToBounds = true
+                locationImage.image = venue.image
+            } else {
+                // set up default image
+                locationImage.contentMode = UIViewContentMode.ScaleAspectFill
+                locationImage.clipsToBounds = true
+                locationImage.image = UIImage(named: "redHen")
+            }
         }
     }
 

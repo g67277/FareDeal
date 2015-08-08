@@ -22,6 +22,7 @@ class VenueDeal: Object {
     dynamic var isDefault = false
     dynamic var restId = ""
     dynamic var dealId = ""
+    dynamic var dealType = 0 // 0 == default, 1 == normal
     dynamic var expirationDate = NSDate()
     dynamic var validValue: Int = 0     // 0 = unset, 1 = valid, 2 = expired, 3 = set to delete
     dynamic var venue = Venue()

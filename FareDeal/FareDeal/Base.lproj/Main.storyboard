@@ -3000,9 +3000,6 @@ launch special!</string>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="87" y="110" width="266" height="14"/>
-                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140 Characters Left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAi-Br-uWt">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -3508,9 +3505,6 @@ launch special!</string>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userLogInBg" translatesAutoresizingMaskIntoConstraints="NO" id="VYo-Y5-KY3">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
-                                </variation>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66I-JX-6Me" userLabel="Logo View">
                                 <rect key="frame" x="50" y="60" width="500" height="120"/>
@@ -3666,6 +3660,7 @@ launch special!</string>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="onClick:" destination="mJC-cq-0pL" eventType="touchUpInside" id="Pi5-Vb-cjO"/>
                                             <segue destination="IgG-gE-TDX" kind="presentation" identifier="toUser" id="Jdr-eB-xEF"/>
                                         </connections>
                                     </button>
@@ -3730,6 +3725,8 @@ launch special!</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="VYo-Y5-KY3" secondAttribute="trailing" id="91p-8l-Quw"/>
+                            <constraint firstItem="VYo-Y5-KY3" firstAttribute="leading" secondItem="WQC-WU-4e5" secondAttribute="leading" id="C7K-xC-qxn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QRa-0T-BWT" secondAttribute="trailing" constant="9" id="CmC-Dz-YdU"/>
                             <constraint firstItem="cMk-oW-m0W" firstAttribute="top" secondItem="QRa-0T-BWT" secondAttribute="bottom" constant="41" id="KQy-fV-hZf"/>
                             <constraint firstItem="66I-JX-6Me" firstAttribute="height" secondItem="WQC-WU-4e5" secondAttribute="height" multiplier="0.45" id="OuX-M0-zCB"/>
@@ -3737,6 +3734,8 @@ launch special!</string>
                                 <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                             </constraint>
                             <constraint firstItem="66I-JX-6Me" firstAttribute="leading" secondItem="WQC-WU-4e5" secondAttribute="leading" constant="50" id="ZAa-lZ-hYe"/>
+                            <constraint firstItem="cMk-oW-m0W" firstAttribute="top" secondItem="VYo-Y5-KY3" secondAttribute="bottom" id="d7K-7l-36m"/>
+                            <constraint firstItem="VYo-Y5-KY3" firstAttribute="top" secondItem="WQC-WU-4e5" secondAttribute="top" id="dys-cK-gqe"/>
                             <constraint firstAttribute="trailing" secondItem="66I-JX-6Me" secondAttribute="trailing" constant="50" id="exr-6s-UbY"/>
                             <constraint firstItem="QRa-0T-BWT" firstAttribute="leading" secondItem="WQC-WU-4e5" secondAttribute="leadingMargin" constant="9" id="t3Y-xA-7MV"/>
                             <constraint firstItem="QRa-0T-BWT" firstAttribute="height" secondItem="WQC-WU-4e5" secondAttribute="height" multiplier="0.35" id="yhT-hj-3pl"/>
@@ -3748,7 +3747,9 @@ launch special!</string>
                                 <exclude reference="QRa-0T-BWT"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="KQy-fV-hZf"/>
+                                <exclude reference="91p-8l-Quw"/>
+                                <exclude reference="C7K-xC-qxn"/>
+                                <exclude reference="dys-cK-gqe"/>
                                 <exclude reference="OuX-M0-zCB"/>
                                 <exclude reference="Wdb-ka-xh5"/>
                                 <exclude reference="ZAa-lZ-hYe"/>
@@ -3756,6 +3757,8 @@ launch special!</string>
                                 <exclude reference="CmC-Dz-YdU"/>
                                 <exclude reference="t3Y-xA-7MV"/>
                                 <exclude reference="yhT-hj-3pl"/>
+                                <exclude reference="KQy-fV-hZf"/>
+                                <exclude reference="d7K-7l-36m"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -3765,7 +3768,9 @@ launch special!</string>
                                 <include reference="QRa-0T-BWT"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="KQy-fV-hZf"/>
+                                <include reference="91p-8l-Quw"/>
+                                <include reference="C7K-xC-qxn"/>
+                                <include reference="dys-cK-gqe"/>
                                 <include reference="OuX-M0-zCB"/>
                                 <include reference="Wdb-ka-xh5"/>
                                 <include reference="ZAa-lZ-hYe"/>
@@ -3773,6 +3778,8 @@ launch special!</string>
                                 <include reference="CmC-Dz-YdU"/>
                                 <include reference="t3Y-xA-7MV"/>
                                 <include reference="yhT-hj-3pl"/>
+                                <include reference="KQy-fV-hZf"/>
+                                <include reference="d7K-7l-36m"/>
                             </mask>
                         </variation>
                     </view>
@@ -4011,7 +4018,7 @@ launch special!</string>
                                         <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="75" y="61" width="267" height="62"/>
                                         </variation>
@@ -4020,7 +4027,7 @@ launch special!</string>
                                         <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="75" y="133" width="267" height="61"/>
                                         </variation>
@@ -4151,9 +4158,6 @@ launch special!</string>
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="256" y="30" width="109" height="25"/>
-                                        </variation>
                                         <connections>
                                             <segue destination="68h-ru-Y2W" kind="presentation" identifier="toBusinessSide" id="rRD-7E-Xq5"/>
                                         </connections>
@@ -4165,9 +4169,6 @@ launch special!</string>
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="25" y="30" width="81" height="25"/>
-                                        </variation>
                                         <connections>
                                             <action selector="onClick:" destination="Rzm-JY-67T" eventType="touchUpInside" id="9tE-j5-ZCr"/>
                                             <segue destination="dyd-d0-au8" kind="presentation" identifier="userForgotPassword" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="qxX-06-New"/>
@@ -4227,9 +4228,6 @@ launch special!</string>
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="60" y="0.0" width="231" height="28"/>
-                                        </variation>
                                         <connections>
                                             <segue destination="5Mg-yy-tQW" kind="show" id="6B8-rZ-SqD"/>
                                         </connections>
@@ -4546,7 +4544,8 @@ launch special!</string>
                                                 <exclude reference="X7B-o6-aEm"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="15" y="172" width="25" height="27"/>
                                             <mask key="constraints">
                                                 <include reference="BgD-ST-7xT"/>
                                                 <include reference="X7B-o6-aEm"/>
@@ -5717,8 +5716,7 @@ launch special!</string>
                                                 <exclude reference="wab-ni-xFw"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="24" y="27" width="25" height="27"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="4NA-0C-M5N"/>
                                                 <include reference="wab-ni-xFw"/>
@@ -8045,10 +8043,10 @@ launch special!</string>
                                     <mask key="constraints">
                                         <exclude reference="JP9-qx-bfP"/>
                                         <exclude reference="gYz-rB-7oC"/>
-                                        <exclude reference="cK3-Yf-sBs"/>
-                                        <exclude reference="skk-GU-KHC"/>
                                         <exclude reference="8Ed-t3-GwR"/>
                                         <exclude reference="qqg-Nm-esb"/>
+                                        <exclude reference="cK3-Yf-sBs"/>
+                                        <exclude reference="skk-GU-KHC"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -8059,10 +8057,10 @@ launch special!</string>
                                     <mask key="constraints">
                                         <include reference="JP9-qx-bfP"/>
                                         <include reference="gYz-rB-7oC"/>
-                                        <include reference="cK3-Yf-sBs"/>
-                                        <include reference="skk-GU-KHC"/>
                                         <include reference="8Ed-t3-GwR"/>
                                         <include reference="qqg-Nm-esb"/>
+                                        <include reference="cK3-Yf-sBs"/>
+                                        <include reference="skk-GU-KHC"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -8098,9 +8096,10 @@ launch special!</string>
                                 <exclude reference="Llc-Be-v9u"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="BwO-Cl-T7b"/>
-                                <exclude reference="Lgh-ju-aqX"/>
-                                <exclude reference="Rd3-J4-HHO"/>
+                                <exclude reference="12f-bg-IUz"/>
+                                <exclude reference="nDm-OB-hme"/>
+                                <exclude reference="NYt-eR-fYm"/>
+                                <exclude reference="vPh-vf-qe6"/>
                                 <exclude reference="PPW-q6-ngK"/>
                                 <exclude reference="W9h-xx-ROS"/>
                                 <exclude reference="l0w-bq-079"/>
@@ -8110,12 +8109,11 @@ launch special!</string>
                                 <exclude reference="2tm-r5-ngx"/>
                                 <exclude reference="BlZ-WU-FTj"/>
                                 <exclude reference="rKm-uj-gWE"/>
-                                <exclude reference="NYt-eR-fYm"/>
-                                <exclude reference="vPh-vf-qe6"/>
+                                <exclude reference="BwO-Cl-T7b"/>
+                                <exclude reference="Lgh-ju-aqX"/>
+                                <exclude reference="Rd3-J4-HHO"/>
                                 <exclude reference="HaN-M3-bpF"/>
                                 <exclude reference="dRs-Ez-fTv"/>
-                                <exclude reference="12f-bg-IUz"/>
-                                <exclude reference="nDm-OB-hme"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -8128,9 +8126,10 @@ launch special!</string>
                                 <include reference="Llc-Be-v9u"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="BwO-Cl-T7b"/>
-                                <include reference="Lgh-ju-aqX"/>
-                                <include reference="Rd3-J4-HHO"/>
+                                <include reference="12f-bg-IUz"/>
+                                <include reference="nDm-OB-hme"/>
+                                <include reference="NYt-eR-fYm"/>
+                                <include reference="vPh-vf-qe6"/>
                                 <include reference="PPW-q6-ngK"/>
                                 <include reference="W9h-xx-ROS"/>
                                 <include reference="l0w-bq-079"/>
@@ -8140,12 +8139,11 @@ launch special!</string>
                                 <include reference="2tm-r5-ngx"/>
                                 <include reference="BlZ-WU-FTj"/>
                                 <include reference="rKm-uj-gWE"/>
-                                <include reference="NYt-eR-fYm"/>
-                                <include reference="vPh-vf-qe6"/>
+                                <include reference="BwO-Cl-T7b"/>
+                                <include reference="Lgh-ju-aqX"/>
+                                <include reference="Rd3-J4-HHO"/>
                                 <include reference="HaN-M3-bpF"/>
                                 <include reference="dRs-Ez-fTv"/>
-                                <include reference="12f-bg-IUz"/>
-                                <include reference="nDm-OB-hme"/>
                             </mask>
                         </variation>
                     </view>
@@ -9843,7 +9841,9 @@ launch special!</string>
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="Qca-Mc-Qqi" secondAttribute="trailing" id="dwx-Am-UfW"/>
                             <constraint firstAttribute="trailing" secondItem="Z0n-HJ-dXZ" secondAttribute="trailing" id="kSD-IW-pCC"/>
-                            <constraint firstItem="Z0n-HJ-dXZ" firstAttribute="top" secondItem="2zK-lV-fvp" secondAttribute="bottom" constant="-64" id="x8A-5n-yIZ"/>
+                            <constraint firstItem="Z0n-HJ-dXZ" firstAttribute="top" secondItem="2zK-lV-fvp" secondAttribute="bottom" constant="-64" id="x8A-5n-yIZ">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -9870,6 +9870,7 @@ launch special!</string>
                             </mask>
                         </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="G4q-A1-Tji"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -12764,9 +12765,6 @@ launch special!</string>
                                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="126" y="42" width="50" height="31"/>
-                                                </variation>
                                                 <connections>
                                                     <segue destination="aHf-Vd-GoS" kind="unwind" unwindAction="returnToLogInScreen:" id="kl4-qu-vGt"/>
                                                 </connections>
@@ -14585,8 +14583,8 @@ launch special!</string>
         <image name="userRegBg" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="rRD-7E-Xq5"/>
         <segue reference="tNh-7g-8QF"/>
-        <segue reference="P2g-X9-MZX"/>
         <segue reference="kvg-FW-cke"/>
         <segue reference="8lU-9t-BQs"/>
     </inferredMetricsTieBreakers>

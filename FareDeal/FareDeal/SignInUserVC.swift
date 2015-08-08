@@ -106,6 +106,7 @@ class SignInUserVC: UIViewController {
     override func viewWillAppear(animated: Bool) {
         // Hide the navigation bar to display the full location image
         let navBar:UINavigationBar! =  self.navigationController?.navigationBar
+        self.navigationController!.navigationBar.hidden = true
         if navBar != nil{
             navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
             navBar.shadowImage = UIImage()

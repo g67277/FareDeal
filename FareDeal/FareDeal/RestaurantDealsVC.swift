@@ -114,7 +114,7 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
             setDealTimer(deal)
         }
     }
-    
+    /*
     func loadSaloofData () {
         let saloofUrl = NSURL(string: "http://www.justwalkingonwater.com/json/venueResponse.json")!
         let response = NSData(contentsOfURL: saloofUrl)!
@@ -146,9 +146,9 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
             biddingStart()
         }
     }
+    */
     
-    
-    
+    /*
     func parseJSON(json: JSON, source: String) {
         // Create the venue object first
         let venue = Venue()
@@ -239,7 +239,7 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
             }
         }
     }
-    
+    */
     func biddingStart(){
         if currentDealIndex < validDeals.count{
             // we have more deals to sort
@@ -405,10 +405,31 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
         locationManager.stopUpdatingLocation()
         // if we dont' have any locations, get some
         if haveItems == false {
+            println("We don't have any deals yet")
             // if dealList.count == 0 {
             //println("Have location, gather local deals")
-            loadSaloofData()
-            // pullLocalDeals()
+           // loadSaloofData()
+            // get  local deals
+            let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            var token = prefs.stringForKey("TOKEN")
+            let location = self.locationManager.location
+            var userLocation = "?lat=\(location.coordinate.latitude)&lng=\(location.coordinate.longitude)"
+            if APICalls.getLocalDeals(token!, location: userLocation) {
+                println("Retrieved deals from Saloof")
+                haveItems = true
+                // FINISHED CREATING DATA OBJECTS
+                // get a list of all deal objects in Realm
+                validDeals = Realm().objects(VenueDeal)
+                println("We have \(validDeals.count) returned deals")
+                // Sort all deals by value
+                let sortedDeals = Realm().objects(VenueDeal).filter("\(Constants.dealValid) = \(1)").sorted("value", ascending:true)
+                validDeals = sortedDeals
+                //println("Sorted Deals from ParseJSON \(sortedDeals)")
+                biddingStart()
+                // pullLocalDeals()
+            } else {
+                 println("Unable to retrieved deals from Saloof")
+            }
         }
     }
 }

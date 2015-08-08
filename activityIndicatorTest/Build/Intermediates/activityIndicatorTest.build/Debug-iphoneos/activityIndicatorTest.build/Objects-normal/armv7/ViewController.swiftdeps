@@ -1,0 +1,41 @@
+### Swift dependencies file v0 ###
+provides:
+- "ViewController"
+nominals:
+- "C21activityIndicatorTest14ViewController"
+class-members:
+- "activityIndicatorView"
+- "viewDidLayoutSubviews"
+- "viewDidLoad"
+top-level:
+- !private "CGFloat"
+- !private "UIColor"
+- "UIView"
+- !private "NVActivityIndicatorType"
+- "UIViewController"
+- !private "CGRect"
+- !private "/"
+- !private "NVActivityIndicatorView"
+member-access:
+- !private "CSo7UIColor"
+- "CSo16UIViewController"
+- "CSo8NSObject"
+- !private "O21activityIndicatorTest23NVActivityIndicatorType"
+- "CSo11UIResponder"
+- !private "CSo6UIView"
+- "PSs9AnyObject"
+- !private "V12CoreGraphics7CGFloat"
+- "C21activityIndicatorTest14ViewController"
+- !private "VSC6CGRect"
+- !private "C21activityIndicatorTest23NVActivityIndicatorView"
+dynamic-lookup:
+cross-module:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/Security.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/CoreImage.swiftmodule"

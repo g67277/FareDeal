@@ -1,0 +1,11 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "1f909a5ee09832029a13f5b8d7731f60"
+inputs: 
+- !dirty "/Users/angelasmith/Desktop/RD/BiddingCountdownTest/BiddingCountdownTest/Restaurant.swift"
+- !dirty "/Users/angelasmith/Desktop/RD/BiddingCountdownTest/BiddingCountdownTest/ViewController.swift"
+- !dirty "/Users/angelasmith/Desktop/RD/BiddingCountdownTest/BiddingCountdownTest/RestaurantDealCell.swift"
+- !dirty "/Users/angelasmith/Desktop/RD/BiddingCountdownTest/BiddingCountdownTest/AppDelegate.swift"
+- !dirty "/Users/angelasmith/Desktop/RD/BiddingCountdownTest/BiddingCountdownTest/Constants.swift"
+- !dirty "/Users/angelasmith/Desktop/RD/BiddingCountdownTest/BiddingCountdownTest/DealHeaderCell.swift"
+- !dirty "/Users/angelasmith/Desktop/RD/BiddingCountdownTest/BiddingCountdownTest/backuo.swift"
+- !dirty "/Users/angelasmith/Desktop/RD/BiddingCountdownTest/BiddingCountdownTest/Deal.swift"

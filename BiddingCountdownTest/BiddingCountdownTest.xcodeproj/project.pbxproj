@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		996D1E181B6ADBFC00F62CE4 /* backuo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996D1E171B6ADBFC00F62CE4 /* backuo.swift */; };
 		9985C1191B63DB48005639EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9985C1181B63DB48005639EE /* AppDelegate.swift */; };
 		9985C11B1B63DB48005639EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9985C11A1B63DB48005639EE /* ViewController.swift */; };
 		9985C11E1B63DB48005639EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9985C11C1B63DB48005639EE /* Main.storyboard */; };
@@ -34,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		814637781B6ABE8C00F6AEA2 /* BiddingCountdownTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BiddingCountdownTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		996D1E171B6ADBFC00F62CE4 /* backuo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = backuo.swift; sourceTree = "<group>"; };
 		9985C1131B63DB48005639EE /* BiddingCountdownTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiddingCountdownTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9985C1171B63DB48005639EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9985C1181B63DB48005639EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		9985C1441B63DC47005639EE /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		9985C1451B63DC47005639EE /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		9985C1491B63DCA6005639EE /* RestaurantDealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealCell.swift; sourceTree = "<group>"; };
+		9985C1501B63E1FB005639EE /* BiddingCountdownTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BiddingCountdownTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		99CD57751B6A930B00DBDF3A /* DealHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealHeaderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,7 +107,7 @@
 				9985C11F1B63DB48005639EE /* Images.xcassets */,
 				9985C1211B63DB48005639EE /* LaunchScreen.xib */,
 				9985C1161B63DB48005639EE /* Supporting Files */,
-				814637781B6ABE8C00F6AEA2 /* BiddingCountdownTest-Bridging-Header.h */,
+				9985C1501B63E1FB005639EE /* BiddingCountdownTest-Bridging-Header.h */,
 			);
 			path = BiddingCountdownTest;
 			sourceTree = "<group>";
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				9985C11A1B63DB48005639EE /* ViewController.swift */,
+				996D1E171B6ADBFC00F62CE4 /* backuo.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				9985C1461B63DC47005639EE /* TTCounterLabel.m in Sources */,
 				9985C13C1B63DBCE005639EE /* Constants.swift in Sources */,
 				99CD57761B6A930B00DBDF3A /* DealHeaderCell.swift in Sources */,
+				996D1E181B6ADBFC00F62CE4 /* backuo.swift in Sources */,
 				9985C13D1B63DBCE005639EE /* Deal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

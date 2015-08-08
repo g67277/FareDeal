@@ -1,0 +1,46 @@
+### Swift dependencies file v0 ###
+provides:
+- "Restaurant"
+nominals:
+- "C20BiddingCountdownTest10Restaurant"
+class-members:
+- "name"
+- "deal"
+- "priceTier"
+- "address"
+- "phone"
+- "identifier"
+- "webUrl"
+- "imageName"
+- "hours"
+- "distance"
+top-level:
+- "Int"
+- "Deal"
+- "NSObject"
+- !private "StringLiteralType"
+- "DebugPrintable"
+- "Printable"
+- "Float"
+- "String"
+member-access:
+- !private "VSs12StaticString"
+- "PSs14DebugPrintable"
+- "PSs9Printable"
+- "CSo8NSObject"
+- "PSs9AnyObject"
+- "C20BiddingCountdownTest10Restaurant"
+dynamic-lookup:
+cross-module:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/32/Swift.swiftmodule"
+- "/Users/angelasmith/Desktop/RD/BiddingCountdownTest/BiddingCountdownTest/BiddingCountdownTest-Bridging-Header.h"
+- "/Users/angelasmith/Desktop/RD/BiddingCountdownTest/BiddingCountdownTest/TTTAttributedLabel.h"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/32/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/32/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/32/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/32/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/32/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/32/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/32/Security.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/32/CoreImage.swiftmodule"
+- "/Users/angelasmith/Desktop/RD/BiddingCountdownTest/BiddingCountdownTest/TTCounterLabel.h"

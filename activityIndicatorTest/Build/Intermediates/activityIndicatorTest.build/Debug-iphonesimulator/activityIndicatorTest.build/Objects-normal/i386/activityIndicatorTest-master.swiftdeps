@@ -1,0 +1,6 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "39c871da0b94864408aba35296c0165c"
+inputs: 
+- "/Users/angelasmith/Desktop/RD/activityIndicatorTest/activityIndicatorTest/ViewController.swift"
+- "/Users/angelasmith/Desktop/RD/activityIndicatorTest/activityIndicatorTest/CustomActivityView.swift"
+- "/Users/angelasmith/Desktop/RD/activityIndicatorTest/activityIndicatorTest/AppDelegate.swift"

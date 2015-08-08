@@ -98,9 +98,11 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
         var savedDeal = realm.objects(SavedDeal).first
         if (savedDeal != nil) {
             let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            let dealDetailVC: RestaurantDealDetaislVC = storyboard.instantiateViewControllerWithIdentifier("dealDetailVC") as! RestaurantDealDetaislVC
-            dealDetailVC.setUpForSaved = true
-            navigationController?.pushViewController(dealDetailVC, animated: true)
+            let dealsVC: RestaurantDealsVC = storyboard.instantiateViewControllerWithIdentifier("userDealsVC") as! RestaurantDealsVC
+            dealsVC.loadSingleDeal = true
+            dealsVC.setUpForSaved = true
+            dealsVC.savedDeal = savedDeal!
+            navigationController?.pushViewController(dealsVC, animated: true)
         } else {
             // Alert them there isn't a current valid saved deal
             let alertController = UIAlertController(title: "No Deals", message: "Either your deal expired, or you haven't saved one.", preferredStyle: .Alert)

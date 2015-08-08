@@ -16,8 +16,8 @@ top-level:
 member-access:
 - "PSs9AnyObject"
 - !private "C13FareDealTests13FareDealTests"
-- "CSo8NSObject"
 - "CSo10XCTestCase"
+- "CSo8NSObject"
 - "CSo6XCTest"
 dynamic-lookup:
 cross-module:

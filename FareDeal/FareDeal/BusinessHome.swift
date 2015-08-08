@@ -30,11 +30,6 @@ class BusinessHome: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.barStyle = .Black
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 249/255, green: 99/255, blue: 50/255, alpha: 1)
-        
         let image = UIImage(named: "navBarLogo")
         navigationItem.titleView = UIImageView(image: image)
         

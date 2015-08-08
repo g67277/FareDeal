@@ -37,8 +37,8 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidAppear(animated: Bool) {
         dealsList.reloadData()
-
     }
+    
     
     func findTopTier(){
         
@@ -96,7 +96,7 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // load items from deal array here
         
-        cell.refreshCell(dealsArray[indexPath.row].title, desc: dealsArray[indexPath.row].desc, time: dealsArray[indexPath.row].timeLimit, value: "$\(dealsArray[indexPath.row].value)", tier: indexPath.row)
+        cell.refreshCell(dealsArray[indexPath.row].title, desc: dealsArray[indexPath.row].desc, time: dealsArray[indexPath.row].timeLimit, value: "$\(dealsArray[indexPath.row].value) value", tier: indexPath.row + 1)
         
         //cell.refreshCell("10% off Drinks", desc: "10% off drinks when you buy anything from the lunch menu", time: 2, value: "Value: $0.80")
         

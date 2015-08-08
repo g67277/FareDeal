@@ -10,19 +10,22 @@ import UIKit
 import RealmSwift
 
 class DealDetailsVC: UIViewController, UITextViewDelegate {
-
-    @IBOutlet weak var container: UIView!
     
+    //View labels
+    @IBOutlet weak var dealImgView: UIImageView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    
+    //Fields
     @IBOutlet weak var tierLabel: UILabel!
     @IBOutlet weak var titleTF: UITextField!
     @IBOutlet weak var descTF: UITextView!
-    
     @IBOutlet weak var textCounterLabel: UILabel!
     @IBOutlet weak var valueTF: UITextField!
-    @IBOutlet weak var hoursRequiredLabel: UILabel!
-    @IBOutlet weak var hour1: UIButton!
-    @IBOutlet weak var hour2: UIButton!
-    @IBOutlet weak var hour3: UIButton!
+    @IBOutlet weak var timeController: UISegmentedControl!
     
     @IBOutlet weak var deleteBtn: UIButton!
     var tier = 0
@@ -43,7 +46,7 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         super.viewDidLayoutSubviews()
         
         if hours > 0 {
-            updateHourButtons(hours)
+            
         }
         if editingMode{
             deleteBtn.hidden = false
@@ -68,13 +71,12 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         }
         titleTF.text = dealTitle
         if desc != "" {
-            
             descTF.text = desc
             
         }else{
             //Adding placeholder to text view
             descTF.delegate = self
-            descTF.text = "Type Here"
+            descTF.text = "e.g. Get 10% off of any medium size drink when you buy a launch meal"
             descTF.textColor = UIColor.lightGrayColor()
         }
         
@@ -95,9 +97,9 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
         var currentCount = 140 - count(descTF.text)
         if currentCount <= 0{
-            //var updatedInput = count(descTF.text)
             descTF.text = descTF.text.substringToIndex(descTF.text.endIndex.predecessor())
         }
+        self.descLabel.text = descTF.text
         self.textCounterLabel.text = "\(currentCount) characters left"
     }
 
@@ -105,48 +107,17 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
     
     @IBAction func onClick(_sender : UIButton?){
         
-        // if any hour button is clicked, update the position and view the selectedHour view
-        
         if _sender?.tag == 0{
-            
-            updateHourButtons(1)
-            
-        }else if _sender?.tag == 1{
-            
-            updateHourButtons(2)
-            
-        }else if _sender?.tag == 2{
-            
-            updateHourButtons(3)
-            
-        }else if _sender?.tag == 3{
             // Save here
             saveDeal()
-        }else if _sender?.tag == 4{
+        }else if _sender?.tag == 1{
             deleteDeal()
         }
     }
     
-    // if any hour button is clicked, update the position and view the selectedHour view
-    func updateHourButtons(limit: Int){
+    @IBAction func timeLimitSelector(sender: AnyObject) {
         
-        switch limit{
-        case 1:
-            selectedHour.frame = CGRectMake(hour1.frame.origin.x, hour1.frame.origin.y + 35, hour1.frame.width, 2)
-            break
-        case 2:
-            selectedHour.frame = CGRectMake(hour2.frame.origin.x, hour2.frame.origin.y + 35, hour2.frame.width, 2)
-            break
-        case 3:
-            selectedHour.frame = CGRectMake(hour3.frame.origin.x, hour3.frame.origin.y + 35, hour3.frame.width, 2)
-            break
-        default:
-            break
-        }
         
-        hoursRequiredLabel.hidden = true
-        container.addSubview(selectedHour)
-        timeLimit = limit
         
     }
     
@@ -186,8 +157,6 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
             descTF.textColor = UIColor.lightGrayColor()
         }else if count(valueTF.text) < 1 {
             valueTF.placeholder = "Required"
-        }else if timeLimit == 0 {
-            hoursRequiredLabel.hidden = false
         }
         
     }

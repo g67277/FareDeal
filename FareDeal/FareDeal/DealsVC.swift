@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import AssetsLibrary
 
 class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -17,6 +18,7 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var dealsArray = Realm().objects(BusinessDeal).sorted("value", ascending: true)
     var realm = Realm()
     var topTier = 0
+    var defaultImg = UIImage()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,19 +34,33 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = false 
+        
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        var path = data?.imgUri
+        var imgURL = NSURL(string: path!)
+        getUIImagefromAsseturl(imgURL!)
+    }
+    
+    func getUIImagefromAsseturl (url: NSURL) {
+        var asset = ALAssetsLibrary()
+        
+        asset.assetForURL(url, resultBlock: { asset in
+            if let ast = asset {
+                let assetRep = ast.defaultRepresentation()
+                let iref = assetRep.fullResolutionImage().takeUnretainedValue()
+                let image = UIImage(CGImage: iref)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.defaultImg = image!
+                })
+            }
+            }, failureBlock: { error in
+                println("Error: \(error)")
+        })
     }
     
     override func viewDidAppear(animated: Bool) {
         dealsList.reloadData()
     }
-    
-    
-    func findTopTier(){
-        
-        
-    }
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let IVC = segue.destinationViewController as! DealDetailsVC
@@ -60,9 +76,10 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             IVC.hours = selectedItem.timeLimit
             IVC.dealID = selectedItem.id
             IVC.editingMode = true
+            IVC.img = defaultImg
 
         }else if segue.identifier == "toAdd"{
-            
+            IVC.img = defaultImg
             
         }
         
@@ -96,7 +113,7 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // load items from deal array here
         
-        cell.refreshCell(dealsArray[indexPath.row].title, desc: dealsArray[indexPath.row].desc, time: dealsArray[indexPath.row].timeLimit, value: "$\(dealsArray[indexPath.row].value) value", tier: indexPath.row + 1)
+        cell.refreshCell(dealsArray[indexPath.row].title, desc: dealsArray[indexPath.row].desc, time: dealsArray[indexPath.row].timeLimit, value: "$\(dealsArray[indexPath.row].value) value", tier: indexPath.row + 1, img: defaultImg)
         
         //cell.refreshCell("10% off Drinks", desc: "10% off drinks when you buy anything from the lunch menu", time: 2, value: "Value: $0.80")
         

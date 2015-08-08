@@ -176,6 +176,9 @@
             <string>Montserrat-UltraLight</string>
             <string>Montserrat-UltraLight</string>
             <string>Montserrat-UltraLight</string>
+            <string>Montserrat-UltraLight</string>
+            <string>Montserrat-UltraLight</string>
+            <string>Montserrat-UltraLight</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1490,7 +1493,7 @@
                                                             <segment title="$$$"/>
                                                             <segment title="$$$$"/>
                                                         </segments>
-                                                        <color key="tintColor" red="0.78592096560846558" green="0.78592096560846558" blue="0.78592096560846558" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="0.89246445105820105" green="0.89246445105820105" blue="0.89246445105820105" alpha="1" colorSpace="calibratedRGB"/>
                                                         <connections>
                                                             <action selector="priceControl:" destination="yo1-xz-xND" eventType="touchUpInside" id="vvg-tD-357"/>
                                                         </connections>
@@ -2504,7 +2507,7 @@ launch special!</string>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="coi-5q-bIh">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="Ac4-FZ-89G" kind="show" id="8lU-9t-BQs"/>
+                                <segue destination="Ac4-FZ-89G" kind="show" identifier="toAdd" id="8lU-9t-BQs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2536,8 +2539,12 @@ launch special!</string>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BusinessDealCard" translatesAutoresizingMaskIntoConstraints="NO" id="TBK-d6-d92">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="324" id="RbF-RH-vd1"/>
-                                            <constraint firstAttribute="height" constant="199" id="thf-Gm-aCQ"/>
+                                            <constraint firstAttribute="width" constant="324" id="RbF-RH-vd1">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="290"/>
+                                            </constraint>
+                                            <constraint firstAttribute="height" constant="199" id="thf-Gm-aCQ">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="178"/>
+                                            </constraint>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -2552,12 +2559,12 @@ launch special!</string>
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tier 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DnZ-HJ-kAH">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tier 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="DnZ-HJ-kAH">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="5Xf-0k-AOT"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="25"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="20"/>
                                         <color key="textColor" red="0.20392156862745098" green="0.20392156862745098" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
@@ -2574,11 +2581,15 @@ launch special!</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzm-zy-xEg">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rasika" translatesAutoresizingMaskIntoConstraints="NO" id="em6-In-kLg">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="em6-In-kLg">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="48" id="Bhi-DS-Jrv"/>
-                                                    <constraint firstAttribute="width" constant="48" id="HFs-zx-Fot"/>
+                                                    <constraint firstAttribute="height" constant="48" id="Bhi-DS-Jrv">
+                                                        <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" constant="48" id="HFs-zx-Fot">
+                                                        <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                                                    </constraint>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -2596,7 +2607,9 @@ launch special!</string>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dealBox" translatesAutoresizingMaskIntoConstraints="NO" id="DXH-LL-Sno">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="6Ee-BL-18D"/>
+                                                    <constraint firstAttribute="height" constant="25" id="6Ee-BL-18D">
+                                                        <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                                                    </constraint>
                                                     <constraint firstAttribute="width" constant="70" id="YhZ-yj-U6I"/>
                                                 </constraints>
                                                 <variation key="default">
@@ -2612,13 +2625,13 @@ launch special!</string>
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10.50 value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Ano-dK-Vc4">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Ano-dK-Vc4">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="MOg-H0-0ad"/>
                                                     <constraint firstAttribute="width" constant="62" id="tY9-sx-9nb"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="10"/>
                                                 <color key="textColor" red="0.20392156859999999" green="0.20392156859999999" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
@@ -2638,7 +2651,9 @@ launch special!</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="B3D-K3-skb"/>
-                                                    <constraint firstAttribute="height" constant="25" id="tCH-Ix-hVT"/>
+                                                    <constraint firstAttribute="height" constant="25" id="tCH-Ix-hVT">
+                                                        <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                                                    </constraint>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -2653,13 +2668,13 @@ launch special!</string>
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3hr limit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="tnp-Up-4Qo">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="tnp-Up-4Qo">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="eR0-4m-bew"/>
                                                     <constraint firstAttribute="width" constant="58" id="yhV-Vq-91E"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="10"/>
                                                 <color key="textColor" red="0.20392156859999999" green="0.20392156859999999" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
@@ -2675,13 +2690,17 @@ launch special!</string>
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10% off Sides" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="rTK-Q5-Kou">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="rTK-Q5-Kou">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="Mdf-jN-YLu"/>
-                                                    <constraint firstAttribute="height" constant="48" id="ntd-we-cIO"/>
+                                                    <constraint firstAttribute="width" constant="150" id="Mdf-jN-YLu">
+                                                        <variation key="heightClass=regular-widthClass=compact" constant="140"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="height" constant="48" id="ntd-we-cIO">
+                                                        <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                                                    </constraint>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="21"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="18"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
@@ -2697,15 +2716,15 @@ launch special!</string>
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="bCW-BR-SLT">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="bCW-BR-SLT">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="243" id="5ox-ON-guk"/>
+                                                    <constraint firstAttribute="width" constant="243" id="5ox-ON-guk">
+                                                        <variation key="heightClass=regular-widthClass=compact" constant="220"/>
+                                                    </constraint>
                                                     <constraint firstAttribute="height" constant="36" id="UIb-KB-UIa"/>
                                                 </constraints>
-                                                <string key="text">Get 10% of your sides when you order any 
-launch special!</string>
-                                                <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="13"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="9"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
@@ -2728,20 +2747,32 @@ launch special!</string>
                                             <constraint firstItem="Ano-dK-Vc4" firstAttribute="centerY" secondItem="DXH-LL-Sno" secondAttribute="centerY" constant="-2" id="AJx-Sc-p5g">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                                             </constraint>
-                                            <constraint firstAttribute="bottom" secondItem="DXH-LL-Sno" secondAttribute="bottom" constant="8" id="Kgc-B4-TQj"/>
-                                            <constraint firstAttribute="bottom" secondItem="HBr-4c-BW4" secondAttribute="bottom" constant="8" id="OGl-cR-rYd"/>
-                                            <constraint firstItem="DXH-LL-Sno" firstAttribute="leading" secondItem="HBr-4c-BW4" secondAttribute="trailing" constant="8" id="Q7q-zV-7hB"/>
+                                            <constraint firstAttribute="bottom" secondItem="DXH-LL-Sno" secondAttribute="bottom" constant="8" id="Kgc-B4-TQj">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="4"/>
+                                            </constraint>
+                                            <constraint firstAttribute="bottom" secondItem="HBr-4c-BW4" secondAttribute="bottom" constant="8" id="OGl-cR-rYd">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="4"/>
+                                            </constraint>
+                                            <constraint firstItem="DXH-LL-Sno" firstAttribute="leading" secondItem="HBr-4c-BW4" secondAttribute="trailing" constant="8" id="Q7q-zV-7hB">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="4"/>
+                                            </constraint>
                                             <constraint firstItem="HBr-4c-BW4" firstAttribute="centerX" secondItem="tnp-Up-4Qo" secondAttribute="centerX" constant="-4" id="QTD-14-jh4">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                                             </constraint>
-                                            <constraint firstAttribute="trailing" secondItem="DXH-LL-Sno" secondAttribute="trailing" constant="8" id="SyE-5O-FYB"/>
+                                            <constraint firstAttribute="trailing" secondItem="DXH-LL-Sno" secondAttribute="trailing" constant="8" id="SyE-5O-FYB">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="4"/>
+                                            </constraint>
                                             <constraint firstItem="rTK-Q5-Kou" firstAttribute="top" secondItem="wzm-zy-xEg" secondAttribute="top" constant="14" id="cFJ-GZ-28z"/>
                                             <constraint firstItem="em6-In-kLg" firstAttribute="leading" secondItem="wzm-zy-xEg" secondAttribute="leading" constant="14" id="cwq-Lu-VrZ"/>
                                             <constraint firstItem="HBr-4c-BW4" firstAttribute="centerY" secondItem="tnp-Up-4Qo" secondAttribute="centerY" id="hSQ-Td-kxn"/>
                                             <constraint firstItem="Ano-dK-Vc4" firstAttribute="centerX" secondItem="DXH-LL-Sno" secondAttribute="centerX" id="jMi-f2-z9J"/>
-                                            <constraint firstItem="rTK-Q5-Kou" firstAttribute="leading" secondItem="em6-In-kLg" secondAttribute="trailing" constant="8" id="lId-s6-j9E"/>
+                                            <constraint firstItem="rTK-Q5-Kou" firstAttribute="leading" secondItem="em6-In-kLg" secondAttribute="trailing" constant="8" id="lId-s6-j9E">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                                            </constraint>
                                             <constraint firstItem="em6-In-kLg" firstAttribute="top" secondItem="wzm-zy-xEg" secondAttribute="top" constant="14" id="qKv-PU-X0s"/>
-                                            <constraint firstItem="bCW-BR-SLT" firstAttribute="top" secondItem="rTK-Q5-Kou" secondAttribute="bottom" constant="16" id="zKp-ge-9Gi"/>
+                                            <constraint firstItem="bCW-BR-SLT" firstAttribute="top" secondItem="rTK-Q5-Kou" secondAttribute="bottom" constant="16" id="zKp-ge-9Gi">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="14"/>
+                                            </constraint>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="subviews">
@@ -2802,15 +2833,21 @@ launch special!</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="TBK-d6-d92" secondAttribute="centerX" id="7w4-CT-MBm"/>
-                                    <constraint firstAttribute="height" constant="242" id="Hfh-Tb-pyD"/>
+                                    <constraint firstAttribute="height" constant="242" id="Hfh-Tb-pyD">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="202"/>
+                                    </constraint>
                                     <constraint firstItem="wzm-zy-xEg" firstAttribute="leading" secondItem="TBK-d6-d92" secondAttribute="leading" constant="25" id="Kzc-GK-CwN"/>
                                     <constraint firstItem="wzm-zy-xEg" firstAttribute="top" secondItem="TBK-d6-d92" secondAttribute="top" constant="15" id="LsL-9L-ODw"/>
                                     <constraint firstItem="wzm-zy-xEg" firstAttribute="trailing" secondItem="TBK-d6-d92" secondAttribute="trailing" constant="-25" id="Q3J-XL-28S"/>
                                     <constraint firstItem="wzm-zy-xEg" firstAttribute="bottom" secondItem="TBK-d6-d92" secondAttribute="bottom" constant="-34" id="Yig-tT-pnR"/>
                                     <constraint firstItem="DnZ-HJ-kAH" firstAttribute="leading" secondItem="r0Y-40-Elr" secondAttribute="leading" constant="8" id="dvt-Z9-nVB"/>
-                                    <constraint firstItem="DnZ-HJ-kAH" firstAttribute="top" secondItem="r0Y-40-Elr" secondAttribute="top" constant="25" id="fIS-76-3Hg"/>
+                                    <constraint firstItem="DnZ-HJ-kAH" firstAttribute="top" secondItem="r0Y-40-Elr" secondAttribute="top" constant="25" id="fIS-76-3Hg">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="15"/>
+                                    </constraint>
                                     <constraint firstAttribute="trailing" secondItem="DnZ-HJ-kAH" secondAttribute="trailing" constant="8" id="g5I-fA-uJC"/>
-                                    <constraint firstItem="TBK-d6-d92" firstAttribute="top" secondItem="r0Y-40-Elr" secondAttribute="top" constant="55" id="gMK-kM-B9O"/>
+                                    <constraint firstItem="TBK-d6-d92" firstAttribute="top" secondItem="r0Y-40-Elr" secondAttribute="top" constant="55" id="gMK-kM-B9O">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="38"/>
+                                    </constraint>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -2942,7 +2979,7 @@ launch special!</string>
                                                     <constraint firstAttribute="height" constant="118" id="9YN-Xu-Uft"/>
                                                 </constraints>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -2955,7 +2992,7 @@ launch special!</string>
                                                     </mask>
                                                 </variation>
                                             </textView>
-                                            <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KyP-S3-s8o">
+                                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KyP-S3-s8o">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -2972,10 +3009,10 @@ launch special!</string>
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripe this deal (add details)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="9yJ-nD-CRe">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripe this deal (add details)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="9yJ-nD-CRe">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140 Characters Left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAi-Br-uWt">
@@ -3016,7 +3053,7 @@ launch special!</string>
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Deal's Value" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cvR-s6-TDE">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Deal's Value" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cvR-s6-TDE">
                                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
@@ -3076,7 +3113,7 @@ launch special!</string>
                                                             <segment title="2hr"/>
                                                             <segment title="3hr"/>
                                                         </segments>
-                                                        <color key="tintColor" red="0.78592096560000002" green="0.78592096560000002" blue="0.78592096560000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="0.9391741071428571" green="0.9391741071428571" blue="0.9391741071428571" alpha="1" colorSpace="calibratedRGB"/>
                                                         <connections>
                                                             <action selector="priceControl:" destination="yo1-xz-xND" eventType="touchUpInside" id="6aO-b5-yL6"/>
                                                             <action selector="timeLimitSelector:" destination="Ac4-FZ-89G" eventType="valueChanged" id="hFt-si-jF7"/>
@@ -3369,7 +3406,9 @@ launch special!</string>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="4bZ-7v-Ns9" secondAttribute="bottom" id="9lU-25-Sk0"/>
+                                    <constraint firstAttribute="bottom" secondItem="4bZ-7v-Ns9" secondAttribute="bottom" id="9lU-25-Sk0">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="42"/>
+                                    </constraint>
                                     <constraint firstItem="4bZ-7v-Ns9" firstAttribute="top" secondItem="xSx-PD-n4Q" secondAttribute="top" id="LBr-N4-mh3"/>
                                     <constraint firstAttribute="centerX" secondItem="4bZ-7v-Ns9" secondAttribute="centerX" id="Xmc-Dk-v6R"/>
                                     <constraint firstItem="4bZ-7v-Ns9" firstAttribute="leading" secondItem="xSx-PD-n4Q" secondAttribute="leading" id="az8-eB-6v7"/>
@@ -3401,15 +3440,19 @@ launch special!</string>
                                 </variation>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.89411764709999997" green="0.27450980390000002" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.34775142534634956" green="0.34085826355884657" blue="0.34930968915343918" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="r0Y-40-Elr" firstAttribute="leading" secondItem="4nu-k1-nmq" secondAttribute="leading" id="1nb-hl-ijT"/>
                             <constraint firstItem="xSx-PD-n4Q" firstAttribute="leading" secondItem="4nu-k1-nmq" secondAttribute="leading" id="SBi-uE-Wct"/>
                             <constraint firstAttribute="trailing" secondItem="r0Y-40-Elr" secondAttribute="trailing" id="Zk4-Bf-eRH"/>
                             <constraint firstAttribute="trailing" secondItem="xSx-PD-n4Q" secondAttribute="trailing" id="dIh-gP-hki"/>
-                            <constraint firstItem="xSx-PD-n4Q" firstAttribute="top" secondItem="r0Y-40-Elr" secondAttribute="bottom" id="kGn-bi-VJd"/>
+                            <constraint firstItem="xSx-PD-n4Q" firstAttribute="top" secondItem="r0Y-40-Elr" secondAttribute="bottom" id="kGn-bi-VJd">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-2"/>
+                            </constraint>
                             <constraint firstItem="r0Y-40-Elr" firstAttribute="top" secondItem="Xhm-7d-qh2" secondAttribute="bottom" id="w26-jv-nUe"/>
-                            <constraint firstItem="484-Ze-th1" firstAttribute="top" secondItem="xSx-PD-n4Q" secondAttribute="bottom" id="wyT-QR-5r2"/>
+                            <constraint firstItem="484-Ze-th1" firstAttribute="top" secondItem="xSx-PD-n4Q" secondAttribute="bottom" id="wyT-QR-5r2">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -14964,6 +15007,6 @@ launch special!</string>
         <segue reference="tNh-7g-8QF"/>
         <segue reference="kvg-FW-cke"/>
         <segue reference="gTw-bM-aav"/>
-        <segue reference="ewe-a6-IF6"/>
+        <segue reference="8lU-9t-BQs"/>
     </inferredMetricsTieBreakers>
 </document>

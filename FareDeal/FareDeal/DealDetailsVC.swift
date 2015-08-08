@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class DealDetailsVC: UIViewController, UITextViewDelegate {
+class DealDetailsVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     //View labels
     @IBOutlet weak var dealImgView: UIImageView!
@@ -35,23 +35,33 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
     var hours = 0
     var dealID = ""
     var editingMode = false
+    var img = UIImage()
     
     var realm = Realm()
     
     // View to indicate selected hour button
-    let selectedHour:UIView = UIView()
-    var timeLimit = 0
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+
+        dealImgView.image = img
+        dealImgView.layer.masksToBounds = false
+        dealImgView.layer.borderColor = UIColor.blackColor().CGColor
+        dealImgView.layer.cornerRadius = dealImgView.frame.height/2
+        dealImgView.clipsToBounds = true
+
         
-        if hours > 0 {
-            
-        }
         if editingMode{
             deleteBtn.hidden = false
         }else{
             deleteBtn.hidden = true
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if hours > 0 {
+            timeController.selectedSegmentIndex = hours
+            timeLabel.text =  "\(hours)hr limit"
         }
     }
     
@@ -62,36 +72,39 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         self.navigationController?.navigationBarHidden = false
 
         // View to indicate selected hour button -- update color to black
-        selectedHour.backgroundColor = .blackColor()
+        titleTF.delegate = self
+        valueTF.delegate = self
         
         if editingMode{
             tierLabel.text = "Tier \(tier)"
-        }else{
-            tierLabel.text = "They are going to love this..."
-        }
-        titleTF.text = dealTitle
-        if desc != "" {
-            descTF.text = desc
+            titleTF.text = dealTitle
+            titleLabel.text = dealTitle
+            if desc != "" {
+                descTF.text = desc
+                descLabel.text = desc
+            }
+            valueTF.text = String(stringInterpolationSegment: value)
+            valueLabel.text = "$\(String(stringInterpolationSegment: value)) value"
             
         }else{
-            //Adding placeholder to text view
-            descTF.delegate = self
-            descTF.text = "e.g. Get 10% off of any medium size drink when you buy a launch meal"
-            descTF.textColor = UIColor.lightGrayColor()
+            tierLabel.text = "They are going to love this..."
+            if !editingMode{
+                //Adding placeholder to text view
+                descTF.delegate = self
+                descTF.text = "e.g. Get 10% off of any medium size drink when you buy a launch meal"
+                descTF.textColor = UIColor.whiteColor()
+            }
         }
         
-        valueTF.text = String(stringInterpolationSegment: value)
-
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
     }
     
+    
+    
     func textViewDidBeginEditing(textView: UITextView) {
-        if descTF.textColor == UIColor.lightGrayColor() {
-            descTF.text = nil
-            descTF.textColor = UIColor.blackColor()
-        }
+        navigationController?.navigationBarHidden = true
     }
     
     func textViewDidChange(textView: UITextView) {
@@ -101,6 +114,33 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
         }
         self.descLabel.text = descTF.text
         self.textCounterLabel.text = "\(currentCount) characters left"
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        navigationController?.navigationBarHidden = false
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        navigationController?.navigationBarHidden = true
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if textField.tag == 0{
+            titleLabel.text = titleTF.text
+        }else if textField.tag == 1{
+            valueLabel.text = "$\(valueTF.text) value"
+        }
+        
+        return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        navigationController?.navigationBarHidden = false
+        if textField.tag == 0{
+            titleLabel.text = titleTF.text
+        }else if textField.tag == 1{
+            valueLabel.text = "$\(valueTF.text) value"
+        }
     }
 
     // Mark# OnClick Method
@@ -117,20 +157,33 @@ class DealDetailsVC: UIViewController, UITextViewDelegate {
     
     @IBAction func timeLimitSelector(sender: AnyObject) {
         
-        
-        
+        switch sender.selectedSegmentIndex{
+        case 0:
+            updateHours(1)
+        case 1:
+            updateHours(2)
+        case 2:
+            updateHours(3)
+        default:
+            break;
+        }
+    }
+    
+    func updateHours(incomingHour: Int){
+        hours = incomingHour
+        timeLabel.text = "\(hours)hr limit"
     }
     
     func saveDeal(){
         
-        if count(titleTF.text) > 0 && count(descTF.text) > 0 && count(valueTF.text) > 0 && timeLimit > 0 {
+        if count(titleTF.text) > 0 && count(descTF.text) > 0 && count(valueTF.text) > 0 && hours > 0 {
             
             // save here
             var deal = BusinessDeal()
             deal.title = titleTF.text
             deal.desc = descTF.text
             deal.value = (valueTF.text as NSString).doubleValue
-            deal.timeLimit = timeLimit
+            deal.timeLimit = hours
             if editingMode {
                 deal.id = dealID
             }else{

@@ -28,29 +28,12 @@ class DealsCell: UITableViewCell {
         
     }
     
-    func getUIImagefromAsseturl (url: NSURL) {
-        var asset = ALAssetsLibrary()
-        
-        asset.assetForURL(url, resultBlock: { asset in
-            if let ast = asset {
-                let assetRep = ast.defaultRepresentation()
-                let iref = assetRep.fullResolutionImage().takeUnretainedValue()
-                let image = UIImage(CGImage: iref)
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.dealImg.image = image
-                })
-            }
-            }, failureBlock: { error in
-                println("Error: \(error)")
-        })
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func refreshCell(title: String, desc: String, time: Int, value: String, tier: Int){
+    func refreshCell(title: String, desc: String, time: Int, value: String, tier: Int, img: UIImage){
         
         dealTitle.text = title
         dealDesc.text = desc
@@ -62,11 +45,7 @@ class DealsCell: UITableViewCell {
         dealValue.text = value
         tierLabel.text = "Tier \(tier)"
         
-        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
-        var path = data?.imgUri
-        var imgURL = NSURL(string: path!)
-        getUIImagefromAsseturl(imgURL!)
-        
+        dealImg.image = img
         dealImg.layer.masksToBounds = false
         dealImg.layer.borderColor = UIColor.blackColor().CGColor
         dealImg.layer.cornerRadius = dealImg.frame.height/2

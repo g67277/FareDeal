@@ -69,8 +69,9 @@ class DealDetailsVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBarHidden = false
-
+        let image = UIImage(named: "navBarLogo")
+        navigationItem.titleView = UIImageView(image: image)
+        
         // View to indicate selected hour button -- update color to black
         titleTF.delegate = self
         valueTF.delegate = self

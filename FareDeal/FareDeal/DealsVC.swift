@@ -35,6 +35,9 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let image = UIImage(named: "navBarLogo")
+        navigationItem.titleView = UIImageView(image: image)
+        
         var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
         var path = data?.imgUri
         var imgURL = NSURL(string: path!)

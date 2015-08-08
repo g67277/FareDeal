@@ -32,8 +32,7 @@ class BusinessHome: UIViewController {
         
         let image = UIImage(named: "navBarLogo")
         navigationItem.titleView = UIImageView(image: image)
-        
-        
+
         let date = NSDate();
         var formatter = NSDateFormatter();
         formatter.dateFormat = "MMMM";

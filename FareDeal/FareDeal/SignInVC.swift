@@ -64,9 +64,19 @@ class SignInVC: UIViewController {
                         self.userNameField.text = ""
                         self.passwordField.text = ""
                         prefs.setObject(userNameField.text, forKey: "USERNAME")
-                        
+                        var token = prefs.stringForKey("TOKEN")
                         if prefs.boolForKey("ROLE"){
-                            self.performSegueWithIdentifier("toMain", sender: self)
+                            if APICalls.getMyRestaurant(token!){
+                                self.performSegueWithIdentifier("toMain", sender: self)
+                            }else{
+                                var refreshAlert = UIAlertController(title: "Registration Not Complete", message: "You don't have a restaurant registered yet, do you want to register one now?", preferredStyle: UIAlertControllerStyle.Alert)
+                                refreshAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {(action: UIAlertAction!) in
+                                    self.performSegueWithIdentifier("toReg2", sender: nil)
+                                }))
+                                refreshAlert.addAction(UIAlertAction(title: "No", style: .Default, handler: {(action: UIAlertAction!) in
+                                }))
+                                self.presentViewController(refreshAlert, animated: true, completion: nil)
+                            }
                         }else{
                             validation.displayAlert("No Permission", message: "Please create a business account to access the business side")
                         }

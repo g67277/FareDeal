@@ -21,6 +21,8 @@ class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, U
     var validImage = false
     @IBOutlet weak var contactName: UITextField!
     @IBOutlet weak var descTextView: UITextView!
+    @IBOutlet weak var indicatorContainer: UIView!
+    @IBOutlet weak var indicatorView: UIView!
     
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     let authentication = AuthenticationCalls()
@@ -62,22 +64,34 @@ class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, U
             && validation.validateInput(descTextView.text, check: 5, title: "Too Short", message: "Please add some more details to the description")
             && validImage{
             
-                var callPart2 = "\"ContactName\":\"\(contactName.text)\",\"Desc\":\"\(descTextView.text)\"}"
+                var callPart2 = "\"ContactName\":\"\(contactName.text)\"}"
                 var completeCall = "\(callPart1), \(callPart2)"
-                //var token = prefs.stringForKey("TOKEN")
-                //testing...
+                var token = prefs.stringForKey("TOKEN")
                 self.saveData()
-                prefs.setObject("restID", forKey: "restID")
-                self.backThree()
-//                if authentication.registerRestaurant(completeCall, token: token!){
-//                    
-//                    prefs.setObject("restID", forKey: "restID")
-//                    var refreshAlert = UIAlertController(title: "Thank you!", message: "Your data has been sent for validation, we'll be in touch soon.  In the mean time, you can start setting up some amazing deals", preferredStyle: UIAlertControllerStyle.Alert)
-//                    refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
-//                        self.backThree()
-//                    }))
-//                    self.presentViewController(refreshAlert, animated: true, completion: nil)
-//                }
+                if authentication.registerRestaurant(completeCall, token: token!){
+                    
+                    self.indicatorContainer.hidden = false
+                    self.indicatorContainer.roundCorners(.AllCorners, radius: 14)
+                    let aIView = CustomActivityView(frame: CGRect (x: 0, y: 0, width: 70, height: 70), color: UIColor.whiteColor(), size: CGSize(width: 70, height: 70))
+                    self.indicatorView.addSubview(aIView)
+                    aIView.startAnimation()
+                    
+                    let delay = 4.5 * Double(NSEC_PER_SEC)
+                    let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                    dispatch_after(time, dispatch_get_main_queue()) {
+                        if APICalls.getMyRestaurant(token!){
+                            
+                            aIView.stopAnimation()
+                            self.indicatorContainer.hidden = true
+                            var refreshAlert = UIAlertController(title: "Thank you!", message: "Your data has been sent for validation, we'll be in touch soon.  In the mean time, you can start setting up some amazing deals", preferredStyle: UIAlertControllerStyle.Alert)
+                            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(action: UIAlertAction!) in
+                                self.backThree()
+                            }))
+                            self.presentViewController(refreshAlert, animated: true, completion: nil)
+                        }
+                    }
+                    
+                }
                 
         }else if !validImage{
             validation.displayAlert("No Picture", message: "Please add a picture")

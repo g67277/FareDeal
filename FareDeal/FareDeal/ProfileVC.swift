@@ -41,6 +41,9 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let image = UIImage(named: "navBarLogo")
+        navigationItem.titleView = UIImageView(image: image)
+        
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
         

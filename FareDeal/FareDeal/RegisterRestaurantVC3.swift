@@ -27,6 +27,7 @@ class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, U
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     let authentication = AuthenticationCalls()
     let validation = Validation()
+    let apiCall = APICalls()
     
     var callPart1 = ""
     var continueSession = false
@@ -78,7 +79,7 @@ class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, U
                     let delay = 4.5 * Double(NSEC_PER_SEC)
                     let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                     dispatch_after(time, dispatch_get_main_queue()) {
-                        if APICalls.getMyRestaurant(token!){
+                        if self.apiCall.getMyRestaurant(token!){
                             self.saveData()
                             aIView.stopAnimation()
                             self.indicatorContainer.hidden = true

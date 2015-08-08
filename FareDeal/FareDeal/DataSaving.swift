@@ -15,6 +15,7 @@ public class DataSaving{
     class func saveRestaurantProfile(object: JSON){
         
         var restArray = Realm().objects(ProfileModel)
+        var dealArray = Realm().objects(BusinessDeal)
         let realm = Realm()
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var updateObject = false
@@ -27,25 +28,6 @@ public class DataSaving{
         
         if updateObject {
             var data = Realm().objectForPrimaryKey(ProfileModel.self, key: prefs.stringForKey("restID")!)
-            var dealsArray: [BusinessDeal] = []
-            var bDeal = BusinessDeal()
-
-            if object["deals"] != nil{
-                
-                if let deals = object["deals"].array {
-                    for deal in deals {
-                        bDeal.title = deal["title"].string!
-                        bDeal.desc = deal["description"].string!
-                        bDeal.value = (deal["deal_value"].string! as NSString).doubleValue
-                        bDeal.timeLimit = deal["timeLimit"].int!
-                        bDeal.id = deal["id"].string!
-                        bDeal.restaurantID = deal["venue_id"].string!
-                        dealsArray.append(bDeal)
-                    }
-                }
-                
-            }
-            
             realm.write({
                 if object["name"] != nil{
                     data!.restaurantName = object["name"].string!
@@ -56,8 +38,33 @@ public class DataSaving{
                 if object["contactName"] != nil{
                     data!.contactName = object["contactName"].string!
                 }
-                if dealsArray.count > 0 {
-                    //data!.deals = dealsArray
+                
+                if object["deals"] != nil{
+                    
+                    if let deals = object["deals"].array {
+                        for deal in deals {
+                            var exists = false
+                            for localDeal in dealArray{
+                                if localDeal.id == deal["id"].string!{
+                                    exists = true
+                                    break
+                                }else{
+                                    exists = false
+                                }
+                            }
+                            if !exists{
+                                var bDeal = BusinessDeal()
+                                bDeal.title = deal["title"].string!
+                                bDeal.desc = deal["description"].string!
+                                bDeal.value = deal["deal_value"].double!
+                                bDeal.timeLimit = deal["timeLimit"].int!
+                                bDeal.id = deal["id"].string!
+                                bDeal.restaurantID = deal["venue_id"].string!
+                                data!.deals.append(bDeal)
+                            }
+                        }
+                    }
+                    
                 }
                 
             })
@@ -75,6 +82,34 @@ public class DataSaving{
                 restaurant.contactName = object["contactName"].string!
             }
             restaurant.id = prefs.stringForKey("restID")!
+            
+            if object["deals"] != nil{
+                
+                if let deals = object["deals"].array {
+                    for deal in deals {
+                        var exists = false
+                        for localDeal in dealArray{
+                            if localDeal.id == deal["id"].string!{
+                                exists = true
+                                break
+                            }else{
+                                exists = false
+                            }
+                        }
+                        if !exists{
+                            var bDeal = BusinessDeal()
+                            bDeal.title = deal["title"].string!
+                            bDeal.desc = deal["description"].string!
+                            bDeal.value = deal["deal_value"].double!
+                            bDeal.timeLimit = deal["timeLimit"].int!
+                            bDeal.id = deal["id"].string!
+                            bDeal.restaurantID = deal["venue_id"].string!
+                            restaurant.deals.append(bDeal)
+                        }
+                    }
+                }
+                
+            }
             
             realm.write({
                 realm.add(restaurant, update: false)

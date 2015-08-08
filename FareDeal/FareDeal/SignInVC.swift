@@ -18,6 +18,7 @@ class SignInVC: UIViewController {
     
     let authenticationCall:AuthenticationCalls = AuthenticationCalls()
     let validation = Validation()
+    let apiCall = APICalls()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +67,7 @@ class SignInVC: UIViewController {
                         prefs.setObject(userNameField.text, forKey: "USERNAME")
                         var token = prefs.stringForKey("TOKEN")
                         if prefs.boolForKey("ROLE"){
-                            if APICalls.getMyRestaurant(token!){
+                            if apiCall.getMyRestaurant(token!){
                                 self.performSegueWithIdentifier("toMain", sender: self)
                             }else{
                                 var refreshAlert = UIAlertController(title: "Registration Not Complete", message: "You don't have a restaurant registered yet, do you want to register one now?", preferredStyle: UIAlertControllerStyle.Alert)

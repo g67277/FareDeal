@@ -38,6 +38,9 @@ class DealDetailsVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     var img = UIImage()
     
     var realm = Realm()
+    var apiCall = APICalls()
+    let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
     
     // View to indicate selected hour button
     
@@ -185,12 +188,15 @@ class DealDetailsVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
             deal.desc = descTF.text
             deal.value = (valueTF.text as NSString).doubleValue
             deal.timeLimit = hours
+            deal.restaurantID = prefs.stringForKey("restID")!
             if editingMode {
                 deal.id = dealID
             }else{
                 deal.id = NSUUID().UUIDString
             }
             
+            var call = "{\"DealTitle\":\"\(deal.title)\",\"DealDescription\":\"\(deal.desc)\",\"DealValue\":\(deal.value),\"TimeLimit\":\(deal.timeLimit)}"
+            apiCall.uploadDeal(call, token: prefs.stringForKey("TOKEN")!)
             realm.write{
                 self.realm.add(deal, update: self.editingMode)
             }

@@ -15,10 +15,143 @@ namespace FareDeal.Service
         {
 
         }
+
+        public IEnumerable<venue> GetVenuesByCategoryNLocation(string category, double lat1, double lng1)
+        {
+            IEnumerable<venue> venues = db.venues;
+            //find local
+            if (!(lat1 == 0 || lng1 == 0))
+            {
+                List<venue> lstVenue = new List<venue>();
+                foreach (var v in venues)
+                {
+                    db.Entry(v).Reference(vc => vc.location).Load();
+                    db.Entry(v).Collection(vc => vc.venue_credit).Load();
+                    db.Entry(v).Reference(vc => vc.category).Load();
+                    var credit = v.venue_credit.FirstOrDefault();
+                    if (credit != null && credit.credit_available > 0)
+                    {
+                        db.Entry(v).Collection(d => d.deals).Load();
+                    }
+                    var distance = GetDistanceFromLatLonInKm(v.location.lat, v.location.lng, lat1, lng1);
+                    if (distance < 10)
+                    {
+                        lstVenue.Add(v);
+                    }
+                }
+                venues = lstVenue;
+            }
+            if (!string.IsNullOrEmpty(category))
+            {
+                return venues.Where(v => v.category.name.ToLower() == category.ToLower());
+            }
+            return venues;
+        }
+
+        public IEnumerable<venue> GetVenuesByPriceNLocation(int priceTier, double lat1, double lng1)
+        {
+            IEnumerable<venue> venues = null;
+            //find local
+            if (priceTier > 0)
+            {
+                 venues = db.venues.Where(v => v.priceTier <= priceTier);
+            }
+            else
+            {
+                 venues = db.venues;
+            }
+
+            if (!(lat1 == 0 || lng1 == 0))
+            {
+                List<venue> lstVenue = new List<venue>();
+                foreach (var v in venues)
+                {
+                    db.Entry(v).Reference(vc => vc.location).Load();
+                    db.Entry(v).Collection(vc => vc.venue_credit).Load();
+                    db.Entry(v).Reference(vc => vc.category).Load();
+                    var credit = v.venue_credit.FirstOrDefault();
+                    if (credit != null && credit.credit_available > 0)
+                    {
+                        db.Entry(v).Collection(d => d.deals).Load();
+                    }
+                    var distance = GetDistanceFromLatLonInKm(v.location.lat, v.location.lng, lat1, lng1);
+                    if (distance < 10)
+                    {
+                        lstVenue.Add(v);
+                    }
+                }
+                venues = lstVenue;
+            }
+            return venues;
+        }
+
+        private double GetDistanceFromLatLonInKm(double lat1, double long1, double lat2, double long2)
+        {
+            double _eQuatorialEarthRadius = 6378.1370D;
+            double _d2r = (Math.PI / 180D);
+
+            double dlong = (long2 - long1) * _d2r;
+            double dlat = (lat2 - lat1) * _d2r;
+            double a = Math.Pow(Math.Sin(dlat / 2D), 2D) + Math.Cos(lat1 * _d2r) * Math.Cos(lat2 * _d2r) * Math.Pow(Math.Sin(dlong / 2D), 2D);
+            double c = 2D * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1D - a));
+            double d = _eQuatorialEarthRadius * c;
+
+            return d;
+        }
         
         public IEnumerable<venue> GetVenues()
         {
-            return db.venues.ToList();
+            var venues = db.venues.ToList();
+            foreach (var v in venues)
+            {
+                db.Entry(v).Reference(vc => vc.location).Load();
+                db.Entry(v).Collection(vc => vc.venue_credit).Load();
+                db.Entry(v).Reference(vc => vc.category).Load();
+
+                var credit = v.venue_credit.FirstOrDefault();
+
+                if (credit != null && credit.credit_available > 0)
+                {
+                    db.Entry(v).Collection(d => d.deals).Load();
+                }
+            }
+            return venues;
+        }
+
+        public IEnumerable<venue> GetVenuesByCategory(string catName)
+        {
+            var venues = db.venues.ToList();
+            foreach (var v in venues)
+            {
+                db.Entry(v).Reference(vc => vc.location).Load();
+                db.Entry(v).Collection(vc => vc.venue_credit).Load();
+                db.Entry(v).Reference(vc => vc.category).Load();
+                var credit = v.venue_credit.FirstOrDefault();
+
+                if (credit != null && credit.credit_available > 0)
+                {
+                    db.Entry(v).Collection(d => d.deals).Load();
+                }
+            }
+            return venues.Where(v=>v.category.name.ToLower() == catName.ToLower());
+        }
+
+        public IEnumerable<venue> GetVenueByPriceTier(int tier)
+        {
+            var venues = db.venues.Where(v=>v.priceTier <= tier).ToList();
+            foreach (var v in venues)
+            {
+                db.Entry(v).Reference(vc => vc.location).Load();
+                db.Entry(v).Collection(vc => vc.venue_credit).Load();
+                db.Entry(v).Reference(vc => vc.category).Load();
+                var credit = v.venue_credit.FirstOrDefault();
+
+                if (credit != null && credit.credit_available > 0)
+                {
+                    db.Entry(v).Collection(d => d.deals).Load();
+                }
+            }
+            return venues;
         }
 
         public void AddVenue(venue _venue)
@@ -44,10 +177,19 @@ namespace FareDeal.Service
         {
             venue _venue = db.venues.Where(v => v.Id == id).FirstOrDefault();
             db.Entry(_venue).Collection(vc => vc.venue_credit).Load();
-            if (_venue.venue_credit.First().credit_available > 5)
-            {
-                db.Entry(_venue).Collection(s => s.deals).Load();
-            }
+            db.Entry(_venue).Reference(vc => vc.category).Load();
+            db.Entry(_venue).Collection(vc => vc.deals).Load();
+            db.Entry(_venue).Reference(vc => vc.location).Load();
+            return _venue;
+        }
+
+        public venue GetByUserId(Guid id)
+        {
+            venue _venue = db.venues.Where(v => v.uId == id).FirstOrDefault();
+            db.Entry(_venue).Collection(vc => vc.venue_credit).Load();
+            db.Entry(_venue).Reference(vc => vc.category).Load();
+            db.Entry(_venue).Collection(vc => vc.deals).Load();
+            db.Entry(_venue).Reference(vc => vc.location).Load();
 
             return _venue;
         }

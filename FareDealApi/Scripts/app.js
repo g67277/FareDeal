@@ -114,8 +114,7 @@
         var name = "Restaurent" + Math.random();
 
         var data = {
-            FirstName: 'Hemal',
-            LastName: 'Patel',
+            ContactName: 'Test Contact',
             StreetName: 'Test St',
             City: 'Washington',
             State: 'DC',
@@ -153,7 +152,7 @@
         var title = "DealTitle" + Math.random().toPrecision(3);
 
         var data = {
-            VenueId: 'CB29A448-84C9-4630-A0B0-06497A613DA6',
+            //VenueId: 'CB29A448-84C9-4630-A0B0-06497A613DA6',
             DealTitle: title,
             DealDescription: 'Deal description',
             DealValue: 2.99,
@@ -240,6 +239,65 @@
         }).fail(showError);
     });
 
+    //$('#btnGetVenues').click(function () {
+
+    //    var token = sessionStorage.getItem(tokenKey);
+    //    var headers = {};
+    //    if (token) {
+    //        headers.Authorization = 'Bearer ' + token;
+    //    }
+    //    $.ajax({
+    //        type: 'GET',
+    //        url: '/api/Venue/GetLocal?lat=38.907192&lng=-77.036871',
+    //        contentType: 'application/json; charset=utf-8',
+    //        headers: headers
+    //    }).done(function (data) {
+    //        self.result("Done!");
+    //    }).fail(showError);
+    //});
+
+    $('#btnGetVenues').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '/api/Venue/GetVenues?lat=38.907192&lng=-77.036871&category=burger&priceTier=2',
+            contentType: 'application/json; charset=utf-8'
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
+
+    $('#btnGetMyVenue').click(function () {
+
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+        $.ajax({
+            type: 'GET',
+            url: '/api/Venue/MyVenue',
+            contentType: 'application/json; charset=utf-8',
+            headers: headers
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
+
+    $('#btnGetByCat').click(function () {
+
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+        $.ajax({
+            type: 'GET',
+            url: '/api/Venue/GetVenueByCategory?catName=Burger',
+            contentType: 'application/json; charset=utf-8'
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
 
     $('#btn_password_reset').click(function () {
         var headers = {};

@@ -12,6 +12,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 
+using FareDeal.Service.Data;
+
 namespace FareDealApi.Controllers
 {
     public class DealController : ApiController
@@ -29,27 +31,32 @@ namespace FareDealApi.Controllers
         }
 
         // POST: api/Deal
+        [Authorize(Roles = "business")]
         public async Task<IHttpActionResult> Post(DealModel model)
         {
+            venue v;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+            using (VenueService service  = new VenueService())
+            {
+                var uId = Guid.Parse(User.Identity.GetUserId());
+                v = service.GetByUserId(uId);              
             }
             using (DealService service = new DealService())
             {
                 service.AddDeal(new FareDeal.Service.Data.deal()
                 {
                     id = Guid.NewGuid(),
-                    venue_id = model.VenueId,
+                    venue_id = v.Id, //model.VenueId,
                     description = model.DealDescription,
                     title = model.DealTitle,
                     deal_value = model.DealValue,
                     timeLimit = model.TimeLimit,
-
                     original_value = 0,
                     active = true,
                     credit_required = 20,
-
                 });
             }
             return Ok();

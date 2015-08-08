@@ -28,9 +28,9 @@ namespace FareDealApi.Models
 
         public string WeekendHours {get; set;}
 
-        public string Lng { get; set; }
+        public double Lng { get; set; }
 
-        public string Lat { get; set; }
+        public double Lat { get; set; }
 
         public string CategoryName { get; set; }
 
@@ -49,7 +49,6 @@ namespace FareDealApi.Models
 
     public class DealModel
     {
-        [Required]
         public Guid VenueId { get; set; }
         [Required]
         public string DealTitle { get; set; }

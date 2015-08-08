@@ -12,16 +12,12 @@ namespace FareDeal.Service.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class location
+    public partial class photo
     {
         public System.Guid id { get; set; }
-        public string address { get; set; }
-        public string crossStreet { get; set; }
-        public double lat { get; set; }
-        public double lng { get; set; }
-        public string postalcode { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string cc { get; set; }
+        public System.Guid vanue_id { get; set; }
+        public string pic_url { get; set; }
+    
+        public virtual venue venue { get; set; }
     }
 }

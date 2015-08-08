@@ -10,6 +10,7 @@ import UIKit
 import ActionSheetPicker_3_0
 import AssetsLibrary
 import RealmSwift
+import SwiftyJSON
 
 class BusinessHome: UIViewController {
     
@@ -21,6 +22,7 @@ class BusinessHome: UIViewController {
     
     @IBOutlet weak var profileImgView: UIImageView!
     let realm = Realm()
+    let apiCall = APICalls()
 
     // holds all the months to display in selector
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -48,7 +50,7 @@ class BusinessHome: UIViewController {
     
     func updateImg(){
         
-        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: prefs.stringForKey("restID")!)
         var path = data?.imgUri
         var imgURL = NSURL(string: path!)
         getUIImagefromAsseturl(imgURL!)
@@ -57,9 +59,36 @@ class BusinessHome: UIViewController {
     
     func updateDisplay(){
         
-        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: prefs.stringForKey("restID")!)
         restaurantNameLabel.text = data?.restaurantName
         updateImg()
+        
+        if Reachability.isConnectedToNetwork(){
+            var json = apiCall.getBalance(prefs.stringForKey("restID")!, token: prefs.stringForKey("TOKEN")!)
+            var credits = json["CreditAvailable"].int!
+            var dealsSelected = json["TotalDealsPurchased"].int!
+            var dealSwapped = json["TotalDealsSwapped"].int!
+            creditBalanceLabel.text = "\(credits)"
+            prefs.setInteger(credits, forKey: "credits")
+            prefs.synchronize()
+            dealsSelectedLabel.text = "\(dealsSelected)"
+            dealsSwapedLabel.text = "\(dealSwapped)"
+        }else{
+            
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "You're Offline"
+            alertView.message = "Please connect to view summary details"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            
+            let creditsAvailable:Int = prefs.integerForKey("credits") as Int
+            if creditsAvailable > 0 {
+                creditBalanceLabel.text = "\(creditsAvailable)C"
+            }else{
+                creditBalanceLabel.text = "No Credits"
+            }
+        }
         
     }
     
@@ -90,13 +119,7 @@ class BusinessHome: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
 
-        let creditsAvailable:Int = prefs.integerForKey("credits") as Int
         
-        if creditsAvailable > 0 {
-            creditBalanceLabel.text = "\(creditsAvailable)C"
-        }else{
-            creditBalanceLabel.text = "No Credits"
-        }
     }
     
     @IBAction func onClick(_sender : UIButton?){

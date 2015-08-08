@@ -57,7 +57,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         
         var realm = Realm()
         
-        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: prefs.stringForKey("restID")!)
         
         RestaurantTitleLabel.text = data?.restaurantName
         var name = data?.contactName
@@ -102,7 +102,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         var wknC = self.weekendC.titleLabel?.text
 
         var realm = Realm()
-        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: prefs.stringForKey("restID")!)
         
         realm.write({
             data?.contactName = self.contactField.text

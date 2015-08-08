@@ -14,8 +14,10 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var addBtn: UIBarButtonItem!
     @IBOutlet weak var dealsList: UITableView!
-    
-    var dealsArray = Realm().objects(BusinessDeal).sorted("value", ascending: true)
+    let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
+    var savedDealsArray = Realm().objects(BusinessDeal).sorted("value", ascending: true)
+    var dealsArray : [BusinessDeal] = []
     var realm = Realm()
     var topTier = 0
     var defaultImg = UIImage()
@@ -23,6 +25,17 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: prefs.stringForKey("restID")!)
+        if savedDealsArray.count > 0{
+            dealsArray.removeAll(keepCapacity: true)
+            for deal in savedDealsArray{
+                if deal.restaurantID == prefs.stringForKey("restID"){
+                    dealsArray.append(deal)
+                }
+            }
+        }
+
+        dealsList.reloadData()
         var test = dealsArray.count
         if dealsArray.count == 10 {
             addBtn.enabled = false
@@ -38,10 +51,14 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let image = UIImage(named: "navBarLogo")
         navigationItem.titleView = UIImageView(image: image)
         
-        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: prefs.stringForKey("restID")!)
+        
         var path = data?.imgUri
-        var imgURL = NSURL(string: path!)
-        getUIImagefromAsseturl(imgURL!)
+        if path != nil{
+            var imgURL = NSURL(string: path!)
+            getUIImagefromAsseturl(imgURL!)
+        }
+        
     }
     
     func getUIImagefromAsseturl (url: NSURL) {
@@ -135,3 +152,4 @@ class DealsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 
 }
+

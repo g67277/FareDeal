@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class RestaurantDetailController: UIViewController {
-
+    
     
     @IBOutlet weak var locationImage: UIImageView!
     @IBOutlet weak var priceTierlabel: UILabel!
@@ -31,6 +31,8 @@ class RestaurantDetailController: UIViewController {
     @IBOutlet var favoritesLabel: UILabel!
     @IBOutlet var likesLabel: UILabel!
     
+    @IBOutlet var dealImage: UIImageView!
+    
     var thisVenue: Venue?
     var favVenue: FavoriteVenue?
     var isFavorite: Bool = false
@@ -41,67 +43,67 @@ class RestaurantDetailController: UIViewController {
         
         let image = UIImage(named: "navBarLogo")
         navigationItem.titleView = UIImageView(image: image)
-
+        
         // Do any additional setup after loading the view.
         if isFavorite {
             if let venue: FavoriteVenue = favVenue {
-                if venue.sourceType == "Saloof" {
-                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: venue.defaultDealTitle, dealDesc: venue.defaultDealDesc, dealValue: venue.defaultDealValue, likes: venue.likes, favorites: venue.favorites, hasImage: venue.hasImage)
-                } else {
-                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: "", dealDesc: "", dealValue: 0.0, likes: 0, favorites: 0, hasImage: venue.hasImage)
-                }
+                setUpFavoriteVenue(venue)
             }
         } else {
             if let venue: Venue = thisVenue {
-                if venue.sourceType == "Saloof" {
-                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: venue.defaultDealTitle, dealDesc: venue.defaultDealDesc, dealValue: venue.defaultDealValue, likes: venue.likes, favorites: venue.favorites, hasImage: venue.hasImage)
-                } else {
-                    self.setUpDetailView(venue.name, phone: venue.phone, address: venue.address, website: venue.webUrl, image: venue.image!, priceTier: venue.priceTier, distance: venue.distance, hours: venue.hours, sourceType: venue.sourceType, dealName: "", dealDesc: "", dealValue: 0.0, likes: 0, favorites: 0, hasImage: venue.hasImage)
-                }
+                setUpVenue(venue)
             }
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func setUpDetailView (name: String, phone: String, address: String, website: String, image: UIImage, priceTier: Int, distance: Float, hours: String, sourceType: String, dealName: String, dealDesc: String, dealValue: Float, likes: Int, favorites: Int, hasImage: Bool) {
-        // String Labels
+    func setUpVenue(venue: Venue) {
         if var locationLabel = locationName {
-            locationLabel.text = name
+            locationLabel.text = venue.name
         }
         if var phoneLabel = phoneTextView {
-            phoneLabel.text = (phone == "") ? "Unavailable" : phone
+            phoneLabel.text = (venue.phone == "") ? "Unavailable" : venue.phone
         }
         if var addressTextView = addressTextview {
-            addressTextView.text = (address == "") ? "Unavailable" : address
+            addressTextView.text = (venue.address == "") ? "Unavailable" : venue.address
         }
         if var websiteTextView = websiteUrlTextView {
-            websiteTextView.text = (website == "") ? "Unavailable" : website
+            websiteTextView.text = (venue.webUrl == "") ? "Unavailable" : venue.webUrl
         }
         if var statusLabel = hoursStatusLabel {
-            let hours = hours
+            let hours = venue.hours
             // set the status for the hours, or "Is Open" if one was not provided (only open locations are displayed)
-            statusLabel.text = (hours == "") ? "Is Open": hours
+            statusLabel.text = (venue.hours == "") ? "Is Open": venue.hours
         }
         
-        // Image
-        if var imageView = locationImage {
-            imageView.contentMode = UIViewContentMode.ScaleAspectFill
-            imageView.clipsToBounds = true
-            if hasImage {
-                imageView.image = image
-            } else {
-                imageView.image = UIImage(named: "redHen")
+        // Images
+        if venue.hasImage {
+            if var imageView = locationImage {
+                imageView.image = venue.image
+                imageView.contentMode = UIViewContentMode.ScaleAspectFill
+                imageView.clipsToBounds = true
             }
+            if var dealImageView = dealImage {
+                dealImageView.image = venue.image
+                dealImageView.contentMode = UIViewContentMode.ScaleAspectFill
+                dealImageView.clipsToBounds = true
+            }
+        } else {
+            if var imageView = locationImage {
+                imageView.image = UIImage(named: "redHen")
+                imageView.contentMode = UIViewContentMode.ScaleAspectFill
+                imageView.clipsToBounds = true
+            }
+            if var dealImageView = dealImage {
+                dealImageView.image = UIImage(named: "redHen")
+                dealImageView.contentMode = UIViewContentMode.ScaleAspectFill
+                dealImageView.clipsToBounds = true
+            }
+            
         }
-        
         
         // Number Labels
         if var tierLabel = priceTierlabel {
-            var priceTierValue = priceTier
+            var priceTierValue = venue.priceTier
             switch priceTierValue {
             case 0:
                 tierLabel.text = ""
@@ -118,43 +120,146 @@ class RestaurantDetailController: UIViewController {
         
         if var distanceLabel = locationDistanceLabel {
             // get the number of miles between the current user and the location,
-            var userDistance = distance
+            var userDistance = venue.distance
             var miles = userDistance/5280
             let distance = Int(floor(miles))
             distanceLabel.text = (distance == 1) ? "\(distance) mile" : "\(distance) miles"
         }
         
         // Default Deal
-        if sourceType == "Saloof" {
+        if venue.sourceType == "Saloof" {
             // Set up the value
-            let valueFloat:Float = dealValue, valueFormat = ".2"
+            let valueFloat:Float = venue.defaultDealValue, valueFormat = ".2"
             dealValueLabel.text = "Value: $\(valueFloat.format(valueFormat))"
             if var dealTitle = dealTitleLabel {
-                dealTitle.text = dealName
+                dealTitle.text = venue.defaultDealTitle
             }
             if var dealDes = dealDescLabel {
-                dealDes.text = dealDesc
+                dealDes.text = venue.defaultDealDesc
             }
             if var favsLabel = favoritesLabel {
-                favsLabel.text = "\(favorites)"
+                favsLabel.text = "\(venue.favorites)"
             }
             if var likeLabel = likesLabel {
-                likeLabel.text = "\(likes)"
+                likeLabel.text = "\(venue.likes)"
             }
             // set up the deal
         } else {
             // hide the deal and favorites views
             //dealView.hidden = true
-           // favoriteLikesView.hidden = true
+            // favoriteLikesView.hidden = true
         }
         
     }
     
+    func setUpFavoriteVenue(venue:FavoriteVenue) {
+        if var locationLabel = locationName {
+            locationLabel.text = venue.name
+        }
+        if var phoneLabel = phoneTextView {
+            phoneLabel.text = (venue.phone == "") ? "Unavailable" : venue.phone
+        }
+        if var addressTextView = addressTextview {
+            addressTextView.text = (venue.address == "") ? "Unavailable" : venue.address
+        }
+        if var websiteTextView = websiteUrlTextView {
+            websiteTextView.text = (venue.webUrl == "") ? "Unavailable" : venue.webUrl
+        }
+        if var statusLabel = hoursStatusLabel {
+            let hours = venue.hours
+            // set the status for the hours, or "Is Open" if one was not provided (only open locations are displayed)
+            statusLabel.text = (venue.hours == "") ? "Is Open": venue.hours
+        }
+        
+        // Images
+        if var imageView = locationImage {
+            //imageView.contentMode = UIViewContentMode.ScaleAspectFill
+            //imageView.clipsToBounds = true
+            if venue.hasImage {
+                imageView.image = venue.image
+            } else {
+                imageView.image = UIImage(named: "redHen")
+            }
+            if var dealImageView = dealImage {
+                //dealImageView.contentMode = UIViewContentMode.ScaleAspectFill
+                //dealImageView.clipsToBounds = true
+                if venue.hasImage {
+                    dealImageView.image = venue.image
+                } else {
+                    dealImageView.image = UIImage(named: "redHen")
+                }
+            }
+        }
+        
+        // Number Labels
+        if var tierLabel = priceTierlabel {
+            var priceTierValue = venue.priceTier
+            switch priceTierValue {
+            case 0:
+                tierLabel.text = ""
+            case 1:
+                tierLabel.text = "$"
+            case 2:
+                tierLabel.text = "$$"
+            case 3:
+                tierLabel.text = "$$$"
+            default:
+                tierLabel.text = ""
+            }
+        }
+        
+        if var distanceLabel = locationDistanceLabel {
+            // get the number of miles between the current user and the location,
+            var userDistance = venue.distance
+            var miles = userDistance/5280
+            let distance = Int(floor(miles))
+            distanceLabel.text = (distance == 1) ? "\(distance) mile" : "\(distance) miles"
+        }
+        
+        // Default Deal
+        if venue.sourceType == "Saloof" {
+            // Set up the value
+            let valueFloat:Float = venue.defaultDealValue, valueFormat = ".2"
+            dealValueLabel.text = "Value: $\(valueFloat.format(valueFormat))"
+            if var dealTitle = dealTitleLabel {
+                dealTitle.text = venue.defaultDealTitle
+            }
+            if var dealDes = dealDescLabel {
+                dealDes.text = venue.defaultDealDesc
+            }
+            if var favsLabel = favoritesLabel {
+                favsLabel.text = "\(venue.favorites)"
+            }
+            if var likeLabel = likesLabel {
+                likeLabel.text = "\(venue.likes)"
+            }
+            // set up the deal
+        } else {
+            // hide the deal and favorites views
+            //dealView.hidden = true
+            // favoriteLikesView.hidden = true
+        }
+        
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onClick(sender: UIButton) {
+        if sender.tag == 1 {
+            // user pressed favorite this restaurant
+        } else if sender.tag == 2 {
+            // user pressed like button
+        }
+    }
     
     /* -------------------------  SEGUE  -------------------------- */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "viewDefaultDealSegue" {
+        if segue.identifier == "shouldViewVenueDefaultDeal" {
             let detailVC = segue.destinationViewController as! RestaurantDealDetaislVC
             //create a temporary default deal
             var deal = createDealForDetailView()
@@ -189,7 +294,7 @@ class RestaurantDetailController: UIViewController {
         realm.write {
             realm.create(VenueDeal.self, value: venueDeal, update: true)
         }
-
+        
         return venueDeal
     }
     
@@ -211,12 +316,12 @@ class RestaurantDetailController: UIViewController {
             })
             alertController.addAction(cancelMove)
             presentViewController(alertController, animated: true, completion: nil)
-
+            
         }
         
         
     }
-
+    
     
     
 }

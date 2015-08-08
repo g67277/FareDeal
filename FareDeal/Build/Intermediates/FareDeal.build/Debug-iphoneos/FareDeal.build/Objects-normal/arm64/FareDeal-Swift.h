@@ -113,6 +113,7 @@ SWIFT_CLASS("_TtC8FareDeal11AppDelegate")
 - (SWIFT_NULLABILITY(nonnull) instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class ProfileModel;
 @class RLMRealm;
 @class RLMObjectSchema;
 @class RLMSchema;
@@ -124,6 +125,8 @@ SWIFT_CLASS("_TtC8FareDeal12BusinessDeal")
 @property (nonatomic) NSInteger timeLimit;
 @property (nonatomic) double value;
 @property (nonatomic, copy) NSString * __nonnull id;
+@property (nonatomic, copy) NSString * __nonnull restaurantID;
+@property (nonatomic) ProfileModel * __nullable restaurant;
 + (NSString * __nullable)primaryKey;
 - (SWIFT_NULLABILITY(nonnull) instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithValue:(id __nonnull)value OBJC_DESIGNATED_INITIALIZER;
@@ -241,6 +244,7 @@ SWIFT_CLASS("_TtC8FareDeal13DealDetailsVC")
 @property (nonatomic, copy) NSString * __nonnull dealID;
 @property (nonatomic) BOOL editingMode;
 @property (nonatomic) UIImage * __nonnull img;
+@property (nonatomic, readonly) NSUserDefaults * __nonnull prefs;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidAppear:(BOOL)animated;
 - (void)viewDidLoad;
@@ -315,7 +319,9 @@ SWIFT_CLASS("_TtC8FareDeal7DealsVC")
 @interface DealsVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * __null_unspecified addBtn;
 @property (nonatomic, weak) IBOutlet UITableView * __null_unspecified dealsList;
-@property (nonatomic) /* Results<BusinessDeal> */ dealsArray;
+@property (nonatomic, readonly) NSUserDefaults * __nonnull prefs;
+@property (nonatomic) /* Results<BusinessDeal> */ savedDealsArray;
+@property (nonatomic, copy) NSArray * __nonnull dealsArray;
 @property (nonatomic) NSInteger topTier;
 @property (nonatomic) UIImage * __nonnull defaultImg;
 - (void)viewWillAppear:(BOOL)animated;
@@ -571,6 +577,7 @@ SWIFT_CLASS("_TtC8FareDeal12ProfileModel")
 @property (nonatomic, copy) NSString * __nonnull contactName;
 @property (nonatomic, copy) NSString * __nonnull desc;
 @property (nonatomic, copy) NSString * __nonnull id;
+@property (nonatomic, readonly) /* List<BusinessDeal> */ deals;
 + (NSString * __nullable)primaryKey;
 - (SWIFT_NULLABILITY(nonnull) instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithValue:(id __nonnull)value OBJC_DESIGNATED_INITIALIZER;
@@ -844,12 +851,15 @@ SWIFT_CLASS("_TtC8FareDeal26RestaurantDetailController")
 @property (nonatomic) IBOutlet UIView * __null_unspecified favoriteLikesView;
 @property (nonatomic) IBOutlet UILabel * __null_unspecified favoritesLabel;
 @property (nonatomic) IBOutlet UILabel * __null_unspecified likesLabel;
+@property (nonatomic) IBOutlet UIImageView * __null_unspecified dealImage;
 @property (nonatomic) Venue * __nullable thisVenue;
 @property (nonatomic) FavoriteVenue * __nullable favVenue;
 @property (nonatomic) BOOL isFavorite;
 - (void)viewDidLoad;
+- (void)setUpVenue:(Venue * __nonnull)venue;
+- (void)setUpFavoriteVenue:(FavoriteVenue * __nonnull)venue;
 - (void)didReceiveMemoryWarning;
-- (void)setUpDetailView:(NSString * __nonnull)name phone:(NSString * __nonnull)phone address:(NSString * __nonnull)address website:(NSString * __nonnull)website image:(UIImage * __nonnull)image priceTier:(NSInteger)priceTier distance:(float)distance hours:(NSString * __nonnull)hours sourceType:(NSString * __nonnull)sourceType dealName:(NSString * __nonnull)dealName dealDesc:(NSString * __nonnull)dealDesc dealValue:(float)dealValue likes:(NSInteger)likes favorites:(NSInteger)favorites hasImage:(BOOL)hasImage;
+- (IBAction)onClick:(UIButton * __nonnull)sender;
 - (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
 - (VenueDeal * __nonnull)createDealForDetailView;
 - (IBAction)shouldPushToSavedDeal:(id __nonnull)sender;

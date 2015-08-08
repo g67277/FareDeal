@@ -1,5 +1,5 @@
 version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
-options: "919b0046630bb0e89f3caff0a1d3cab5"
+options: "159649412eecb8dd873bc40a98b7c36f"
 inputs: 
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RestaurantDealsVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/StoreVC.swift"
@@ -13,6 +13,7 @@ inputs:
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RegisterRestaurantVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/ForgotPasswordUserVC.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/RegisterUserVC.swift"
+- "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/DataSaving.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/FoodCategories.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/CardOverlayView.swift"
 - "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/FareDeal/GradientView.swift"

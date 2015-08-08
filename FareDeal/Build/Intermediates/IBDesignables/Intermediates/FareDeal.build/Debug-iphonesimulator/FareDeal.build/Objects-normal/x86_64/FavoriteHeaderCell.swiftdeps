@@ -10,12 +10,12 @@ top-level:
 - "Bool"
 - "UITableViewCell"
 member-access:
+- "CSo11UIResponder"
+- "C8FareDeal18FavoriteHeaderCell"
 - "PSs9AnyObject"
 - "CSo6UIView"
-- "CSo8NSObject"
-- "C8FareDeal18FavoriteHeaderCell"
-- "CSo11UIResponder"
 - "CSo15UITableViewCell"
+- "CSo8NSObject"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Swift.swiftmodule"

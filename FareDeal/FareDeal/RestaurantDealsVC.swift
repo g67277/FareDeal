@@ -11,10 +11,18 @@ import RealmSwift
 import CoreLocation
 import SwiftyJSON
 
-class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    @IBOutlet weak var tableview: UITableView!
+    // View properties
+    //@IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet var bestButton: UIButton!
+    @IBOutlet var oldestButton: UIButton!
+    @IBOutlet var collectionCardView: UIView!
+    @IBOutlet var pageController: UIPageControl!
     
+    // top deal timer
+    @IBOutlet weak var timeLimitLabel: TTCounterLabel!
     let realm = Realm()
     var plistObjects: [AnyObject] = []
     // get access to all the current deals
@@ -37,9 +45,9 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
     
     var topDeal = VenueDeal()
     let dealList = List<VenueDeal>()
-
+    
     let defaults = NSUserDefaults.standardUserDefaults()
-
+    
     
     /* -----------------------  VIEW CONTROLLER  METHODS --------------------------- */
     
@@ -50,6 +58,11 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
             navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
             navBar.shadowImage = UIImage()
             navBar.backgroundColor = UIColor.clearColor()
+        }
+        // delete expired deals
+        var expiredDeals = Realm().objects(VenueDeal).filter("\(Constants.dealValid) = \(2)")
+        realm.write {
+            self.realm.delete(expiredDeals)
         }
         // Start getting the users location
         locationManager = CLLocationManager()
@@ -67,18 +80,39 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
             navBar.shadowImage = nil
         }
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableview.rowHeight = 192
-        //loadDeals()
-        //loadSaloofData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onButtonSelect(sender: UIButton) {
+        if sender.tag == 0 {
+            bestButton.selected = true
+            oldestButton.selected = false
+            pageController.currentPage = 0
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+            let deal: VenueDeal = dealList[indexPath.row]
+            // set the timer to this deal
+            setDealTimer(deal)
+
+        }  else if sender.tag == 2 {
+            bestButton.selected = false
+            oldestButton.selected = true
+            println(pageController.currentPage)
+            pageController.currentPage = dealList.count - 1
+            let indexPath = NSIndexPath(forRow: Int(dealList.count-1), inSection: 0)
+            collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+            let deal: VenueDeal = dealList[indexPath.row]
+            // set the timer to this deal
+            setDealTimer(deal)
+        }
     }
     
     func loadSaloofData () {
@@ -161,17 +195,18 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
                 // Query using a predicate string
                 var dealPreviouslyDisplayed = realm.objectForPrimaryKey(VenueDeal.self, key: venueId)
                 if (dealPreviouslyDisplayed != nil) {
-                    println("This is a previously pulled deal, checking dates")
+                    //println("This is a previously pulled deal, checking dates")
                     // we need to check the date
                     let expiresTime = dealPreviouslyDisplayed?.expirationDate
                     // see how much time has lapsed
                     var compareDates: NSComparisonResult = NSDate().compare(expiresTime!)
                     if compareDates == NSComparisonResult.OrderedAscending {
                         // the deal has not expired yet
-                        println("This deal is still good")
+                      //  println("This deal is still good")
                     } else {
                         //the deal has expired
-                        println("This deal has expired")
+                       // println("This deal has expired")
+                        // TODO: If deal is over 3 hours old, delete it immedietly and reload
                         venueDeal.validValue = 2
                         // update the db
                         realm.write {
@@ -179,7 +214,7 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
                         }
                     }
                 } else {
-                    println("This is a new deal, setting expiration date")
+                   // println("This is a new deal, setting expiration date")
                     // set date of expiration
                     let firstLoad = NSDate()
                     // add time based on expiration
@@ -211,10 +246,6 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
             if lastDealRestId != "" {
                 
                 if lastDealRestId != validDeals[currentDealIndex].venue.identifier {
-                    // if the restaurant identifier in the array matches the last restaurant saved, then don't add
-                    // restaurant to the dealList because it means the same restaurant is trying to bid it self
-                   //println("restaurant id: \(validDeals[currentDealIndex].restId), deal tier: \(validDeals[currentDealIndex].tier), deal value: \(validDeals[currentDealIndex].value)")
-                    
                     // Update lastDeal to hold the current restaurant id
                     lastDealRestId = validDeals[currentDealIndex].venue.identifier
                     // Adding the new restaurant to the top of the array as it has a higher value
@@ -268,73 +299,91 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
         var dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(timeDelay))
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
             self.topDeal = self.validDeals[self.topBidIndex]
-            self.tableview.reloadData()
+            self.collectionView.reloadData()
         })
         
     }
     
-    /* -----------------------  TABLEVIEW  METHODS --------------------------- */
+    //  ------------------------ COLLECTIONVIEW METHODS  ----------------------------------
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        // 1
+        // Return the number of sections
         return 1
     }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 310
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.dealList.count
+        
     }
     
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UserDealCell = tableView.dequeueReusableCellWithIdentifier("restaurantDealCell") as! UserDealCell
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("dealCell", forIndexPath: indexPath) as! DealCardCell
         let deal: VenueDeal = dealList[indexPath.row]
         cell.setUpVenueDeal(deal)
+        pageController.numberOfPages = dealList.count
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        // get the height of the view
+        var height: CGFloat = collectionCardView.bounds.height * 0.75
+        var width = height * 1.9
         
+        return CGSizeMake(width, height)
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableview.deselectRowAtIndexPath(indexPath, animated: true)
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        
+        var cell : UICollectionViewCell = collectionView.cellForItemAtIndexPath(indexPath)!
+        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+        let deal: VenueDeal = dealList[indexPath.row]
+        // set the timer to this deal
+        setDealTimer(deal)
     }
     
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let  headerCell = tableView.dequeueReusableCellWithIdentifier("dealHeaderCell") as! DealHeaderCell
-        headerCell.setUpVenueDeal(topDeal)
-        if topDealReached {
-            headerCell.activityLabel.text = "This is the best deal in the area! you've just saved $\(String(stringInterpolationSegment: topDeal.value))"
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        
+        let one = Double(scrollView.contentOffset.x)
+        let two = Double(self.view.frame.width)
+        let result = one / two
+        
+        if result != 0{
+            if (0.0 != fmodf(Float(result), 1.0)){
+                pageController.currentPage = Int(Float(result) + 1)
+                let indexPath = NSIndexPath(forRow: Int(Float(result) + 1), inSection: 0)
+                collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+                let deal: VenueDeal = dealList[indexPath.row]
+                // set the timer to this deal
+                setDealTimer(deal)
+            }else{
+                pageController.currentPage = Int(result)
+                let indexPath = NSIndexPath(forRow: Int(result), inSection: 0)
+                collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+                let deal: VenueDeal = dealList[indexPath.row]
+                // set the timer to this deal
+                setDealTimer(deal)
+            }
         }
-        headerCell.setNeedsDisplay()
-        return headerCell
     }
+    
+    func setDealTimer(deal: VenueDeal) {
+        // Set up the timer countdown label
+        let now = NSDate()
+        let expires = deal.expirationDate
+        let calendar = NSCalendar.currentCalendar()
+        let datecomponenets = calendar.components(NSCalendarUnit.CalendarUnitSecond, fromDate: now, toDate: expires, options: nil)
+        let seconds = datecomponenets.second * 1000
+       // println("Seconds: \(seconds) times 1000")
+        timeLimitLabel.countDirection = 1
+        timeLimitLabel.startValue = UInt64(seconds)
+        timeLimitLabel.start()
+        if seconds <= 0 {
+            timeLimitLabel.stop()
+            // set this deal to delete and the view to reload
+        }
 
     
-    /* -----------------------  SEGUE --------------------------- */
-    
-    // Pass the selected restaurant deal object to the detail view
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "restaurantDealDetailSegue" {
-            
-            if let indexPath = self.tableview.indexPathForSelectedRow() {
-                let destinationVC = segue.destinationViewController as! RestaurantDealDetaislVC
-                // get the deal for this restaurant
-                let deal: VenueDeal = dealList[indexPath.row]
-                destinationVC.thisDeal = deal
-                destinationVC.setUpForSaved = false
-            }
-        } else if segue.identifier == "restaurantDealDetailSegue2" {
-            
-            let destinationVC = segue.destinationViewController as! RestaurantDealDetaislVC
-            // get the deal for this restaurant
-            let deal: VenueDeal = topDeal
-            destinationVC.thisDeal = deal
-            destinationVC.setUpForSaved = false
-        }
     }
     
     // ------------------- USER LOCATION PERMISSION REQUEST  ----------------------
@@ -356,16 +405,10 @@ class RestaurantDealsVC:  UIViewController,  UITableViewDelegate, UITableViewDat
         locationManager.stopUpdatingLocation()
         // if we dont' have any locations, get some
         if haveItems == false {
-        // if dealList.count == 0 {
-            println("Have location, gather local deals")
+            // if dealList.count == 0 {
+            //println("Have location, gather local deals")
             loadSaloofData()
-           // pullLocalDeals()
+            // pullLocalDeals()
         }
     }
-    
-    
-    
 }
-
-
-

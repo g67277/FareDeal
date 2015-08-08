@@ -11,10 +11,10 @@ top-level:
 - "Bool"
 member-access:
 - "C8FareDeal18FavoriteHeaderCell"
-- "PSs9AnyObject"
-- "CSo8NSObject"
 - "CSo15UITableViewCell"
+- "PSs9AnyObject"
 - "CSo6UIView"
+- "CSo8NSObject"
 - "CSo11UIResponder"
 dynamic-lookup:
 cross-module:

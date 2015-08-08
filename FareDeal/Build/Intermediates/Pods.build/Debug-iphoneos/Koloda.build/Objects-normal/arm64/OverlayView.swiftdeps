@@ -7,18 +7,18 @@ nominals:
 - "C6Koloda11OverlayView"
 class-members:
 top-level:
-- "UIView"
 - "=="
+- "UIView"
 - "OverlayMode"
 member-access:
-- "PSs9Equatable"
-- !private "Si"
-- "C6Koloda11OverlayView"
-- "CSo8NSObject"
-- "PSs9AnyObject"
-- "CSo6UIView"
-- "O6Koloda11OverlayMode"
 - "PSs8Hashable"
+- "CSo6UIView"
+- "PSs9AnyObject"
+- !private "Si"
+- "CSo8NSObject"
+- "C6Koloda11OverlayView"
+- "O6Koloda11OverlayMode"
+- "PSs9Equatable"
 - "CSo11UIResponder"
 dynamic-lookup:
 cross-module:

@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import RealmSwift
+import SwiftyJSON
 
 public class APICalls{
     
-    let realm = Realm()
     
     class func getMyRestaurant(token: NSString) ->(Bool){
         
@@ -43,21 +42,21 @@ public class APICalls{
                     
                     var error: NSError?
                     
-                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
+                    let json = JSON(data: urlData!)
                     
-                    if(jsonData["Id"] != nil){
+                    if(json["Id"] != nil){
                         
                         debugPrint("Data Recieved")
                         var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                        prefs.setObject(jsonData["Id"], forKey: "restID")
+                        prefs.setObject(json["Id"].string, forKey: "restID")
                         prefs.synchronize()
-                        
+                        DataSaving.saveRestaurantProfile(json)
                         return true
                         
                     } else {
                         var error_msg:NSString
-                        if jsonData["error_message"] as? NSString != nil {
-                            error_msg = jsonData["error_message"] as! NSString
+                        if json["error_message"] != nil {
+                            error_msg = json["error_message"].string!
                             debugPrint("error response")
                         } else {
                             error_msg = "Unknown Error"
@@ -70,7 +69,7 @@ public class APICalls{
                         alertView.delegate = self
                         alertView.addButtonWithTitle("OK")
                         alertView.show()
-                        
+//
                     }
                     
                 }

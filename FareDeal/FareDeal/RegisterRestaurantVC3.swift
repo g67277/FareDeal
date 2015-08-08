@@ -67,7 +67,6 @@ class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, U
                 var callPart2 = "\"ContactName\":\"\(contactName.text)\"}"
                 var completeCall = "\(callPart1), \(callPart2)"
                 var token = prefs.stringForKey("TOKEN")
-                self.saveData()
                 if authentication.registerRestaurant(completeCall, token: token!){
                     
                     self.indicatorContainer.hidden = false
@@ -80,7 +79,7 @@ class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, U
                     let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                     dispatch_after(time, dispatch_get_main_queue()) {
                         if APICalls.getMyRestaurant(token!){
-                            
+                            self.saveData()
                             aIView.stopAnimation()
                             self.indicatorContainer.hidden = true
                             var refreshAlert = UIAlertController(title: "Thank you!", message: "Your data has been sent for validation, we'll be in touch soon.  In the mean time, you can start setting up some amazing deals", preferredStyle: UIAlertControllerStyle.Alert)
@@ -102,7 +101,7 @@ class RegisterRestaurantVC3: UIViewController, UINavigationControllerDelegate, U
     func saveData(){
         
         var realm = Realm()
-        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: prefs.stringForKey("restID")!)
 
         realm.write({
             data?.contactName = self.contactName.text

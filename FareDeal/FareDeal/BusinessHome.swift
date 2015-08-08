@@ -48,7 +48,7 @@ class BusinessHome: UIViewController {
     
     func updateImg(){
         
-        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: prefs.stringForKey("restID")!)
         var path = data?.imgUri
         var imgURL = NSURL(string: path!)
         getUIImagefromAsseturl(imgURL!)
@@ -57,7 +57,7 @@ class BusinessHome: UIViewController {
     
     func updateDisplay(){
         
-        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: "will change")
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: prefs.stringForKey("restID")!)
         restaurantNameLabel.text = data?.restaurantName
         updateImg()
         

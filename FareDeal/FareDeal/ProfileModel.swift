@@ -29,6 +29,7 @@ class ProfileModel:Object{
     dynamic var contactName = ""
     dynamic var desc = ""
     dynamic var id = ""
+    let deals = List<BusinessDeal>()
     
     override static func primaryKey() -> String? {
         return "id"

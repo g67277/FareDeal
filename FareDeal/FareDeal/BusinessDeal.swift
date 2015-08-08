@@ -16,6 +16,8 @@ class BusinessDeal:Object{
     dynamic var timeLimit = 0
     dynamic var value = 0.0
     dynamic var id = ""
+    dynamic var restaurantID = ""
+    dynamic var restaurant: ProfileModel?
     
     override static func primaryKey() -> String? {
         return "id"

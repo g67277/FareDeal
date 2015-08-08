@@ -19,6 +19,7 @@
 		816B56741B747D79000BC65E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B56731B747D79000BC65E /* ProfileVC.swift */; };
 		816B56761B74FF53000BC65E /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B56751B74FF53000BC65E /* ProfileModel.swift */; };
 		816B56781B755AC0000BC65E /* APICalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B56771B755AC0000BC65E /* APICalls.swift */; };
+		816B567A1B75CB49000BC65E /* DataSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B56791B75CB49000BC65E /* DataSaving.swift */; };
 		817BC8721B6DA5F10059C31D /* BusinessDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BC8711B6DA5F10059C31D /* BusinessDeal.swift */; };
 		817BC8741B6DB86A0059C31D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BC8731B6DB86A0059C31D /* Reachability.swift */; };
 		817BC8A41B6DD8FA0059C31D /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BC8A31B6DD8FA0059C31D /* Validation.swift */; };
@@ -100,6 +101,7 @@
 		816B56731B747D79000BC65E /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		816B56751B74FF53000BC65E /* ProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		816B56771B755AC0000BC65E /* APICalls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICalls.swift; sourceTree = "<group>"; };
+		816B56791B75CB49000BC65E /* DataSaving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSaving.swift; sourceTree = "<group>"; };
 		817BC8711B6DA5F10059C31D /* BusinessDeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDeal.swift; sourceTree = "<group>"; };
 		817BC8731B6DB86A0059C31D /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		817BC8A31B6DD8FA0059C31D /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				819281DE1B5B3FD50003AD4D /* Model */,
 				81008C131B5C46B40019E297 /* Data */,
 				816B56771B755AC0000BC65E /* APICalls.swift */,
+				816B56791B75CB49000BC65E /* DataSaving.swift */,
 			);
 			name = "Business Side";
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				8185E2FA1B608AD100059124 /* RegisterRestaurantVC.swift in Sources */,
 				994C61331B69244600E5EF7C /* ForgotPasswordUserVC.swift in Sources */,
 				8185E3011B609B1400059124 /* RegisterUserVC.swift in Sources */,
+				816B567A1B75CB49000BC65E /* DataSaving.swift in Sources */,
 				8132230F1B685F1800613C60 /* FoodCategories.swift in Sources */,
 				995935ED1B5EDA1C009CDD26 /* CardOverlayView.swift in Sources */,
 				99A04C5B1B604F9E00C3E35B /* GradientView.swift in Sources */,

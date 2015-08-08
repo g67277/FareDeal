@@ -262,7 +262,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let deal: Deal = dealList[indexPath.row]
         let restaurantID = deal.restId
-        let restaurant: Restaurant = realm.objects(Restaurant).filter("identifier = " = restaurantID)
+        let restaurant: Restaurant = Realm.objects(Restaurant).filter("identifier = " = restaurantID)
         cell.setUpRestaurantDeal(restaurant, deal: deal)
         return cell
         

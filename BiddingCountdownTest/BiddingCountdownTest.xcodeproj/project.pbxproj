@@ -34,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		814637781B6ABE8C00F6AEA2 /* BiddingCountdownTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BiddingCountdownTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		9985C1131B63DB48005639EE /* BiddingCountdownTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiddingCountdownTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9985C1171B63DB48005639EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9985C1181B63DB48005639EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		9985C1441B63DC47005639EE /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		9985C1451B63DC47005639EE /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		9985C1491B63DCA6005639EE /* RestaurantDealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealCell.swift; sourceTree = "<group>"; };
-		9985C1501B63E1FB005639EE /* BiddingCountdownTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BiddingCountdownTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		99CD57751B6A930B00DBDF3A /* DealHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealHeaderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,7 +105,7 @@
 				9985C11F1B63DB48005639EE /* Images.xcassets */,
 				9985C1211B63DB48005639EE /* LaunchScreen.xib */,
 				9985C1161B63DB48005639EE /* Supporting Files */,
-				9985C1501B63E1FB005639EE /* BiddingCountdownTest-Bridging-Header.h */,
+				814637781B6ABE8C00F6AEA2 /* BiddingCountdownTest-Bridging-Header.h */,
 			);
 			path = BiddingCountdownTest;
 			sourceTree = "<group>";

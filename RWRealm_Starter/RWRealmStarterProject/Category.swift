@@ -6,4 +6,9 @@
 //  Copyright (c) 2015 Bill Kastanakis. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import Realm
+
+class Category: RLMObject {
+    dynamic var name = ""
+}

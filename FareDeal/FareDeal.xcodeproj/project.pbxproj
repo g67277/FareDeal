@@ -45,6 +45,7 @@
 		972B8D8EA6F19199DCF8C070 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C34D443EE29BEF7C8222446 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		993285D51B5F3DF8003C19E1 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */; };
 		994C61331B69244600E5EF7C /* ForgotPasswordUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C61321B69244600E5EF7C /* ForgotPasswordUserVC.swift */; };
+		9952D9941B75BA39008680DC /* DealCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9952D9931B75BA39008680DC /* DealCardCell.swift */; };
 		995935EB1B5EDA1C009CDD26 /* CardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E21B5EDA1C009CDD26 /* CardContentView.swift */; };
 		995935EC1B5EDA1C009CDD26 /* CardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995935E31B5EDA1C009CDD26 /* CardContentView.xib */; };
 		995935ED1B5EDA1C009CDD26 /* CardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995935E41B5EDA1C009CDD26 /* CardOverlayView.swift */; };
@@ -60,7 +61,6 @@
 		99A04C5F1B60509C00C3E35B /* RestaurantDealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C5E1B60509C00C3E35B /* RestaurantDealsVC.swift */; };
 		99A04C611B6050B900C3E35B /* RestaurantDealDetaislVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A04C601B6050B900C3E35B /* RestaurantDealDetaislVC.swift */; };
 		99A04C631B60586E00C3E35B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99A04C621B60586E00C3E35B /* QuartzCore.framework */; };
-		99A6E8D01B69EC6C005179A6 /* UserDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8CF1B69EC6C005179A6 /* UserDealCell.swift */; };
 		99A6E8D51B69ECCA005179A6 /* TTCounterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8D21B69ECCA005179A6 /* TTCounterLabel.m */; };
 		99A6E8D61B69ECCA005179A6 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8D41B69ECCA005179A6 /* TTTAttributedLabel.m */; };
 		99A6E8D91B69ED97005179A6 /* Deals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6E8D81B69ED97005179A6 /* Deals.swift */; };
@@ -126,6 +126,7 @@
 		81B879171B6931CB003B1BB0 /* FareDeal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FareDeal-Bridging-Header.h"; sourceTree = "<group>"; };
 		993285D41B5F3DF8003C19E1 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
 		994C61321B69244600E5EF7C /* ForgotPasswordUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordUserVC.swift; sourceTree = "<group>"; };
+		9952D9931B75BA39008680DC /* DealCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCardCell.swift; sourceTree = "<group>"; };
 		995935E21B5EDA1C009CDD26 /* CardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
 		995935E31B5EDA1C009CDD26 /* CardContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardContentView.xib; sourceTree = "<group>"; };
 		995935E41B5EDA1C009CDD26 /* CardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOverlayView.swift; sourceTree = "<group>"; };
@@ -142,7 +143,6 @@
 		99A04C5E1B60509C00C3E35B /* RestaurantDealsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealsVC.swift; sourceTree = "<group>"; };
 		99A04C601B6050B900C3E35B /* RestaurantDealDetaislVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDealDetaislVC.swift; sourceTree = "<group>"; };
 		99A04C621B60586E00C3E35B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		99A6E8CF1B69EC6C005179A6 /* UserDealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDealCell.swift; sourceTree = "<group>"; };
 		99A6E8D11B69ECCA005179A6 /* TTCounterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCounterLabel.h; sourceTree = "<group>"; };
 		99A6E8D21B69ECCA005179A6 /* TTCounterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCounterLabel.m; sourceTree = "<group>"; };
 		99A6E8D31B69ECCA005179A6 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
@@ -335,8 +335,8 @@
 				995935E51B5EDA1C009CDD26 /* CardOverlayView.xib */,
 				995935E71B5EDA1C009CDD26 /* FavoritesCell.swift */,
 				99A04C5A1B604F9E00C3E35B /* GradientView.swift */,
-				99A6E8CF1B69EC6C005179A6 /* UserDealCell.swift */,
 				99FC570D1B72D980006AA9C4 /* FavoriteHeaderCell.swift */,
+				9952D9931B75BA39008680DC /* DealCardCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -455,7 +455,7 @@
 				TargetAttributes = {
 					81481B341B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
+						DevelopmentTeam = 56R6M4W3X8;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -464,7 +464,7 @@
 					};
 					81481B491B56A2D6000EC386 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 9J676A68SR;
+						DevelopmentTeam = 56R6M4W3X8;
 						TestTargetID = 81481B341B56A2D6000EC386;
 					};
 				};
@@ -573,7 +573,6 @@
 			files = (
 				99A04C5F1B60509C00C3E35B /* RestaurantDealsVC.swift in Sources */,
 				81B5B6AF1B56D375009B522A /* StoreVC.swift in Sources */,
-				99A6E8D01B69EC6C005179A6 /* UserDealCell.swift in Sources */,
 				816B56761B74FF53000BC65E /* ProfileModel.swift in Sources */,
 				99FC57051B71AA95006AA9C4 /* FavoriteVenue.swift in Sources */,
 				99A6E8D51B69ECCA005179A6 /* TTCounterLabel.m in Sources */,
@@ -614,6 +613,7 @@
 				99CD57781B6AC03300DBDF3A /* DealHeaderCell.swift in Sources */,
 				99A6E8DE1B69EE89005179A6 /* Constants.swift in Sources */,
 				817BC8A41B6DD8FA0059C31D /* Validation.swift in Sources */,
+				9952D9941B75BA39008680DC /* DealCardCell.swift in Sources */,
 				81A88D671B7439EC003220E3 /* RegisterRestaurantVC3.swift in Sources */,
 				817BC8741B6DB86A0059C31D /* Reachability.swift in Sources */,
 			);
@@ -752,7 +752,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -770,7 +770,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e49856b-1585-498c-b088-309ef3dbe80d";
+				PROVISIONING_PROFILE = "a01ed19a-cbc0-416c-ad5d-6729ef9828df";
 				SWIFT_OBJC_BRIDGING_HEADER = "FareDeal/FareDeal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};

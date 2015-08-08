@@ -4,17 +4,17 @@ provides:
 nominals:
 - "C8FareDeal18FavoriteHeaderCell"
 class-members:
-- "setSelected"
 - "awakeFromNib"
+- "setSelected"
 top-level:
 - "UITableViewCell"
 - "Bool"
 member-access:
 - "CSo8NSObject"
-- "PSs9AnyObject"
 - "CSo15UITableViewCell"
 - "CSo6UIView"
 - "C8FareDeal18FavoriteHeaderCell"
+- "PSs9AnyObject"
 - "CSo11UIResponder"
 dynamic-lookup:
 cross-module:

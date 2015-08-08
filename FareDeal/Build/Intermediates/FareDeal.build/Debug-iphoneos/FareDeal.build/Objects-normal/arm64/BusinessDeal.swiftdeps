@@ -4,22 +4,25 @@ provides:
 nominals:
 - "C8FareDeal12BusinessDeal"
 class-members:
-- "id"
+- "title"
 - "value"
+- "id"
+- "desc"
 - "timeLimit"
 - "primaryKey"
-- "desc"
-- "title"
+- "restaurantID"
+- "restaurant"
 top-level:
-- "Object"
+- "ProfileModel"
 - "String"
 - "StringLiteralType"
+- "Object"
 member-access:
-- "PSs9AnyObject"
-- "C8FareDeal12BusinessDeal"
 - "C10RealmSwift6Object"
-- "CSo13RLMObjectBase"
+- "C8FareDeal12BusinessDeal"
 - "CSo8NSObject"
+- "PSs9AnyObject"
+- "CSo13RLMObjectBase"
 - !private "Sq"
 dynamic-lookup:
 cross-module:

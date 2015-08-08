@@ -851,12 +851,15 @@ SWIFT_CLASS("_TtC8FareDeal26RestaurantDetailController")
 @property (nonatomic) IBOutlet UIView * __null_unspecified favoriteLikesView;
 @property (nonatomic) IBOutlet UILabel * __null_unspecified favoritesLabel;
 @property (nonatomic) IBOutlet UILabel * __null_unspecified likesLabel;
+@property (nonatomic) IBOutlet UIImageView * __null_unspecified dealImage;
 @property (nonatomic) Venue * __nullable thisVenue;
 @property (nonatomic) FavoriteVenue * __nullable favVenue;
 @property (nonatomic) BOOL isFavorite;
 - (void)viewDidLoad;
+- (void)setUpVenue:(Venue * __nonnull)venue;
+- (void)setUpFavoriteVenue:(FavoriteVenue * __nonnull)venue;
 - (void)didReceiveMemoryWarning;
-- (void)setUpDetailView:(NSString * __nonnull)name phone:(NSString * __nonnull)phone address:(NSString * __nonnull)address website:(NSString * __nonnull)website image:(UIImage * __nonnull)image priceTier:(NSInteger)priceTier distance:(float)distance hours:(NSString * __nonnull)hours sourceType:(NSString * __nonnull)sourceType dealName:(NSString * __nonnull)dealName dealDesc:(NSString * __nonnull)dealDesc dealValue:(float)dealValue likes:(NSInteger)likes favorites:(NSInteger)favorites hasImage:(BOOL)hasImage;
+- (IBAction)onClick:(UIButton * __nonnull)sender;
 - (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
 - (VenueDeal * __nonnull)createDealForDetailView;
 - (IBAction)shouldPushToSavedDeal:(id __nonnull)sender;

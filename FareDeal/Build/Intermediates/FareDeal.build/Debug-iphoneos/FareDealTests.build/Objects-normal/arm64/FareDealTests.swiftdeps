@@ -14,9 +14,9 @@ top-level:
 - "XCTestCase"
 - !private "StringLiteralType"
 member-access:
+- "CSo10XCTestCase"
 - "PSs9AnyObject"
 - !private "C13FareDealTests13FareDealTests"
-- "CSo10XCTestCase"
 - "CSo8NSObject"
 - "CSo6XCTest"
 dynamic-lookup:

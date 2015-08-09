@@ -54,6 +54,7 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
     var topBidIndex = 0
     // Holds the last deal processesed for comparison
     var lastDealRestId = ""
+    var currentSavedDealId = ""
     var singleDeal = VenueDeal()
     var savedDeal = SavedDeal()
     var topDeal = VenueDeal()
@@ -100,9 +101,11 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
             collectionCardView.hidden = true
             cardButtonsView.hidden = true
             singleDealView.hidden = false
+            
             // see if it is for the saved deal or a default deal
             if setUpForSaved {
                 setUpSaveSwapButton()
+                saveSwapButton.enabled = false
             }
             else if setUpForDefault {
                 setUpDefaultDeal()
@@ -157,6 +160,7 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
         // Set up the value
         let valueFloat:Float = savedDeal.value, valueFormat = ".2"
         singleDealValue.text = "$\(valueFloat.format(valueFormat)) value"
+        setSavedDealTimer(savedDeal)
     }
     
    
@@ -230,6 +234,7 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
     
     func saveNewDeal () {
         if let deal: VenueDeal = selectedDeal {
+            currentSavedDealId = deal.id
             let newDeal = SavedDeal()
             newDeal.name = deal.name
             newDeal.desc = deal.desc
@@ -444,6 +449,11 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
             // Once we are done with the array, hide the indicator, set the topDealReached, display the top
             // deal in the featured section
             topDealReached = true
+            selectedDeal = dealList[0]
+            setDealTimer(selectedDeal!)
+            if currentSavedDealId != "" {
+                saveSwapButton.enabled = (currentSavedDealId == selectedDeal?.id) ? false : true
+            }
         }
         
     }
@@ -508,6 +518,12 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
         let deal: VenueDeal = dealList[indexPath.row]
         // set the timer to this deal
         setDealTimer(deal)
+        selectedDeal = deal
+        // set the timer to this deal
+        setDealTimer(selectedDeal!)
+        if currentSavedDealId != "" {
+            saveSwapButton.enabled = (currentSavedDealId == selectedDeal?.id) ? false : true
+        }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
@@ -524,6 +540,9 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
                 selectedDeal = dealList[indexPath.row]
                 // set the timer to this deal
                 setDealTimer(selectedDeal!)
+                if currentSavedDealId != "" {
+                    saveSwapButton.enabled = (currentSavedDealId == selectedDeal?.id) ? false : true
+                }
             }else{
                 pageController.currentPage = Int(result)
                 let indexPath = NSIndexPath(forRow: Int(result), inSection: 0)
@@ -531,6 +550,9 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
                 selectedDeal = dealList[indexPath.row]
                 // set the timer to this deal
                 setDealTimer(selectedDeal!)
+                if currentSavedDealId != "" {
+                    saveSwapButton.enabled = (currentSavedDealId == selectedDeal?.id) ? false : true
+                }
             }
         }
     }
@@ -542,7 +564,26 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
         let calendar = NSCalendar.currentCalendar()
         let datecomponenets = calendar.components(NSCalendarUnit.CalendarUnitSecond, fromDate: now, toDate: expires, options: nil)
         let seconds = datecomponenets.second * 1000
+        if seconds > 0 {
+            timeLimitLabel.countDirection = 1
+            timeLimitLabel.startValue = UInt64(seconds)
+            timeLimitLabel.start()
+        }
        // println("Seconds: \(seconds) times 1000")
+        if seconds <= 0 {
+            timeLimitLabel.stop()
+            // set this deal to delete and the view to reload
+        }
+    }
+    
+    func setSavedDealTimer(deal: SavedDeal) {
+        // Set up the timer countdown label
+        let now = NSDate()
+        let expires = deal.expirationDate
+        let calendar = NSCalendar.currentCalendar()
+        let datecomponenets = calendar.components(NSCalendarUnit.CalendarUnitSecond, fromDate: now, toDate: expires, options: nil)
+        let seconds = datecomponenets.second * 1000
+        // println("Seconds: \(seconds) times 1000")
         timeLimitLabel.countDirection = 1
         timeLimitLabel.startValue = UInt64(seconds)
         timeLimitLabel.start()
@@ -550,8 +591,6 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
             timeLimitLabel.stop()
             // set this deal to delete and the view to reload
         }
-
-    
     }
     
     // ------------------- USER LOCATION PERMISSION REQUEST  ----------------------

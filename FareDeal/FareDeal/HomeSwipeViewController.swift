@@ -125,7 +125,17 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             activityIndicator.stopAnimation()
         }
     }
+    
     func getLocationPermissionAndData() {
+        // delete any items in the array
+        venueList.removeAll()
+        // delete any current venues
+        var rejectedVenues = Realm().objects(Venue).filter("\(Constants.realmFilterFavorites) = \(2)")
+        var unswipedVenues = Realm().objects(Venue).filter("\(Constants.realmFilterFavorites) = \(0)")
+        realm.write {
+            self.realm.delete(rejectedVenues)
+            self.realm.delete(unswipedVenues)
+        }
         // Start getting the users location
         //activityIndicatorDisplaying(true, message: "Locating...")
         locationManager = CLLocationManager()
@@ -296,12 +306,18 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
     }
     
     func pullNewSearchResults () {
+        venueList.removeAll()
+        // delete any current venues
+        var rejectedVenues = Realm().objects(Venue).filter("\(Constants.realmFilterFavorites) = \(2)")
+        var unswipedVenues = Realm().objects(Venue).filter("\(Constants.realmFilterFavorites) = \(0)")
         realm.write {
-            // empty out the current stack
-            self.realm.delete(self.venues)
+            self.realm.delete(rejectedVenues)
+            self.realm.delete(unswipedVenues)
         }
         // reset the offset 
         offsetCount = 0
+        swipeableView.resetCurrentCardNumber()
+        // get more foursquare items
         fetchFoursquareVenues()
         searchDisplayOverview.hidden = true
         swipeableView.reloadData()
@@ -377,6 +393,7 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             favorite.priceTier = swipedVenue.priceTier
             favorite.hours = swipedVenue.hours
             favorite.swipeValue = 1
+            favorite.hasImage = swipedVenue.hasImage
             favorite.sourceType = swipedVenue.sourceType
             // save deal
             if swipedVenue.sourceType == Constants.sourceTypeSaloof {
@@ -486,7 +503,6 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
            // println("restaurants stored")
         }
         fetchSaloofVenues()
-        activityIndicatorDisplaying(false, message: "")
     }
     
     
@@ -499,11 +515,8 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             for venue in venues {
                 venueList.append(venue)
             }
-            if venueList.count < 10 {
-                fetchFoursquareVenues()
-            } else {
-                swipeableView.reloadData()
-            }
+            fetchFoursquareVenues()
+            swipeableView.reloadData()
         } else {
             println("Not Pulling data from saloof!!")
             // pull from foursquare
@@ -619,11 +632,14 @@ class HomeSwipeViewController: UIViewController, KolodaViewDataSource, KolodaVie
             
             let venueImage = UIImage(data: data)
             venue.image = venueImage
+            venue.hasImage = true
         }
         
         realm.write {
-            self.realm.add(venue)
+            //self.realm.add(venue)
+            self.realm.create(Venue.self, value: venue, update: true)
         }
+        venueList.append(venue)
     }
     
     @IBAction func shouldPushToSavedDeal(sender: AnyObject) {

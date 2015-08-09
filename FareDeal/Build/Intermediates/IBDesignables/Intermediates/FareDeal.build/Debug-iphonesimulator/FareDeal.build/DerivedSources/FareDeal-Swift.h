@@ -819,6 +819,7 @@ SWIFT_CLASS("_TtC8FareDeal17RestaurantDealsVC")
 @property (nonatomic) NSInteger currentDealIndex;
 @property (nonatomic) NSInteger topBidIndex;
 @property (nonatomic, copy) NSString * __nonnull lastDealRestId;
+@property (nonatomic, copy) NSString * __nonnull currentSavedDealId;
 @property (nonatomic) VenueDeal * __nonnull singleDeal;
 @property (nonatomic) SavedDeal * __nonnull savedDeal;
 @property (nonatomic) VenueDeal * __nonnull topDeal;
@@ -848,6 +849,7 @@ SWIFT_CLASS("_TtC8FareDeal17RestaurantDealsVC")
 - (void)collectionView:(UICollectionView * __nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * __nonnull)indexPath;
 - (void)scrollViewDidEndDecelerating:(UIScrollView * __nonnull)scrollView;
 - (void)setDealTimer:(VenueDeal * __nonnull)deal;
+- (void)setSavedDealTimer:(SavedDeal * __nonnull)deal;
 - (void)showErrorAlert:(NSError * __nonnull)error;
 - (void)locationManager:(CLLocationManager * __null_unspecified)manager didFailWithError:(NSError * __null_unspecified)error;
 - (void)locationManager:(CLLocationManager * __null_unspecified)manager didUpdateToLocation:(CLLocation * __null_unspecified)newLocation fromLocation:(CLLocation * __null_unspecified)oldLocation;

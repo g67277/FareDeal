@@ -12,7 +12,12 @@ class FavoritesCell: UITableViewCell {
     
     @IBOutlet weak var locationTitle: UILabel!
     @IBOutlet weak var locationPhone: UILabel!
+    @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var favoritesLabel: UILabel!
+    @IBOutlet weak var priceDistanceLabel: UILabel!
     @IBOutlet weak var locationImage: UIImageView!
+    
+    @IBOutlet var likesBarView: UIView!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -40,5 +45,32 @@ class FavoritesCell: UITableViewCell {
         locationImage.image = image
     }
 
+    func setUpLikesBar(likes: Int, favorites: Int, price: Int, distance: Float) {
+        
+        likesLabel.text = "\(likes)"
+        favoritesLabel.text = "\(favorites)"
+        // Number Labels
+        if var tierLabel = priceDistanceLabel {
+            var priceTierValue = price
+            var priceString = ""
+            switch priceTierValue {
+            case 0:
+                priceString = ""
+            case 1:
+                priceString = "$"
+            case 2:
+                priceString = "$$"
+            case 3:
+                priceString = "$$$"
+            default:
+                priceString = ""
+            }
+            var userDistance = distance
+            var miles = userDistance/5280
+            let distance = Int(floor(miles))
+            tierLabel.text = (distance == 1) ? "\(priceString)  \(distance) mile" : "\(priceString)  \(distance) miles"
 
+        }
+
+    }
 }

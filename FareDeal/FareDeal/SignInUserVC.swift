@@ -17,8 +17,8 @@ class SignInUserVC: UIViewController {
 
     
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-    
     let authenticationCall:AuthenticationCalls = AuthenticationCalls()
+    let validation = Validation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +34,14 @@ class SignInUserVC: UIViewController {
         
         passwordField.attributedPlaceholder = NSAttributedString(string:"Password",
             attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
+        //authenticationCall.displayIndicator(self.view, stop: false)
 
     }
     
     override func viewDidLayoutSubviews() {
         // set the rounded corners after autolayout has finished
-        logInButtonView.roundCorners(.AllCorners, radius: 14)
+        //logInButtonView.roundCorners(.AllCorners, radius: 14)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -64,12 +66,21 @@ class SignInUserVC: UIViewController {
     @IBAction func onClick(_sender:UIButton){
         
         if _sender.tag == 0{
+
             
-            if authenticationCall.signIn(userNameField.text, password: passwordField.text){
-                self.userNameField.text = ""
-                self.passwordField.text = ""
-                self.performSegueWithIdentifier("toUserMain", sender: self)
+            if validation.validateInput(userNameField.text, check: 3, title: "Too Short", message: "Please enter a valid username")
+                && validation.validateInput(passwordField.text, check: 0, title: "Empty Password", message: "Please enter a password"){
+                    
+                    var stringPost="grant_type=password&username=\(userNameField.text)&password=\(passwordField.text)"
+                    if authenticationCall.signIn(stringPost){
+                        self.userNameField.text = ""
+                        self.passwordField.text = ""
+                        prefs.setObject(userNameField.text, forKey: "USERNAME")
+                        
+                        self.performSegueWithIdentifier("toUserMain", sender: self)
+                    }
             }
+            
         } else if _sender.tag == 1 {
             self.performSegueWithIdentifier("userForgotPassword", sender: self)
 
@@ -94,22 +105,10 @@ class SignInUserVC: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         // Hide the navigation bar to display the full location image
-        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-        navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        navBar.shadowImage = UIImage()
-        navBar.backgroundColor = UIColor.clearColor()
+        navigationController?.navigationBarHidden = true
     }
     
-    
-    override func viewWillDisappear(animated: Bool) {
-        // restore the navigation bar to origional
-        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-        navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        navBar.shadowImage = nil
-    }
-    
-
-    
+  
 }
 
 extension UIView {

@@ -10,13 +10,14 @@ import UIKit
 
 class RegisterUserVC: UIViewController {
     
-    @IBOutlet var registerButtonView: UIView!
+    //@IBOutlet var registerButtonView: UIView!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordCField: UITextField!
     
     let authenticationCall:AuthenticationCalls = AuthenticationCalls()
+    let validation = Validation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,24 +27,12 @@ class RegisterUserVC: UIViewController {
         // Addes guesture to hide keyboard when tapping on the view
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
-        
-        usernameField.attributedPlaceholder = NSAttributedString(string:"Username",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        
-        emailField.attributedPlaceholder = NSAttributedString(string:"Email Address",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        
-        passwordField.attributedPlaceholder = NSAttributedString(string:"Password",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        
-        passwordCField.attributedPlaceholder = NSAttributedString(string:"Confirm Password",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 
     }
     
     override func viewDidLayoutSubviews() {
         
-        registerButtonView.roundCorners(.AllCorners, radius: 14)
+        //registerButtonView.roundCorners(.AllCorners, radius: 14)
     }
     
     
@@ -58,11 +47,20 @@ class RegisterUserVC: UIViewController {
             
             //sign up here
             
-            if authenticationCall.registerUser(usernameField.text, email: emailField.text, password: passwordField.text, confirm_password: passwordCField.text) {
-                
-                if authenticationCall.signIn(usernameField.text, password: passwordField.text){
-                    navigationController?.popToRootViewControllerAnimated(true)
-                }
+            var testing = usernameField.text
+            
+            if validation.validateInput(usernameField.text, check: 2, title: "Somethings Missing", message: "Please enter a valid username")
+            && validation.validateEmail(emailField.text)
+                && validation.validatePassword(passwordField.text, cpass: passwordCField.text){
+                    var post:NSString = "{\"UserName\":\"\(usernameField.text)\",\"Email\":\"\(emailField.text)\",\"Password\":\"\(passwordField.text)\",\"ConfirmPassword\":\"\(passwordCField.text)\",\"IsBusiness\":\"false\"}"
+                    if authenticationCall.registerUser(post) {
+                        var stringPost="grant_type=password&username=\(usernameField.text)&password=\(passwordField.text)"
+                        
+                        if authenticationCall.signIn(stringPost){
+                            self.navigationController?.popViewControllerAnimated(false)
+                        }
+                    }
+
             }
             
         }else if _sender.tag == 1{
@@ -75,8 +73,10 @@ class RegisterUserVC: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         // Hide the navigation bar to display the full location image
-        self.navigationController?.navigationBarHidden = true
+        navigationController?.navigationBarHidden = true
     }
+    
+   
     
     
     override func didReceiveMemoryWarning() {

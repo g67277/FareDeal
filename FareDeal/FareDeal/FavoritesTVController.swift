@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    var restaurants: [AnyObject] = []
+
     @IBOutlet weak var tableview: UITableView!
-    
+    // Query using a predicate string
+    var favoriteVenues = Realm().objects(FavoriteVenue).filter("\(Constants.realmFilterFavorites) = \(1)")
     
     
     /* -----------------------  VIEW CONTROLLER  METHODS --------------------------- */
@@ -26,9 +27,9 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableview.rowHeight = 121
-        
+        let image = UIImage(named: "navBarLogo")
+        navigationItem.titleView = UIImageView(image: image)
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,18 +45,32 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.restaurants.count
+        return self.favoriteVenues.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:FavoritesCell = tableView.dequeueReusableCellWithIdentifier("favoritesCell") as! FavoritesCell
-        
-        let restaurant: AnyObject = restaurants[indexPath.row]
-        var imageName = restaurant["imageUrl"] as! String
-        cell.setUpCell(restaurant["name"]as! String, phone: restaurant["phone"]as! String, image: UIImage (named: imageName)!)
+        let venue: FavoriteVenue = favoriteVenues[indexPath.row]
+        var image = UIImage()
+        if venue.hasImage {
+            image = venue.image!
+        } else {
+            image = UIImage(named: "redHen")!
+        }
+        cell.setUpCell(venue.name, phone: venue.phone, image: image)
+        cell.setUpLikesBar(venue.likes, favorites: venue.favorites, price: venue.priceTier, distance: venue.distance)
         return cell
+    }
+    
+    // Header Cell
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("favHeaderCell") as! FavoriteHeaderCell
+        return headerCell
     }
     
     /* -----------------------  SEGUE --------------------------- */
@@ -63,14 +78,41 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
     // Pass the selected restaurant object to the detail view
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "restaurantDetailSegue" {
-            
             if let indexPath = self.tableview.indexPathForSelectedRow() {
-                var restaurant: AnyObject = restaurants[indexPath.row]
+                var venue: FavoriteVenue = favoriteVenues[indexPath.row]
                 let destinationVC = segue.destinationViewController as! RestaurantDetailController
-                destinationVC.thisRestaurant = restaurant
+                destinationVC.favVenue = venue
+                destinationVC.isFavorite = true
             }
         }
     }
+    
+    @IBAction func shouldPushToSavedDeal(sender: AnyObject) {
+        // Check to make sure we have a saved deal
+        let realm = Realm()
+        var savedDeal = realm.objects(SavedDeal).first
+        if (savedDeal != nil) {
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            let dealsVC: RestaurantDealsVC = storyboard.instantiateViewControllerWithIdentifier("userDealsVC") as! RestaurantDealsVC
+            dealsVC.loadSingleDeal = true
+            dealsVC.setUpForSaved = true
+            dealsVC.savedDeal = savedDeal!
+            navigationController?.pushViewController(dealsVC, animated: true)
+        } else {
+            // Alert them there isn't a current valid saved deal
+            let alertController = UIAlertController(title: "No Deals", message: "Either your deal expired, or you haven't saved one.", preferredStyle: .Alert)
+            // Add button action to swap
+            let cancelMove = UIAlertAction(title: "Ok", style: .Default, handler: {
+                (action) -> Void in
+            })
+            alertController.addAction(cancelMove)
+            presentViewController(alertController, animated: true, completion: nil)
+
+        }
+        
+        
+    }
+
     
     
 }

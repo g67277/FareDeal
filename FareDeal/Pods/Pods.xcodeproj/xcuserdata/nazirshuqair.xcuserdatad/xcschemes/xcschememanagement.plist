@@ -9,12 +9,32 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Koloda.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,27 +47,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0795050702154C589B546AB09A03AA54</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>0A4A434A21314D9AC4554951878A0767</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>34A04A4EB485C1C338373952F9934152</key>
+		<key>0B66737C6260FFAEEF62346890C3B458</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6226A6A2042957593A9A38BB07EA2D7A</key>
+		<key>25E0F0AEF3D0FF9A663EBD748DD275FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>89DDD1BB3F0C799E3BBF071E000CF459</key>
+		<key>7962CCC20BBB1A8E2DFE39384E173758</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>897131398B29023EDC5AA177CA652684</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,27 +77,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A1AA0C7E8C4A32017862EF6BE93C8077</key>
+		<key>B7AD3502B8B1E02ACBFC1A76C7B87AAC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A7CDF710F96D624584C71A8A0D3D2EF5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AB8BAEEA4BB2CCE50A039CBE990EB188</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CE4CE1A37260691EAB8B474B4C82B148</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E47EC64530C5110FC456C19936D2D9D4</key>
+		<key>C7F03823B7724DA3C87796A091FA65B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

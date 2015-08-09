@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import AssetsLibrary
+import RealmSwift
 
 class DealsCell: UITableViewCell {
     
     @IBOutlet weak var dealTitle: UILabel!
-    @IBOutlet weak var dealDesc: UITextView!
+    @IBOutlet weak var dealDesc: UILabel!
     @IBOutlet weak var timeLimit: UILabel!
     @IBOutlet weak var dealValue: UILabel!
+    @IBOutlet weak var tierLabel: UILabel!
+    @IBOutlet weak var dealImg: UIImageView!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -21,23 +25,31 @@ class DealsCell: UITableViewCell {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func refreshCell(title: String, desc: String, time: Int, value: String){
+    func refreshCell(title: String, desc: String, time: Int, value: String, tier: Int, img: UIImage){
         
         dealTitle.text = title
         dealDesc.text = desc
         if time < 2 {
-            timeLimit.text = "\(time)hr"
+            timeLimit.text = "\(time)hr limit"
         }else{
-            timeLimit.text = "\(time)hrs"
+            timeLimit.text = "\(time)hrs limit"
         }
         dealValue.text = value
+        tierLabel.text = "Tier \(tier)"
+        
+        dealImg.image = img
+        dealImg.layer.masksToBounds = false
+        dealImg.layer.borderColor = UIColor.blackColor().CGColor
+        dealImg.layer.cornerRadius = dealImg.frame.height/2
+        dealImg.clipsToBounds = true
         
     }
 

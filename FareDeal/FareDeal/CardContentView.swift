@@ -40,25 +40,27 @@ class CardContentView: UIView {
         layer.cornerRadius = 10.0;
     }
     
-    func setUpRestaurant(contentView: UIView, dataObject: AnyObject){
-        
-        let dataObject: AnyObject = dataObject
-        var name = dataObject["name"] as! String
+    func setUpRestaurant(contentView: UIView, dataObject: Venue){
+
+        let venue: Venue = dataObject
         if let label = contentView.viewWithTag(10) as? UILabel {
-            label.text = name
+            label.text = venue.name
         }
-        var phone = dataObject["phone"] as! String
         if let phoneLabel = contentView.viewWithTag(15) as? UILabel {
-            phoneLabel.text = phone
+            phoneLabel.text = venue.phone
         }
-        var imageName = dataObject["imageUrl"] as! String
-        // stretch any square images to fill the view
-        if let locationImageView = contentView.viewWithTag(20) as? UIImageView {
-            locationImageView.contentMode = UIViewContentMode.ScaleAspectFill
-            locationImageView.clipsToBounds = true
-            locationImageView.image = UIImage (named: imageName)
+        if let locationImage = contentView.viewWithTag(20) as? UIImageView {
+            if venue.hasImage {
+                locationImage.contentMode = UIViewContentMode.ScaleAspectFill
+                locationImage.clipsToBounds = true
+                locationImage.image = venue.image
+            } else {
+                // set up default image
+                locationImage.contentMode = UIViewContentMode.ScaleAspectFill
+                locationImage.clipsToBounds = true
+                locationImage.image = UIImage(named: "redHen")
+            }
         }
-        
     }
-    
+
 }

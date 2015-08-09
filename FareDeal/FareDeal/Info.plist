@@ -22,6 +22,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to find the best deals!</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string></string>
@@ -39,6 +41,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>item 0</key>
-	<string>MidCase RegLine.otf</string>
+	<string>Montserrat.otf</string>
 </dict>
 </plist>

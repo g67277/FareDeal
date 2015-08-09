@@ -19,7 +19,8 @@ class StoreVC: UIViewController, UITableViewDataSource, UITableViewDelegate, SKP
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBarHidden = false
+        let image = UIImage(named: "navBarLogo")
+        navigationItem.titleView = UIImageView(image: image)
         
         SKPaymentQueue.defaultQueue().addTransactionObserver(self)
         requestProductData()

@@ -7,50 +7,46 @@
 //
 
 import UIKit
+import ActionSheetPicker_3_0
+import AssetsLibrary
+import RealmSwift
+import SwiftyJSON
 
-class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BusinessHome: UIViewController {
     
+    @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var creditBalanceLabel: UILabel!
     @IBOutlet weak var dealsSelectedLabel: UILabel!
     @IBOutlet weak var dealsSwapedLabel: UILabel!
-    @IBOutlet weak var monthSelector: UITableView!
     @IBOutlet weak var monthsBtn: UIButton!
     
+    @IBOutlet weak var profileImgView: UIImageView!
+    let realm = Realm()
+    let apiCall = APICalls()
+
     // holds all the months to display in selector
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
-    
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
-        self.navigationController?.navigationBar.tintColor = UIColor.darkGrayColor()
-
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
+        let image = UIImage(named: "navBarLogo")
+        navigationItem.titleView = UIImageView(image: image)
 
-//        let titleFont:UIFont = UIFont(name: "Middlecase Regular-Inline.otf", size: 20)!
-//        self.navigationController!.navigationBar.titleTextAttributes = [ NSFontAttributeName: titleFont]
-        
-        
         let date = NSDate();
         var formatter = NSDateFormatter();
         formatter.dateFormat = "MMMM";
         let defaultTimeZoneStr = formatter.stringFromDate(date);
         monthsBtn.setTitle(defaultTimeZoneStr, forState: UIControlState.Normal)
         
-        
+        updateDisplay()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        
-
+    override func viewWillAppear(animated: Bool) {
+        updateImg()
         let creditsAvailable:Int = prefs.integerForKey("credits") as Int
-        
         if creditsAvailable > 0 {
             creditBalanceLabel.text = "\(creditsAvailable)C"
         }else{
@@ -58,11 +54,90 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
         }
     }
     
+    func updateImg(){
+        
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: prefs.stringForKey("restID")!)
+        var path = data?.imgUri
+        var imgURL = NSURL(string: path!)
+        getUIImagefromAsseturl(imgURL!)
+        
+    }
+    
+    func updateDisplay(){
+        
+        var data = Realm().objectForPrimaryKey(ProfileModel.self, key: prefs.stringForKey("restID")!)
+        restaurantNameLabel.text = data?.restaurantName
+        updateImg()
+        
+        if Reachability.isConnectedToNetwork(){
+            var json = apiCall.getBalance(prefs.stringForKey("restID")!, token: prefs.stringForKey("TOKEN")!)
+            //var credits = json["CreditAvailable"].int!
+            var dealsSelected = json["TotalDealsPurchased"].int!
+            var dealSwapped = json["TotalDealsSwapped"].int!
+            //creditBalanceLabel.text = "\(credits)"
+            let creditsAvailable:Int = prefs.integerForKey("credits") as Int
+            if creditsAvailable > 0 {
+                creditBalanceLabel.text = "\(creditsAvailable)C"
+            }else{
+                creditBalanceLabel.text = "No Credits"
+            }
+            //prefs.setInteger(credits, forKey: "credits")
+            prefs.synchronize()
+            dealsSelectedLabel.text = "\(dealsSelected)"
+            dealsSwapedLabel.text = "\(dealSwapped)"
+        }else{
+            
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "You're Offline"
+            alertView.message = "Please connect to view summary details"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            
+            let creditsAvailable:Int = prefs.integerForKey("credits") as Int
+            if creditsAvailable > 0 {
+                creditBalanceLabel.text = "\(creditsAvailable)C"
+            }else{
+                creditBalanceLabel.text = "No Credits"
+            }
+        }
+        
+    }
+    
+    func getUIImagefromAsseturl (url: NSURL) {
+        var asset = ALAssetsLibrary()
+        
+        asset.assetForURL(url, resultBlock: { asset in
+            if let ast = asset {
+                let assetRep = ast.defaultRepresentation()
+                let iref = assetRep.fullResolutionImage().takeUnretainedValue()
+                let image = UIImage(CGImage: iref)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.profileImgView.image = image
+                })
+            }
+            }, failureBlock: { error in
+                println("Error: \(error)")
+        })
+    }
+    
+    override func viewDidLayoutSubviews() {
+        profileImgView.layer.masksToBounds = false
+        profileImgView.layer.borderColor = UIColor.blackColor().CGColor
+        profileImgView.layer.cornerRadius = profileImgView.frame.height/2
+        profileImgView.clipsToBounds = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+
+        
+    }
+    
     @IBAction func onClick(_sender : UIButton?){
         
         if _sender?.tag == 1{
             
-            monthSelector.hidden = false
             
         }else if _sender?.tag == 2{
             
@@ -79,29 +154,24 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     
-    //Mark# Tableview methods
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return months.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    @IBAction func pickerSelected(sender: AnyObject) {
         
-        var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = months[indexPath.row]
-        cell.textLabel?.textColor = .whiteColor()
-        cell.textLabel?.font = UIFont(name: "Avenir Medium", size: 12)
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        monthsBtn.setTitle(months[indexPath.row], forState: UIControlState.Normal)
-        updateAnalytics()
-        monthSelector.hidden = true
+        if sender.tag == 0 {
+            ActionSheetStringPicker.showPickerWithTitle("Month", rows: months as [AnyObject], initialSelection: 1, doneBlock: {
+                picker, value, index in
+                
+                self.monthsBtn.setTitle("\(index)", forState: UIControlState.Normal)
+                
+                println("value = \(value)")
+                println("index = \(index)")
+                println("picker = \(picker)")
+                return
+                }, cancelBlock: { ActionStringCancelBlock in return }, origin: sender)
+            
+        }
         
     }
+
     
     func updateAnalytics(){
         
@@ -113,7 +183,6 @@ class BusinessHome: UIViewController, UITableViewDataSource, UITableViewDelegate
         if (segue.identifier == "toProfile") {
             var svc = segue.destinationViewController as! RegisterRestaurantVC2;
             
-            svc.profileView = true
             
         }
     }

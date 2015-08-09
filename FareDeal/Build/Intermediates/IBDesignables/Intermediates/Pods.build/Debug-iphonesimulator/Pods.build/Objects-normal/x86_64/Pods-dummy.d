@@ -1,2 +1,2 @@
 dependencies: \
-  /Users/angelasmith/Desktop/Develop/FareDeal/Pods/Target\ Support\ Files/Pods/Pods-dummy.m
+  /Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/Target\ Support\ Files/Pods/Pods-dummy.m

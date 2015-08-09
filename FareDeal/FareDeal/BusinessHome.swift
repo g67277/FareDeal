@@ -46,6 +46,12 @@ class BusinessHome: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         updateImg()
+        let creditsAvailable:Int = prefs.integerForKey("credits") as Int
+        if creditsAvailable > 0 {
+            creditBalanceLabel.text = "\(creditsAvailable)C"
+        }else{
+            creditBalanceLabel.text = "No Credits"
+        }
     }
     
     func updateImg(){
@@ -65,11 +71,17 @@ class BusinessHome: UIViewController {
         
         if Reachability.isConnectedToNetwork(){
             var json = apiCall.getBalance(prefs.stringForKey("restID")!, token: prefs.stringForKey("TOKEN")!)
-            var credits = json["CreditAvailable"].int!
+            //var credits = json["CreditAvailable"].int!
             var dealsSelected = json["TotalDealsPurchased"].int!
             var dealSwapped = json["TotalDealsSwapped"].int!
-            creditBalanceLabel.text = "\(credits)"
-            prefs.setInteger(credits, forKey: "credits")
+            //creditBalanceLabel.text = "\(credits)"
+            let creditsAvailable:Int = prefs.integerForKey("credits") as Int
+            if creditsAvailable > 0 {
+                creditBalanceLabel.text = "\(creditsAvailable)C"
+            }else{
+                creditBalanceLabel.text = "No Credits"
+            }
+            //prefs.setInteger(credits, forKey: "credits")
             prefs.synchronize()
             dealsSelectedLabel.text = "\(dealsSelected)"
             dealsSwapedLabel.text = "\(dealSwapped)"

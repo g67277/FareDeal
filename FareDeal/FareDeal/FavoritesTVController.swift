@@ -60,12 +60,7 @@ class FavoritesTVController: UIViewController, UITableViewDelegate, UITableViewD
             image = UIImage(named: "redHen")!
         }
         cell.setUpCell(venue.name, phone: venue.phone, image: image)
-        if venue.sourceType == Constants.sourceTypeFoursquare {
-            // hide the favorites/likes view
-            cell.likesBarView.hidden = true
-        } else {
-            cell.setUpLikesBar(venue.likes, favorites: venue.favorites, price: venue.priceTier, distance: venue.distance)
-        }
+        cell.setUpLikesBar(venue.likes, favorites: venue.favorites, price: venue.priceTier, distance: venue.distance)
         return cell
     }
     

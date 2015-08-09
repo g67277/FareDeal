@@ -146,7 +146,7 @@ class RestaurantDetailController: UIViewController {
             // set up the deal
         } else {
             // hide the deal and favorites views
-            //dealView.hidden = true
+            dealView.hidden = true
             // favoriteLikesView.hidden = true
         }
         
@@ -236,7 +236,7 @@ class RestaurantDetailController: UIViewController {
             // set up the deal
         } else {
             // hide the deal and favorites views
-            //dealView.hidden = true
+            dealView.hidden = true
             // favoriteLikesView.hidden = true
         }
         

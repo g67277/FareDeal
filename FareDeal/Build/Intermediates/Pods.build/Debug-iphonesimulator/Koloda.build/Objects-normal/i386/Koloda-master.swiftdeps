@@ -1,6 +1,0 @@
-version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
-options: "9da1cd4e99f1d8b2eb96d24c16bffee2"
-inputs: 
-- "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/Koloda/Pod/Classes/KolodaView/DraggableCardView/DraggableCardView.swift"
-- "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/Koloda/Pod/Classes/KolodaView/KolodaView.swift"
-- "/Users/angelasmith/Desktop/SourceTree/Develop2/FareDeal/Pods/Koloda/Pod/Classes/KolodaView/OverlayView/OverlayView.swift"

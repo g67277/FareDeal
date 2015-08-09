@@ -17,6 +17,7 @@ top-level:
 - "RLMObjectSchema"
 - "Equatable"
 member-access:
+- !private "CSo15RLMObjectSchema"
 - "C10RealmSwift12ObjectSchema"
 - !private "Sa"
 - !private "CSo8NSObject"
@@ -24,7 +25,6 @@ member-access:
 - "PSs9Printable"
 - "PSs9AnyObject"
 - !private "C10RealmSwift8Property"
-- !private "CSo15RLMObjectSchema"
 - "PSs9Equatable"
 dynamic-lookup:
 cross-module:

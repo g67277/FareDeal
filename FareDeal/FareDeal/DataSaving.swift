@@ -39,6 +39,11 @@ public class DataSaving{
                     data!.contactName = object["contactName"].string!
                 }
                 
+                if object["category"] != nil{
+                    var category = object["category"]["name"].string!
+                    data!.category = category
+                }
+                
                 if object["deals"] != nil{
                     
                     if let deals = object["deals"].array {
@@ -80,6 +85,10 @@ public class DataSaving{
             }
             if object["contactName"] != nil{
                 restaurant.contactName = object["contactName"].string!
+            }
+            if object["category"] != nil{
+                var category = object["category"]["name"].string!
+                restaurant.category = category
             }
             restaurant.id = prefs.stringForKey("restID")!
             

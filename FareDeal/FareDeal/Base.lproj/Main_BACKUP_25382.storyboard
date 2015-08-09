@@ -9646,7 +9646,7 @@ launch special!</string>
                                                     <outlet property="locationPhone" destination="OCL-Vh-2U0" id="0aV-0X-7y9"/>
                                                     <outlet property="locationTitle" destination="aRm-AW-RlT" id="u9O-wN-Wks"/>
                                                     <outlet property="priceDistanceLabel" destination="87e-oo-Ftp" id="Sce-OB-trx"/>
-                                                    <segue destination="Aa3-mf-33f" kind="show" id="II4-22-a4t"/>
+                                                    <segue destination="Aa3-mf-33f" kind="show" identifier="restaurantDetailSegue" id="II4-22-a4t"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favHeaderCell" id="IRu-hb-iC2" customClass="FavoriteHeaderCell" customModule="FareDeal" customModuleProvider="target">
@@ -11611,7 +11611,7 @@ launch special!</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZy-b7-s5I">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                         <subviews>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="4884 MacArthur Blve NW Washington, DC 20007" translatesAutoresizingMaskIntoConstraints="NO" id="Jtx-fy-2cP">
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="4884 MacArthur Blve NW Washington, DC 20007" translatesAutoresizingMaskIntoConstraints="NO" id="Jtx-fy-2cP">
                                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -13276,6 +13276,7 @@ launch special!</string>
                         <outlet property="dealImage" destination="cAg-Y5-arz" id="LCD-bS-6K0"/>
                         <outlet property="dealTitleLabel" destination="3P1-9Z-ESd" id="K4g-1t-GIY"/>
                         <outlet property="dealValueLabel" destination="SFT-Bz-ezF" id="LB6-FY-MT5"/>
+                        <outlet property="dealView" destination="wrQ-L5-XvB" id="THa-u8-VQ4"/>
                         <outlet property="favoritesLabel" destination="acn-w6-zWo" id="E4R-Pg-c6g"/>
                         <outlet property="hoursStatusLabel" destination="6RM-n9-yDZ" id="pgQ-fK-emB"/>
                         <outlet property="likesLabel" destination="g7d-fW-Zsq" id="iuE-2O-9Ku"/>
@@ -14038,9 +14039,21 @@ launch special!</string>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redHen" translatesAutoresizingMaskIntoConstraints="NO" id="aMp-fo-hB0">
                                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+<<<<<<< HEAD
+                                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                    <rect key="frame" x="10" y="10" width="72" height="73"/>
+                                                                </variation>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageCover" translatesAutoresizingMaskIntoConstraints="NO" id="gse-nJ-id2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                    <rect key="frame" x="8" y="8" width="76" height="77"/>
+                                                                </variation>
+=======
+                                                            </imageView>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageCover" translatesAutoresizingMaskIntoConstraints="NO" id="gse-nJ-id2">
+                                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+>>>>>>> 77dee5a020a9649230338173fed405398a8e7a75
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -14088,7 +14101,12 @@ launch special!</string>
                                                                 <exclude reference="s0m-Jd-tyx"/>
                                                             </mask>
                                                         </variation>
+<<<<<<< HEAD
+                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="93"/>
+=======
                                                         <variation key="heightClass=regular-widthClass=compact">
+>>>>>>> 77dee5a020a9649230338173fed405398a8e7a75
                                                             <mask key="subviews">
                                                                 <include reference="aMp-fo-hB0"/>
                                                                 <include reference="gse-nJ-id2"/>
@@ -14120,7 +14138,11 @@ launch special!</string>
                                                                     </mask>
                                                                 </variation>
                                                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+<<<<<<< HEAD
+                                                                    <rect key="frame" x="172" y="4" width="37" height="37"/>
+=======
                                                                     <rect key="frame" x="172" y="4" width="37" height="36"/>
+>>>>>>> 77dee5a020a9649230338173fed405398a8e7a75
                                                                     <mask key="constraints">
                                                                         <include reference="PMw-8V-giN"/>
                                                                     </mask>
@@ -14132,7 +14154,11 @@ launch special!</string>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+<<<<<<< HEAD
+                                                                    <rect key="frame" x="0.0" y="10" width="164" height="37"/>
+=======
                                                                     <rect key="frame" x="0.0" y="10" width="164" height="36"/>
+>>>>>>> 77dee5a020a9649230338173fed405398a8e7a75
                                                                 </variation>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="from Crestfield" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Eql-hd-Q18">
@@ -14140,6 +14166,12 @@ launch special!</string>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
+<<<<<<< HEAD
+                                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                    <rect key="frame" x="0.0" y="47" width="205" height="33"/>
+                                                                </variation>
+=======
+>>>>>>> 77dee5a020a9649230338173fed405398a8e7a75
                                                             </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -14184,7 +14216,12 @@ launch special!</string>
                                                                 <exclude reference="hU5-gm-1HY"/>
                                                             </mask>
                                                         </variation>
+<<<<<<< HEAD
+                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="92" y="0.0" width="213" height="93"/>
+=======
                                                         <variation key="heightClass=regular-widthClass=compact">
+>>>>>>> 77dee5a020a9649230338173fed405398a8e7a75
                                                             <mask key="subviews">
                                                                 <include reference="TpW-F5-I4Q"/>
                                                                 <include reference="ybs-J9-hd7"/>
@@ -14369,12 +14406,24 @@ launch special!</string>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smallGreyBox" translatesAutoresizingMaskIntoConstraints="NO" id="Ldg-E3-2sC">
                                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+<<<<<<< HEAD
+                                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                    <rect key="frame" x="1" y="0.0" width="91" height="29"/>
+                                                                </variation>
+=======
+>>>>>>> 77dee5a020a9649230338173fed405398a8e7a75
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.99 value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="oLt-6O-lqk">
                                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                                 <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
+<<<<<<< HEAD
+                                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                    <rect key="frame" x="1" y="0.0" width="91" height="29"/>
+                                                                </variation>
+=======
+>>>>>>> 77dee5a020a9649230338173fed405398a8e7a75
                                                             </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

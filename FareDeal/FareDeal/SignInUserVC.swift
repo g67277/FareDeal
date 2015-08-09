@@ -105,26 +105,10 @@ class SignInUserVC: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         // Hide the navigation bar to display the full location image
-        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-        self.navigationController!.navigationBar.hidden = true
-        if navBar != nil{
-            navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-            navBar.shadowImage = UIImage()
-            navBar.backgroundColor = UIColor.clearColor()
-        }
-        
+        navigationController?.navigationBarHidden = true
     }
     
-    
-    override func viewWillDisappear(animated: Bool) {
-        // restore the navigation bar to origional
-        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
-        if navBar != nil{
-            navBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-            navBar.shadowImage = nil
-        }
-        
-    }
+  
 }
 
 extension UIView {

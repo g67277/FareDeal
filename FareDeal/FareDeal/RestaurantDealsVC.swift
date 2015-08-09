@@ -14,12 +14,23 @@ import SwiftyJSON
 class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
     // View properties
-    //@IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet var bestButton: UIButton!
     @IBOutlet var oldestButton: UIButton!
     @IBOutlet var collectionCardView: UIView!
+    @IBOutlet var singleDealView: UIView!
     @IBOutlet var pageController: UIPageControl!
+    
+    @IBOutlet var saveSwapButton: UIButton!
+    
+    // singleDealOutlets
+    @IBOutlet weak var singleLocationTitle: UILabel!
+    @IBOutlet weak var singleLocationImage: UIImageView!
+    @IBOutlet weak var singleDealTitle: UILabel!
+    @IBOutlet weak var singleDealDesc: UILabel!
+    @IBOutlet weak var singleDealValue: UILabel!
+
+    @IBOutlet var cardButtonsView: UIView!
     
     // top deal timer
     @IBOutlet weak var timeLimitLabel: TTCounterLabel!
@@ -28,22 +39,25 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
     // get access to all the current deals
     var validDeals = Realm().objects(VenueDeal)
     var haveItems: Bool = false;
-    
+    var loadSingleDeal: Bool = false
     // Location objects
     var locationManager : CLLocationManager!
     var venueLocations : [AnyObject] = []
     var venueItems : [[String: AnyObject]]?
     var currentLocation: CLLocation!
     
-    
+    var setUpForSaved: Bool = false
+    var setUpForDefault: Bool = false
     var topDealReached = false
     var currentDealIndex = 0
     // used in the featured section as to not display non-qualifying deals
     var topBidIndex = 0
     // Holds the last deal processesed for comparison
     var lastDealRestId = ""
-    
+    var singleDeal = VenueDeal()
+    var savedDeal = SavedDeal()
     var topDeal = VenueDeal()
+    var selectedDeal: VenueDeal?
     let dealList = List<VenueDeal>()
     
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -64,11 +78,7 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
         realm.write {
             self.realm.delete(expiredDeals)
         }
-        // Start getting the users location
-        locationManager = CLLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
+        
     }
     
     
@@ -84,8 +94,168 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if loadSingleDeal {
+            
+            // Set up view for a single deal
+            collectionCardView.hidden = true
+            cardButtonsView.hidden = true
+            singleDealView.hidden = false
+            // see if it is for the saved deal or a default deal
+            if setUpForSaved {
+                setUpSaveSwapButton()
+            }
+            else if setUpForDefault {
+                setUpDefaultDeal()
+            }
+        } else {
+            // start getting new deals for collection view
+            singleDealView.hidden = true
+            collectionCardView.hidden = false
+            cardButtonsView.hidden = false
+            // Start getting the users location
+            locationManager = CLLocationManager()
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.delegate = self
+            locationManager.startUpdatingLocation()
+        }
+
     }
     
+    func setButtonTitle (title: String) {
+        saveSwapButton.setTitle(title, forState: UIControlState.Normal)
+        saveSwapButton.setTitle(title, forState: UIControlState.Selected)
+    }
+
+    
+    func setUpDefaultDeal() {
+        // set up view for a default deal
+        singleLocationTitle.text = " from \(singleDeal.venue.name)"
+        if singleDeal.venue.hasImage {
+            singleLocationImage.image = singleDeal.venue.image
+        } else {
+            // set up default image
+            singleLocationImage.image = UIImage(named: "redHen")
+        }
+        singleDealTitle.text = singleDeal.name
+        singleDealDesc.text = singleDeal.desc
+        // Set up the value
+        let valueFloat:Float = singleDeal.value, valueFormat = ".2"
+        singleDealValue.text = "$\(valueFloat.format(valueFormat)) value"
+    }
+    
+    func setUpSaveSwapButton () {
+        // set up view for a default deal
+        singleLocationTitle.text = " from \(savedDeal.venue.name)"
+        if savedDeal.venue.hasImage {
+            singleLocationImage.image = savedDeal.venue.image
+        } else {
+            // set up default image
+            singleLocationImage.image = UIImage(named: "redHen")
+        }
+        singleDealTitle.text = savedDeal.name
+        singleDealDesc.text = savedDeal.desc
+        // Set up the value
+        let valueFloat:Float = savedDeal.value, valueFormat = ".2"
+        singleDealValue.text = "$\(valueFloat.format(valueFormat)) value"
+    }
+    
+   
+    @IBAction func userPressedSaveSwapButton(sender: UIButton) {
+        
+        // if viewing non current saved deal, see if we have a saved one
+        checkForPreviouslySavedDeal()
+        
+    }
+    
+   func checkForPreviouslySavedDeal() {
+        // check if user already has a saved deal
+        var currentSavedDeal = realm.objects(SavedDeal).first
+        if (currentSavedDeal != nil) {
+            println("The user has a saved deal")
+            // make sure the deal is not expired
+            let valid = checkDealIsValid(currentSavedDeal!)
+            if valid {
+                println("The user has a saved deal")
+                // display an alert requesting if they want to switch
+                let alertController = UIAlertController(title: "Swap Deals?", message: "Would you like to swap \(currentSavedDeal?.name) for \(selectedDeal?.name)", preferredStyle: .Alert)
+                // Add button action to swap
+                let cancelSwap = UIAlertAction(title: "Cancel", style: .Default, handler: {
+                    (action) -> Void in
+                })
+                let swapDeals = UIAlertAction(title: "Swap", style: .Default, handler: {
+                    (action) -> Void in
+                    // Swap deals
+                    self.realm.write {
+                        self.realm.delete(currentSavedDeal!)
+                    }
+                    self.saveNewDeal()
+                })
+                alertController.addAction(cancelSwap)
+                alertController.addAction(swapDeals)
+                presentViewController(alertController, animated: true, completion: nil)
+            } else {
+                // deleted old deal, save new one
+                realm.write {
+                    self.realm.delete(currentSavedDeal!)
+                }
+                println("Deleted expired deal and saving new one")
+                // save this deal as the saved deal
+                saveNewDeal()
+            }
+        } else {
+            println("Setting a new saved deal")
+            // save this deal as the saved deal
+            saveNewDeal()
+        }
+    }
+    
+    func checkDealIsValid (savedDeal: SavedDeal) -> Bool {
+        // we need to check the date
+        let expiresTime = savedDeal.expirationDate
+        // see how much time has lapsed
+        var compareDates: NSComparisonResult = NSDate().compare(expiresTime)
+        if compareDates == NSComparisonResult.OrderedAscending {
+            // the deal has not expired yet
+            println("This deal is still good")
+            return true
+        } else {
+            //the deal has expired
+            println("This deal has expired, deleting it")
+            realm.write {
+                self.realm.delete(savedDeal)
+            }
+            return false
+        }
+    }
+    
+    func saveNewDeal () {
+        if let deal: VenueDeal = selectedDeal {
+            let newDeal = SavedDeal()
+            newDeal.name = deal.name
+            newDeal.desc = deal.desc
+            newDeal.tier = deal.tier
+            newDeal.timeLimit = deal.timeLimit
+            newDeal.expirationDate = deal.expirationDate
+            newDeal.value = deal.value
+            newDeal.venue = deal.venue
+            var venueId = "\(newDeal.venue.identifier).\(newDeal.tier)"
+            newDeal.id = venueId
+            realm.write {
+                self.realm.create(SavedDeal.self, value: newDeal, update: true)
+            }
+            // alert user deal was saved
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "Deal Saved!"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            // and change the button
+            saveSwapButton.enabled = false
+        }
+        
+        
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -114,7 +284,7 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
             setDealTimer(deal)
         }
     }
-    /*
+    
     func loadSaloofData () {
         let saloofUrl = NSURL(string: "http://www.justwalkingonwater.com/json/venueResponse.json")!
         let response = NSData(contentsOfURL: saloofUrl)!
@@ -146,9 +316,7 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
             biddingStart()
         }
     }
-    */
-    
-    /*
+
     func parseJSON(json: JSON, source: String) {
         // Create the venue object first
         let venue = Venue()
@@ -239,7 +407,7 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
             }
         }
     }
-    */
+    
     func biddingStart(){
         if currentDealIndex < validDeals.count{
             // we have more deals to sort
@@ -353,16 +521,16 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
                 pageController.currentPage = Int(Float(result) + 1)
                 let indexPath = NSIndexPath(forRow: Int(Float(result) + 1), inSection: 0)
                 collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
-                let deal: VenueDeal = dealList[indexPath.row]
+                selectedDeal = dealList[indexPath.row]
                 // set the timer to this deal
-                setDealTimer(deal)
+                setDealTimer(selectedDeal!)
             }else{
                 pageController.currentPage = Int(result)
                 let indexPath = NSIndexPath(forRow: Int(result), inSection: 0)
                 collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
-                let deal: VenueDeal = dealList[indexPath.row]
+                selectedDeal = dealList[indexPath.row]
                 // set the timer to this deal
-                setDealTimer(deal)
+                setDealTimer(selectedDeal!)
             }
         }
     }
@@ -408,8 +576,9 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
             println("We don't have any deals yet")
             // if dealList.count == 0 {
             //println("Have location, gather local deals")
-           // loadSaloofData()
+            loadSaloofData()
             // get  local deals
+            /*
             let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
             var token = prefs.stringForKey("TOKEN")
             let location = self.locationManager.location
@@ -429,7 +598,7 @@ class RestaurantDealsVC:  UIViewController, CLLocationManagerDelegate, UICollect
                 // pullLocalDeals()
             } else {
                  println("Unable to retrieved deals from Saloof")
-            }
+            }*/
         }
     }
 }

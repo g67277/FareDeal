@@ -257,7 +257,7 @@ class RestaurantDetailController: UIViewController {
     }
     
     /* -------------------------  SEGUE  -------------------------- */
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  /*  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "shouldViewVenueDefaultDeal" {
             let detailVC = segue.destinationViewController as! RestaurantDealDetaislVC
@@ -267,7 +267,7 @@ class RestaurantDetailController: UIViewController {
             detailVC.setUpForDefault = true
             detailVC.setUpForSaved = false
         }
-    }
+    }*/
     
     func createDealForDetailView()-> VenueDeal {
         let venueDeal = VenueDeal()
@@ -304,9 +304,11 @@ class RestaurantDetailController: UIViewController {
         var savedDeal = realm.objects(SavedDeal).first
         if (savedDeal != nil) {
             let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            let dealDetailVC: RestaurantDealDetaislVC = storyboard.instantiateViewControllerWithIdentifier("dealDetailVC") as! RestaurantDealDetaislVC
-            dealDetailVC.setUpForSaved = true
-            navigationController?.pushViewController(dealDetailVC, animated: true)
+            let dealsVC: RestaurantDealsVC = storyboard.instantiateViewControllerWithIdentifier("userDealsVC") as! RestaurantDealsVC
+            dealsVC.loadSingleDeal = true
+            dealsVC.setUpForSaved = true
+            dealsVC.savedDeal = savedDeal!
+            navigationController?.pushViewController(dealsVC, animated: true)
         } else {
             // Alert them there isn't a current valid saved deal
             let alertController = UIAlertController(title: "No Deals", message: "Either your deal expired, or you haven't saved one.", preferredStyle: .Alert)
@@ -318,10 +320,25 @@ class RestaurantDetailController: UIViewController {
             presentViewController(alertController, animated: true, completion: nil)
             
         }
-        
-        
     }
     
+    @IBAction func shouldLoadDefaultDealInDealView(sender: AnyObject) {
+        // Check to make sure we have a saved deal
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let dealsVC: RestaurantDealsVC = storyboard.instantiateViewControllerWithIdentifier("userDealsVC") as! RestaurantDealsVC
+        dealsVC.loadSingleDeal = true
+        dealsVC.setUpForDefault = true
+        dealsVC.setUpForSaved = false
+        let defaultDeal = VenueDeal()
+        defaultDeal.name = thisVenue!.defaultDealTitle
+        defaultDeal.venue = thisVenue!
+        defaultDeal.value = thisVenue!.defaultDealValue
+        defaultDeal.id = thisVenue!.defaultDealID
+        dealsVC.singleDeal = defaultDeal
+        navigationController?.pushViewController(dealsVC, animated: true)
+        
+    }
+
     
     
 }

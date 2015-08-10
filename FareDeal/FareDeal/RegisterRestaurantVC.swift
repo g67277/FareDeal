@@ -67,8 +67,8 @@ class RegisterRestaurantVC: UIViewController {
         //testing only
         //username.text = "naz"
         //emailAddressField.text = "naz@naz.com"
-        passwordField.text = "Test@123"
-        passwordCField.text = "Test@123"
+        //passwordField.text = "Test@123"
+        //passwordCField.text = "Test@123"
         // Delete above
 
 

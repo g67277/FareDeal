@@ -171,7 +171,7 @@ class RegisterRestaurantVC2: UIViewController, UITextFieldDelegate {
     
     func continueRegistration(){
         
-        runTestingMethod()
+        //runTestingMethod()
         
         var restaurantName = restNameField.text
         var street = streetField.text

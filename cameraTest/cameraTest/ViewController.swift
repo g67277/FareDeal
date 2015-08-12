@@ -96,8 +96,112 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // send img here
         //saveImg()
         //saveImg()
-        saveImg2()
+        //saveImg2()
+        myImageUploadRequest()
     }
+    
+    func myImageUploadRequest(){
+        
+        var testImg = UIImage(named: "test")
+        
+        var url = "http://ec2-52-2-195-214.compute-1.amazonaws.com/api/Image"
+        
+        let myUrl = NSURL(string: url);
+        
+        let request = NSMutableURLRequest(URL:myUrl!);
+        request.HTTPMethod = "POST";
+        request.setValue("test", forHTTPHeaderField: "ImageId")
+
+        let param = [
+            "firstName"  : "Sergey",
+            "lastName"    : "Kargopolov",
+            "userId"    : "9"
+        ]
+        
+        let boundary = generateBoundaryString()
+        
+        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        
+        let imageData = UIImageJPEGRepresentation(testImg, 0.3)
+        
+        if(imageData==nil)  { return; }
+        
+        request.HTTPBody = createBodyWithParameters(param, filePathKey: "file", imageDataKey: imageData, boundary: boundary)
+        
+        
+        //myActivityIndicator.startAnimating();
+        println(request)
+        println("request headers: \(request.allHTTPHeaderFields)")
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil {
+                println("error=\(error)")
+                return
+            }
+            
+            // You can print out response object
+            println("******* response = \(response)")
+            
+            // Print out reponse body
+            let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
+            println("****** response data = \(responseString!)")
+            
+            var err: NSError?
+            var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: &err) as? NSDictionary
+            
+            
+            
+            dispatch_async(dispatch_get_main_queue(),{
+//                self.myActivityIndicator.stopAnimating()
+//                self.myImageView.image = nil;
+            });
+            
+            
+        }
+        
+        task.resume()
+        
+    }
+    
+    
+    func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData {
+        var body = NSMutableData();
+        
+//        if parameters != nil {
+//            for (key, value) in parameters! {
+//                body.appendString("--\(boundary)\r\n")
+//                body.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+//                body.appendString("\(value)\r\n")
+//            }
+//        }
+        
+        let filename = "test.jpg"
+        
+        let mimetype = "image/jpg"
+        
+        body.appendString("--\(boundary)\r\n")
+        body.appendString("Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n")
+        body.appendString("Content-Type: image/jpeg")
+        body.appendData(imageDataKey)
+        body.appendString("\r\n")
+        
+        
+        
+        body.appendString("--\(boundary)--\r\n")
+        
+        return body
+    }
+    
+    
+    
+    
+    func generateBoundaryString() -> String {
+        return "Boundary-\(NSUUID().UUIDString)"
+    }
+    
+    
     
     func saveImg2(){
         var testImg = UIImage(named: "btn")
@@ -219,3 +323,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
 }
 
+extension NSMutableData {
+    
+    func appendString(string: String) {
+        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        appendData(data!)
+    }
+}

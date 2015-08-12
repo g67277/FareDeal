@@ -111,7 +111,7 @@
             headers.Authorization = 'Bearer ' + token;
         }
 
-        var name = "Restaurent" + Math.random();
+        var name = "Restaurent_Hemal_" + Math.random();
 
         var data = {
             ContactName: 'Test Contact',
@@ -152,9 +152,10 @@
         var title = "DealTitle" + Math.random().toPrecision(3);
 
         var data = {
-            //VenueId: 'CB29A448-84C9-4630-A0B0-06497A613DA6',
+            DealId: '9FC65B3C-659A-43EB-A9F4-E24EC3C472DB',
+            VenueId: 'CB29A448-84C9-4630-A0B0-06497A613DA6',
             DealTitle: title,
-            DealDescription: 'Deal description',
+            DealDescription: 'Deal description test',
             DealValue: 2.99,
             TimeLimit: 2
         };
@@ -170,6 +171,35 @@
         }).fail(showError);
     });
 
+    $('#btnSaveDeal').click(function () {
+
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+
+        var title = "DealTitle" + Math.random().toPrecision(3);
+
+        var data = {
+            DealId: '9FC65B3C-659A-43EB-A9F4-E24EC3C472DB',
+            VenueId: 'CB29A448-84C9-4630-A0B0-06497A613DA6',
+            DealTitle: title,
+            DealDescription: 'Deal description test',
+            DealValue: 3.99,
+            TimeLimit: 1
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/Deal',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data),
+            headers: headers
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
 
     $('#btnPurchaseDeal').click(function () {
 
@@ -330,8 +360,54 @@
         });
     });
 
+    $("#fileUpload").click(function (evt) {
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+        headers.ImageId = "test";
+        var files = $("#file1").get(0).files;
+        if (files.length > 0) {
+            var data = new FormData();
+            for (i = 0; i < files.length; i++) {
+                data.append("file" + i, files[i]);
+            }
+            $.ajax({
+                type: "POST",
+                url: "/api/Image",
+                contentType: false,
+                processData: false,
+                data: data,
+                headers: headers,
+                success: function (messages) {
+                    for (i = 0; i < messages.length; i++) {
+                        alert(messages[i]);
+                    }
+                },
+                error: function () {
+                    alert("Error while invoking the Web API");
+                }
+            });
+        }
+    });
 
+    $('#btnAddCredit').click(function () {
 
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+        $.ajax({
+            type: 'GET',
+            url: '/api/Venue/AddCredit?venueId=B054B184-104E-431B-B007-A53130BF8005&credit=5',
+            contentType: 'application/json; charset=utf-8',
+            headers: headers
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
 }
 
 var app = new ViewModel();

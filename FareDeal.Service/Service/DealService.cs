@@ -19,6 +19,23 @@ namespace FareDeal.Service
             return db.deals.ToList();
         }
 
+        public deal GetDealById(Guid id)
+        {
+            return db.deals.Where(d => d.id == id).FirstOrDefault();
+        }
+
+        public void SaveDeal(deal deal)
+        {
+            try
+            {
+                db.Entry(deal).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         public void AddDeal(deal deal)
         {
             try

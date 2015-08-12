@@ -42,6 +42,7 @@ namespace FareDeal.Service.Data
         public string phone { get; set; }
         public Nullable<System.Guid> categoryId { get; set; }
         public Nullable<System.Guid> uId { get; set; }
+        public string description { get; set; }
     
         public virtual category category { get; set; }
         public virtual ICollection<credit_transactions> credit_transactions { get; set; }

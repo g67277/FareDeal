@@ -165,9 +165,10 @@ namespace FareDealApi.Controllers
                     v.Id = Guid.NewGuid();
                     v.isOpen = true;
                     v.name = model.RestaurantName;
+                    v.description = model.Description;
                     v.url = model.Website;
                     v.priceTier = model.PriceTier;
-                    v.defaultPicUrl = "http://test.com/a.png";
+                    v.defaultPicUrl = model.ImageName;
                     //v.location_id = l.id;
                     v.weekdayHours = model.WeekdaysHours;
                     v.weekendHours = model.WeekendHours;
@@ -183,9 +184,20 @@ namespace FareDealApi.Controllers
                     
                     //v.categoryId = cat.Id;
                     v.category = cat;
-                    
+
+                    venue_credit vc = new venue_credit();
+                    vc.Id = Guid.NewGuid();
+                    vc.venue_id = v.Id;
+                    vc.credit_auto_increase = 5;
+                    vc.credit_available = 50;
+                    vc.credit_threhold = 10;
+
+                    v.venue_credit.Add(vc);
 
                     service.AddVenue(v);
+
+                    //save image on disk
+                    SaveImage(v.defaultPicUrl);
                 }
                 else
                 {
@@ -193,6 +205,11 @@ namespace FareDealApi.Controllers
                 }
             }
             return Ok("{VenueId: " + v.Id + "}");
+        }
+
+        private void SaveImage(string p)
+        {
+            System.IO.File.Create(p);
         }
 
         [HttpGet]
@@ -213,6 +230,17 @@ namespace FareDealApi.Controllers
             using(VenueService service = new VenueService())
             {
                 service.SaveLike(id);
+            }
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("api/Venue/AddCredit")]
+        public async Task<IHttpActionResult> AddCredit(Guid venueId, int credit)
+        {
+            using (VenueService service = new VenueService())
+            {
+                service.AddCredit(venueId, credit);
             }
             return Ok();
         }

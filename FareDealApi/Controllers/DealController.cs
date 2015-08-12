@@ -39,25 +39,37 @@ namespace FareDealApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            using (VenueService service  = new VenueService())
-            {
-                var uId = Guid.Parse(User.Identity.GetUserId());
-                v = service.GetByUserId(uId);              
-            }
+
             using (DealService service = new DealService())
             {
-                service.AddDeal(new FareDeal.Service.Data.deal()
+                var deal = service.GetDealById(model.DealId);
+                if (deal == null)
                 {
-                    id = Guid.NewGuid(),
-                    venue_id = v.Id, //model.VenueId,
-                    description = model.DealDescription,
-                    title = model.DealTitle,
-                    deal_value = model.DealValue,
-                    timeLimit = model.TimeLimit,
-                    original_value = 0,
-                    active = true,
-                    credit_required = 20,
-                });
+                    service.AddDeal(new FareDeal.Service.Data.deal()
+                    {
+                        id = model.DealId,
+                        venue_id = model.VenueId,
+                        description = model.DealDescription,
+                        title = model.DealTitle,
+                        deal_value = model.DealValue,
+                        timeLimit = model.TimeLimit,
+                        original_value = 0,
+                        active = true,
+                        credit_required = 20,
+                    });
+                }
+                else
+                {
+
+                    deal.active = model.Active;
+                    deal.description = model.DealDescription;
+                    deal.deal_value = model.DealValue;
+                    deal.title = model.DealTitle;
+                    deal.credit_required = model.CreditRequired;
+                    service.SaveDeal(deal);
+
+
+                }
             }
             return Ok();
         }

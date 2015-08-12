@@ -31,7 +31,7 @@ namespace FareDeal.Service
                     var credit = v.venue_credit.FirstOrDefault();
                     if (credit != null && credit.credit_available > 0)
                     {
-                        db.Entry(v).Collection(d => d.deals).Load();
+                        db.Entry(v).Collection(d => d.deals).Query().Where(d1 => d1.active == true);   
                     }
                     var distance = GetDistanceFromLatLonInKm(v.location.lat, v.location.lng, lat1, lng1);
                     if (distance < 10)
@@ -54,7 +54,7 @@ namespace FareDeal.Service
             //find local
             if (priceTier > 0)
             {
-                 venues = db.venues.Where(v => v.priceTier <= priceTier);
+                 venues = db.venues.Where(v => v.priceTier == priceTier);
             }
             else
             {
@@ -72,7 +72,7 @@ namespace FareDeal.Service
                     var credit = v.venue_credit.FirstOrDefault();
                     if (credit != null && credit.credit_available > 0)
                     {
-                        db.Entry(v).Collection(d => d.deals).Load();
+                        db.Entry(v).Collection(d => d.deals).Query().Where(d1 => d1.active == true); 
                     }
                     var distance = GetDistanceFromLatLonInKm(v.location.lat, v.location.lng, lat1, lng1);
                     if (distance < 10)
@@ -112,7 +112,7 @@ namespace FareDeal.Service
 
                 if (credit != null && credit.credit_available > 0)
                 {
-                    db.Entry(v).Collection(d => d.deals).Load();
+                    db.Entry(v).Collection(d => d.deals).Query().Where(d1 => d1.active == true); 
                 }
             }
             return venues;
@@ -130,7 +130,7 @@ namespace FareDeal.Service
 
                 if (credit != null && credit.credit_available > 0)
                 {
-                    db.Entry(v).Collection(d => d.deals).Load();
+                    db.Entry(v).Collection(d => d.deals).Query().Where(d1 => d1.active == true); 
                 }
             }
             return venues.Where(v=>v.category.name.ToLower() == catName.ToLower());
@@ -148,12 +148,23 @@ namespace FareDeal.Service
 
                 if (credit != null && credit.credit_available > 0)
                 {
-                    db.Entry(v).Collection(d => d.deals).Load();
+                    db.Entry(v).Collection(d => d.deals).Query().Where(d1=>d1.active == true);                   
                 }
+
             }
             return venues;
         }
 
+        public void AddCredit(Guid venueId, int credit)
+        {
+            venue_credit vc = db.venue_credit.Where(v => v.venue_id == venueId).FirstOrDefault();
+            if (vc != null)
+            {
+                vc.credit_available = vc.credit_available + credit;
+            }
+            db.Entry(vc).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+        }
         public void AddVenue(venue _venue)
         {
             try
@@ -178,7 +189,7 @@ namespace FareDeal.Service
             venue _venue = db.venues.Where(v => v.Id == id).FirstOrDefault();
             db.Entry(_venue).Collection(vc => vc.venue_credit).Load();
             db.Entry(_venue).Reference(vc => vc.category).Load();
-            db.Entry(_venue).Collection(vc => vc.deals).Load();
+            db.Entry(_venue).Collection(d => d.deals).Query().Where(d1 => d1.active == true); 
             db.Entry(_venue).Reference(vc => vc.location).Load();
             return _venue;
         }
@@ -188,7 +199,7 @@ namespace FareDeal.Service
             venue _venue = db.venues.Where(v => v.uId == id).FirstOrDefault();
             db.Entry(_venue).Collection(vc => vc.venue_credit).Load();
             db.Entry(_venue).Reference(vc => vc.category).Load();
-            db.Entry(_venue).Collection(vc => vc.deals).Load();
+            db.Entry(_venue).Collection(d => d.deals).Query().Where(d1 => d1.active == true); 
             db.Entry(_venue).Reference(vc => vc.location).Load();
 
             return _venue;

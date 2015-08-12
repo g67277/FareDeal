@@ -11,7 +11,13 @@ namespace FareDealApi.Models
 {
     public class BusinessModel
     {
+        public Guid VenueId { get; set; }
+        public Guid CategoryId { get; set; }
         public string RestaurantName {get; set;}
+
+        public string Description { get; set; }
+
+        public string ImageName { get; set; }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -49,6 +55,7 @@ namespace FareDealApi.Models
 
     public class DealModel
     {
+        public Guid DealId { get; set; }
         public Guid VenueId { get; set; }
         [Required]
         public string DealTitle { get; set; }
@@ -57,5 +64,8 @@ namespace FareDealApi.Models
         public decimal DealValue { get; set; }
         [Required]
         public int TimeLimit { get; set; }
+
+        public bool Active { get; set; }
+        public int CreditRequired { get; set; }
     }
 }

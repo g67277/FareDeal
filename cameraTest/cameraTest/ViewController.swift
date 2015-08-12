@@ -9,10 +9,13 @@
 import UIKit
 import MobileCoreServices
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var catButton: UIButton!
     @IBOutlet weak var catTableView: UITableView!
+    
+    var jpegImg = NSData()
+    var pngImg = NSData()
     
     
     @IBOutlet weak var imageView: UIImageView!
@@ -22,12 +25,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     @IBAction func showActionSheetTapped(sender: AnyObject) {
         //Create the AlertController
@@ -56,7 +59,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                         completion: nil)
                     self.newMedia = true
             }
-
+            
         }
         actionSheetController.addAction(takePictureAction)
         //Create and add a second option action
@@ -90,10 +93,82 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func onClick(sender: AnyObject) {
         
-        catTableView.hidden = false
+        // send img here
+        //saveImg()
+        //saveImg()
+        saveImg2()
+    }
+    
+    func saveImg2(){
+        var testImg = UIImage(named: "btn")
+        var imageData = UIImageJPEGRepresentation(testImg, 0.9)
+        var base64String = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0)) // encode the image
+        
+        var url = "http://ec2-52-2-195-214.compute-1.amazonaws.com/api/Image"
+        var token = "Bearer ooLCfhseTGOpxvuV5GxnliHb0ixCfC8F_DmZg9wzYOwy1-F5w4TKmOKZXDdgNEi-b03XDAtBDMm7xDG57jUX7xyKnxVfSAZbC-DauAyoFElTRluQPMP2z-yP8ZsNrFK2PqxGOibztbDTWdGNKwRIsbFY_kH93vXYKGOUz3BdSO02P3pqLY6YWg9Y-mGY91MOD10qRN6LVag4Eet2TH3XqXjTm-x6G8bDzx9vxChw-uZvE60PE_NSQlyOpKlvOoQ4Jxz5CrDgWAWGW2WnK3fB_ZoKBwaC2zvhjub0j47kYm4nR02ArBG1hV2NvmqCCPpw4GzI1F1_pa7ZuOUC1b0s7gvNnzebKqsqIuX0WVA2QOuhwNkrSFJjrXXKUR8tOj3uJsOwSwXrzeGBQSrFOlHxAPPPopRWtJIhyf2Ert1Rts8ET_n6tjgBdwh5CXcvS1IK72MMCAHLwaj5Icg4Eml5QySCq9qQ5jKBtii_ec32j0I5kcWLsTGSloNRtk_NgYZEhVpBEfb9Fa8vRW0YJyHtdw"
+        
+        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        request.HTTPMethod = "POST"
+        
+        request.timeoutInterval = 60
+        //request.setValue(token, forHTTPHeaderField: "Authorization")
+        request.setValue("test", forHTTPHeaderField: "ImageId")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var err: NSError? = nil
+        var params = ["image":[ "content_type": "image/jpeg", "filename":"test.jpg", "file_data": base64String]]
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions(0), error: &err)!
+        
+        var session = NSURLSession.sharedSession()
+        var task = session.dataTaskWithRequest(request, completionHandler: { data, response, error -> Void in
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            var err: NSError?
+            
+            // process the response
+        })
+        
+        task.resume() // this is needed to start the task
+    }
+    
+    func saveImg(){
+        
+                var testImg = UIImage(named: "btn")
+                var testData = UIImagePNGRepresentation(testImg)
+                var testData2 = UIImageJPEGRepresentation(testImg, 0.9)
+        
+                var token = "Bearer ooLCfhseTGOpxvuV5GxnliHb0ixCfC8F_DmZg9wzYOwy1-F5w4TKmOKZXDdgNEi-b03XDAtBDMm7xDG57jUX7xyKnxVfSAZbC-DauAyoFElTRluQPMP2z-yP8ZsNrFK2PqxGOibztbDTWdGNKwRIsbFY_kH93vXYKGOUz3BdSO02P3pqLY6YWg9Y-mGY91MOD10qRN6LVag4Eet2TH3XqXjTm-x6G8bDzx9vxChw-uZvE60PE_NSQlyOpKlvOoQ4Jxz5CrDgWAWGW2WnK3fB_ZoKBwaC2zvhjub0j47kYm4nR02ArBG1hV2NvmqCCPpw4GzI1F1_pa7ZuOUC1b0s7gvNnzebKqsqIuX0WVA2QOuhwNkrSFJjrXXKUR8tOj3uJsOwSwXrzeGBQSrFOlHxAPPPopRWtJIhyf2Ert1Rts8ET_n6tjgBdwh5CXcvS1IK72MMCAHLwaj5Icg4Eml5QySCq9qQ5jKBtii_ec32j0I5kcWLsTGSloNRtk_NgYZEhVpBEfb9Fa8vRW0YJyHtdw"
+        
+                var base64String = testData2.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0)) // encode the image
+                var postLength:NSString = String( testData2.length)
+        
+        
+                var url = "http://ec2-52-2-195-214.compute-1.amazonaws.com/api/Image"
+                var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+                request.HTTPMethod = "POST"
+                request.timeoutInterval = 60
+                request.setValue(token, forHTTPHeaderField: "Authorization")
+                request.addValue("test", forHTTPHeaderField: "ImageId")
+                request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+                var err: NSError? = nil
+                var params = ["image":[ "content_type": "image/jpeg", "filename":"test.jpeg", "file_data": base64String]]
+                request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions(0), error: &err)!
+        
+                var session = NSURLSession.sharedSession()
+                var task = session.dataTaskWithRequest(request, completionHandler: { data, response, error -> Void in
+                    var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+                    var err: NSError?
+        
+                    // process the response
+                })
+        
+                task.resume() // this is needed to start the task
         
     }
-
+    
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
@@ -106,6 +181,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 as! UIImage
             
             imageView.image = image
+            var test = image
+            jpegImg = UIImageJPEGRepresentation(image, 100)
+            pngImg = UIImagePNGRepresentation(image)
             
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self,
@@ -137,158 +215,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    // Tableview methods
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.loadCategories().count
-    } 
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = loadCategories()[indexPath.row] as String
-        
-        return cell
-    }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        catButton.setTitle(loadCategories()[indexPath.row] as String, forState: UIControlState.Normal)
-        catTableView.hidden = true
-        println("Testing")
-        
-    }
-    
-    func loadCategories() -> (Array<String>){
-        
-        
-        var categoryArray = [
-            "Afghan Restaurant",
-            "African Restaurant",
-            "American Restaurant",
-            "Arepa Restaurant",
-            "Argentinian Restaurant",
-            "Asian Restaurant",
-            "Australian Restaurant",
-            "Austrian Restaurant",
-            "BBQ Joint",
-            "Bagel Shop@",
-            "Bakery",
-            "Belgian Restaurant",
-            "Bistro",
-            "Brazilian Restaurant",
-            "Breakfast Spot",
-            "Bubble Tea Shop",
-            "Buffet",
-            "Burger Joint",
-            "Burrito Place",
-            "Cafeteria",
-            "Café",
-            "Cajun / Creole",
-            "Cambodian Restaurant",
-            "Caribbean Restaurant",
-            "Chinese Restaurant",
-            "Coffee Shop",
-            "Comfort Food Restaurant",
-            "Creperie",
-            "Cuban Restaurant",
-            "Cupcake Shop",
-            "Czech Restaurant",
-            "Deli / Bodega",
-            "Dessert Shop",
-            "Diner",
-            "Distillery",
-            "Donut Shop",
-            "Dumpling Restaurant",
-            "Eastern European Restaurant",
-            "English Restaurant",
-            "Ethiopian Restaurant",
-            "Falafel Restaurant",
-            "Fast Food Restaurant",
-            "Filipino Restaurant",
-            "Fish & Chips Shop",
-            "Fondue Restaurant",
-            "Food Truck",
-            "Food",
-            "French Restaurant",
-            "Fried Chicken Joint",
-            "Gastropub",
-            "German Restaurant",
-            "Gluten-free Restaurant",
-            "Greek Restaurant",
-            "Halal Restaurant",
-            "Hawaiian Restaurant",
-            "Himalayan Restaurant",
-            "Hot Dog Joint",
-            "Hotpot Restaurant",
-            "Hungarian Restaurant",
-            "Ice Cream Shop",
-            "Indian Restaurant",
-            "Indonesian Restaurant",
-            "Irish Pub",
-            "Italian Restaurant",
-            "Japanese Restaurant",
-            "Jewish Restaurant",
-            "Juice Bar",
-            "Korean Restaurant",
-            "Kosher Restaurant",
-            "Latin American Restaurant",
-            "Mac & Cheese Joint",
-            "Malaysian Restaurant",
-            "Mediterranean Restaurant",
-            "Mexican Restaurant",
-            "Middle Eastern Restaurant",
-            "Modern European Restaurant",
-            "Molecular Gastronomy Restaurant",
-            "Mongolian Restaurant",
-            "Moroccan Restaurant",
-            "New American Restaurant",
-            "Pakistani Restaurant",
-            "Persian Restaurant",
-            "Peruvian Restaurant",
-            "Pie Shop",
-            "Pizza Place",
-            "Polish Restaurant",
-            "Portuguese Restaurant",
-            "Ramen / Noodle House",
-            "Restaurant",
-            "Romanian Restaurant",
-            "Russian Restaurant",
-            "Salad Place",
-            "Sandwich Place",
-            "Scandinavian Restaurant",
-            "Seafood Restaurant",
-            "Snack Place",
-            "Soup Place",
-            "South American Restaurant",
-            "Southern / Soul Food Restaurant",
-            "Souvlaki Shop",
-            "Spanish Restaurant",
-            "Steakhouse",
-            "Sushi Restaurant",
-            "Swiss Restaurant",
-            "Taco Place",
-            "Tapas Restaurant",
-            "Tea Room",
-            "Thai Restaurant",
-            "Tibetan Restaurant",
-            "Turkish Restaurant",
-            "Ukrainian Restaurant",
-            "Vegetarian / Vegan Restaurant",
-            "Vietnamese Restaurant",
-            "Winery",
-            "Wings Joint",
-            "Frozen Yogurt",
-            "Nightlife Spot",
-            "Bar",
-            "Nightclub",
-            "Pub",
-            "Sports Bar"]
-        
-        return categoryArray
-        
-    }
-
-
-
 }
 

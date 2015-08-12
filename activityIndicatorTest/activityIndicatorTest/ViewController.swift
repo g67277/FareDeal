@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         
-        let aIView = CustomActivityView(frame: CGRect (x: 0, y: 0, width: 70, height: 70), color: UIColor.whiteColor(), size: CGSize(width: 70, height: 70))
+        let aIView = CustomActivityView(frame: CGRect (x: 0, y: 0, width: 150, height: 150), color: UIColor.whiteColor(), size: CGSize(width: 70, height: 70))
         activityIndicatorView.addSubview(aIView)
         aIView.startAnimation()
 

@@ -36,17 +36,45 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMc-Up-QNB">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onStart:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JsN-Fk-JbC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98l-yK-gZi">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onStop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="A4r-Ww-zUl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uMc-Up-QNB" firstAttribute="top" secondItem="npx-qe-Ah3" secondAttribute="bottom" constant="19" id="SBY-VN-W5J"/>
                             <constraint firstAttribute="centerX" secondItem="npx-qe-Ah3" secondAttribute="centerX" id="Za8-O7-VOq"/>
+                            <constraint firstAttribute="centerX" secondItem="98l-yK-gZi" secondAttribute="centerX" id="c0k-Rk-N9M"/>
+                            <constraint firstAttribute="centerX" secondItem="uMc-Up-QNB" secondAttribute="centerX" id="dY3-HE-vTU"/>
                             <constraint firstAttribute="centerY" secondItem="npx-qe-Ah3" secondAttribute="centerY" id="t6e-26-uX8"/>
+                            <constraint firstItem="98l-yK-gZi" firstAttribute="top" secondItem="uMc-Up-QNB" secondAttribute="bottom" constant="17" id="xGn-Db-e2R"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="npx-qe-Ah3"/>
+                                <exclude reference="uMc-Up-QNB"/>
+                                <exclude reference="98l-yK-gZi"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="c0k-Rk-N9M"/>
+                                <exclude reference="xGn-Db-e2R"/>
+                                <exclude reference="SBY-VN-W5J"/>
+                                <exclude reference="dY3-HE-vTU"/>
                                 <exclude reference="Za8-O7-VOq"/>
                                 <exclude reference="t6e-26-uX8"/>
                             </mask>
@@ -54,8 +82,14 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="npx-qe-Ah3"/>
+                                <include reference="uMc-Up-QNB"/>
+                                <include reference="98l-yK-gZi"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="c0k-Rk-N9M"/>
+                                <include reference="xGn-Db-e2R"/>
+                                <include reference="SBY-VN-W5J"/>
+                                <include reference="dY3-HE-vTU"/>
                                 <include reference="Za8-O7-VOq"/>
                                 <include reference="t6e-26-uX8"/>
                             </mask>

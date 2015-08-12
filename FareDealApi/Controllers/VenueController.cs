@@ -235,6 +235,7 @@ namespace FareDealApi.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "business")]
         [Route("api/Venue/AddCredit")]
         public async Task<IHttpActionResult> AddCredit(Guid venueId, int credit)
         {

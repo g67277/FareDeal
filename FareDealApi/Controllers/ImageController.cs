@@ -46,8 +46,8 @@ namespace FareDealApi.Controllers
                     foreach (HttpContent content in provider.Contents)
                     {
                         Stream stream = content.ReadAsStreamAsync().Result;
-                        Image image = Image.FromStream(stream);
-                        var testName = content.Headers.ContentDisposition.Name;
+                        Image image = Image.FromStream(stream, false, true);
+                        var testName = content.Headers.ContentDisposition.Name.Trim('\"');
                         String filePath = HostingEnvironment.MapPath("~/Images/");
                         String[] headerValues = (String[])Request.Headers.GetValues("ImageId");
                         String fileName = headerValues[0] + ".jpg";

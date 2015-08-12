@@ -11,6 +11,7 @@ import UIKit
 class DealViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
     @IBOutlet var bestButton: UIButton!
+     @IBOutlet var collectionView: UICollectionView!
      @IBOutlet var newestButton: UIButton!
      @IBOutlet var oldestButton: UIButton!
     //@IBOutlet weak var tableview: UITableView!
@@ -58,7 +59,7 @@ class DealViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("dealCell", forIndexPath: indexPath) as! dealCell
         var pages: Int = Int(collectionView.contentSize.width/collectionView.frame.size.width)
-        pageController.numberOfPages = pages
+        pageController.numberOfPages = 5
         return cell
     }
     
@@ -78,8 +79,6 @@ class DealViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         
-      var width: CGFloat  =  collectionCardView.frame.size.width
-        println(scrollView.contentOffset.x)
         let one = Double(scrollView.contentOffset.x)
         let two = Double(self.view.frame.width)
         let result = one / two
@@ -87,24 +86,15 @@ class DealViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if result != 0{
             if (0.0 != fmodf(Float(result), 1.0)){
                 pageController.currentPage = Int(Float(result) + 1)
+                let indexPath = NSIndexPath(forRow: Int(Float(result) + 1), inSection: 0)
+                collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
             }else{
                 pageController.currentPage = Int(result)
+                let indexPath = NSIndexPath(forRow: Int(result), inSection: 0)
+                collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
             }
         }
-        
-//        if let test = self.cardCollectionView.contentOffset.x / self.view.frame.width {
-//            
-//        }
-//        if var currentCard = CGFloat(self.cardCollectionView.contentOffset.x / width) {
-//            if (0.0 != fmodf(currentCard, 1.0)) {
-//                pageController.currentPage =  Int(currentCard + 1)
-//            } else {
-//                pageController.currentPage = Int(currentCard)
-//            }
-//        }
     }
-    
-
-
-    
 }
+
+

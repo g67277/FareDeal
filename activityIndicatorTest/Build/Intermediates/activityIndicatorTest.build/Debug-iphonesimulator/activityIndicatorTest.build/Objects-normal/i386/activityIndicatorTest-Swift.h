@@ -124,8 +124,11 @@ SWIFT_CLASS("_TtC21activityIndicatorTest18CustomActivityView")
 SWIFT_CLASS("_TtC21activityIndicatorTest14ViewController")
 @interface ViewController : UIViewController
 @property (nonatomic) IBOutlet UIView * __null_unspecified activityIndicatorView;
+@property (nonatomic, readonly) CustomActivityView * __nonnull aIView;
 - (void)viewDidLoad;
 - (void)viewDidLayoutSubviews;
+- (IBAction)onStart:(id __nonnull)sender;
+- (IBAction)onStop:(id __nonnull)sender;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

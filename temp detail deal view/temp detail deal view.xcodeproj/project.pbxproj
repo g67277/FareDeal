@@ -14,6 +14,7 @@
 		9907E27B1B755DE7007DDFA1 /* temp_detail_deal_viewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9907E27A1B755DE7007DDFA1 /* temp_detail_deal_viewTests.swift */; };
 		9907E2851B756C77007DDFA1 /* dealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9907E2841B756C77007DDFA1 /* dealCell.swift */; };
 		9907E2871B756E7F007DDFA1 /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9907E2861B756E7F007DDFA1 /* DealViewController.swift */; };
+		9952D9921B75AE51008680DC /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9952D9911B75AE51008680DC /* TempViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		9907E27A1B755DE7007DDFA1 /* temp_detail_deal_viewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temp_detail_deal_viewTests.swift; sourceTree = "<group>"; };
 		9907E2841B756C77007DDFA1 /* dealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dealCell.swift; sourceTree = "<group>"; };
 		9907E2861B756E7F007DDFA1 /* DealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealViewController.swift; sourceTree = "<group>"; };
+		9952D9911B75AE51008680DC /* TempViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				9907E2621B755DE7007DDFA1 /* Supporting Files */,
 				9907E2841B756C77007DDFA1 /* dealCell.swift */,
 				9907E2861B756E7F007DDFA1 /* DealViewController.swift */,
+				9952D9911B75AE51008680DC /* TempViewController.swift */,
 			);
 			path = "temp detail deal view";
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9952D9921B75AE51008680DC /* TempViewController.swift in Sources */,
 				9907E2871B756E7F007DDFA1 /* DealViewController.swift in Sources */,
 				9907E2651B755DE7007DDFA1 /* AppDelegate.swift in Sources */,
 				9907E2851B756C77007DDFA1 /* dealCell.swift in Sources */,
@@ -413,6 +417,7 @@
 				9907E2801B755DE7007DDFA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9907E2811B755DE7007DDFA1 /* Build configuration list for PBXNativeTarget "temp detail deal viewTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +426,7 @@
 				9907E2831B755DE7007DDFA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

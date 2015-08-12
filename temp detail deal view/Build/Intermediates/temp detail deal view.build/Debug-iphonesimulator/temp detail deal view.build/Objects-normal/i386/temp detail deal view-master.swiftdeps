@@ -1,0 +1,7 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "bac33524f324ba0d74706252f09ab18e"
+inputs: 
+- !dirty "/Users/angelasmith/Desktop/SourceTree/RD/temp detail deal view/temp detail deal view/TempViewController.swift"
+- "/Users/angelasmith/Desktop/SourceTree/RD/temp detail deal view/temp detail deal view/DealViewController.swift"
+- "/Users/angelasmith/Desktop/SourceTree/RD/temp detail deal view/temp detail deal view/AppDelegate.swift"
+- "/Users/angelasmith/Desktop/SourceTree/RD/temp detail deal view/temp detail deal view/dealCell.swift"

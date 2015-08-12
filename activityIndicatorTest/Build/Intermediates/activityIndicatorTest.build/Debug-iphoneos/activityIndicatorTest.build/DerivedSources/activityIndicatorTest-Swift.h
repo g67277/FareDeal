@@ -84,6 +84,7 @@ typedef struct _NSZone NSZone;
 #endif
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
+@import CoreGraphics;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -105,13 +106,17 @@ SWIFT_CLASS("_TtC21activityIndicatorTest11AppDelegate")
 @end
 
 @class NSCoder;
+@class CALayer;
+@class UIColor;
 
-SWIFT_CLASS("_TtC21activityIndicatorTest23NVActivityIndicatorView")
-@interface NVActivityIndicatorView : UIView
+SWIFT_CLASS("_TtC21activityIndicatorTest18CustomActivityView")
+@interface CustomActivityView : UIView
 @property (nonatomic) BOOL animating;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)startAnimation;
 - (void)stopAnimation;
+- (void)setUpAnimationInLayer:(CALayer * __nonnull)layer size:(CGSize)size color:(UIColor * __nonnull)color;
+- (CALayer * __nonnull)createRingLayerWithSize:(CGSize)size color:(UIColor * __nonnull)color;
 @end
 
 @class NSBundle;
@@ -119,8 +124,11 @@ SWIFT_CLASS("_TtC21activityIndicatorTest23NVActivityIndicatorView")
 SWIFT_CLASS("_TtC21activityIndicatorTest14ViewController")
 @interface ViewController : UIViewController
 @property (nonatomic) IBOutlet UIView * __null_unspecified activityIndicatorView;
+@property (nonatomic, readonly) CustomActivityView * __nonnull aIView;
 - (void)viewDidLoad;
 - (void)viewDidLayoutSubviews;
+- (IBAction)onStart:(id __nonnull)sender;
+- (IBAction)onStop:(id __nonnull)sender;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

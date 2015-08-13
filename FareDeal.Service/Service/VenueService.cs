@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Data.Entity;
+
 using FareDeal.Service.Data;
 
 namespace FareDeal.Service
@@ -31,7 +33,7 @@ namespace FareDeal.Service
                     var credit = v.venue_credit.FirstOrDefault();
                     if (credit != null && credit.credit_available > 0)
                     {
-                        db.Entry(v).Collection(d => d.deals).Query().Where(d1 => d1.active == true);   
+                        db.Entry(v).Collection(t => t.deals).Query().Where(o => o.active == true).Load();   
                     }
                     var distance = GetDistanceFromLatLonInKm(v.location.lat, v.location.lng, lat1, lng1);
                     if (distance < 10)
@@ -72,7 +74,7 @@ namespace FareDeal.Service
                     var credit = v.venue_credit.FirstOrDefault();
                     if (credit != null && credit.credit_available > 0)
                     {
-                        db.Entry(v).Collection(d => d.deals).Query().Where(d1 => d1.active == true); 
+                        db.Entry(v).Collection(t => t.deals).Query().Where(o => o.active == true).Load();  
                     }
                     var distance = GetDistanceFromLatLonInKm(v.location.lat, v.location.lng, lat1, lng1);
                     if (distance < 10)
@@ -112,7 +114,7 @@ namespace FareDeal.Service
 
                 if (credit != null && credit.credit_available > 0)
                 {
-                    db.Entry(v).Collection(d => d.deals).Query().Where(d1 => d1.active == true); 
+                    db.Entry(v).Collection(t => t.deals).Query().Where(o => o.active == true).Load(); 
                 }
             }
             return venues;
@@ -148,7 +150,7 @@ namespace FareDeal.Service
 
                 if (credit != null && credit.credit_available > 0)
                 {
-                    db.Entry(v).Collection(d => d.deals).Query().Where(d1=>d1.active == true);                   
+                    db.Entry(v).Collection(t => t.deals).Query().Where(o => o.active == true).Load();                
                 }
 
             }
@@ -189,7 +191,7 @@ namespace FareDeal.Service
             venue _venue = db.venues.Where(v => v.Id == id).FirstOrDefault();
             db.Entry(_venue).Collection(vc => vc.venue_credit).Load();
             db.Entry(_venue).Reference(vc => vc.category).Load();
-            db.Entry(_venue).Collection(d => d.deals).Query().Where(d1 => d1.active == true); 
+            db.Entry(_venue).Collection(t=>t.deals).Query().Where(o=>o.active == true).Load(); 
             db.Entry(_venue).Reference(vc => vc.location).Load();
             return _venue;
         }
@@ -199,7 +201,7 @@ namespace FareDeal.Service
             venue _venue = db.venues.Where(v => v.uId == id).FirstOrDefault();
             db.Entry(_venue).Collection(vc => vc.venue_credit).Load();
             db.Entry(_venue).Reference(vc => vc.category).Load();
-            db.Entry(_venue).Collection(d => d.deals).Query().Where(d1 => d1.active == true); 
+            db.Entry(_venue).Collection(t => t.deals).Query().Where(o => o.active == true).Load(); 
             db.Entry(_venue).Reference(vc => vc.location).Load();
 
             return _venue;

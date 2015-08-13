@@ -127,7 +127,8 @@
             Lat: "38.907192",
             Lng: "-77.036871",
             CategoryName: "Burger",
-            Website: "http://test.com"
+            Website: "http://test.com",
+            ImageName: "TestImage"
         };
 
         $.ajax({

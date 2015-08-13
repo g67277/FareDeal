@@ -197,7 +197,7 @@ namespace FareDealApi.Controllers
                     service.AddVenue(v);
 
                     //save image on disk
-                    SaveImage(v.defaultPicUrl);
+                    //SaveImage(v.defaultPicUrl);
                 }
                 else
                 {

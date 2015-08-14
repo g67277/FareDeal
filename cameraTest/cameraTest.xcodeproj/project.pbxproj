@@ -14,6 +14,7 @@
 		813222F61B68555100613C60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 813222F51B68555100613C60 /* Images.xcassets */; };
 		813222F91B68555100613C60 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 813222F71B68555100613C60 /* LaunchScreen.xib */; };
 		813223051B68555200613C60 /* cameraTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813223041B68555200613C60 /* cameraTestTests.swift */; };
+		81B879141B691B11003B1BB0 /* SelectorActionSheetTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B879131B691B11003B1BB0 /* SelectorActionSheetTestVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		813222FE1B68555200613C60 /* cameraTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cameraTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		813223031B68555200613C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		813223041B68555200613C60 /* cameraTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraTestTests.swift; sourceTree = "<group>"; };
+		81B879131B691B11003B1BB0 /* SelectorActionSheetTestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorActionSheetTestVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				813222F71B68555100613C60 /* LaunchScreen.xib */,
 				813222ED1B68555100613C60 /* cameraTest.xcdatamodeld */,
 				813222E91B68555100613C60 /* Supporting Files */,
+				81B879131B691B11003B1BB0 /* SelectorActionSheetTestVC.swift */,
 			);
 			path = cameraTest;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				813222F11B68555100613C60 /* ViewController.swift in Sources */,
 				813222EF1B68555100613C60 /* cameraTest.xcdatamodeld in Sources */,
 				813222EC1B68555100613C60 /* AppDelegate.swift in Sources */,
+				81B879141B691B11003B1BB0 /* SelectorActionSheetTestVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +417,7 @@
 				8132230A1B68555200613C60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8132230B1B68555200613C60 /* Build configuration list for PBXNativeTarget "cameraTestTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +426,7 @@
 				8132230D1B68555200613C60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

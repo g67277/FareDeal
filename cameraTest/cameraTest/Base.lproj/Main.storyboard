@@ -1,25 +1,170 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="cameraTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="1200"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="smd-ar-30t">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9r-wC-yyV">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Camera">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showActionSheetTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GzR-oW-vAT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2S-cD-N5E">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Send image">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="XY3-km-nLx"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Z9r-wC-yyV" firstAttribute="top" secondItem="smd-ar-30t" secondAttribute="bottom" constant="17" id="7jx-G0-KSe"/>
+                            <constraint firstItem="smd-ar-30t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-2" id="8GT-H4-9yx"/>
+                            <constraint firstItem="a2S-cD-N5E" firstAttribute="centerX" secondItem="Z9r-wC-yyV" secondAttribute="centerX" id="8cn-2N-OYP"/>
+                            <constraint firstItem="smd-ar-30t" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="NJC-2p-HyN"/>
+                            <constraint firstItem="a2S-cD-N5E" firstAttribute="top" secondItem="Z9r-wC-yyV" secondAttribute="bottom" constant="26" id="WQf-My-HcY"/>
+                            <constraint firstItem="smd-ar-30t" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="aDh-gg-ffP"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Z9r-wC-yyV" secondAttribute="bottom" constant="370" id="eHs-yP-YER"/>
+                            <constraint firstItem="Z9r-wC-yyV" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="xo5-uM-aSs"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="smd-ar-30t"/>
+                                <exclude reference="Z9r-wC-yyV"/>
+                                <exclude reference="a2S-cD-N5E"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="8GT-H4-9yx"/>
+                                <exclude reference="NJC-2p-HyN"/>
+                                <exclude reference="aDh-gg-ffP"/>
+                                <exclude reference="7jx-G0-KSe"/>
+                                <exclude reference="xo5-uM-aSs"/>
+                                <exclude reference="8cn-2N-OYP"/>
+                                <exclude reference="WQf-My-HcY"/>
+                                <exclude reference="eHs-yP-YER"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="smd-ar-30t"/>
+                                <include reference="Z9r-wC-yyV"/>
+                                <include reference="a2S-cD-N5E"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="8GT-H4-9yx"/>
+                                <include reference="NJC-2p-HyN"/>
+                                <include reference="aDh-gg-ffP"/>
+                                <include reference="7jx-G0-KSe"/>
+                                <include reference="xo5-uM-aSs"/>
+                                <include reference="8cn-2N-OYP"/>
+                                <include reference="WQf-My-HcY"/>
+                                <include reference="eHs-yP-YER"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="smd-ar-30t" id="t8e-4t-4YK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="324" y="267"/>
+        </scene>
+        <!--Selector Action Sheet TestVC-->
+        <scene sceneID="uaV-yZ-dj8">
+            <objects>
+                <viewController id="9MY-Ju-6XU" customClass="SelectorActionSheetTestVC" customModule="cameraTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zgS-sJ-e4X"/>
+                        <viewControllerLayoutGuide type="bottom" id="1e5-gk-TWb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="miR-h8-eBF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMd-Sn-j04">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openPicker:" destination="9MY-Ju-6XU" eventType="touchUpInside" id="eIQ-Lo-QtD"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxI-3E-B8M">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wxI-3E-B8M" firstAttribute="top" secondItem="zgS-sJ-e4X" secondAttribute="bottom" constant="77" id="Etq-78-mQn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wxI-3E-B8M" secondAttribute="trailing" constant="56" id="OMR-SP-UBJ"/>
+                            <constraint firstItem="MMd-Sn-j04" firstAttribute="top" secondItem="wxI-3E-B8M" secondAttribute="bottom" constant="94" id="ZjB-Cr-WYU"/>
+                            <constraint firstItem="MMd-Sn-j04" firstAttribute="leading" secondItem="miR-h8-eBF" secondAttribute="leading" constant="175" id="enO-kA-wSP"/>
+                            <constraint firstItem="wxI-3E-B8M" firstAttribute="leading" secondItem="miR-h8-eBF" secondAttribute="leadingMargin" constant="43" id="gVB-1v-CIr"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="MMd-Sn-j04"/>
+                                <exclude reference="wxI-3E-B8M"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Etq-78-mQn"/>
+                                <exclude reference="OMR-SP-UBJ"/>
+                                <exclude reference="gVB-1v-CIr"/>
+                                <exclude reference="ZjB-Cr-WYU"/>
+                                <exclude reference="enO-kA-wSP"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="MMd-Sn-j04"/>
+                                <include reference="wxI-3E-B8M"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Etq-78-mQn"/>
+                                <include reference="OMR-SP-UBJ"/>
+                                <include reference="gVB-1v-CIr"/>
+                                <include reference="ZjB-Cr-WYU"/>
+                                <include reference="enO-kA-wSP"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="countryLabel" destination="wxI-3E-B8M" id="JGW-WE-5ck"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BJp-6T-rb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1209" y="93"/>
         </scene>
     </scenes>
 </document>

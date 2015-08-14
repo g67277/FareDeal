@@ -39,6 +39,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
         
         loadDeals()
+        loadDealsFromServer()
+        
+    }
+    
+    func loadDealsFromServer(){
         
     }
     
@@ -211,6 +216,44 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+//    func getDeals() -> (Bool){
+//        
+//        var url:NSURL = NSURL(string: "http://ec2-52-2-195-214.compute-1.amazonaws.com/api/Venue/GetLocal?lat=38.907192&lng=-77.036871")!
+//        
+//        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+//        request.HTTPMethod = "GET"
+//        request.timeoutInterval = 60
+//        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+//        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+//        request.setValue("application/json", forHTTPHeaderField: "Accept")
+//        
+//        var reponseError: NSError?
+//        var response: NSURLResponse?
+//        
+//        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+//        let JSONObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(urlData!, options: nil, error: nil)
+//        
+//        if let returnedVenues = JSONObject as? [AnyObject] {
+//            for venue in returnedVenues {
+//                let venueJson = JSON(venue)
+//                // Parse the JSON file using SwiftlyJSON
+//                APICalls.parseJSONDeals(venueJson)
+//            }
+//            return true
+//            
+//        }else {
+//            println("There are no Saloof deals near this user")
+//            return false
+//        }
+//        
+//        return false
+//    }
+    
+    func parseJSON(){
+        
     }
 
 

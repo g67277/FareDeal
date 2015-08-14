@@ -1,0 +1,6 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "436ae84293b0872bf09d106c755be6e3"
+inputs: 
+- "/Users/angelasmith/Desktop/SourceTree/RD/Attributed Detail Test/Attributed Detail Test/ViewController.swift"
+- "/Users/angelasmith/Desktop/SourceTree/RD/Attributed Detail Test/Attributed Detail Test/AppDelegate.swift"
+- "/Users/angelasmith/Desktop/SourceTree/RD/Attributed Detail Test/Attributed Detail Test/LinkedTextView.swift"

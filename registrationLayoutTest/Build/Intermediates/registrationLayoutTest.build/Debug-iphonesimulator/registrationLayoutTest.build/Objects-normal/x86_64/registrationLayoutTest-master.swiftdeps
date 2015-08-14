@@ -1,0 +1,5 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "430a9d07a331434372748adba4f37bf7"
+inputs: 
+- "/Users/angelasmith/Desktop/SourceTree/RD/registrationLayoutTest/registrationLayoutTest/ViewController.swift"
+- "/Users/angelasmith/Desktop/SourceTree/RD/registrationLayoutTest/registrationLayoutTest/AppDelegate.swift"

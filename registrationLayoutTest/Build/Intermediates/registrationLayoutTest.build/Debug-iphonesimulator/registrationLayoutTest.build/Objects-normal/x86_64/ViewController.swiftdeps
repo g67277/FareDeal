@@ -1,0 +1,48 @@
+### Swift dependencies file v0 ###
+provides:
+- "ViewController"
+nominals:
+- "C22registrationLayoutTest14ViewController"
+- "CSo6UIView"
+class-members:
+- "viewDidLoad"
+- "viewDidLayoutSubviews"
+- "didReceiveMemoryWarning"
+- "setBorder"
+- "usernameView"
+- "roundCorners"
+top-level:
+- !private "UIColor"
+- "UIView"
+- "UIRectCorner"
+- !private "UIBezierPath"
+- "CGFloat"
+- "UIViewController"
+- !private "CAShapeLayer"
+- !private "CGSizeMake"
+- !private "CGSize"
+member-access:
+- !private "VSC6CGSize"
+- !private "CSo7UIColor"
+- !private "CSo12CAShapeLayer"
+- !private "VSC12UIRectCorner"
+- "CSo6UIView"
+- !private "CSo7CALayer"
+- "CSo8NSObject"
+- !private "V12CoreGraphics7CGFloat"
+- !private "CSo12UIBezierPath"
+- "CSo16UIViewController"
+- "PSs9AnyObject"
+- "C22registrationLayoutTest14ViewController"
+- "CSo11UIResponder"
+dynamic-lookup:
+cross-module:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Security.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/CoreImage.swiftmodule"

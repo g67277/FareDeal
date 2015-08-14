@@ -142,6 +142,46 @@
         }).fail(showError);
     });
 
+    $('#btnUpdateVenue').click(function () {
+
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+
+        var name = "Restaurent_Hemal_" + Math.random();
+
+        var data = {
+            VenueId: 'FE48ADA0-FCFD-40C1-BDBA-E1D85DF81AFD',
+            ContactName: 'Test Contact updated',
+            StreetName: 'Test St',
+            City: 'Washington',
+            State: 'DC',
+            ZipCode: '22055',
+            PhoneNumber: '2222222222',
+            PriceTier: 1,
+            WeekdaysHours: '10AM-10PM',
+            WeekEndHours: '10AM-12AM',
+            RestaurantName: name,
+            Lat: "38.907192",
+            Lng: "-77.036871",
+            CategoryName: "Burrito Place",
+            Website: "http://test.com",
+            ImageName: "TestImage"
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/Venue',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data),
+            headers: headers
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
+
     $('#btnCreateDeal').click(function () {
 
         var token = sessionStorage.getItem(tokenKey);
@@ -262,7 +302,24 @@
         }
         $.ajax({
             type: 'GET',
-            url: '/api/Venue/Like?id=CB29A448-84C9-4630-A0B0-06497A613DA6',
+            url: '/api/Venue/Like?id=CB29A448-84C9-4630-A0B0-06497A613DA6&like=true',
+            contentType: 'application/json; charset=utf-8',
+            headers: headers
+        }).done(function (data) {
+            self.result("Done!");
+        }).fail(showError);
+    });
+
+    $('#btnFav').click(function () {
+
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+        $.ajax({
+            type: 'GET',
+            url: '/api/Venue/Favourite?id=CB29A448-84C9-4630-A0B0-06497A613DA6&favourite=true',
             contentType: 'application/json; charset=utf-8',
             headers: headers
         }).done(function (data) {

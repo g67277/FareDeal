@@ -38,6 +38,7 @@ namespace FareDeal.Service
                     var distance = GetDistanceFromLatLonInKm(v.location.lat, v.location.lng, lat1, lng1);
                     if (distance < 10)
                     {
+                        v.dist_to_location = distance * 1000;
                         lstVenue.Add(v);
                     }
                 }
@@ -79,6 +80,7 @@ namespace FareDeal.Service
                     var distance = GetDistanceFromLatLonInKm(v.location.lat, v.location.lng, lat1, lng1);
                     if (distance < 10)
                     {
+                        v.dist_to_location = distance * 1000;
                         lstVenue.Add(v);
                     }
                 }
@@ -167,12 +169,12 @@ namespace FareDeal.Service
             db.Entry(vc).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
         }
-        public void AddVenue(venue _venue)
+        public void SaveVenue(venue _venue)
         {
             try
             {
-                db.Entry(_venue.category).State = System.Data.Entity.EntityState.Unchanged;
-                db.venues.Add(_venue);
+                //db.Entry(_venue.category).State = System.Data.Entity.EntityState.Unchanged;
+                //db.venues.Add(_venue);
                 db.SaveChanges();
             }
             catch(Exception e)
@@ -207,34 +209,94 @@ namespace FareDeal.Service
             return _venue;
         }
 
-        public VenueCreditSummary GetSummary(Guid venueId)
+        public List<VenueCreditSummary> GetSummary(Guid venueId)
         {
-            //Get all deals 
             venue _venue = db.venues.Where(v => v.Id == venueId).FirstOrDefault();
-            db.Entry(_venue).Collection(s => s.deals).Load();
             db.Entry(_venue).Collection(vc => vc.venue_credit).Load();
 
-            int pd = _venue.deals.Sum(s => s.totalPurchased).Value;
-            int sd = _venue.deals.Sum(s => s.totalSwapped).Value;
+            var total = from T1 in db.venues
+                        where T1.Id == venueId
+                        join T2 in db.deals on T1.Id equals T2.venue_id
+                        join T3 in db.deal_transcation on T2.id equals T3.deal_id
+                        where (T1.Id == venueId && T3.tran_time.Year == DateTime.Now.Year)
+                        group T3 by new { T1.Id, T2.id, T3.tran_time.Month, T3.tran_time.Year } into g                        
+                        select new
+                        {
+                            DealId = g.Key.id,
+                            VenueId = g.Key.Id,
+                            Month = g.Key.Month,
+                            Year = g.Key.Year,
+                            Purchased = g.Sum(t3 => t3.quantity_redeemed.CompareTo(-1)),
+                            Swapped = g.Sum(t3 => t3.quantity_redeemed.CompareTo(1))
+                        };
 
-            var ob = new VenueCreditSummary()
+            List<VenueCreditSummary> vcs = new List<VenueCreditSummary>();
+            foreach(var t in total)
             {
-                CreditAvailable = _venue.venue_credit.FirstOrDefault().credit_available,
-                TotalDealsPurchased = pd,
-                TotalDealsSwapped = sd,
-                VenueId = _venue.Id,
-                VenueName = _venue.name
-            };
+                vcs.Add(
+                    new VenueCreditSummary()
+                    {
+                        VenueId = t.VenueId,
+                        Year = t.Year,
+                        Month = t.Month,
+                        VenueName = _venue.name,
+                        TotalDealsPurchased = Math.Abs(t.Purchased),
+                        TotalDealsSwapped = Math.Abs(t.Swapped),
+                        CreditAvailable = _venue.venue_credit.FirstOrDefault().credit_available
+                    }
+                );
+            }
 
-            return ob;
+
+            //Get all deals 
+            //venue _venue = db.venues.Where(v => v.Id == venueId).FirstOrDefault();
+            //db.Entry(_venue).Collection(s => s.deals).Load();
+            //db.Entry(_venue).Collection(vc => vc.venue_credit).Load();
+
+            //int pd = _venue.deals.Sum(s => s.totalPurchased).Value;
+            //int sd = _venue.deals.Sum(s => s.totalSwapped).Value;
+
+            //var ob = new VenueCreditSummary()
+            //{
+            //    CreditAvailable = _venue.venue_credit.FirstOrDefault().credit_available,
+            //    TotalDealsPurchased = pd,
+            //    TotalDealsSwapped = sd,
+            //    VenueId = _venue.Id,
+            //    VenueName = _venue.name
+            //};
+
+            return vcs;
         }
 
-        public void SaveLike(Guid id)
+        public void SaveLike(Guid id, bool like)
         {
             venue _venue = db.venues.Where(v => v.Id == id).FirstOrDefault();
             if (_venue.likes == null)
                 _venue.likes = 0;
-            _venue.likes += 1;
+            if (like)
+            {
+                _venue.likes += 1;
+            }
+            else
+            {
+                _venue.likes = _venue.likes - 1;
+            }
+            db.SaveChanges();
+        }
+
+        public void SaveFavourites(Guid id, bool favourite)
+        {
+            venue _venue = db.venues.Where(v => v.Id == id).FirstOrDefault();
+            if (_venue.favourites == null)
+                _venue.favourites = 0;
+            if (favourite)
+            {
+                _venue.favourites += 1;
+            }
+            else
+            {
+                _venue.favourites = _venue.favourites - 1;
+            }
             db.SaveChanges();
         }
     }
@@ -246,5 +308,8 @@ namespace FareDeal.Service
         public int TotalDealsPurchased { get; set; }
         public int TotalDealsSwapped { get; set; }
         public int CreditAvailable { get; set; }
+
+        public int Month { get; set; }
+        public int Year { get; set; }
     }
 }

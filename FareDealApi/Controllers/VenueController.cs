@@ -134,78 +134,78 @@ namespace FareDealApi.Controllers
             }
         }
 
-        // POST: api/Venue
-        [Authorize(Roles = "business")]
-        public async Task<IHttpActionResult> Post(BusinessModel model)
-        {
-            category cat;
-            venue v;
-            using (CategoryService catService = new CategoryService())
-            {
-                 cat = catService.GetCategry(model.CategoryName, null);
-            }
-            using (VenueService service = new VenueService())
-            {
-                v = service.GetByName(model.RestaurantName);
+        //// POST: api/Venue
+        //[Authorize(Roles = "business")]
+        //public async Task<IHttpActionResult> Post(BusinessModel model)
+        //{
+        //    category cat;
+        //    venue v;
+        //    using (CategoryService catService = new CategoryService())
+        //    {
+        //         cat = catService.GetCategry(model.CategoryName, null);
+        //    }
+        //    using (VenueService service = new VenueService())
+        //    {
+        //        v = service.GetByName(model.RestaurantName);
                 
-                if (v == null)
-                {
+        //        if (v == null)
+        //        {
 
-                    location l = new location();
-                    l.id = Guid.NewGuid();
-                    l.postalcode = model.ZipCode;
-                    l.city = model.City;
-                    l.address = model.StreetName;
-                    l.state = model.State;
-                    l.lng = model.Lng;
-                    l.lat = model.Lat;
-                    l.cc = "US";
+        //            location l = new location();
+        //            l.id = Guid.NewGuid();
+        //            l.postalcode = model.ZipCode;
+        //            l.city = model.City;
+        //            l.address = model.StreetName;
+        //            l.state = model.State;
+        //            l.lng = model.Lng;
+        //            l.lat = model.Lat;
+        //            l.cc = "US";
 
-                    v = new venue();
-                    v.Id = Guid.NewGuid();
-                    v.isOpen = true;
-                    v.name = model.RestaurantName;
-                    v.description = model.Description;
-                    v.url = model.Website;
-                    v.priceTier = model.PriceTier;
-                    v.defaultPicUrl = model.ImageName;
-                    //v.location_id = l.id;
-                    v.weekdayHours = model.WeekdaysHours;
-                    v.weekendHours = model.WeekendHours;
+        //            v = new venue();
+        //            v.Id = Guid.NewGuid();
+        //            v.isOpen = true;
+        //            v.name = model.RestaurantName;
+        //            v.description = model.Description;
+        //            v.url = model.Website;
+        //            v.priceTier = model.PriceTier;
+        //            v.defaultPicUrl = model.ImageName;
+        //            //v.location_id = l.id;
+        //            v.weekdayHours = model.WeekdaysHours;
+        //            v.weekendHours = model.WeekendHours;
 
-                    v.contactName = model.ContactName;
-                    v.phone = model.PhoneNumber;
+        //            v.contactName = model.ContactName;
+        //            v.phone = model.PhoneNumber;
 
-                    v.location = l;
-                    v.uId = Guid.Parse(User.Identity.GetUserId());
+        //            v.location = l;
+        //            v.uId = Guid.Parse(User.Identity.GetUserId());
 
-                    //find category
+        //            //find category
 
                     
-                    //v.categoryId = cat.Id;
-                    v.category = cat;
+        //            //v.categoryId = cat.Id;
+        //            v.category = cat;
 
-                    venue_credit vc = new venue_credit();
-                    vc.Id = Guid.NewGuid();
-                    vc.venue_id = v.Id;
-                    vc.credit_auto_increase = 5;
-                    vc.credit_available = 50;
-                    vc.credit_threhold = 10;
+        //            venue_credit vc = new venue_credit();
+        //            vc.Id = Guid.NewGuid();
+        //            vc.venue_id = v.Id;
+        //            vc.credit_auto_increase = 5;
+        //            vc.credit_available = 50;
+        //            vc.credit_threhold = 10;
 
-                    v.venue_credit.Add(vc);
+        //            v.venue_credit.Add(vc);
 
-                    service.AddVenue(v);
+        //            service.AddVenue(v);
 
-                    //save image on disk
-                    //SaveImage(v.defaultPicUrl);
-                }
-                else
-                {
+        //            //save image on disk
+        //            //SaveImage(v.defaultPicUrl);
+        //        }
+        //        else
+        //        {
 
-                }
-            }
-            return Ok("{VenueId: " + v.Id + "}");
-        }
+        //        }
+        //    }
+        //    return Ok("{VenueId: " + v.Id + "}");
+        //}
 
         private void SaveImage(string p)
         {
@@ -215,7 +215,7 @@ namespace FareDealApi.Controllers
         [HttpGet]
         [Route("api/Venue/BalanceSummary")]
         [Authorize(Roles="business")]
-        public VenueCreditSummary BalanceSummary(Guid id)
+        public IEnumerable<VenueCreditSummary> BalanceSummary(Guid id)
         {
             using (VenueService vc = new VenueService())
             {
@@ -225,11 +225,22 @@ namespace FareDealApi.Controllers
 
         [HttpGet]
         [Route("api/Venue/Like")]
-        public async Task<IHttpActionResult> Like(Guid id)
+        public async Task<IHttpActionResult> Like(Guid id, bool like)
         {
             using(VenueService service = new VenueService())
             {
-                service.SaveLike(id);
+                service.SaveLike(id, like);
+            }
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("api/Venue/Favourite")]
+        public async Task<IHttpActionResult> Favourite(Guid id, bool favourite)
+        {
+            using (VenueService service = new VenueService())
+            {
+                service.SaveFavourites(id, favourite);
             }
             return Ok();
         }
@@ -255,6 +266,132 @@ namespace FareDealApi.Controllers
         // DELETE: api/Venue/5
         public void Delete(int id)
         {
+        }
+
+
+        // POST: api/Venue
+        [Authorize(Roles = "business")]
+        public async Task<IHttpActionResult> Post(BusinessModel model)
+        {
+            category cat;
+            venue v;
+
+            if (model.VenueId == null || model.VenueId == Guid.Empty)
+            {
+                using (CategoryService catService = new CategoryService())
+                {
+                    cat = catService.GetCategry(model.CategoryName, null);
+                }
+                using (VenueService service = new VenueService())
+                {
+                    v = service.GetByName(model.RestaurantName);
+
+                    if (v == null)
+                    {
+
+                        location l = new location();
+                        l.id = Guid.NewGuid();
+                        l.postalcode = model.ZipCode;
+                        l.city = model.City;
+                        l.address = model.StreetName;
+                        l.state = model.State;
+                        l.lng = model.Lng;
+                        l.lat = model.Lat;
+                        l.cc = "US";
+
+                        v = new venue();
+                        v.Id = Guid.NewGuid();
+                        v.isOpen = true;
+                        v.name = model.RestaurantName;
+                        v.description = model.Description;
+                        v.url = model.Website;
+                        v.priceTier = model.PriceTier;
+                        v.defaultPicUrl = model.ImageName;
+                        //v.location_id = l.id;
+                        v.weekdayHours = model.WeekdaysHours;
+                        v.weekendHours = model.WeekendHours;
+
+                        v.contactName = model.ContactName;
+                        v.phone = model.PhoneNumber;
+
+                        v.location = l;
+                        v.uId = Guid.Parse(User.Identity.GetUserId());
+
+                        //find category
+
+
+                        //v.categoryId = cat.Id;
+                        v.categoryId = cat.Id;
+
+                        venue_credit vc = new venue_credit();
+                        vc.Id = Guid.NewGuid();
+                        vc.venue_id = v.Id;
+                        vc.credit_auto_increase = 5;
+                        vc.credit_available = 50;
+                        vc.credit_threhold = 10;
+
+                        v.venue_credit.Add(vc);
+
+                        service.db.venues.Add(v);
+                        service.SaveVenue(v);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                return Ok("{VenueId: " + v.Id + "}");
+            }
+            else //update record
+            {
+                using (CategoryService catService = new CategoryService())
+                {
+                    cat = catService.GetCategry(model.CategoryName, null);
+                }
+                using (VenueService service = new VenueService())
+                {
+                    v = service.GetById(model.VenueId);
+
+                    if (v != null)
+                    {
+                        location l = v.location;
+                        l.postalcode = model.ZipCode;
+                        l.city = model.City;
+                        l.address = model.StreetName;
+                        l.state = model.State;
+                        l.lng = model.Lng;
+                        l.lat = model.Lat;
+                        l.cc = "US";
+
+                        v.isOpen = true;
+                        v.name = model.RestaurantName;
+                        v.description = model.Description;
+                        v.url = model.Website;
+                        v.priceTier = model.PriceTier;
+                        v.defaultPicUrl = model.ImageName;
+                        //v.location_id = l.id;
+                        v.weekdayHours = model.WeekdaysHours;
+                        v.weekendHours = model.WeekendHours;
+
+                        v.contactName = model.ContactName;
+                        v.phone = model.PhoneNumber;
+
+                        v.location = l;
+                        v.uId = Guid.Parse(User.Identity.GetUserId());
+
+                        v.categoryId = cat.Id;
+                        service.db.Entry(v.location).State = System.Data.Entity.EntityState.Modified;
+                        //service.AddVenue(v);
+                        service.db.Entry(v).State = System.Data.Entity.EntityState.Modified;
+                        service.SaveVenue(v);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                return Ok("{VenueId: " + v.Id + "}");
+            }
         }
     }
 

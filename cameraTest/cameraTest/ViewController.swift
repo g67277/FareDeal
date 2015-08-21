@@ -18,6 +18,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var pngImg = NSData()
     
     
+    @IBOutlet var afterCompressionImage: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
     var newMedia: Bool?
     
@@ -285,10 +286,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 as! UIImage
             
             imageView.image = image
-            var test = image
-            jpegImg = UIImageJPEGRepresentation(image, 100)
-            pngImg = UIImagePNGRepresentation(image)
             
+            // Start new code here
+            //jpegImg = UIImageJPEGRepresentation(image, 100)
+            //pngImg = UIImagePNGRepresentation(image)
+            jpegImg = UIImageJPEGRepresentation(image, 1)
+            var ratio: CGFloat = 0.5
+            var attempts = 5
+            println("Initial imageSize: \(jpegImg.length)")
+            while jpegImg.length > 200000 && attempts > 0 {
+                attempts = attempts - 1
+                ratio = ratio * 0.5
+                println("image Size before compression: \(jpegImg.length)")
+                jpegImg = UIImageJPEGRepresentation(image, ratio)
+                println("image Size after compression: \(jpegImg.length) with ratio: \(ratio)")
+            }
+            println("final image size: \(jpegImg.length)")
+            
+            let afterImage = UIImage(data: jpegImg)
+            afterCompressionImage.image = afterImage
+            
+            
+            // End new code here
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self,
                     "image:didFinishSavingWithError:contextInfo:", nil)
@@ -298,6 +317,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
         }
     }
+
     
     func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>) {
         

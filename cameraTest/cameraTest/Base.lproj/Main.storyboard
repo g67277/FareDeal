@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="smd-ar-30t">
@@ -39,16 +39,25 @@
                                     <action selector="onClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="XY3-km-nLx"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kXH-0f-fex">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kXH-0f-fex" firstAttribute="top" secondItem="a2S-cD-N5E" secondAttribute="bottom" constant="13" id="2IL-Kk-ciW"/>
                             <constraint firstItem="Z9r-wC-yyV" firstAttribute="top" secondItem="smd-ar-30t" secondAttribute="bottom" constant="17" id="7jx-G0-KSe"/>
                             <constraint firstItem="smd-ar-30t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-2" id="8GT-H4-9yx"/>
                             <constraint firstItem="a2S-cD-N5E" firstAttribute="centerX" secondItem="Z9r-wC-yyV" secondAttribute="centerX" id="8cn-2N-OYP"/>
                             <constraint firstItem="smd-ar-30t" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="NJC-2p-HyN"/>
+                            <constraint firstItem="kXH-0f-fex" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="16" id="Uj0-WB-BSt">
+                                <variation key="heightClass=regular-widthClass=compact" constant="14"/>
+                            </constraint>
                             <constraint firstItem="a2S-cD-N5E" firstAttribute="top" secondItem="Z9r-wC-yyV" secondAttribute="bottom" constant="26" id="WQf-My-HcY"/>
                             <constraint firstItem="smd-ar-30t" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="aDh-gg-ffP"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Z9r-wC-yyV" secondAttribute="bottom" constant="370" id="eHs-yP-YER"/>
+                            <constraint firstAttribute="trailing" secondItem="kXH-0f-fex" secondAttribute="trailing" constant="14" id="nPE-lE-ePa"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="kXH-0f-fex" secondAttribute="bottom" constant="8" id="xl0-OX-Z1a"/>
                             <constraint firstItem="Z9r-wC-yyV" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="xo5-uM-aSs"/>
                         </constraints>
                         <variation key="default">
@@ -56,6 +65,7 @@
                                 <exclude reference="smd-ar-30t"/>
                                 <exclude reference="Z9r-wC-yyV"/>
                                 <exclude reference="a2S-cD-N5E"/>
+                                <exclude reference="kXH-0f-fex"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="8GT-H4-9yx"/>
@@ -65,7 +75,11 @@
                                 <exclude reference="xo5-uM-aSs"/>
                                 <exclude reference="8cn-2N-OYP"/>
                                 <exclude reference="WQf-My-HcY"/>
+                                <exclude reference="2IL-Kk-ciW"/>
+                                <exclude reference="Uj0-WB-BSt"/>
+                                <exclude reference="nPE-lE-ePa"/>
                                 <exclude reference="eHs-yP-YER"/>
+                                <exclude reference="xl0-OX-Z1a"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -73,6 +87,7 @@
                                 <include reference="smd-ar-30t"/>
                                 <include reference="Z9r-wC-yyV"/>
                                 <include reference="a2S-cD-N5E"/>
+                                <include reference="kXH-0f-fex"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="8GT-H4-9yx"/>
@@ -82,11 +97,16 @@
                                 <include reference="xo5-uM-aSs"/>
                                 <include reference="8cn-2N-OYP"/>
                                 <include reference="WQf-My-HcY"/>
+                                <include reference="2IL-Kk-ciW"/>
+                                <include reference="Uj0-WB-BSt"/>
+                                <include reference="nPE-lE-ePa"/>
                                 <include reference="eHs-yP-YER"/>
+                                <include reference="xl0-OX-Z1a"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="afterCompressionImage" destination="kXH-0f-fex" id="uq1-V3-cb4"/>
                         <outlet property="imageView" destination="smd-ar-30t" id="t8e-4t-4YK"/>
                     </connections>
                 </viewController>

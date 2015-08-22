@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>3BB407B3-BF9D-4C12-9C02-A1A29E4EEABD</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>phoneTest</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7A050A765296F1E16C77CCF58816CBE429809774</key>
 		<string>https://github.com/g67277/FareDeal</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>phoneTest/phoneTest.xcodeproj/project.xcworkspace</string>
+	<string>phoneTest/phoneTest.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7A050A765296F1E16C77CCF58816CBE429809774</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>7A050A765296F1E16C77CCF58816CBE429809774</string>
 			<key>IDESourceControlWCCName</key>
-			<string>RD</string>
+			<string>FareDeal%20Tests</string>
 		</dict>
 	</array>
 </dict>

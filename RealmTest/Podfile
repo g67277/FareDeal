@@ -4,5 +4,5 @@
 
 use_frameworks!
 pod 'RealmSwift', '~> 0.94'
-
+pod 'SDWebImage', '~>3.7'
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KolodaPhotoView" customModule="AsyncImageTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUN-zy-oNs">
+                    <rect key="frame" x="0.0" y="542" width="600" height="58"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="58" id="f02-WW-5R1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vJh-l0-cZI" customClass="AsyncImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="542"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="vJh-l0-cZI" secondAttribute="trailing" id="1ND-iD-gYX"/>
+                <constraint firstItem="rUN-zy-oNs" firstAttribute="top" secondItem="vJh-l0-cZI" secondAttribute="bottom" id="IB6-1l-Ab6"/>
+                <constraint firstItem="vJh-l0-cZI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QD0-Ir-6Ih"/>
+                <constraint firstItem="vJh-l0-cZI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cLP-Au-ah2"/>
+                <constraint firstAttribute="trailing" secondItem="rUN-zy-oNs" secondAttribute="trailing" id="uVh-er-2QI"/>
+                <constraint firstAttribute="bottom" secondItem="rUN-zy-oNs" secondAttribute="bottom" id="ysD-kA-WY8"/>
+                <constraint firstItem="rUN-zy-oNs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zKi-sQ-VRw"/>
+            </constraints>
+            <connections>
+                <outlet property="photoImageView" destination="vJh-l0-cZI" id="dI9-KH-8ff"/>
+                <outlet property="photoTitleLabel" destination="rUN-zy-oNs" id="uBq-1b-gOK"/>
+            </connections>
+        </view>
+    </objects>
+</document>

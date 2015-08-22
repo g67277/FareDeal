@@ -30,10 +30,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             var decimalString = "".join(components) as NSString
             var length = decimalString.length
-            var firstChar = Array(arrayLiteral: decimalString)[0]
-            var hasLeadingOne = length > 0 && firstChar == "1"
-            
-            if length == 0 || (length > 10 && !hasLeadingOne) || length > 11 {
+
+            if length == 0 || length > 10 || length > 11 {
                 var newLength = (textField.text as NSString).length + (string as NSString).length - range.length as Int
                 
                 return (newLength > 10) ? false : true
@@ -41,10 +39,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             var index = 0 as Int
             var formattedString = NSMutableString()
             
-            if hasLeadingOne {
-                formattedString.appendString("1 ")
-                index += 1
-            }
+           
             if (length - index) > 3 {
                 var areaCode = decimalString.substringWithRange(NSMakeRange(index, 3))
                 formattedString.appendFormat("(%@) ", areaCode)

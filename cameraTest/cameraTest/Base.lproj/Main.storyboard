@@ -68,9 +68,8 @@
                                 <exclude reference="kXH-0f-fex"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8GT-H4-9yx"/>
-                                <exclude reference="NJC-2p-HyN"/>
-                                <exclude reference="aDh-gg-ffP"/>
+                                <exclude reference="eHs-yP-YER"/>
+                                <exclude reference="xl0-OX-Z1a"/>
                                 <exclude reference="7jx-G0-KSe"/>
                                 <exclude reference="xo5-uM-aSs"/>
                                 <exclude reference="8cn-2N-OYP"/>
@@ -78,8 +77,9 @@
                                 <exclude reference="2IL-Kk-ciW"/>
                                 <exclude reference="Uj0-WB-BSt"/>
                                 <exclude reference="nPE-lE-ePa"/>
-                                <exclude reference="eHs-yP-YER"/>
-                                <exclude reference="xl0-OX-Z1a"/>
+                                <exclude reference="8GT-H4-9yx"/>
+                                <exclude reference="NJC-2p-HyN"/>
+                                <exclude reference="aDh-gg-ffP"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -90,9 +90,8 @@
                                 <include reference="kXH-0f-fex"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8GT-H4-9yx"/>
-                                <include reference="NJC-2p-HyN"/>
-                                <include reference="aDh-gg-ffP"/>
+                                <include reference="eHs-yP-YER"/>
+                                <include reference="xl0-OX-Z1a"/>
                                 <include reference="7jx-G0-KSe"/>
                                 <include reference="xo5-uM-aSs"/>
                                 <include reference="8cn-2N-OYP"/>
@@ -100,8 +99,9 @@
                                 <include reference="2IL-Kk-ciW"/>
                                 <include reference="Uj0-WB-BSt"/>
                                 <include reference="nPE-lE-ePa"/>
-                                <include reference="eHs-yP-YER"/>
-                                <include reference="xl0-OX-Z1a"/>
+                                <include reference="8GT-H4-9yx"/>
+                                <include reference="NJC-2p-HyN"/>
+                                <include reference="aDh-gg-ffP"/>
                             </mask>
                         </variation>
                     </view>

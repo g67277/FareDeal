@@ -16,6 +16,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMc-Up-QNB">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onStart:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JsN-Fk-JbC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98l-yK-gZi">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onStop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="A4r-Ww-zUl"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npx-qe-Ah3" customClass="NVActivityIndicatorView" customModule="activityIndicatorTest" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -36,39 +54,31 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMc-Up-QNB">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onStart:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JsN-Fk-JbC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98l-yK-gZi">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Stop">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onStop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="A4r-Ww-zUl"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.89411764709999997" green="0.27450980390000002" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="uMc-Up-QNB" firstAttribute="top" secondItem="npx-qe-Ah3" secondAttribute="bottom" constant="19" id="SBY-VN-W5J"/>
-                            <constraint firstAttribute="centerX" secondItem="npx-qe-Ah3" secondAttribute="centerX" id="Za8-O7-VOq"/>
-                            <constraint firstAttribute="centerX" secondItem="98l-yK-gZi" secondAttribute="centerX" id="c0k-Rk-N9M"/>
-                            <constraint firstAttribute="centerX" secondItem="uMc-Up-QNB" secondAttribute="centerX" id="dY3-HE-vTU"/>
-                            <constraint firstAttribute="centerY" secondItem="npx-qe-Ah3" secondAttribute="centerY" id="t6e-26-uX8"/>
+                            <constraint firstItem="uMc-Up-QNB" firstAttribute="top" secondItem="npx-qe-Ah3" secondAttribute="bottom" constant="19" id="SBY-VN-W5J">
+                                <variation key="heightClass=regular-widthClass=compact" constant="276"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="npx-qe-Ah3" secondAttribute="centerX" id="Za8-O7-VOq">
+                                <variation key="heightClass=regular-widthClass=compact" constant="88"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="98l-yK-gZi" secondAttribute="centerX" id="c0k-Rk-N9M">
+                                <variation key="heightClass=regular-widthClass=compact" constant="98.5"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="uMc-Up-QNB" secondAttribute="centerX" id="dY3-HE-vTU">
+                                <variation key="heightClass=regular-widthClass=compact" constant="98.5"/>
+                            </constraint>
+                            <constraint firstAttribute="centerY" secondItem="npx-qe-Ah3" secondAttribute="centerY" id="t6e-26-uX8">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
                             <constraint firstItem="98l-yK-gZi" firstAttribute="top" secondItem="uMc-Up-QNB" secondAttribute="bottom" constant="17" id="xGn-Db-e2R"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="npx-qe-Ah3"/>
                                 <exclude reference="uMc-Up-QNB"/>
                                 <exclude reference="98l-yK-gZi"/>
+                                <exclude reference="npx-qe-Ah3"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="c0k-Rk-N9M"/>
@@ -81,9 +91,9 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="npx-qe-Ah3"/>
                                 <include reference="uMc-Up-QNB"/>
                                 <include reference="98l-yK-gZi"/>
+                                <include reference="npx-qe-Ah3"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="c0k-Rk-N9M"/>

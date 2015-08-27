@@ -11,17 +11,18 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet var activityIndicatorView: UIView!
-     let aIView = CustomActivityView(frame: CGRect (x: 0, y: 0, width: 70, height: 70), color: UIColor(red:0.9, green:0.46, blue:0.33, alpha:1), size: CGSize(width: 70, height: 70))
+     let aIView = CustomActivityView(frame: CGRect (x: 0, y: 0, width: 200, height: 200), color: .whiteColor(), size: CGSize(width: 200, height: 200))
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.whiteColor()
-        activityIndicatorView.addSubview(aIView)
+        
 
         }
     
     override func viewDidLayoutSubviews() {
         
+        activityIndicatorView.center = self.view.center
+        activityIndicatorView.addSubview(aIView)
     }
     @IBAction func onStart(sender: AnyObject) {
         aIView.startAnimation()
